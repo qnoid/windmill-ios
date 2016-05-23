@@ -41,20 +41,26 @@ for iOS apps.</string>
                                     </mask>
                                 </variation>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Hn-I6-6VT">
-                                <rect key="frame" x="32" y="338.5" width="256" height="116.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Hn-I6-6VT">
+                                <rect key="frame" x="32" y="338" width="256" height="116.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="YNR-CD-8HR"/>
+                                    <constraint firstAttribute="height" constant="120" id="YNR-CD-8HR"/>
                                 </constraints>
                                 <string key="text">itms-services://?action=download-manifest&amp;url=https://ota.windmill.io/14810686-4690-4900-ADA5-8B0B7338AA39/com.qnoid.brainmap/1.0/brainmap.plist</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YNR-CD-8HR"/>
+                                    </mask>
+                                </variation>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Hn-I6-6VT" secondAttribute="bottom" constant="25.5" id="0RV-kd-jBU"/>
                             <constraint firstItem="4Hn-I6-6VT" firstAttribute="centerX" secondItem="cq7-WU-wTb" secondAttribute="centerX" id="3OS-CY-mIQ"/>
                             <constraint firstItem="4Hn-I6-6VT" firstAttribute="top" secondItem="cq7-WU-wTb" secondAttribute="bottom" constant="8" symbolic="YES" id="DK6-d8-rMa"/>
                             <constraint firstItem="cq7-WU-wTb" firstAttribute="leading" secondItem="MQv-gN-OyG" secondAttribute="leading" id="T7T-ma-fIP"/>
