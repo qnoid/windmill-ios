@@ -11,26 +11,46 @@ import SafariServices
 
 class ViewController: UIViewController {
 
-    var itmsURL: NSURL? {
+    @IBOutlet weak var tableView: UITableView! {
         didSet{
-            self.button.hidden = false
+            
+            self.tableView.registerNib(UINib(nibName: "WindmillTableViewCell", bundle:nil), forCellReuseIdentifier: "WindmillTableViewCell")
+            self.tableView.dataSource = self.dataSource
+            
+            self.tableView.tableFooterView = UIView()
         }
+    }
+    
+    lazy var dataSource = {
+        return WindmillTableViewDataSource()
+    }()
+    
+    let accountResource = AccountResource()
+    
+    private func reloadWindmills(account: String = "14810686-4690-4900-ADA5-8B0B7338AA39") {
+        self.accountResource.URLSessionTaskWindmills(forAccount: account) { windmills, error in
+            
+            guard let windmills = windmills else {
+                debugPrint(error)
+                return
+            }
+            
+            self.dataSource.windmills = windmills
+            self.tableView.reloadData()
+            }.resume()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.reloadWindmills()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBOutlet weak var button: UIButton!
-    @IBAction func foo(sender: AnyObject) {
-        
-        self.presentViewController(SFSafariViewController(URL: self.itmsURL!), animated: true, completion: nil)
+    @IBAction func didTouchUpInsideRefresh(sender: UIButton) {
+        self.reloadWindmills()
     }
 }
 

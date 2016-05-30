@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */; };
+		BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52291E1CFB25D30069C831 /* Windmill.swift */; };
+		BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */; };
+		BD5229251CFB26DF0069C831 /* WindmillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */; };
+		BD5229271CFB27A50069C831 /* WindmillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */; };
+		BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229281CFB4B1D0069C831 /* AccountResource.swift */; };
 		BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */; };
 		BDD1E96D1CDA92DB00976074 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E96C1CDA92DB00976074 /* ViewController.swift */; };
 		BDD1E9701CDA92DB00976074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD1E96E1CDA92DB00976074 /* Main.storyboard */; };
@@ -26,6 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTextView.swift; sourceTree = "<group>"; };
+		BD52291E1CFB25D30069C831 /* Windmill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Windmill.swift; sourceTree = "<group>"; };
+		BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDataSource.swift; sourceTree = "<group>"; };
+		BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindmillTableViewCell.xib; sourceTree = "<group>"; };
+		BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewCell.swift; sourceTree = "<group>"; };
+		BD5229281CFB4B1D0069C831 /* AccountResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountResource.swift; sourceTree = "<group>"; };
 		BDD1E9671CDA92DB00976074 /* windmill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = windmill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDD1E96C1CDA92DB00976074 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +95,12 @@
 				BDD1E9711CDA92DB00976074 /* Assets.xcassets */,
 				BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */,
 				BDD1E9761CDA92DB00976074 /* Info.plist */,
+				BD52291E1CFB25D30069C831 /* Windmill.swift */,
+				BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */,
+				BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */,
+				BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */,
+				BD5229281CFB4B1D0069C831 /* AccountResource.swift */,
+				BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */,
 			);
 			path = windmill;
 			sourceTree = "<group>";
@@ -187,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDD1E9751CDA92DB00976074 /* LaunchScreen.storyboard in Resources */,
+				BD5229251CFB26DF0069C831 /* WindmillTableViewCell.xib in Resources */,
 				BDD1E9721CDA92DB00976074 /* Assets.xcassets in Resources */,
 				BDD1E9701CDA92DB00976074 /* Main.storyboard in Resources */,
 			);
@@ -206,7 +225,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */,
 				BDD1E96D1CDA92DB00976074 /* ViewController.swift in Sources */,
+				BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */,
+				BD5229271CFB27A50069C831 /* WindmillTableViewCell.swift in Sources */,
+				BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */,
+				BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */,
 				BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +310,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -324,6 +349,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -335,7 +361,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = windmill/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -346,7 +371,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = windmill/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

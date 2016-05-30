@@ -11,26 +11,23 @@ import XCTest
 
 class windmillTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func testGivenAccountAssertWindmills() {
+        
+        let expectation = self.expectationWithDescription(#function)
+        
+        var actual: [Windmill]?
+        
+        let accountResource = AccountResource()
+        
+        let dataTask = accountResource.URLSessionTaskWindmills(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39"){ windmills, error in
+        
+            actual = windmills
+            expectation.fulfill()
         }
+        
+        dataTask.resume();
+        self.waitForExpectationsWithTimeout(5, handler: nil)
+        XCTAssertNotNil(actual)
+        XCTAssertNotEqual(0, actual!.count)
     }
-    
 }
