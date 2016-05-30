@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adk-iF-Y0P" customClass="WindmillTextView" customModule="windmill" customModuleProvider="target">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adk-iF-Y0P" customClass="WindmillTextView" customModule="windmill" customModuleProvider="target">
                     <rect key="frame" x="260" y="32" width="44" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="tintColor" red="0.01309637539" green="0.65343725679999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -23,7 +23,7 @@
                     <attributedString key="attributedText">
                         <fragment content="GET">
                             <attributes>
-                                <font key="NSFont" size="14" name="AvenirNext-Medium"/>
+                                <font key="NSFont" size="14" name="AvenirNext-DemiBold"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>

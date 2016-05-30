@@ -48,13 +48,13 @@ class WindmillTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return windmills.count
+        return self.windmills.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("WindmillTableViewCell") as! WindmillTableViewCell
         
-        let windmill = windmills[indexPath.row]
+        let windmill = self.windmills[indexPath.row]
         
         cell.titleLabel.text = windmill.title
         cell.versionLabel.text = "\(windmill.version)"
