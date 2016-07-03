@@ -15,7 +15,7 @@ extension NSDate {
         formatter.maximumUnitCount = 1
         formatter.allowedUnits = [.Year, .Month, .Day, .Hour, .Minute, .Second]
         
-        guard let timeString = formatter.stringFromDate(self, toDate: NSDate(timeIntervalSinceNow: 10)) else {
+        guard let timeString = formatter.stringFromDate(self, toDate: NSDate(timeIntervalSinceNow: 60)) else {
             return nil
         }
         
@@ -27,7 +27,14 @@ extension NSDate {
 
 extension Windmill {
     var urlAsAttributedString: NSAttributedString{
-        return NSAttributedString(string: "GET", attributes: [NSLinkAttributeName: self.url])
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.minimumLineHeight = 27
+
+        return NSAttributedString(string: "INSTALL", attributes: [
+            NSLinkAttributeName: self.url,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 14.0)!,
+            NSParagraphStyleAttributeName: paragraph,
+            NSBaselineOffsetAttributeName: 5.0])
     }
 }
 

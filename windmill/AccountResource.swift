@@ -16,7 +16,13 @@ public class AccountResource {
         
         let dataTask = self.session.dataTaskWithURL(NSURL(string: "http://api.windmill.io:8080/account/\(account)/windmill")!){ data, response, error in
             
-            let json = try! NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as! Array<Dictionary<String, AnyObject>>
+            guard let data = data else {
+                debugPrint(error)
+                completion(windmills: nil, error: error)
+            return
+            }
+            
+            let json = try! NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! Array<Dictionary<String, AnyObject>>
             
             debugPrint(json)
             
