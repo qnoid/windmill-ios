@@ -9,10 +9,10 @@
 import Foundation
 
 public struct Windmill {
-    let id: Int
+    let id: UInt
     let identifier: String
     let version: Double
     let title: String
     let url: String
-    let updated_at: NSDate
+    let updated_at: Date
 }

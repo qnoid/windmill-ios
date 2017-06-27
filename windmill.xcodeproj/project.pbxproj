@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */; };
+		BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */; };
+		BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */; };
 		BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52291E1CFB25D30069C831 /* Windmill.swift */; };
 		BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */; };
 		BD5229251CFB26DF0069C831 /* WindmillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */; };
@@ -33,6 +35,9 @@
 
 /* Begin PBXFileReference section */
 		BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTextView.swift; sourceTree = "<group>"; };
+		BD18F4B61DBF60AE00CD596B /* windmill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = windmill.entitlements; sourceTree = "<group>"; };
+		BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDelegate.swift; sourceTree = "<group>"; };
 		BD52291E1CFB25D30069C831 /* Windmill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Windmill.swift; sourceTree = "<group>"; };
 		BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDataSource.swift; sourceTree = "<group>"; };
 		BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindmillTableViewCell.xib; sourceTree = "<group>"; };
@@ -68,6 +73,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD13B2151F016ADD00BFC755 /* common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
 		BDD1E95E1CDA92DB00976074 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +101,8 @@
 		BDD1E9691CDA92DB00976074 /* windmill */ = {
 			isa = PBXGroup;
 			children = (
+				BD13B2151F016ADD00BFC755 /* common */,
+				BD18F4B61DBF60AE00CD596B /* windmill.entitlements */,
 				BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */,
 				BDD1E96C1CDA92DB00976074 /* ViewController.swift */,
 				BDD1E96E1CDA92DB00976074 /* Main.storyboard */,
@@ -101,6 +115,8 @@
 				BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */,
 				BD5229281CFB4B1D0069C831 /* AccountResource.swift */,
 				BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */,
+				BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */,
+				BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */,
 			);
 			path = windmill;
 			sourceTree = "<group>";
@@ -159,13 +175,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Windmill;
 				TargetAttributes = {
 					BDD1E9661CDA92DB00976074 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = AQ2US2UQQ7;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -178,7 +194,7 @@
 					};
 					BDD1E97A1CDA92DB00976074 = {
 						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 						TestTargetID = BDD1E9661CDA92DB00976074;
 					};
 				};
@@ -232,8 +248,10 @@
 				BDD1E96D1CDA92DB00976074 /* ViewController.swift in Sources */,
 				BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */,
 				BD5229271CFB27A50069C831 /* WindmillTableViewCell.swift in Sources */,
+				BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */,
 				BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */,
 				BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */,
+				BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */,
 				BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,13 +302,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -312,12 +338,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -329,13 +357,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -351,10 +387,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -363,11 +400,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = windmill/windmill.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AQ2US2UQQ7;
 				INFOPLIST_FILE = windmill/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -375,12 +414,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = windmill/windmill.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AQ2US2UQQ7;
 				INFOPLIST_FILE = windmill/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -392,7 +433,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmillTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/windmill.app/windmill";
 			};
 			name = Debug;
@@ -406,7 +447,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmillTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/windmill.app/windmill";
 			};
 			name = Release;

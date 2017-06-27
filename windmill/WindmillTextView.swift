@@ -14,25 +14,25 @@ import QuartzCore
     var highlighted: Bool = false {
         didSet {
             if(highlighted) {
-                self.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+                self.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
                 self.backgroundColor = UIColor.Windmill.greenColor
             } else {
                 self.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.Windmill.greenColor]
-                self.backgroundColor = UIColor.whiteColor()
+                self.backgroundColor = UIColor.white
             }
         }
     }
     
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        return super.hitTest(point, withEvent: event)        
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        return super.hitTest(point, with: event)        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.textContainer.size = self.bounds.size
-        self.textContainerInset = UIEdgeInsetsZero
-        self.layer.borderColor = UIColor.Windmill.greenColor.CGColor
+        self.textContainerInset = UIEdgeInsets.zero
+        self.layer.borderColor = UIColor.Windmill.greenColor.cgColor
         self.layer.borderWidth = 1.0
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true

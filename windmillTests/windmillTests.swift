@@ -13,7 +13,7 @@ class windmillTests: XCTestCase {
     
     func testGivenAccountAssertWindmills() {
         
-        let expectation = self.expectationWithDescription(#function)
+        let expectation = self.expectation(description: #function)
         
         var actual: [Windmill]?
         
@@ -26,7 +26,7 @@ class windmillTests: XCTestCase {
         }
         
         dataTask.resume();
-        self.waitForExpectationsWithTimeout(5, handler: nil)
+        self.waitForExpectations(timeout: 5, handler: nil)
         XCTAssertNotNil(actual)
         XCTAssertNotEqual(0, actual!.count)
     }

@@ -27,15 +27,15 @@ class WindmillTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManage
     }
     @IBOutlet weak var iconImageVIew: UIImageView!
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
-        let point = self.installTextView.convertPoint(point, fromView: self)
+        let point = self.installTextView.convert(point, from: self)
         
-        let view = self.installTextView.hitTest(point, withEvent: event)
+        let view = self.installTextView.hitTest(point, with: event)
         
         if self.installTextView.isEqual(view) {
             self.installTextView.highlighted = true
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {
                 self.installTextView.highlighted = false //make sure its unhighlighted in case of touch cancelled failure
             }
         }
@@ -50,15 +50,15 @@ class WindmillTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManage
         self.iconImageVIew.layer.masksToBounds = true
     }
     
-    func textViewDidChangeSelection(textView: UITextView) {
+    func textViewDidChangeSelection(_ textView: UITextView) {
         textView.selectedTextRange = nil //so no selection carrots appear
     }
     
-    override func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+    override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
         self.installTextView.highlighted = false
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.installTextView.highlighted = false
     }
 }

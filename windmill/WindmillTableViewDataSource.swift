@@ -8,14 +8,14 @@
 
 import UIKit
 
-extension NSDate {
+extension Date {
     var timestampString: String? {
-        let formatter = NSDateComponentsFormatter()
-        formatter.unitsStyle = .Full
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
         formatter.maximumUnitCount = 1
-        formatter.allowedUnits = [.Year, .Month, .Day, .Hour, .Minute, .Second]
+        formatter.allowedUnits = [.year, .month, .day, .hour, .minute, .second]
         
-        guard let timeString = formatter.stringFromDate(self, toDate: NSDate(timeIntervalSinceNow: 60)) else {
+        guard let timeString = formatter.string(from: self, to: Date(timeIntervalSinceNow: 60)) else {
             return nil
         }
         
@@ -32,7 +32,7 @@ extension Windmill {
 
         return NSAttributedString(string: "INSTALL", attributes: [
             NSLinkAttributeName: self.url,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-Medium", size: 14.0)!,
+            NSFontAttributeName: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightMedium),
             NSParagraphStyleAttributeName: paragraph,
             NSBaselineOffsetAttributeName: 5.0])
     }
@@ -40,26 +40,26 @@ extension Windmill {
 
 class WindmillTableViewDataSource: NSObject, UITableViewDataSource {
     
-    lazy var dateFormatter: NSDateFormatter = {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .LongStyle
-        dateFormatter.timeStyle = .MediumStyle
+    lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .medium
         
         return dateFormatter
     }()
     
     var windmills: [Windmill] = []
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.windmills.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("WindmillTableViewCell") as! WindmillTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WindmillTableViewCell") as! WindmillTableViewCell
         
         let windmill = self.windmills[indexPath.row]
         
@@ -67,7 +67,7 @@ class WindmillTableViewDataSource: NSObject, UITableViewDataSource {
         cell.versionLabel.text = "\(windmill.version)"
         cell.dateLabel.text = windmill.updated_at.timestampString
         cell.installTextView.attributedText = windmill.urlAsAttributedString
-        cell.installTextView.textAlignment = .Center
+        cell.installTextView.textAlignment = .center
         
         return cell
     }
