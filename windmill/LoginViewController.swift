@@ -15,6 +15,11 @@ class LoginViewController: UIViewController {
             accountTextField.delegate = self
         }
     }
+    @IBOutlet weak var continueButton: UIButton! {
+        didSet {
+            continueButton.titleLabel?.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

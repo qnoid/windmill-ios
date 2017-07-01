@@ -6,41 +6,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "Yes"
-            filePath = "windmill/ViewController.swift"
-            timestampString = "520188623.466752"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "reloadWindmills(account:)"
-            landmarkType = "7">
-            <Actions>
-               <BreakpointActionProxy
-                  ActionExtensionID = "Xcode.BreakpointAction.Sound">
-                  <ActionContent
-                     soundName = "Pop">
-                  </ActionContent>
-               </BreakpointActionProxy>
-            </Actions>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "windmill/ViewController.swift"
-            timestampString = "520188623.466819"
+            timestampString = "520554080.876713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "reloadWindmills(account:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "windmill.ViewController.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "windmill"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qnoid/Developer/workspace/swift/windmill-ios/windmill/ViewController.swift"
+                  timestampString = "520331543.271813"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "384">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of windmill.ViewController.didTouchUpInsideRefresh(__C.UIBarButtonItem) -&gt; ()"
+                  moduleName = "windmill"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qnoid/Developer/workspace/swift/windmill-ios/windmill/ViewController.swift"
+                  timestampString = "520331543.273113"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "312">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -50,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "windmill/AccountResource.swift"
-            timestampString = "520249353.980462"
+            timestampString = "520466592.494219"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -66,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "windmill/AccountResource.swift"
-            timestampString = "520249353.98089"
+            timestampString = "520466592.4946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -82,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "windmill/AccountResource.swift"
-            timestampString = "520249353.981126"
+            timestampString = "520466592.49483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -98,7 +106,7 @@
                   moduleName = "windmill"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qnoid/Developer/workspace/swift/windmill-ios/windmill/AccountResource.swift"
-                  timestampString = "520175727.449423"
+                  timestampString = "520350307.833869"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -113,7 +121,7 @@
                   moduleName = "windmill"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qnoid/Developer/workspace/swift/windmill-ios/windmill/AccountResource.swift"
-                  timestampString = "520175727.45134"
+                  timestampString = "520350307.835147"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "26"
@@ -130,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "windmill/AccountResource.swift"
-            timestampString = "520249353.981368"
+            timestampString = "520466592.495078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -146,7 +154,7 @@
                   moduleName = "windmill"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qnoid/Developer/workspace/swift/windmill-ios/windmill/AccountResource.swift"
-                  timestampString = "520175727.474357"
+                  timestampString = "520350307.838154"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -161,7 +169,7 @@
                   moduleName = "windmill"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qnoid/Developer/workspace/swift/windmill-ios/windmill/AccountResource.swift"
-                  timestampString = "520175727.476974"
+                  timestampString = "520350307.83952"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -176,7 +184,7 @@
                   moduleName = "windmill"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qnoid/Developer/workspace/swift/windmill-ios/windmill/AccountResource.swift"
-                  timestampString = "520175727.479703"
+                  timestampString = "520350307.840822"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -191,7 +199,7 @@
                   moduleName = "windmill"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/qnoid/Developer/workspace/swift/windmill-ios/windmill/AccountResource.swift"
-                  timestampString = "520175727.482452"
+                  timestampString = "520350307.84211"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "40"
@@ -208,12 +216,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "windmill/AccountResource.swift"
-            timestampString = "520249353.981596"
+            timestampString = "520466592.495353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "windmill_jsonTaskWithURL(_:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "windmill/AppDelegate.swift"
+            timestampString = "520548262.938404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

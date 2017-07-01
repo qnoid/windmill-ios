@@ -37,7 +37,12 @@ extension URLSession {
 
 open class AccountResource {
 
-    let session = URLSession(configuration: URLSessionConfiguration.default)
+    let session: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 5
+        
+        return URLSession(configuration: configuration)
+    }()
     
     open func URLSessionTaskWindmills(forAccount account: String, completion: @escaping (_ windmills: [Windmill]?, _ error: Error?) -> Void) -> URLSessionDataTask {
         

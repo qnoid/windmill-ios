@@ -7,41 +7,25 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-    
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
         debugPrint(#function)
         debugPrint(launchOptions ?? "")
-
-        let acceptAction = UIMutableUserNotificationAction()
-        // The identifier that you use internally to handle the action.
-        acceptAction.identifier = "windmill.status.deployed"
+            
+        let userNotificationCenter = UNUserNotificationCenter.current()
+        userNotificationCenter.delegate = self
         
-        // The localized title of the action button.
-        acceptAction.title = "Install"
-        
-        // Specifies whether the app must be in the foreground to perform the action.
-        acceptAction.activationMode = .background;
-
-        let inviteCategory = UIMutableUserNotificationCategory()
-        
-        // Identifier to include in your push payload and local notification
-        inviteCategory.identifier = "windmill.status.deployed";
-        
-        // Set the actions to display in the default context
-        inviteCategory.setActions([acceptAction], for: .minimal)
-        
-        let userNotificationSettings = UIUserNotificationSettings(types: .alert, categories: [inviteCategory])
+        userNotificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
+            
+        }
         
         application.registerForRemoteNotifications()
-        application.registerUserNotificationSettings(userNotificationSettings)
         
         return true
     }
@@ -68,11 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-        debugPrint("\(#function)")
-        debugPrint(notificationSettings)
-    }
-    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         debugPrint(error)
     }
@@ -80,38 +59,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         debugPrint("\(#function)")
         
-        let tokenChars = (deviceToken as NSData).bytes.bindMemory(to: CChar.self, capacity: deviceToken.count)
-        var tokenString = ""
-        
-        for i in 0..<deviceToken.count {
-            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
-        }
+        let tokenString = deviceToken.map { String(format: "%02hhx", $0) }.joined()
         
         print("Device Token:", tokenString)
 
     }
 
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        debugPrint("\(#function)")
-        debugPrint(userInfo)
+        completionHandler([.alert, .sound])
     }
-    
-    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable: Any], completionHandler: @escaping () -> Void) {
-        
-        
-        debugPrint(#function)
-        if let identifier = identifier{
-            switch identifier {
-            case "windmill.status.deployed":
-                debugPrint("\(identifier):\(userInfo)")
-            default:
-                debugPrint("\(identifier):\(userInfo)")
-            }
-        }
-        
-        completionHandler()
-    }
-    
 }
 
