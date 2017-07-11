@@ -10,8 +10,9 @@ import XCTest
 @testable import windmill
 
 class windmillTests: XCTestCase {
-    
+
     func testGivenAccountAssertWindmills() {
+        self.continueAfterFailure = false
         
         let expectation = self.expectation(description: #function)
         
@@ -19,8 +20,8 @@ class windmillTests: XCTestCase {
         
         let accountResource = AccountResource()
         
-        let dataTask = accountResource.URLSessionTaskWindmills(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39"){ windmills, error in
-        
+        let dataTask = accountResource.requestWindmills(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39"){ windmills, error in
+            
             actual = windmills
             expectation.fulfill()
         }

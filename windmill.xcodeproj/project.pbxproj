@@ -10,11 +10,17 @@
 		BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */; };
 		BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */; };
 		BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */; };
+		BD4B00D11F0E30AE004025F3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
 		BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52291E1CFB25D30069C831 /* Windmill.swift */; };
 		BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */; };
 		BD5229251CFB26DF0069C831 /* WindmillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */; };
 		BD5229271CFB27A50069C831 /* WindmillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */; };
 		BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229281CFB4B1D0069C831 /* AccountResource.swift */; };
+		BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1471F0E26A1004EE03D /* Device.swift */; };
+		BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */; };
+		BDA2D1521F0E2959004EE03D /* AccountResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */; };
+		BDCF33A11F0E7E4100B3EA53 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
+		BDCF33A21F0E7F4000B3EA53 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
 		BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */; };
 		BDD1E96D1CDA92DB00976074 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E96C1CDA92DB00976074 /* ViewController.swift */; };
 		BDD1E9701CDA92DB00976074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD1E96E1CDA92DB00976074 /* Main.storyboard */; };
@@ -24,6 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BDA2D1541F0E2959004EE03D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDD1E95F1CDA92DB00976074 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDD1E9661CDA92DB00976074;
+			remoteInfo = windmill;
+		};
 		BDD1E97C1CDA92DB00976074 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BDD1E95F1CDA92DB00976074 /* Project object */;
@@ -38,11 +51,17 @@
 		BD18F4B61DBF60AE00CD596B /* windmill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = windmill.entitlements; sourceTree = "<group>"; };
 		BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDelegate.swift; sourceTree = "<group>"; };
+		BD4B00D01F0E305D004025F3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		BD52291E1CFB25D30069C831 /* Windmill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Windmill.swift; sourceTree = "<group>"; };
 		BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDataSource.swift; sourceTree = "<group>"; };
 		BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindmillTableViewCell.xib; sourceTree = "<group>"; };
 		BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewCell.swift; sourceTree = "<group>"; };
 		BD5229281CFB4B1D0069C831 /* AccountResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountResource.swift; sourceTree = "<group>"; };
+		BDA2D1471F0E26A1004EE03D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Windmill.swift"; sourceTree = "<group>"; };
+		BDA2D14F1F0E2959004EE03D /* IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountResourceTest.swift; sourceTree = "<group>"; };
+		BDA2D1531F0E2959004EE03D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDD1E9671CDA92DB00976074 /* windmill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = windmill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDD1E96C1CDA92DB00976074 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,10 +75,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BDA2D14C1F0E2959004EE03D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDCF33A21F0E7F4000B3EA53 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BDD1E9641CDA92DB00976074 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD4B00D11F0E30AE004025F3 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDCF33A11F0E7E4100B3EA53 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,8 +105,26 @@
 		BD13B2151F016ADD00BFC755 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */,
 			);
 			name = common;
+			sourceTree = "<group>";
+		};
+		BD4B00CB1F0E2F76004025F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD4B00D01F0E305D004025F3 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDA2D1501F0E2959004EE03D /* IntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */,
+				BDA2D1531F0E2959004EE03D /* Info.plist */,
+			);
+			path = IntegrationTests;
 			sourceTree = "<group>";
 		};
 		BDD1E95E1CDA92DB00976074 = {
@@ -85,7 +132,9 @@
 			children = (
 				BDD1E9691CDA92DB00976074 /* windmill */,
 				BDD1E97E1CDA92DB00976074 /* windmillTests */,
+				BDA2D1501F0E2959004EE03D /* IntegrationTests */,
 				BDD1E9681CDA92DB00976074 /* Products */,
+				BD4B00CB1F0E2F76004025F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +143,7 @@
 			children = (
 				BDD1E9671CDA92DB00976074 /* windmill.app */,
 				BDD1E97B1CDA92DB00976074 /* windmillTests.xctest */,
+				BDA2D14F1F0E2959004EE03D /* IntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +167,7 @@
 				BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */,
 				BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */,
 				BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */,
+				BDA2D1471F0E26A1004EE03D /* Device.swift */,
 			);
 			path = windmill;
 			sourceTree = "<group>";
@@ -133,6 +184,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BDA2D14E1F0E2959004EE03D /* IntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDA2D1561F0E2959004EE03D /* Build configuration list for PBXNativeTarget "IntegrationTests" */;
+			buildPhases = (
+				BDA2D14B1F0E2959004EE03D /* Sources */,
+				BDA2D14C1F0E2959004EE03D /* Frameworks */,
+				BDA2D14D1F0E2959004EE03D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BDA2D1551F0E2959004EE03D /* PBXTargetDependency */,
+			);
+			name = IntegrationTests;
+			productName = IntegrationTests;
+			productReference = BDA2D14F1F0E2959004EE03D /* IntegrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BDD1E9661CDA92DB00976074 /* windmill */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BDD1E9841CDA92DB00976074 /* Build configuration list for PBXNativeTarget "windmill" */;
@@ -140,6 +209,7 @@
 				BDD1E9631CDA92DB00976074 /* Sources */,
 				BDD1E9641CDA92DB00976074 /* Frameworks */,
 				BDD1E9651CDA92DB00976074 /* Resources */,
+				BD4B00CF1F0E300D004025F3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -174,10 +244,14 @@
 		BDD1E95F1CDA92DB00976074 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Windmill;
 				TargetAttributes = {
+					BDA2D14E1F0E2959004EE03D = {
+						CreatedOnToolsVersion = 9.0;
+						TestTargetID = BDD1E9661CDA92DB00976074;
+					};
 					BDD1E9661CDA92DB00976074 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = AQ2US2UQQ7;
@@ -215,11 +289,19 @@
 			targets = (
 				BDD1E9661CDA92DB00976074 /* windmill */,
 				BDD1E97A1CDA92DB00976074 /* windmillTests */,
+				BDA2D14E1F0E2959004EE03D /* IntegrationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BDA2D14D1F0E2959004EE03D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BDD1E9651CDA92DB00976074 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,13 +322,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BD4B00CF1F0E300D004025F3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		BDA2D14B1F0E2959004EE03D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDA2D1521F0E2959004EE03D /* AccountResourceTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BDD1E9631CDA92DB00976074 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */,
 				BDD1E96D1CDA92DB00976074 /* ViewController.swift in Sources */,
+				BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */,
 				BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */,
 				BD5229271CFB27A50069C831 /* WindmillTableViewCell.swift in Sources */,
 				BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */,
@@ -254,6 +363,7 @@
 				BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */,
 				BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */,
 				BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */,
+				BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +378,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BDA2D1551F0E2959004EE03D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDD1E9661CDA92DB00976074 /* windmill */;
+			targetProxy = BDA2D1541F0E2959004EE03D /* PBXContainerItemProxy */;
+		};
 		BDD1E97D1CDA92DB00976074 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BDD1E9661CDA92DB00976074 /* windmill */;
@@ -295,6 +410,59 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BDA2D1571F0E2959004EE03D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = IntegrationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qnoid.IntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/windmill.app/windmill";
+			};
+			name = Debug;
+		};
+		BDA2D1581F0E2959004EE03D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = IntegrationTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qnoid.IntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/windmill.app/windmill";
+			};
+			name = Release;
+		};
 		BDD1E9821CDA92DB00976074 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -405,6 +573,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = windmill/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,6 +594,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = windmill/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -439,6 +615,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = windmillTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmillTests;
@@ -456,6 +636,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = windmillTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmillTests;
@@ -470,6 +654,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BDA2D1561F0E2959004EE03D /* Build configuration list for PBXNativeTarget "IntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDA2D1571F0E2959004EE03D /* Debug */,
+				BDA2D1581F0E2959004EE03D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BDD1E9621CDA92DB00976074 /* Build configuration list for PBXProject "windmill" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

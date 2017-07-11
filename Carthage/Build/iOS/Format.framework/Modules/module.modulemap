@@ -1,0 +1,11 @@
+framework module Format {
+  umbrella header "Format.h"
+
+  export *
+  module * { export * }
+}
+
+module Format.Swift {
+    header "Format-Swift.h"
+    requires objc
+}

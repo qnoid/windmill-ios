@@ -43,12 +43,12 @@ class ViewController: UIViewController {
         return viewController
     }
     
-    fileprivate func reloadWindmills(account: String) {        
+    private func reloadWindmills(account: String) {
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicatorView.startAnimating()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
         
-        self.accountResource.URLSessionTaskWindmills(forAccount: account) { [weak self] windmills, error in
+        self.accountResource.requestWindmills(forAccount: account) { [weak self] windmills, error in
             self?.didFinishURLSessionTaskWindmills(activityIndicatorView: activityIndicatorView, windmills: windmills, error: error)
             }.resume()
     }
@@ -59,9 +59,7 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = self.rightBarButtonItem
         
         guard let windmills = windmills else {
-            let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            
+            let alertController = UIAlertController.Windmill.make(error: error)
             self.present(alertController, animated: true, completion: nil)
             
             return

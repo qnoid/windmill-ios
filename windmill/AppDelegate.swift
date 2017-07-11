@@ -8,12 +8,15 @@
 
 import UIKit
 import UserNotifications
+import os
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
+    
+    let accountResource = AccountResource()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         debugPrint(#function)
         debugPrint(launchOptions ?? "")
@@ -62,7 +65,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let tokenString = deviceToken.map { String(format: "%02hhx", $0) }.joined()
         
         print("Device Token:", tokenString)
-
+        
+        self.accountResource.requestRegisterDevice(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39", withToken: tokenString) { [weak self] device, error in
+            
+            guard let device = device else {
+                let alertController = UIAlertController.Windmill.make(error: error)
+                self?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+                
+                return
+            }
+            
+            os_log("%{public}@", log: .default, type: .debug, device.debugDescription)
+            
+            }.resume()
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

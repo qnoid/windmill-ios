@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import os
+import Alamofire
 
 let WINDMILL_BASE_URL_PRODUCTION = "http://api.windmill.io:8080"
 let WINDMILL_BASE_URL_DEVELOPMENT = "http://10.0.1.15:8080"
@@ -24,19 +26,21 @@ extension URLSession {
         return self.dataTask(with: url, completionHandler: { data, response, error in
             
             guard let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else {
-                debugPrint(error ?? "")
+                os_log("%{public}@", log: .default, type: .error, error!.localizedDescription)
                 completionHandler(nil, error)
                 return
             }
             
-            debugPrint(json)
+            os_log("%{public}@", log: .default, type: .debug, (json as? Dictionary<String, AnyObject>) ?? (json as? Array<AnyObject>) ?? "")
             completionHandler(json, error)
         })
     }
 }
 
-open class AccountResource {
-
+class AccountResource {
+    
+    let queue = DispatchQueue(label: "io.windmill.manager")
+    
     let session: URLSession = {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 5
@@ -44,13 +48,15 @@ open class AccountResource {
         return URLSession(configuration: configuration)
     }()
     
-    open func URLSessionTaskWindmills(forAccount account: String, completion: @escaping (_ windmills: [Windmill]?, _ error: Error?) -> Void) -> URLSessionDataTask {
+    let sessionManager = SessionManager()
+    
+    @discardableResult func requestWindmills(forAccount account: String, completion: @escaping (_ windmills: [Windmill]?, _ error: Error?) -> Void) -> DataRequest {
         
-        return self.session.windmill_jsonTaskWithURL(URL(string: "\(WINDMILL_BASE_URL)/account/\(account)/windmill")!){ json, error in
+        return sessionManager.request("\(WINDMILL_BASE_URL)/account/\(account)/windmill").responseJSON(queue: self.queue, options: .allowFragments) { response in
             
-            guard let array = json as? Array<Dictionary<String, AnyObject>> else {
+            guard let array = response.result.value as? Array<Dictionary<String, AnyObject>> else {
                 DispatchQueue.main.async{
-                    completion(nil, error)
+                    completion(nil, response.result.error)
                 }
             return
             }
@@ -68,7 +74,38 @@ open class AccountResource {
             }
             
             DispatchQueue.main.async{
-                completion(windmills, error)
+                completion(windmills, nil)
+            }
+        }
+    }
+    
+    @discardableResult func requestRegisterDevice(forAccount account: String, withToken token: String, completion: @escaping (_ device: Device?, _ error: Error?) -> Void) -> DataRequest {
+        
+        let urlRequest = try! URLRequest(url: "\(WINDMILL_BASE_URL)/account/\(account)/device/register", method: .post)
+        
+        let encodedURLRequest = try! URLEncoding.queryString.encode(urlRequest, with: ["token":token])
+        
+        return sessionManager.request(encodedURLRequest).responseString(completionHandler: { response in
+            
+            os_log("%{public}@", log: .default, type: .debug, String(describing: response.response))
+            os_log("%{public}@", log: .default, type: .debug, String(describing: response.result.value ?? "Empty HTTP Response"))
+            
+        }).responseJSON(queue: self.queue, options: .allowFragments) { response in
+            
+            guard let dictionary = response.result.value as? Dictionary<String, AnyObject> else {
+                DispatchQueue.main.async{
+                    completion(nil, response.result.error)
+                }
+                return
+            }
+            
+            let id = dictionary["id"]?.uintValue ?? 0
+            let token = dictionary["token"] as? String ?? ""
+            let createdAt = dictionary["createdAt"]?.doubleValue ?? 0.0
+            let updatedAt = dictionary["updatedAt"]?.doubleValue ?? 0.0
+            
+            DispatchQueue.main.async{
+                completion(Device(id: id, token: token, created_at:Date(timeIntervalSince1970: createdAt), updated_at: Date(timeIntervalSince1970: updatedAt)), nil)
             }
         }
     }
