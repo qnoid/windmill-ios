@@ -1,4 +1,4 @@
 .DS_Store
 build
-Carthage/Checkout/*
 xcuserdata/
+Carthage/Checkouts/
