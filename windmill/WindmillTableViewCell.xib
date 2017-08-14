@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,29 +20,29 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="contentView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brainmap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmm-u9-Vbg">
-                    <rect key="frame" x="107" y="16" width="73" height="20"/>
+                    <rect key="frame" x="92" y="21.5" width="73" height="20"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrx-UF-dRf">
-                    <rect key="frame" x="107" y="68.5" width="46" height="20.5"/>
+                    <rect key="frame" x="92" y="78" width="46" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-12-1TD">
-                    <rect key="frame" x="107" y="42" width="83" height="20.5"/>
+                    <rect key="frame" x="92" y="49.5" width="83" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adk-iF-Y0P" customClass="WindmillTextView" customModule="windmill" customModuleProvider="target">
-                    <rect key="frame" x="219.5" y="33" width="83.5" height="27"/>
+                    <rect key="frame" x="219.5" y="40" width="83.5" height="27"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.079777561128139496" green="0.60719430446624756" blue="0.0096293557435274124" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -61,11 +61,11 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                 </textView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-FC-BRk">
-                    <rect key="frame" x="17" y="10.5" width="72" height="72"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ipa" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-FC-BRk">
+                    <rect key="frame" x="20" y="21.5" width="64" height="64"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="72" id="2Gp-ai-Gai"/>
-                        <constraint firstAttribute="width" constant="72" id="Fhx-Qh-4yI"/>
+                        <constraint firstAttribute="height" constant="64" id="2Gp-ai-Gai"/>
+                        <constraint firstAttribute="width" constant="64" id="Fhx-Qh-4yI"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -74,18 +74,22 @@
                 <constraint firstItem="cmm-u9-Vbg" firstAttribute="leading" secondItem="9xP-12-1TD" secondAttribute="leading" id="7GN-2N-m4m"/>
                 <constraint firstItem="Mrx-UF-dRf" firstAttribute="leading" secondItem="9xP-12-1TD" secondAttribute="leading" id="8Oa-tL-6ha"/>
                 <constraint firstItem="NA1-FC-BRk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CYC-Oe-3zn"/>
-                <constraint firstItem="NA1-FC-BRk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="17" id="TBX-xI-uwi"/>
-                <constraint firstItem="Mrx-UF-dRf" firstAttribute="top" secondItem="9xP-12-1TD" secondAttribute="bottom" constant="6" id="TT5-e5-Agz"/>
-                <constraint firstItem="9xP-12-1TD" firstAttribute="top" secondItem="cmm-u9-Vbg" secondAttribute="bottom" constant="6" id="ZH1-HY-oPl"/>
-                <constraint firstItem="cmm-u9-Vbg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="bKd-cB-rNd"/>
+                <constraint firstItem="cmm-u9-Vbg" firstAttribute="top" secondItem="NA1-FC-BRk" secondAttribute="top" id="ERx-ay-NAk"/>
+                <constraint firstItem="NA1-FC-BRk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="TBX-xI-uwi"/>
+                <constraint firstItem="Mrx-UF-dRf" firstAttribute="top" secondItem="9xP-12-1TD" secondAttribute="bottom" constant="8" symbolic="YES" id="TT5-e5-Agz"/>
+                <constraint firstItem="9xP-12-1TD" firstAttribute="top" secondItem="cmm-u9-Vbg" secondAttribute="bottom" constant="8" symbolic="YES" id="ZH1-HY-oPl"/>
+                <constraint firstItem="NA1-FC-BRk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" symbolic="YES" id="Zn7-ir-9fj"/>
                 <constraint firstAttribute="trailing" secondItem="adk-iF-Y0P" secondAttribute="trailing" constant="17" id="ety-5J-Abb"/>
-                <constraint firstItem="cmm-u9-Vbg" firstAttribute="leading" secondItem="NA1-FC-BRk" secondAttribute="trailing" constant="18" id="fUU-xr-PzM"/>
-                <constraint firstAttribute="bottom" secondItem="Mrx-UF-dRf" secondAttribute="bottom" constant="4" id="lNX-gu-KFw"/>
+                <constraint firstItem="cmm-u9-Vbg" firstAttribute="leading" secondItem="NA1-FC-BRk" secondAttribute="trailing" constant="8" symbolic="YES" id="fqi-X7-C0c"/>
                 <constraint firstItem="adk-iF-Y0P" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sbs-mA-EqO"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NA1-FC-BRk" secondAttribute="bottom" constant="20" symbolic="YES" id="yic-7M-5rG"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="158" y="114.5"/>
+            <point key="canvasLocation" x="158" y="120.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ipa" width="64" height="64"/>
+    </resources>
 </document>

@@ -11,7 +11,7 @@ import UIKit
 class WindmillTableViewDelegate: NSObject, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 93
+        return 106
     }
     
 }
