@@ -10,8 +10,8 @@ import Foundation
 import os
 import Alamofire
 
-let WINDMILL_BASE_URL_PRODUCTION = "http://api.windmill.io:8080"
-let WINDMILL_BASE_URL_DEVELOPMENT = "http://10.0.1.15:8080"
+let WINDMILL_BASE_URL_PRODUCTION = "https://api.windmill.io"
+let WINDMILL_BASE_URL_DEVELOPMENT = "http://192.168.1.63:8080"
 
 #if DEBUG
 let WINDMILL_BASE_URL = WINDMILL_BASE_URL_DEVELOPMENT
