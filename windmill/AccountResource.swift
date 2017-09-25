@@ -11,31 +11,13 @@ import os
 import Alamofire
 
 let WINDMILL_BASE_URL_PRODUCTION = "https://api.windmill.io"
-let WINDMILL_BASE_URL_DEVELOPMENT = "http://192.168.1.63:8080"
+let WINDMILL_BASE_URL_DEVELOPMENT = "http://192.168.1.26:8080"
 
 #if DEBUG
 let WINDMILL_BASE_URL = WINDMILL_BASE_URL_DEVELOPMENT
 #else
 let WINDMILL_BASE_URL = WINDMILL_BASE_URL_PRODUCTION
 #endif
-
-extension URLSession {
-    
-    func windmill_jsonTaskWithURL(_ url: URL, completionHandler: @escaping (_ json: Any?, _ error: Error?) -> Void) -> URLSessionDataTask {
-        
-        return self.dataTask(with: url, completionHandler: { data, response, error in
-            
-            guard let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else {
-                os_log("%{public}@", log: .default, type: .error, error!.localizedDescription)
-                completionHandler(nil, error)
-                return
-            }
-            
-            os_log("%{public}@", log: .default, type: .debug, (json as? Dictionary<String, AnyObject>) ?? (json as? Array<AnyObject>) ?? "")
-            completionHandler(json, error)
-        })
-    }
-}
 
 class AccountResource {
     
@@ -53,6 +35,13 @@ class AccountResource {
     @discardableResult func requestWindmills(forAccount account: String, completion: @escaping (_ windmills: [Windmill]?, _ error: Error?) -> Void) -> DataRequest {
         
         return sessionManager.request("\(WINDMILL_BASE_URL)/account/\(account)/windmill").responseJSON(queue: self.queue, options: .allowFragments) { response in
+            
+            if case .failure(let error as AFError) = response.result, case let .responseSerializationFailed(reason) = error, case .inputDataNilOrZeroLength = reason {
+                DispatchQueue.main.async{
+                    completion([], nil)
+                }
+                return
+            }
             
             guard let array = response.result.value as? Array<Dictionary<String, AnyObject>> else {
                 DispatchQueue.main.async{

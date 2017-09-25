@@ -31,10 +31,10 @@ extension Windmill {
         paragraph.minimumLineHeight = 27
 
         return NSAttributedString(string: "INSTALL", attributes: [
-            NSLinkAttributeName: self.url,
-            NSFontAttributeName: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightMedium),
-            NSParagraphStyleAttributeName: paragraph,
-            NSBaselineOffsetAttributeName: 5.0])
+            NSAttributedStringKey.link: self.url,
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.medium),
+            NSAttributedStringKey.paragraphStyle: paragraph,
+            NSAttributedStringKey.baselineOffset: 5.0])
     }
 }
 

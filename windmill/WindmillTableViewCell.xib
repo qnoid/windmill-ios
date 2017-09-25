@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,19 +24,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brainmap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmm-u9-Vbg">
-                    <rect key="frame" x="92" y="21.5" width="73" height="20"/>
+                    <rect key="frame" x="92" y="15" width="73" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrx-UF-dRf">
-                    <rect key="frame" x="92" y="78" width="46" height="20.5"/>
+                    <rect key="frame" x="92" y="72" width="46" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-12-1TD">
-                    <rect key="frame" x="92" y="49.5" width="83" height="20.5"/>
+                    <rect key="frame" x="92" y="43.5" width="83" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -71,18 +71,18 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Mrx-UF-dRf" secondAttribute="bottom" constant="15" id="3zd-Dc-6Wf"/>
                 <constraint firstItem="cmm-u9-Vbg" firstAttribute="leading" secondItem="9xP-12-1TD" secondAttribute="leading" id="7GN-2N-m4m"/>
                 <constraint firstItem="Mrx-UF-dRf" firstAttribute="leading" secondItem="9xP-12-1TD" secondAttribute="leading" id="8Oa-tL-6ha"/>
                 <constraint firstItem="NA1-FC-BRk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CYC-Oe-3zn"/>
-                <constraint firstItem="cmm-u9-Vbg" firstAttribute="top" secondItem="NA1-FC-BRk" secondAttribute="top" id="ERx-ay-NAk"/>
+                <constraint firstItem="9xP-12-1TD" firstAttribute="centerY" secondItem="NA1-FC-BRk" secondAttribute="centerY" id="H52-he-Gmj"/>
+                <constraint firstItem="cmm-u9-Vbg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Hqn-nG-8kP"/>
                 <constraint firstItem="NA1-FC-BRk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="TBX-xI-uwi"/>
                 <constraint firstItem="Mrx-UF-dRf" firstAttribute="top" secondItem="9xP-12-1TD" secondAttribute="bottom" constant="8" symbolic="YES" id="TT5-e5-Agz"/>
                 <constraint firstItem="9xP-12-1TD" firstAttribute="top" secondItem="cmm-u9-Vbg" secondAttribute="bottom" constant="8" symbolic="YES" id="ZH1-HY-oPl"/>
-                <constraint firstItem="NA1-FC-BRk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" symbolic="YES" id="Zn7-ir-9fj"/>
                 <constraint firstAttribute="trailing" secondItem="adk-iF-Y0P" secondAttribute="trailing" constant="17" id="ety-5J-Abb"/>
                 <constraint firstItem="cmm-u9-Vbg" firstAttribute="leading" secondItem="NA1-FC-BRk" secondAttribute="trailing" constant="8" symbolic="YES" id="fqi-X7-C0c"/>
                 <constraint firstItem="adk-iF-Y0P" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sbs-mA-EqO"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NA1-FC-BRk" secondAttribute="bottom" constant="20" symbolic="YES" id="yic-7M-5rG"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
