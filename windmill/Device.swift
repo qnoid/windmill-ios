@@ -8,14 +8,14 @@
 
 import Foundation
 
-public struct Device: CustomDebugStringConvertible {
+public struct Device: Codable, CustomDebugStringConvertible {
     public var debugDescription: String {
         return "{token:\(token)}"
     }
     
     let id: UInt
     let token: String
-    let created_at: Date
-    let updated_at: Date
+    let createdAt: Date
+    let updatedAt: Date
 }
 

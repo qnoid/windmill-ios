@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import SafariServices
 
-class ViewController: UIViewController {
+import os
+
+class MainViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView! {
         didSet{
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
             self.tableView.rowHeight = UITableViewAutomaticDimension
             self.tableView.dataSource = self.dataSource
             self.tableView.delegate = self.delegate
+            self.tableView.alwaysBounceVertical = false
             self.tableView.tableFooterView = UIView()
         }
     }
@@ -36,13 +38,39 @@ class ViewController: UIViewController {
     
     var account: String = ""
     
-    class func make(for account: String) -> ViewController {
-        let viewController = UIStoryboard(name: "Main", bundle: Bundle(for: self)).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+    class func make(for account: String) -> MainViewController {
+        let viewController = Storyboards.main().instantiateViewController(withIdentifier: String(describing: self)) as! MainViewController
         viewController.account = account
         
         return viewController
     }
     
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with: coder)
+    }
+
+    override func decodeRestorableState(with coder: NSCoder) {
+        guard let account = try? ApplicationStorage.default.read(key: "account") else {
+            return
+        }
+        
+        self.account = account
+        super.decodeRestorableState(with: coder)
+    }
+    
+    override func applicationFinishedRestoringState() {
+        self.updateTableViewHeaderView()
+    }
+    
+    private func updateTableViewHeaderView() {
+        let tableHeaderView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 40.0))
+        tableHeaderView.textLabel?.font = UIFont.preferredFont(forTextStyle: .caption2)
+        tableHeaderView.textLabel?.textAlignment = .center
+        tableHeaderView.textLabel?.text = self.account
+        
+        self.tableView.tableHeaderView = tableHeaderView
+    }
+
     private func reloadWindmills(account: String) {
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicatorView.startAnimating()
@@ -54,8 +82,8 @@ class ViewController: UIViewController {
     }
     
     func didFinishURLSessionTaskWindmills(activityIndicatorView: UIActivityIndicatorView, windmills: [Windmill]?, error: Error?) {
-        activityIndicatorView.stopAnimating()
         activityIndicatorView.removeFromSuperview()
+        activityIndicatorView.stopAnimating()
         self.navigationItem.rightBarButtonItem = self.rightBarButtonItem
         
         guard let windmills = windmills else {
@@ -81,13 +109,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tableHeaderView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 40.0))
-        tableHeaderView.textLabel?.font = UIFont.preferredFont(forTextStyle: .caption2)
-        tableHeaderView.textLabel?.textAlignment = .center
-        tableHeaderView.textLabel?.text = self.account
-        
-        self.tableView.tableHeaderView = tableHeaderView
+        self.updateTableViewHeaderView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

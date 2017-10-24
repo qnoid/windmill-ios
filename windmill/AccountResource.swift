@@ -11,7 +11,7 @@ import os
 import Alamofire
 
 let WINDMILL_BASE_URL_PRODUCTION = "https://api.windmill.io"
-let WINDMILL_BASE_URL_DEVELOPMENT = "http://192.168.1.26:8080"
+let WINDMILL_BASE_URL_DEVELOPMENT = "http://192.168.2.5:8080"
 
 #if DEBUG
 let WINDMILL_BASE_URL = WINDMILL_BASE_URL_DEVELOPMENT
@@ -34,7 +34,9 @@ class AccountResource {
     
     @discardableResult func requestWindmills(forAccount account: String, completion: @escaping (_ windmills: [Windmill]?, _ error: Error?) -> Void) -> DataRequest {
         
-        return sessionManager.request("\(WINDMILL_BASE_URL)/account/\(account)/windmill").responseJSON(queue: self.queue, options: .allowFragments) { response in
+        let url = "\(WINDMILL_BASE_URL)/account/\(account.trimmingCharacters(in: CharacterSet.whitespaces))/windmill"
+        
+        return sessionManager.request(url).responseData(queue: self.queue) { response in
             
             if case .failure(let error as AFError) = response.result, case let .responseSerializationFailed(reason) = error, case .inputDataNilOrZeroLength = reason {
                 DispatchQueue.main.async{
@@ -43,27 +45,31 @@ class AccountResource {
                 return
             }
             
-            guard let array = response.result.value as? Array<Dictionary<String, AnyObject>> else {
+            guard case .success = response.result, let data = response.data else {
                 DispatchQueue.main.async{
-                    completion(nil, response.result.error)
+                    completion(nil, response.error)
                 }
             return
             }
             
-            var windmills: [Windmill] = []
-            for value in array {
-                let id = value["id"]!.uintValue!
-                let identifier = value["identifier"] as? String ?? ""
-                let version = value["version"]!.doubleValue!
-                let title = value["title"] as? String ?? ""
-                let url = value["url"] as? String ?? ""
-                let updatedAt = value["updatedAt"]!.doubleValue
+            let decoder = JSONDecoder()
+            
+            decoder.dateDecodingStrategy = .custom{ decoder -> Date in
+                let date = try decoder.singleValueContainer().decode(Double.self)
                 
-                windmills.append(Windmill(id: id, identifier: identifier, version: version, title: title, url: url, updated_at: Date(timeIntervalSince1970: updatedAt!)))
+                return Date(timeIntervalSince1970: date)
             }
             
-            DispatchQueue.main.async{
-                completion(windmills, nil)
+            do {
+                let windmills = try decoder.decode([Windmill].self, from: data)
+                
+                DispatchQueue.main.async{
+                    completion(windmills, nil)
+                }
+            } catch {
+                DispatchQueue.main.async{
+                    completion(nil, error)
+                }
             }
         }
     }
@@ -79,22 +85,31 @@ class AccountResource {
             os_log("%{public}@", log: .default, type: .debug, String(describing: response.response))
             os_log("%{public}@", log: .default, type: .debug, String(describing: response.result.value ?? "Empty HTTP Response"))
             
-        }).responseJSON(queue: self.queue, options: .allowFragments) { response in
+        }).responseData(queue: self.queue) { response in
             
-            guard let dictionary = response.result.value as? Dictionary<String, AnyObject> else {
+            guard case .success = response.result, let data = response.data else {
                 DispatchQueue.main.async{
-                    completion(nil, response.result.error)
+                    completion(nil, response.error)
                 }
                 return
             }
             
-            let id = dictionary["id"]?.uintValue ?? 0
-            let token = dictionary["token"] as? String ?? ""
-            let createdAt = dictionary["createdAt"]?.doubleValue ?? 0.0
-            let updatedAt = dictionary["updatedAt"]?.doubleValue ?? 0.0
+            let decoder = JSONDecoder()
             
-            DispatchQueue.main.async{
-                completion(Device(id: id, token: token, created_at:Date(timeIntervalSince1970: createdAt), updated_at: Date(timeIntervalSince1970: updatedAt)), nil)
+            decoder.dateDecodingStrategy = .custom{ decoder -> Date in
+                let date = try decoder.singleValueContainer().decode(Double.self)
+                
+                return Date(timeIntervalSince1970: date)
+            }
+            
+            do {
+                let device = try decoder.decode(Device.self, from: data)
+                
+                DispatchQueue.main.async{
+                    completion(device, nil)
+                }
+            } catch {
+                completion(nil, error)
             }
         }
     }
