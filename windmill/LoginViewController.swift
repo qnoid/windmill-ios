@@ -21,26 +21,57 @@ class LoginViewController: UIViewController {
         }
     }
     
+    var applicationStorage: ApplicationStorage = ApplicationStorage.default
+    
+    static func make(applicationStorage: ApplicationStorage = ApplicationStorage.default) -> LoginViewController? {
+        
+        let loginViewController = Storyboards.main().instantiateViewController(withIdentifier: String(describing: self)) as? LoginViewController
+        
+        loginViewController?.applicationStorage = applicationStorage
+        
+        return loginViewController
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let navigationController = segue.destination as! UINavigationController
+        guard let navigationController = segue.destination as? UINavigationController else {
+            return
+        }
         
-        let viewController = navigationController.topViewController as! ViewController
+        guard let viewController = navigationController.topViewController as? MainViewController else {
+            return
+        }
         
-        viewController.account = self.accountTextField.text ?? ""
+        let account = self.accountTextField.text ?? ""
+        viewController.account = account
+        
+        if let data = account.data(using: .utf8) {
+            try? applicationStorage.write(value: data, key: "account")
+        }
     }
 }
 
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let navigationController = Storyboards.main().instantiateViewController(withIdentifier: "MainNavigationViewController") as? UINavigationController else {
+            return false
+        }
+        
+        guard let viewController = navigationController.topViewController as? MainViewController else {
+            return false
+        }
+
+        let account = self.accountTextField.text ?? ""
+        viewController.account = account
+        
+        present(navigationController, animated: true)
+        
+        if let data = account.data(using: .utf8) {
+            try? applicationStorage.write(value: data, key: "account")
+        }
+        
         textField.resignFirstResponder()
-        
-        let viewController = ViewController.make(for: self.accountTextField.text ?? "")
-        
-        present(UINavigationController(rootViewController: viewController), animated: true, completion: nil)
-        
         return true
     }
 }

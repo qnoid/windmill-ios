@@ -8,11 +8,11 @@
 
 import Foundation
 
-public struct Windmill {
+public struct Windmill: Codable {
     let id: UInt
     let identifier: String
     let version: Double
     let title: String
     let url: String
-    let updated_at: Date
+    let updatedAt: Date    
 }

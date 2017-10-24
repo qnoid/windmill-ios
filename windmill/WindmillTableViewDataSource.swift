@@ -65,7 +65,7 @@ class WindmillTableViewDataSource: NSObject, UITableViewDataSource {
         
         cell.titleLabel.text = windmill.title
         cell.versionLabel.text = "\(windmill.version)"
-        cell.dateLabel.text = windmill.updated_at.timestampString
+        cell.dateLabel.text = windmill.updatedAt.timestampString
         cell.installTextView.attributedText = windmill.urlAsAttributedString
         cell.installTextView.textAlignment = .center
         
