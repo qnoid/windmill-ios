@@ -20,7 +20,9 @@ class MainViewController: UIViewController {
             self.tableView.dataSource = self.dataSource
             self.tableView.delegate = self.delegate
             self.tableView.alwaysBounceVertical = false
-            self.tableView.tableFooterView = UIView()
+            
+            let tableFooterView = InstallTableViewFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 60.0))
+            self.tableView.tableFooterView = tableFooterView
         }
     }
     
@@ -94,12 +96,6 @@ class MainViewController: UIViewController {
         }
         
         guard !windmills.isEmpty else {
-            let tableFooterView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 40.0))
-            tableFooterView.textLabel?.font = UIFont.preferredFont(forTextStyle: .footnote)
-            tableFooterView.textLabel?.textAlignment = .center
-            tableFooterView.textLabel?.text = "You haven't deployed any apps yet."
-            
-            self.tableView.tableFooterView = tableFooterView
             return
         }
         

@@ -12,6 +12,9 @@
 		BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */; };
 		BD21CED71F792EAD0003988F /* ApplicationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21CED61F792EAD0003988F /* ApplicationStorage.swift */; };
 		BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */; };
+		BD440E681FA0B0F100FA81B3 /* InstallTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */; };
+		BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */; };
+		BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E6B1FA0B4BE00FA81B3 /* UIView+Windmill.swift */; };
 		BD4B00D11F0E30AE004025F3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
 		BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52291E1CFB25D30069C831 /* Windmill.swift */; };
 		BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */; };
@@ -55,6 +58,9 @@
 		BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDelegate.swift; sourceTree = "<group>"; };
 		BD21CED61F792EAD0003988F /* ApplicationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStorage.swift; sourceTree = "<group>"; };
 		BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboards.swift; sourceTree = "<group>"; };
+		BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstallTableViewFooterView.xib; sourceTree = "<group>"; };
+		BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallTableViewFooterView.swift; sourceTree = "<group>"; };
+		BD440E6B1FA0B4BE00FA81B3 /* UIView+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Windmill.swift"; sourceTree = "<group>"; };
 		BD4B00D01F0E305D004025F3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		BD52291E1CFB25D30069C831 /* Windmill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Windmill.swift; sourceTree = "<group>"; };
 		BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 				BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */,
 				BD21CED61F792EAD0003988F /* ApplicationStorage.swift */,
 				BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */,
+				BD440E6B1FA0B4BE00FA81B3 /* UIView+Windmill.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -174,6 +181,8 @@
 				BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */,
 				BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */,
 				BDA2D1471F0E26A1004EE03D /* Device.swift */,
+				BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */,
+				BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */,
 			);
 			path = windmill;
 			sourceTree = "<group>";
@@ -313,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDD1E9751CDA92DB00976074 /* LaunchScreen.storyboard in Resources */,
+				BD440E681FA0B0F100FA81B3 /* InstallTableViewFooterView.xib in Resources */,
 				BD5229251CFB26DF0069C831 /* WindmillTableViewCell.xib in Resources */,
 				BDD1E9721CDA92DB00976074 /* Assets.xcassets in Resources */,
 				BDD1E9701CDA92DB00976074 /* Main.storyboard in Resources */,
@@ -359,6 +369,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */,
+				BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */,
 				BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */,
 				BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */,
 				BDD1E96D1CDA92DB00976074 /* MainViewController.swift in Sources */,
