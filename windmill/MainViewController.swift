@@ -7,10 +7,10 @@
 //
 
 import UIKit
-
+import UserNotifications
 import os
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, NotifyTableViewHeaderViewDelegate, NotificationsDisabledTableViewHeaderViewDelegate {
 
     @IBOutlet weak var tableView: UITableView! {
         didSet{
@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
             self.tableView.dataSource = self.dataSource
             self.tableView.delegate = self.delegate
             self.tableView.alwaysBounceVertical = false
-            self.tableView.tableFooterView = UIView()
+            self.tableView.tableFooterView = InstallTableViewFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 60.0))
         }
     }
     
@@ -45,6 +45,18 @@ class MainViewController: UIViewController {
         return viewController
     }
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
     override func encodeRestorableState(with coder: NSCoder) {
         super.encodeRestorableState(with: coder)
     }
@@ -58,19 +70,42 @@ class MainViewController: UIViewController {
         super.decodeRestorableState(with: coder)
     }
     
-    override func applicationFinishedRestoringState() {
-        self.updateTableViewHeaderView()
+    @objc func didBecomeActive(notification: NSNotification) {
+        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
+            DispatchQueue.main.async {
+                self?.didGetNotificationSettings(settings: settings)
+            }
+        }
     }
     
-    private func updateTableViewHeaderView() {
-        let tableHeaderView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 40.0))
-        tableHeaderView.textLabel?.font = UIFont.preferredFont(forTextStyle: .caption2)
-        tableHeaderView.textLabel?.textAlignment = .center
-        tableHeaderView.textLabel?.text = self.account
-        
-        self.tableView.tableHeaderView = tableHeaderView
+    private func didGetNotificationSettings(settings: UNNotificationSettings) {
+        self.tableView.tableHeaderView = self.headerFor(tableView: self.tableView, settings: settings)
     }
-
+    
+    private func headerFor(tableView: UITableView, settings: UNNotificationSettings) -> UITableViewHeaderFooterView {
+    
+        switch settings.authorizationStatus {
+            
+        case .notDetermined:
+            let tableHeaderView = NotificationsNotDeterminedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 82.0))
+            tableHeaderView.delegate = self
+            tableHeaderView.accountLabel.text = self.account
+            
+            return tableHeaderView
+        case .denied:
+            let tableHeaderView = NotificationsDeniedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 82.0))
+            tableHeaderView.delegate = self
+            tableHeaderView.accountLabel.text = self.account
+            
+            return tableHeaderView
+        case .authorized:
+            let tableHeaderView = NotificationsAuthorizedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 82.0))
+            tableHeaderView.accountLabel.text = self.account
+            
+            return tableHeaderView
+        }
+    }
+    
     private func reloadWindmills(account: String) {
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicatorView.startAnimating()
@@ -94,12 +129,6 @@ class MainViewController: UIViewController {
         }
         
         guard !windmills.isEmpty else {
-            let tableFooterView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 40.0))
-            tableFooterView.textLabel?.font = UIFont.preferredFont(forTextStyle: .footnote)
-            tableFooterView.textLabel?.textAlignment = .center
-            tableFooterView.textLabel?.text = "You haven't deployed any apps yet."
-            
-            self.tableView.tableFooterView = tableFooterView
             return
         }
         
@@ -109,7 +138,12 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateTableViewHeaderView()
+        
+        UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
+            DispatchQueue.main.async {
+                self?.didGetNotificationSettings(settings: settings)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,10 +152,6 @@ class MainViewController: UIViewController {
         self.reloadWindmills(account: self.account)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     @IBAction func didTouchUpInsideClose(_ sender: UIBarButtonItem) {
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -129,5 +159,52 @@ class MainViewController: UIViewController {
     @IBAction func didTouchUpInsideRefresh(_ sender: UIBarButtonItem) {
         self.reloadWindmills(account: self.account)
     }
+    
+    func didTouchUpInsideAuthorizeButton(_ headerView: NotificationsNotDeterminedTableViewHeaderView, button: UIButton) {
+        
+        let userNotificationCenter = UNUserNotificationCenter.current()
+        
+        userNotificationCenter.requestAuthorization(options: [.alert]) { [weak self] granted, error in
+            DispatchQueue.main.async {
+                self?.didCompleteRequestAuthorization(granted: granted, error: error)
+            }
+        }
+    }
+    
+    func didCompleteRequestAuthorization(granted: Bool, error: Error?) {
+        
+        guard granted else {
+            if let error = error {
+                os_log("%{public}@", log: .default, type: .error, error.localizedDescription)
+            }
+            
+            let tableViewHeaderView = NotificationsDeniedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 82.0))
+            tableViewHeaderView.accountLabel.text = self.account
+            tableViewHeaderView.delegate = self
+            
+            self.tableView.tableHeaderView = tableViewHeaderView
+            return
+        }
+        
+        let tableHeaderView = NotificationsAuthorizedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 82.0))
+        tableHeaderView.accountLabel.text = self.account
+        self.tableView.tableHeaderView = tableHeaderView
+        
+        UIApplication.shared.registerForRemoteNotifications()
+    }
+    
+    func didTouchUpInsideOpenSettingsButton(_ headerView: NotificationsDeniedTableViewHeaderView, button: UIButton) {
+        guard let applicationOpenSettingsURL = URL(string: UIApplicationOpenSettingsURLString) else {
+            return
+        }
+        
+        UIApplication.shared.open(applicationOpenSettingsURL, options: [:])
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert])
+    }
+
 }
 

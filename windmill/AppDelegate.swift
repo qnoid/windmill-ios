@@ -11,11 +11,12 @@ import UserNotifications
 import os
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
     let accountResource = AccountResource()
+    let applicationStorage = ApplicationStorage.default
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         self.window?.makeKeyAndVisible()
@@ -24,17 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        debugPrint(#function)
-        debugPrint(launchOptions ?? "")
-        
-        let userNotificationCenter = UNUserNotificationCenter.current()
-        userNotificationCenter.delegate = self
-        
-        userNotificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
-            
-        }
-        
-        application.registerForRemoteNotifications()
         
         return true
     }
@@ -69,23 +59,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        debugPrint(error)
-    }
+    // MARK: UIApplication.shared.registerForRemoteNotifications()
     
+    /**
+     Registers the device token used by APNs with the windmill service under the current account.
+     
+     "After successful APNs registration, the app object contacts APNs only when the device token has changed; otherwise, calling the registerForRemoteNotifications method results in a call to the application:didRegisterForRemoteNotificationsWithDeviceToken: method which returns the existing token quickly."
+     
+     If the device token changes while your app is running, the app object calls the application:didRegisterForRemoteNotificationsWithDeviceToken: delegate method again to notify you of the change." - Configuring Remote Notification Support, Obtaining a Device Token in iOS and tvOS, Updated: 2017-03-27
+     
+     - Note: Should this method get called on a token change AND the windmill service is down, the new device WILL NOT be able to retrieve any push notifications until the token changes again or the app calls `UIApplication.shared.registerForRemoteNotifications()` again.
+     - Precondition: the account must be stored in the `ApplicationStorage.default` under the "account" key.
+     - Seealso: `ApplicationStorage.write(value:key:)` on how to store the account
+     - Seealso:
+     [Local and Remote Notification Programming Guide]
+     (https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1)
+     */
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        debugPrint("\(#function)")
         
+        guard let account = try? self.applicationStorage.read(key: "account") else {
+            os_log("%{public}@", log: .default, type: .error, "No account found in the `ApplicationStorage.default`. Did you call `ApplicationStorage.write(value:key:)`?")
+            return
+        }
+
         let tokenString = deviceToken.map { String(format: "%02hhx", $0) }.joined()
         
-        print("Device Token:", tokenString)
+        os_log("device token: %{public}@", log: .default, type: .debug, tokenString)
         
-        self.accountResource.requestRegisterDevice(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39", withToken: tokenString) { [weak self] device, error in
+        self.accountResource.requestRegisterDevice(forAccount: account, withToken: tokenString) { device, error in
             
             guard let device = device else {
-                let alertController = UIAlertController.Windmill.make(error: error)
-                self?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
-                
+                if let error = error {
+                    os_log("%{public}@", log: .default, type: .error, error.localizedDescription)
+                }
                 return
             }
             
@@ -93,10 +99,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             }.resume()
     }
-
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        completionHandler([.alert, .sound])
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        os_log("%{public}@", log: .default, type: .error, error.localizedDescription)
     }
+    
 }
 

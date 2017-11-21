@@ -11,7 +11,7 @@ import os
 import Alamofire
 
 let WINDMILL_BASE_URL_PRODUCTION = "https://api.windmill.io"
-let WINDMILL_BASE_URL_DEVELOPMENT = "http://192.168.2.5:8080"
+let WINDMILL_BASE_URL_DEVELOPMENT = "http://10.1.1.3:8080"
 
 #if DEBUG
 let WINDMILL_BASE_URL = WINDMILL_BASE_URL_DEVELOPMENT
@@ -83,7 +83,7 @@ class AccountResource {
         return sessionManager.request(encodedURLRequest).responseString(completionHandler: { response in
             
             os_log("%{public}@", log: .default, type: .debug, String(describing: response.response))
-            os_log("%{public}@", log: .default, type: .debug, String(describing: response.result.value ?? "Empty HTTP Response"))
+            os_log("%{public}@", log: .default, type: .debug, String(describing: response.result.value ?? "Empty HTTP Response."))
             
         }).responseData(queue: self.queue) { response in
             
