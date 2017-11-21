@@ -10,12 +10,6 @@ import UIKit
 
 class InstallTableViewFooterView: UITableViewHeaderFooterView {
     
-    @IBOutlet weak var infoImageView: UIImageView! {
-        didSet{
-            infoImageView.tintColor = self.tintColor
-        }
-    }
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -31,5 +25,4 @@ class InstallTableViewFooterView: UITableViewHeaderFooterView {
             wml_layout(view)
         })
     }
-
 }

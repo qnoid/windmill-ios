@@ -9,13 +9,6 @@
 import UIKit
 import QuartzCore
 
-extension UIColor {
-    struct Windmill {
-        static let greenColor = UIColor(red: 0/255, green: 179/255, blue: 0/255, alpha: 1.0)
-        static let blueColor = UIColor(red: 3/255, green: 167/255, blue: 255/255, alpha: 1.0)
-    }
-}
-
 class WindmillTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManagerDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var versionLabel: UILabel!
@@ -42,7 +35,7 @@ class WindmillTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManage
             wml_layout(view)
         })
     }
-        
+    
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
         let point = self.installTextView.convert(point, from: self)

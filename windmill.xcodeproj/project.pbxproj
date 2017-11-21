@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0AD8A81FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */; };
+		BD0AD8AA1FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */; };
+		BD0AD8AC1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */; };
+		BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */; };
 		BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */; };
 		BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */; };
 		BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */; };
@@ -15,6 +19,10 @@
 		BD440E681FA0B0F100FA81B3 /* InstallTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */; };
 		BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */; };
 		BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E6B1FA0B4BE00FA81B3 /* UIView+Windmill.swift */; };
+		BD440E6E1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD440E6D1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib */; };
+		BD440E701FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E6F1FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift */; };
+		BD440E721FA0C84A00FA81B3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E711FA0C84A00FA81B3 /* Button.swift */; };
+		BD440E741FA0CC8800FA81B3 /* UIColor+Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E731FA0CC8800FA81B3 /* UIColor+Windmill.swift */; };
 		BD4B00D11F0E30AE004025F3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
 		BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52291E1CFB25D30069C831 /* Windmill.swift */; };
 		BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */; };
@@ -52,6 +60,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsDeniedTableViewHeaderView.xib; sourceTree = "<group>"; };
+		BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDeniedTableViewHeaderView.swift; sourceTree = "<group>"; };
+		BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsAuthorizedTableViewHeaderView.xib; sourceTree = "<group>"; };
+		BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAuthorizedTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTextView.swift; sourceTree = "<group>"; };
 		BD18F4B61DBF60AE00CD596B /* windmill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = windmill.entitlements; sourceTree = "<group>"; };
 		BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +73,10 @@
 		BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstallTableViewFooterView.xib; sourceTree = "<group>"; };
 		BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallTableViewFooterView.swift; sourceTree = "<group>"; };
 		BD440E6B1FA0B4BE00FA81B3 /* UIView+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Windmill.swift"; sourceTree = "<group>"; };
+		BD440E6D1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsNotDeterminedTableViewHeaderView.xib; sourceTree = "<group>"; };
+		BD440E6F1FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsNotDeterminedTableViewHeaderView.swift; sourceTree = "<group>"; };
+		BD440E711FA0C84A00FA81B3 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		BD440E731FA0CC8800FA81B3 /* UIColor+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Windmill.swift"; sourceTree = "<group>"; };
 		BD4B00D01F0E305D004025F3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		BD52291E1CFB25D30069C831 /* Windmill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Windmill.swift; sourceTree = "<group>"; };
 		BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -119,6 +135,8 @@
 				BD21CED61F792EAD0003988F /* ApplicationStorage.swift */,
 				BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */,
 				BD440E6B1FA0B4BE00FA81B3 /* UIView+Windmill.swift */,
+				BD440E711FA0C84A00FA81B3 /* Button.swift */,
+				BD440E731FA0CC8800FA81B3 /* UIColor+Windmill.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -183,6 +201,12 @@
 				BDA2D1471F0E26A1004EE03D /* Device.swift */,
 				BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */,
 				BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */,
+				BD440E6D1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib */,
+				BD440E6F1FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift */,
+				BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */,
+				BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */,
+				BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */,
+				BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */,
 			);
 			path = windmill;
 			sourceTree = "<group>";
@@ -321,10 +345,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD0AD8AC1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib in Resources */,
 				BDD1E9751CDA92DB00976074 /* LaunchScreen.storyboard in Resources */,
 				BD440E681FA0B0F100FA81B3 /* InstallTableViewFooterView.xib in Resources */,
 				BD5229251CFB26DF0069C831 /* WindmillTableViewCell.xib in Resources */,
+				BD440E6E1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib in Resources */,
 				BDD1E9721CDA92DB00976074 /* Assets.xcassets in Resources */,
+				BD0AD8A81FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib in Resources */,
 				BDD1E9701CDA92DB00976074 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,7 +398,9 @@
 			files = (
 				BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */,
 				BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */,
+				BD440E701FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift in Sources */,
 				BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */,
+				BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */,
 				BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */,
 				BDD1E96D1CDA92DB00976074 /* MainViewController.swift in Sources */,
 				BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */,
@@ -381,9 +410,12 @@
 				BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */,
 				BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */,
 				BD21CED71F792EAD0003988F /* ApplicationStorage.swift in Sources */,
+				BD440E741FA0CC8800FA81B3 /* UIColor+Windmill.swift in Sources */,
 				BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */,
 				BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */,
 				BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */,
+				BD440E721FA0C84A00FA81B3 /* Button.swift in Sources */,
+				BD0AD8AA1FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,7 +634,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -625,7 +656,6 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

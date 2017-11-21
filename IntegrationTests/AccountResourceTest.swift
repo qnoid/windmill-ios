@@ -40,7 +40,7 @@ class AccountResourceTest: XCTestCase {
     func testGivenRequestRegisterDeviceAssertDevice() {
         
         let accountResource = AccountResource()
-        let tokenString = "e14113c658cd67f35a870433f4218d51233eba0cbdc02c88e80adaad1dcc94c6"
+        let tokenString = "651743ecad5704a088ff54a0234f37a013bd17b3401d1612cb8ded8af1fa2225"
         
         var actual: Device?
         

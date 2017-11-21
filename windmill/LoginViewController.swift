@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var questionImageView: UIImageView!
+    
     var applicationStorage: ApplicationStorage = ApplicationStorage.default
     
     static func make(applicationStorage: ApplicationStorage = ApplicationStorage.default) -> LoginViewController? {
@@ -30,6 +32,11 @@ class LoginViewController: UIViewController {
         loginViewController?.applicationStorage = applicationStorage
         
         return loginViewController
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.questionImageView.tintColor = self.view.tintColor
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

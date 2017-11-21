@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0R1-wd-WVo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0R1-wd-WVo">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,10 +15,6 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,10 +27,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wEe-rU-Oim" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NOZ-7N-TTb"/>
-                            <constraint firstItem="wEe-rU-Oim" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YHW-Uv-hiH"/>
-                            <constraint firstAttribute="trailing" secondItem="wEe-rU-Oim" secondAttribute="trailing" id="qAe-Dr-brz"/>
-                            <constraint firstItem="wEe-rU-Oim" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="uG6-uj-5JR"/>
+                            <constraint firstItem="wEe-rU-Oim" firstAttribute="leading" secondItem="7i2-zJ-qEH" secondAttribute="leading" id="YHW-Uv-hiH"/>
+                            <constraint firstItem="7i2-zJ-qEH" firstAttribute="trailing" secondItem="wEe-rU-Oim" secondAttribute="trailing" id="qAe-Dr-brz"/>
+                            <constraint firstItem="wEe-rU-Oim" firstAttribute="bottom" secondItem="7i2-zJ-qEH" secondAttribute="bottom" id="uG6-uj-5JR"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="7i2-zJ-qEH"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Windmill" id="TWk-66-ssk">
@@ -61,60 +59,67 @@
         <scene sceneID="8uu-rl-QUU">
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0R1-wd-WVo" customClass="LoginViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fd5-OL-8XI"/>
-                        <viewControllerLayoutGuide type="bottom" id="GGD-pJ-oze"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ego-WN-J9c">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your windill account string" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="R0h-y2-icD">
-                                <rect key="frame" x="16" y="164" width="288" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have to enter your account string to view any deployed apps." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5S-5k-kQQ">
+                                <rect key="frame" x="16" y="20" width="288" height="42.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="account string" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="R0h-y2-icD">
+                                <rect key="frame" x="16" y="70.5" width="288" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="continue"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="05b-jt-WgU">
-                                <rect key="frame" x="16" y="28" width="288" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="J5k-2b-svD"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-az-WQu">
-                                <rect key="frame" x="16" y="202" width="288" height="32"/>
+                                <rect key="frame" x="16" y="108.5" width="288" height="32"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <segue destination="1js-te-0hw" kind="presentation" id="Icc-TZ-tH2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOi-Kr-j7K">
-                                <rect key="frame" x="16" y="236" width="280" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will find the account string on windmill for macOS." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOi-Kr-j7K">
+                                <rect key="frame" x="54" y="146.5" width="242" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="question" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-sB-BlX">
+                                <rect key="frame" x="16" y="148.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="B8H-0d-71M"/>
+                                    <constraint firstAttribute="height" constant="30" id="G39-h9-X6e"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="05b-jt-WgU" firstAttribute="top" secondItem="fd5-OL-8XI" secondAttribute="bottom" constant="8" symbolic="YES" id="2TM-k4-UsQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bOi-Kr-j7K" secondAttribute="trailing" constant="8" id="54W-En-uzG"/>
-                            <constraint firstItem="R0h-y2-icD" firstAttribute="leading" secondItem="bOi-Kr-j7K" secondAttribute="leading" id="6c2-L0-r6x"/>
-                            <constraint firstItem="05b-jt-WgU" firstAttribute="trailing" secondItem="Ego-WN-J9c" secondAttribute="trailingMargin" id="9ar-ly-FOf"/>
-                            <constraint firstItem="bOi-Kr-j7K" firstAttribute="top" secondItem="4Ou-az-WQu" secondAttribute="bottom" constant="2" id="BEt-6s-C4W"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="bOi-Kr-j7K" secondAttribute="leading" id="Jti-DY-es3"/>
+                            <constraint firstItem="aoa-sB-BlX" firstAttribute="top" secondItem="4Ou-az-WQu" secondAttribute="bottom" constant="8" symbolic="YES" id="9zs-V9-qRv"/>
+                            <constraint firstItem="Z5G-BE-mHI" firstAttribute="top" secondItem="D5S-5k-kQQ" secondAttribute="top" id="EpV-PT-htg"/>
+                            <constraint firstItem="4Ou-az-WQu" firstAttribute="leading" secondItem="R0h-y2-icD" secondAttribute="leading" id="F5Y-Wq-h2Z"/>
+                            <constraint firstItem="bOi-Kr-j7K" firstAttribute="centerY" secondItem="aoa-sB-BlX" secondAttribute="centerY" id="GIk-bt-HLk"/>
+                            <constraint firstItem="R0h-y2-icD" firstAttribute="top" secondItem="D5S-5k-kQQ" secondAttribute="bottom" constant="8" symbolic="YES" id="KCu-nj-T8a"/>
+                            <constraint firstItem="bOi-Kr-j7K" firstAttribute="leading" secondItem="aoa-sB-BlX" secondAttribute="trailing" constant="8" symbolic="YES" id="Y5Y-1V-mrc"/>
+                            <constraint firstItem="R0h-y2-icD" firstAttribute="leading" secondItem="Ego-WN-J9c" secondAttribute="leadingMargin" id="ZZl-we-28L"/>
                             <constraint firstItem="4Ou-az-WQu" firstAttribute="top" secondItem="R0h-y2-icD" secondAttribute="bottom" constant="8" symbolic="YES" id="aQE-qs-XRy"/>
-                            <constraint firstItem="R0h-y2-icD" firstAttribute="trailing" secondItem="05b-jt-WgU" secondAttribute="trailing" id="cY0-ku-rD7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="D5S-5k-kQQ" secondAttribute="trailing" id="fsX-xa-8x2"/>
                             <constraint firstItem="4Ou-az-WQu" firstAttribute="trailing" secondItem="R0h-y2-icD" secondAttribute="trailing" id="gjU-T7-5l7"/>
-                            <constraint firstItem="05b-jt-WgU" firstAttribute="leading" secondItem="bOi-Kr-j7K" secondAttribute="leading" id="j4H-Bp-kPC"/>
-                            <constraint firstItem="R0h-y2-icD" firstAttribute="top" secondItem="05b-jt-WgU" secondAttribute="bottom" constant="8" symbolic="YES" id="jeu-YT-ICT"/>
-                            <constraint firstItem="4Ou-az-WQu" firstAttribute="leading" secondItem="R0h-y2-icD" secondAttribute="leading" id="u47-sO-wUm"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="aoa-sB-BlX" secondAttribute="leading" id="rkg-rf-w3Y"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="D5S-5k-kQQ" secondAttribute="leading" id="wbV-Wv-nvz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R0h-y2-icD" secondAttribute="trailing" id="zoD-xc-RNt"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z5G-BE-mHI"/>
                     </view>
                     <connections>
                         <outlet property="accountTextField" destination="R0h-y2-icD" id="TUf-vB-VIc"/>
                         <outlet property="continueButton" destination="4Ou-az-WQu" id="wkz-RI-xfh"/>
+                        <outlet property="questionImageView" destination="aoa-sB-BlX" id="LDq-W7-ulv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3g-Wb-Rzm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,4 +145,7 @@
             <point key="canvasLocation" x="278" y="387"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="question" width="30" height="30"/>
+    </resources>
 </document>

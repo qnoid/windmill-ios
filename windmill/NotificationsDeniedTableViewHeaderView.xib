@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationsDeniedTableViewHeaderView" customModule="windmill" customModuleProvider="target">
+            <connections>
+                <outlet property="accountLabel" destination="yze-wv-kR7" id="o6o-3i-cBZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="pwr-sl-6Hw" userLabel="contents">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxX-Kn-z18" customClass="Button" customModule="windmill" customModuleProvider="target">
+                    <rect key="frame" x="16" y="29.5" width="288" height="44"/>
+                    <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="14"/>
+                    <state key="normal" title="Notifications are off. Allow Notifications."/>
+                    <connections>
+                        <action selector="didTouchUpInsideOpenSettingsButton:" destination="-1" eventType="touchUpInside" id="UkL-vx-OQc"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[14810686-4690-4900-ADA5-8B0B7338AA39]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yze-wv-kR7">
+                    <rect key="frame" x="0.0" y="8" width="320" height="14"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mxX-Kn-z18" firstAttribute="top" secondItem="yze-wv-kR7" secondAttribute="bottom" constant="8" symbolic="YES" id="FAL-id-8Sp"/>
+                <constraint firstAttribute="bottomMargin" secondItem="mxX-Kn-z18" secondAttribute="bottom" constant="8" id="G2o-tN-9tL"/>
+                <constraint firstAttribute="trailingMargin" secondItem="mxX-Kn-z18" secondAttribute="trailing" id="Nff-GB-Brd"/>
+                <constraint firstAttribute="trailing" secondItem="yze-wv-kR7" secondAttribute="trailing" id="Q0r-cK-lEP"/>
+                <constraint firstItem="yze-wv-kR7" firstAttribute="top" secondItem="pwr-sl-6Hw" secondAttribute="topMargin" constant="8" id="Q3w-Cz-ap2"/>
+                <constraint firstItem="yze-wv-kR7" firstAttribute="leading" secondItem="pwr-sl-6Hw" secondAttribute="leading" id="aqq-RH-2Sv"/>
+                <constraint firstItem="mxX-Kn-z18" firstAttribute="leading" secondItem="pwr-sl-6Hw" secondAttribute="leadingMargin" id="bB7-ki-vtO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="l8I-KD-PjB"/>
+            <point key="canvasLocation" x="34" y="88.5"/>
+        </view>
+    </objects>
+</document>
