@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let account = self.accountTextField.text ?? ""
+        let account = self.accountTextField.text?.trimmingCharacters(in: CharacterSet.whitespaces) ?? ""
         viewController.account = account
         
         if let data = account.data(using: .utf8) {
@@ -69,7 +69,7 @@ extension LoginViewController: UITextFieldDelegate {
             return false
         }
 
-        let account = self.accountTextField.text ?? ""
+        let account = self.accountTextField.text?.trimmingCharacters(in: CharacterSet.whitespaces) ?? ""
         viewController.account = account
         
         present(navigationController, animated: true)

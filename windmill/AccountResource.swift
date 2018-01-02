@@ -34,7 +34,7 @@ class AccountResource {
     
     @discardableResult func requestWindmills(forAccount account: String, completion: @escaping (_ windmills: [Windmill]?, _ error: Error?) -> Void) -> DataRequest {
         
-        let url = "\(WINDMILL_BASE_URL)/account/\(account.trimmingCharacters(in: CharacterSet.whitespaces))/windmill"
+        let url = "\(WINDMILL_BASE_URL)/account/\(account)/windmill"
         
         return sessionManager.request(url).responseData(queue: self.queue) { response in
             
