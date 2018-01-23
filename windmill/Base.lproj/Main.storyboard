@@ -146,6 +146,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="question" width="30" height="30"/>
+        <image name="question" width="60" height="60"/>
     </resources>
 </document>
