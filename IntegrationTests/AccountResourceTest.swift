@@ -26,6 +26,11 @@ class AccountResourceTest: XCTestCase {
         let expectation = XCTestExpectation(description: #function)
         let dataTask = accountResource.requestWindmills(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39"){ windmills, error in
             
+            guard let windmills = windmills else {
+                XCTFail(error!.localizedDescription)
+                return
+            }
+
             actual = windmills
             expectation.fulfill()
         }
@@ -33,7 +38,6 @@ class AccountResourceTest: XCTestCase {
         dataTask.resume();
         wait(for: [expectation], timeout: 5.0)
         
-        XCTAssertNotNil(actual)
         XCTAssertNotEqual(0, actual?.count)
     }
     
@@ -59,7 +63,6 @@ class AccountResourceTest: XCTestCase {
         
         wait(for: [expectation], timeout: 5.0)
         
-        XCTAssertNotNil(actual)
         XCTAssertEqual(actual?.token, tokenString)
     }
     
@@ -71,7 +74,14 @@ class AccountResourceTest: XCTestCase {
         var actual: NSInteger?
         
         let expectation = XCTestExpectation(description: #function)
-        accountResource.requestRegisterDevice(forAccount: "uknown_account_identifier", withToken: tokenString, completion: { _, _ in }).responseString { response in
+        accountResource.requestRegisterDevice(forAccount: "uknown_account_identifier", withToken: tokenString, completion: { device, error in
+
+            guard let _ = device else {
+                XCTFail(error!.localizedDescription)
+                return
+            }
+
+        }).responseString { response in
             
             actual = response.response?.statusCode
             expectation.fulfill()
@@ -79,7 +89,6 @@ class AccountResourceTest: XCTestCase {
         
         wait(for: [expectation], timeout: 5.0)
         
-        XCTAssertNotNil(actual)
         XCTAssertEqual(actual, 400)
     }
     
