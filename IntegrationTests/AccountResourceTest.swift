@@ -17,21 +17,21 @@ class AccountResourceTest: XCTestCase {
         continueAfterFailure = false
     }
     
-    func testGivenAccountAssertWindmills() {
+    func testGivenAccountAssertExports() {
         
         let accountResource = AccountResource()
                 
-        var actual: [Windmill]?
+        var actual: [windmill.Export]?
         
         let expectation = XCTestExpectation(description: #function)
-        let dataTask = accountResource.requestWindmills(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39"){ windmills, error in
+        let dataTask = accountResource.requestExports(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39"){ exports, error in
             
-            guard let windmills = windmills else {
+            guard let exports = exports else {
                 XCTFail(error!.localizedDescription)
                 return
             }
 
-            actual = windmills
+            actual = exports
             expectation.fulfill()
         }
         

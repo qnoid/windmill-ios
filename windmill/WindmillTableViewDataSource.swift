@@ -25,7 +25,7 @@ extension Date {
     }
 }
 
-extension Windmill {
+extension Export {
     var urlAsAttributedString: NSAttributedString{
         let paragraph = NSMutableParagraphStyle()
         paragraph.minimumLineHeight = 27
@@ -48,25 +48,25 @@ class WindmillTableViewDataSource: NSObject, UITableViewDataSource {
         return dateFormatter
     }()
     
-    var windmills: [Windmill] = []
+    var exports: [Export] = []
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.windmills.count
+        return self.exports.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WindmillTableViewCell") as! WindmillTableViewCell
         
-        let windmill = self.windmills[indexPath.row]
+        let bundle = self.exports[indexPath.row]
         
-        cell.titleLabel.text = windmill.title
-        cell.versionLabel.text = "\(windmill.version)"
-        cell.dateLabel.text = windmill.updatedAt.timestampString
-        cell.installTextView.attributedText = windmill.urlAsAttributedString
+        cell.titleLabel.text = bundle.title
+        cell.versionLabel.text = "\(bundle.version)"
+        cell.dateLabel.text = bundle.modifiedAt.timestampString
+        cell.installTextView.attributedText = bundle.urlAsAttributedString
         cell.installTextView.textAlignment = .center
         
         return cell

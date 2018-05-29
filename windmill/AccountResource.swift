@@ -32,9 +32,9 @@ class AccountResource {
     
     let sessionManager = SessionManager()
     
-    @discardableResult func requestWindmills(forAccount account: String, completion: @escaping (_ windmills: [Windmill]?, _ error: Error?) -> Void) -> DataRequest {
+    @discardableResult func requestExports(forAccount account: String, completion: @escaping (_ exports: [Export]?, _ error: Error?) -> Void) -> DataRequest {
         
-        let url = "\(WINDMILL_BASE_URL)/account/\(account)/windmill"
+        let url = "\(WINDMILL_BASE_URL)/account/\(account)/exports"
         
         return sessionManager.request(url).responseData(queue: self.queue) { response in
             
@@ -61,10 +61,10 @@ class AccountResource {
             }
             
             do {
-                let windmills = try decoder.decode([Windmill].self, from: data)
+                let exports = try decoder.decode([Export].self, from: data)
                 
                 DispatchQueue.main.async{
-                    completion(windmills, nil)
+                    completion(exports, nil)
                 }
             } catch {
                 DispatchQueue.main.async{

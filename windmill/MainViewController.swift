@@ -111,28 +111,28 @@ class MainViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         activityIndicatorView.startAnimating()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
         
-        self.accountResource.requestWindmills(forAccount: account) { [weak self] windmills, error in
-            self?.didFinishURLSessionTaskWindmills(activityIndicatorView: activityIndicatorView, windmills: windmills, error: error)
+        self.accountResource.requestExports(forAccount: account) { [weak self] exports, error in
+            self?.didFinishURLSessionTaskExports(activityIndicatorView: activityIndicatorView, exports: exports, error: error)
             }.resume()
     }
     
-    func didFinishURLSessionTaskWindmills(activityIndicatorView: UIActivityIndicatorView, windmills: [Windmill]?, error: Error?) {
+    func didFinishURLSessionTaskExports(activityIndicatorView: UIActivityIndicatorView, exports: [Export]?, error: Error?) {
         activityIndicatorView.removeFromSuperview()
         activityIndicatorView.stopAnimating()
         self.navigationItem.rightBarButtonItem = self.rightBarButtonItem
         
-        guard let windmills = windmills else {
+        guard let exports = exports else {
             let alertController = UIAlertController.Windmill.make(error: error)
             self.present(alertController, animated: true, completion: nil)
             
             return
         }
         
-        guard !windmills.isEmpty else {
+        guard !exports.isEmpty else {
             return
         }
         
-        self.dataSource.windmills = windmills
+        self.dataSource.exports = exports
         self.tableView.reloadData()
     }
     

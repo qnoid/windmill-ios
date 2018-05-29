@@ -16,6 +16,6 @@ public struct Device: Codable, CustomDebugStringConvertible {
     let id: UInt
     let token: String
     let createdAt: Date
-    let updatedAt: Date
+    let modifiedAt: Date
 }
 
