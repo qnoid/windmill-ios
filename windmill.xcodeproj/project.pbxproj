@@ -65,7 +65,7 @@
 		BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsAuthorizedTableViewHeaderView.xib; sourceTree = "<group>"; };
 		BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAuthorizedTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTextView.swift; sourceTree = "<group>"; };
-		BD18F4B61DBF60AE00CD596B /* windmill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = windmill.entitlements; sourceTree = "<group>"; };
+		BD18F4B61DBF60AE00CD596B /* windmill-debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "windmill-debug.entitlements"; sourceTree = "<group>"; };
 		BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDelegate.swift; sourceTree = "<group>"; };
 		BD21CED61F792EAD0003988F /* ApplicationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStorage.swift; sourceTree = "<group>"; };
@@ -83,6 +83,7 @@
 		BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindmillTableViewCell.xib; sourceTree = "<group>"; };
 		BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewCell.swift; sourceTree = "<group>"; };
 		BD5229281CFB4B1D0069C831 /* AccountResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountResource.swift; sourceTree = "<group>"; };
+		BD5BE5B920BD42AA00F81C26 /* windmill-release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "windmill-release.entitlements"; sourceTree = "<group>"; };
 		BDA2D1471F0E26A1004EE03D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Windmill.swift"; sourceTree = "<group>"; };
 		BDA2D14F1F0E2959004EE03D /* IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,7 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				BD13B2151F016ADD00BFC755 /* common */,
-				BD18F4B61DBF60AE00CD596B /* windmill.entitlements */,
+				BD18F4B61DBF60AE00CD596B /* windmill-debug.entitlements */,
+				BD5BE5B920BD42AA00F81C26 /* windmill-release.entitlements */,
 				BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */,
 				BDD1E96C1CDA92DB00976074 /* MainViewController.swift */,
 				BDD1E96E1CDA92DB00976074 /* Main.storyboard */,
@@ -621,7 +623,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = windmill/windmill.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "windmill/windmill-debug.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
@@ -642,7 +644,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = windmill/windmill.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "windmill/windmill-release.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
