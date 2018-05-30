@@ -76,11 +76,6 @@ class AccountResourceTest: XCTestCase {
         let expectation = XCTestExpectation(description: #function)
         accountResource.requestRegisterDevice(forAccount: "uknown_account_identifier", withToken: tokenString, completion: { device, error in
 
-            guard let _ = device else {
-                XCTFail(error!.localizedDescription)
-                return
-            }
-
         }).responseString { response in
             
             actual = response.response?.statusCode

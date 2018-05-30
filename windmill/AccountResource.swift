@@ -36,7 +36,7 @@ class AccountResource {
         
         let url = "\(WINDMILL_BASE_URL)/account/\(account)/exports"
         
-        return sessionManager.request(url).responseData(queue: self.queue) { response in
+        return sessionManager.request(url).validate().responseData(queue: self.queue) { response in
             
             if case .failure(let error as AFError) = response.result, case let .responseSerializationFailed(reason) = error, case .inputDataNilOrZeroLength = reason {
                 DispatchQueue.main.async{
@@ -80,7 +80,7 @@ class AccountResource {
         
         let encodedURLRequest = try! URLEncoding.queryString.encode(urlRequest, with: ["token":token])
         
-        return sessionManager.request(encodedURLRequest).responseString(completionHandler: { response in
+        return sessionManager.request(encodedURLRequest).validate().responseString(completionHandler: { response in
             
             os_log("%{public}@", log: .default, type: .debug, String(describing: response.response))
             os_log("%{public}@", log: .default, type: .debug, String(describing: response.result.value ?? "Empty HTTP Response."))
