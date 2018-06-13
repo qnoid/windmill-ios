@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BDD1E9661CDA92DB00976074"
-               BuildableName = "windmill.app"
+               BuildableName = "Windmill.app"
                BlueprintName = "windmill"
                ReferencedContainer = "container:windmill.xcodeproj">
             </BuildableReference>
@@ -67,7 +67,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BDD1E9661CDA92DB00976074"
-            BuildableName = "windmill.app"
+            BuildableName = "Windmill.app"
             BlueprintName = "windmill"
             ReferencedContainer = "container:windmill.xcodeproj">
          </BuildableReference>
@@ -90,7 +90,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BDD1E9661CDA92DB00976074"
-            BuildableName = "windmill.app"
+            BuildableName = "Windmill.app"
             BlueprintName = "windmill"
             ReferencedContainer = "container:windmill.xcodeproj">
          </BuildableReference>
@@ -109,7 +109,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BDD1E9661CDA92DB00976074"
-            BuildableName = "windmill.app"
+            BuildableName = "Windmill.app"
             BlueprintName = "windmill"
             ReferencedContainer = "container:windmill.xcodeproj">
          </BuildableReference>
