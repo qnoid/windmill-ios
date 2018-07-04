@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "0940"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BDD1E9661CDA92DB00976074"
-               BuildableName = "Windmill.app"
+               BuildableName = "windmill.app"
                BlueprintName = "windmill"
                ReferencedContainer = "container:windmill.xcodeproj">
             </BuildableReference>
@@ -67,7 +67,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BDD1E9661CDA92DB00976074"
-            BuildableName = "Windmill.app"
+            BuildableName = "windmill.app"
             BlueprintName = "windmill"
             ReferencedContainer = "container:windmill.xcodeproj">
          </BuildableReference>
@@ -90,7 +90,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BDD1E9661CDA92DB00976074"
-            BuildableName = "Windmill.app"
+            BuildableName = "windmill.app"
             BlueprintName = "windmill"
             ReferencedContainer = "container:windmill.xcodeproj">
          </BuildableReference>
@@ -109,7 +109,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BDD1E9661CDA92DB00976074"
-            BuildableName = "Windmill.app"
+            BuildableName = "windmill.app"
             BlueprintName = "windmill"
             ReferencedContainer = "container:windmill.xcodeproj">
          </BuildableReference>

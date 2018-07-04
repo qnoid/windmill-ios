@@ -84,6 +84,7 @@
 		BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewCell.swift; sourceTree = "<group>"; };
 		BD5229281CFB4B1D0069C831 /* AccountResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountResource.swift; sourceTree = "<group>"; };
 		BD5BE5B920BD42AA00F81C26 /* windmill-release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "windmill-release.entitlements"; sourceTree = "<group>"; };
+		BD687C0F20ECB487006B1E09 /* Info-debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-debug.plist"; sourceTree = "<group>"; };
 		BDA2D1471F0E26A1004EE03D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Windmill.swift"; sourceTree = "<group>"; };
 		BDA2D14F1F0E2959004EE03D /* IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +192,7 @@
 				BDD1E96E1CDA92DB00976074 /* Main.storyboard */,
 				BDD1E9711CDA92DB00976074 /* Assets.xcassets */,
 				BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */,
+				BD687C0F20ECB487006B1E09 /* Info-debug.plist */,
 				BDD1E9761CDA92DB00976074 /* Info.plist */,
 				BD52291E1CFB25D30069C831 /* Windmill.swift */,
 				BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */,
@@ -286,7 +288,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Windmill;
 				TargetAttributes = {
 					BDA2D14E1F0E2959004EE03D = {
@@ -636,7 +638,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = windmill/Info.plist;
+				INFOPLIST_FILE = "windmill/Info-debug.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = io.windmill.windmill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
