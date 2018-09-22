@@ -14,10 +14,10 @@ import QuartzCore
     var highlighted: Bool = false {
         didSet {
             if(highlighted) {
-                self.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+                self.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
                 self.backgroundColor = UIColor.Windmill.greenColor
             } else {
-                self.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.Windmill.greenColor]
+                self.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.Windmill.greenColor]
                 self.backgroundColor = UIColor.white
             }
         }

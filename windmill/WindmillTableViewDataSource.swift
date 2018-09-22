@@ -31,10 +31,10 @@ extension Export {
         paragraph.minimumLineHeight = 27
 
         return NSAttributedString(string: "INSTALL", attributes: [
-            NSAttributedStringKey.link: self.url,
-            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.medium),
-            NSAttributedStringKey.paragraphStyle: paragraph,
-            NSAttributedStringKey.baselineOffset: 5.0])
+            NSAttributedString.Key.link: self.url,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.medium),
+            NSAttributedString.Key.paragraphStyle: paragraph,
+            NSAttributedString.Key.baselineOffset: 5.0])
     }
 }
 

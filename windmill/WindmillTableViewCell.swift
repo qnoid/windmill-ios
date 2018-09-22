@@ -20,7 +20,7 @@ class WindmillTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManage
     }
     @IBOutlet weak var iconImageVIew: UIImageView!
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         wml_addSubview(view: wml_load(view: WindmillTableViewCell.self), layout: { view in

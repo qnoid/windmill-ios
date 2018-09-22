@@ -16,7 +16,7 @@ class MainViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         didSet{
             
             self.tableView.register(WindmillTableViewCell.self, forCellReuseIdentifier: "WindmillTableViewCell")
-            self.tableView.rowHeight = UITableViewAutomaticDimension
+            self.tableView.rowHeight = UITableView.automaticDimension
             self.tableView.dataSource = self.dataSource
             self.tableView.delegate = self.delegate
             self.tableView.alwaysBounceVertical = false
@@ -48,13 +48,13 @@ class MainViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
     override func encodeRestorableState(with coder: NSCoder) {
@@ -98,7 +98,7 @@ class MainViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
             tableHeaderView.accountLabel.text = self.account
             
             return tableHeaderView
-        case .authorized:
+        case .authorized, .provisional:
             let tableHeaderView = NotificationsAuthorizedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 82.0))
             tableHeaderView.accountLabel.text = self.account
             
@@ -107,7 +107,7 @@ class MainViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     }
     
     private func reloadWindmills(account: String) {
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicatorView = UIActivityIndicatorView(style: .gray)
         activityIndicatorView.startAnimating()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
         
@@ -194,7 +194,7 @@ class MainViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     }
     
     func didTouchUpInsideOpenSettingsButton(_ headerView: NotificationsDeniedTableViewHeaderView, button: UIButton) {
-        guard let applicationOpenSettingsURL = URL(string: UIApplicationOpenSettingsURLString) else {
+        guard let applicationOpenSettingsURL = URL(string: UIApplication.openSettingsURLString) else {
             return
         }
         
