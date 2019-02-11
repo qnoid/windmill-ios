@@ -11,10 +11,10 @@ import XCTest
 
 class EphemeralApplicationStorage {
     
-    let key: String
+    let key: ApplicationStorage.ApplicationStorageKey
     let applicationStorage: ApplicationStorage
 
-    init(key: String, applicationStorage: ApplicationStorage = ApplicationStorage.default) {
+    init(key: ApplicationStorage.ApplicationStorageKey, applicationStorage: ApplicationStorage = ApplicationStorage.default) {
         self.key = key
         self.applicationStorage = applicationStorage
     }
@@ -23,7 +23,7 @@ class EphemeralApplicationStorage {
         return try self.applicationStorage.read(key: self.key)
     }
 
-    func write(value: Data) throws {
+    func write(value: String) throws {
         try self.applicationStorage.write(value: value, key: self.key)
     }
 
@@ -35,11 +35,11 @@ class EphemeralApplicationStorage {
 class ApplicationStorageTest: XCTestCase {
 
     func testGivenValueAssertStored() {
-        let applicationStorage = EphemeralApplicationStorage(key: "any")
+        let applicationStorage = EphemeralApplicationStorage(key: ApplicationStorage.ApplicationStorageKey.account)
         
         let anyValue = "0F7DE374-00FB-46EC-8C48-F82D87E154FD"
 
-        try! applicationStorage.write(value: anyValue.data(using: .utf8)!)
+        try! applicationStorage.write(value: anyValue)
         
         XCTAssertEqual(try? applicationStorage.read(), anyValue)
     }

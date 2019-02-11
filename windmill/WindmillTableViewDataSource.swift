@@ -59,7 +59,9 @@ class WindmillTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WindmillTableViewCell") as! WindmillTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WindmillTableViewCell") as? WindmillTableViewCell else {
+            return UITableViewCell()
+        }
         
         let bundle = self.exports[indexPath.row]
         

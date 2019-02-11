@@ -34,6 +34,10 @@ class LoginViewController: UIViewController {
         return loginViewController
     }
     
+    @objc func didTouchUpInsideClose(_ sender: Notification) {
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.questionImageView.tintColor = self.view.tintColor
@@ -45,16 +49,15 @@ class LoginViewController: UIViewController {
             return
         }
         
-        guard let viewController = navigationController.topViewController as? MainViewController else {
+        guard let mainViewController = navigationController.topViewController as? MainViewController else {
             return
         }
+        navigationController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(didTouchUpInsideClose(_:)))
         
         let account = self.accountTextField.text?.trimmingCharacters(in: CharacterSet.whitespaces) ?? ""
-        viewController.account = account
+        mainViewController.account = account
         
-        if let data = account.data(using: .utf8) {
-            try? applicationStorage.write(value: data, key: "account")
-        }
+        try? applicationStorage.write(value: account, key: .account, options: .completeFileProtectionUntilFirstUserAuthentication)
     }
 }
 
@@ -68,15 +71,14 @@ extension LoginViewController: UITextFieldDelegate {
         guard let viewController = navigationController.topViewController as? MainViewController else {
             return false
         }
+        navigationController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(didTouchUpInsideClose(_:)))
 
         let account = self.accountTextField.text?.trimmingCharacters(in: CharacterSet.whitespaces) ?? ""
         viewController.account = account
         
         present(navigationController, animated: true)
         
-        if let data = account.data(using: .utf8) {
-            try? applicationStorage.write(value: data, key: "account")
-        }
+        try? applicationStorage.write(value: account, key: .account, options: .completeFileProtectionUntilFirstUserAuthentication)
         
         textField.resignFirstResponder()
         return true

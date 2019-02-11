@@ -12,9 +12,17 @@ extension UIAlertController {
     
     struct Windmill {
         
-        static func make(error: Error?) -> UIAlertController {
-            let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        static func make(title: String, error: Error) -> UIAlertController {
+            let alertController = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            
+            return alertController
+        }
+        
+        static func make(error: WindmillError) -> UIAlertController {
+            let message = "\(error.errorDescription ?? "") \(error.failureReason ?? "") \(error.recoverySuggestion ?? "")"
+            let alertController = UIAlertController(title: error.errorTitle ?? "Error", message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             
             return alertController
         }

@@ -15,8 +15,6 @@ protocol NotificationsDisabledTableViewHeaderViewDelegate: NSObjectProtocol {
 class NotificationsDeniedTableViewHeaderView: UITableViewHeaderFooterView {
     
     
-    @IBOutlet weak var accountLabel: UILabel!
-    
     weak var delegate: NotificationsDisabledTableViewHeaderViewDelegate?
     
     override init(reuseIdentifier: String?) {

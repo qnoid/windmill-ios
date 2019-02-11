@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0341BA2202DFB800421539 /* receipt.data in Resources */ = {isa = PBXBuildFile; fileRef = BD0341B92202DFB800421539 /* receipt.data */; };
 		BD0AD8A81FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */; };
 		BD0AD8AA1FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */; };
 		BD0AD8AC1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */; };
 		BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */; };
 		BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */; };
 		BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */; };
+		BD1949B9220C273F00ADE6E1 /* WindmillError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1949B8220C273F00ADE6E1 /* WindmillError.swift */; };
+		BD19B6C021F8D5F900743250 /* PurchaseOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */; };
+		BD19B6C221F8D7EF00743250 /* SubscriptionResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */; };
+		BD19B6C421F8DAC900743250 /* SubscriptionAuthorizationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19B6C321F8DAC900743250 /* SubscriptionAuthorizationToken.swift */; };
 		BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */; };
+		BD212A2B21FDB83900D7D66A /* SubscriptionResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD212A2A21FDB83900D7D66A /* SubscriptionResourceTest.swift */; };
 		BD21CED71F792EAD0003988F /* ApplicationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21CED61F792EAD0003988F /* ApplicationStorage.swift */; };
 		BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */; };
 		BD440E681FA0B0F100FA81B3 /* InstallTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */; };
@@ -23,8 +29,12 @@
 		BD440E701FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E6F1FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift */; };
 		BD440E721FA0C84A00FA81B3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E711FA0C84A00FA81B3 /* Button.swift */; };
 		BD440E741FA0CC8800FA81B3 /* UIColor+Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E731FA0CC8800FA81B3 /* UIColor+Windmill.swift */; };
+		BD48898D21F8C37A00B7D535 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD48898C21F8C37A00B7D535 /* StoreKit.framework */; };
 		BD4B00D11F0E30AE004025F3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
-		BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52291E1CFB25D30069C831 /* Windmill.swift */; };
+		BD4B8C9F2202F86A00D95493 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0341BB2202E40F00421539 /* MainNavigationController.swift */; };
+		BD4B8CA12203679E00D95493 /* PaymentQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8CA02203679E00D95493 /* PaymentQueue.swift */; };
+		BD4B8CA32205DC1000D95493 /* ReceiptClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8CA22205DC1000D95493 /* ReceiptClaim.swift */; };
+		BD52291F1CFB25D30069C831 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52291E1CFB25D30069C831 /* Export.swift */; };
 		BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */; };
 		BD5229251CFB26DF0069C831 /* WindmillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */; };
 		BD5229271CFB27A50069C831 /* WindmillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */; };
@@ -32,6 +42,9 @@
 		BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1471F0E26A1004EE03D /* Device.swift */; };
 		BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */; };
 		BDA2D1521F0E2959004EE03D /* AccountResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */; };
+		BDBE8F9A220B341E00872B78 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE8F99220B341E00872B78 /* SubscriptionManager.swift */; };
+		BDC55B1D21FE7D97007153D6 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC55B1B21FE7D97007153D6 /* Purchase.storyboard */; };
+		BDC55B1F21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC55B1E21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift */; };
 		BDCF33A11F0E7E4100B3EA53 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
 		BDCF33A21F0E7F4000B3EA53 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
 		BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */; };
@@ -40,6 +53,7 @@
 		BDD1E9721CDA92DB00976074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDD1E9711CDA92DB00976074 /* Assets.xcassets */; };
 		BDD1E9751CDA92DB00976074 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */; };
 		BDD1E9801CDA92DB00976074 /* ApplicationStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E97F1CDA92DB00976074 /* ApplicationStorageTest.swift */; };
+		BDF73C2B2202021000924316 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF73C2A2202021000924316 /* Account.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,14 +74,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD0341B92202DFB800421539 /* receipt.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = receipt.data; sourceTree = "<group>"; wrapsLines = 0; };
+		BD0341BB2202E40F00421539 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsDeniedTableViewHeaderView.xib; sourceTree = "<group>"; };
 		BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDeniedTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsAuthorizedTableViewHeaderView.xib; sourceTree = "<group>"; };
 		BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAuthorizedTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTextView.swift; sourceTree = "<group>"; };
-		BD18F4B61DBF60AE00CD596B /* windmill-debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "windmill-debug.entitlements"; sourceTree = "<group>"; };
 		BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BD1949B7220C20FB00ADE6E1 /* windmill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = windmill.entitlements; sourceTree = "<group>"; };
+		BD1949B8220C273F00ADE6E1 /* WindmillError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindmillError.swift; sourceTree = "<group>"; };
+		BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOptionsViewController.swift; sourceTree = "<group>"; };
+		BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionResource.swift; sourceTree = "<group>"; };
+		BD19B6C321F8DAC900743250 /* SubscriptionAuthorizationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAuthorizationToken.swift; sourceTree = "<group>"; };
 		BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDelegate.swift; sourceTree = "<group>"; };
+		BD212A2A21FDB83900D7D66A /* SubscriptionResourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionResourceTest.swift; sourceTree = "<group>"; };
 		BD21CED61F792EAD0003988F /* ApplicationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStorage.swift; sourceTree = "<group>"; };
 		BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboards.swift; sourceTree = "<group>"; };
 		BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstallTableViewFooterView.xib; sourceTree = "<group>"; };
@@ -77,19 +98,24 @@
 		BD440E6F1FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsNotDeterminedTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BD440E711FA0C84A00FA81B3 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		BD440E731FA0CC8800FA81B3 /* UIColor+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Windmill.swift"; sourceTree = "<group>"; };
+		BD48898C21F8C37A00B7D535 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BD4B00D01F0E305D004025F3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		BD52291E1CFB25D30069C831 /* Windmill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Windmill.swift; sourceTree = "<group>"; };
+		BD4B8CA02203679E00D95493 /* PaymentQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentQueue.swift; sourceTree = "<group>"; };
+		BD4B8CA22205DC1000D95493 /* ReceiptClaim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptClaim.swift; sourceTree = "<group>"; };
+		BD52291E1CFB25D30069C831 /* Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
 		BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDataSource.swift; sourceTree = "<group>"; };
 		BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindmillTableViewCell.xib; sourceTree = "<group>"; };
 		BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewCell.swift; sourceTree = "<group>"; };
 		BD5229281CFB4B1D0069C831 /* AccountResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountResource.swift; sourceTree = "<group>"; };
-		BD5BE5B920BD42AA00F81C26 /* windmill-release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "windmill-release.entitlements"; sourceTree = "<group>"; };
 		BD687C0F20ECB487006B1E09 /* Info-debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-debug.plist"; sourceTree = "<group>"; };
 		BDA2D1471F0E26A1004EE03D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Windmill.swift"; sourceTree = "<group>"; };
 		BDA2D14F1F0E2959004EE03D /* IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountResourceTest.swift; sourceTree = "<group>"; };
 		BDA2D1531F0E2959004EE03D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDBE8F99220B341E00872B78 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
+		BDC55B1C21FE7D97007153D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = windmill/Base.lproj/Purchase.storyboard; sourceTree = "<group>"; };
+		BDC55B1E21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePreviousPurchasesViewController.swift; sourceTree = "<group>"; };
 		BDD1E9671CDA92DB00976074 /* windmill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = windmill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDD1E96C1CDA92DB00976074 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +126,7 @@
 		BDD1E97B1CDA92DB00976074 /* windmillTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = windmillTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD1E97F1CDA92DB00976074 /* ApplicationStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStorageTest.swift; sourceTree = "<group>"; };
 		BDD1E9811CDA92DB00976074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDF73C2A2202021000924316 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD48898D21F8C37A00B7D535 /* StoreKit.framework in Frameworks */,
 				BD4B00D11F0E30AE004025F3 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +174,7 @@
 		BD4B00CB1F0E2F76004025F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD48898C21F8C37A00B7D535 /* StoreKit.framework */,
 				BD4B00D01F0E305D004025F3 /* Alamofire.framework */,
 			);
 			name = Frameworks;
@@ -156,6 +185,8 @@
 			children = (
 				BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */,
 				BDA2D1531F0E2959004EE03D /* Info.plist */,
+				BD212A2A21FDB83900D7D66A /* SubscriptionResourceTest.swift */,
+				BD0341B92202DFB800421539 /* receipt.data */,
 			);
 			path = IntegrationTests;
 			sourceTree = "<group>";
@@ -184,17 +215,17 @@
 		BDD1E9691CDA92DB00976074 /* windmill */ = {
 			isa = PBXGroup;
 			children = (
+				BD1949B7220C20FB00ADE6E1 /* windmill.entitlements */,
 				BD13B2151F016ADD00BFC755 /* common */,
-				BD18F4B61DBF60AE00CD596B /* windmill-debug.entitlements */,
-				BD5BE5B920BD42AA00F81C26 /* windmill-release.entitlements */,
 				BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */,
+				BD0341BB2202E40F00421539 /* MainNavigationController.swift */,
 				BDD1E96C1CDA92DB00976074 /* MainViewController.swift */,
 				BDD1E96E1CDA92DB00976074 /* Main.storyboard */,
 				BDD1E9711CDA92DB00976074 /* Assets.xcassets */,
 				BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */,
 				BD687C0F20ECB487006B1E09 /* Info-debug.plist */,
 				BDD1E9761CDA92DB00976074 /* Info.plist */,
-				BD52291E1CFB25D30069C831 /* Windmill.swift */,
+				BD52291E1CFB25D30069C831 /* Export.swift */,
 				BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */,
 				BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */,
 				BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */,
@@ -203,6 +234,7 @@
 				BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */,
 				BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */,
 				BDA2D1471F0E26A1004EE03D /* Device.swift */,
+				BD4B8CA22205DC1000D95493 /* ReceiptClaim.swift */,
 				BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */,
 				BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */,
 				BD440E6D1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib */,
@@ -211,6 +243,15 @@
 				BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */,
 				BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */,
 				BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */,
+				BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */,
+				BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */,
+				BD19B6C321F8DAC900743250 /* SubscriptionAuthorizationToken.swift */,
+				BDC55B1E21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift */,
+				BDC55B1B21FE7D97007153D6 /* Purchase.storyboard */,
+				BDF73C2A2202021000924316 /* Account.swift */,
+				BD4B8CA02203679E00D95493 /* PaymentQueue.swift */,
+				BDBE8F99220B341E00872B78 /* SubscriptionManager.swift */,
+				BD1949B8220C273F00ADE6E1 /* WindmillError.swift */,
 			);
 			path = windmill;
 			sourceTree = "<group>";
@@ -305,8 +346,17 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
 							};
 						};
 					};
@@ -343,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD0341BA2202DFB800421539 /* receipt.data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDC55B1D21FE7D97007153D6 /* Purchase.storyboard in Resources */,
 				BD0AD8AC1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib in Resources */,
 				BDD1E9751CDA92DB00976074 /* LaunchScreen.storyboard in Resources */,
 				BD440E681FA0B0F100FA81B3 /* InstallTableViewFooterView.xib in Resources */,
@@ -393,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD212A2B21FDB83900D7D66A /* SubscriptionResourceTest.swift in Sources */,
 				BDA2D1521F0E2959004EE03D /* AccountResourceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,23 +454,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD4B8CA12203679E00D95493 /* PaymentQueue.swift in Sources */,
 				BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */,
+				BDF73C2B2202021000924316 /* Account.swift in Sources */,
+				BDBE8F9A220B341E00872B78 /* SubscriptionManager.swift in Sources */,
 				BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */,
 				BD440E701FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift in Sources */,
 				BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */,
 				BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */,
 				BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */,
+				BD4B8CA32205DC1000D95493 /* ReceiptClaim.swift in Sources */,
 				BDD1E96D1CDA92DB00976074 /* MainViewController.swift in Sources */,
 				BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */,
 				BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */,
 				BD5229271CFB27A50069C831 /* WindmillTableViewCell.swift in Sources */,
+				BD19B6C221F8D7EF00743250 /* SubscriptionResource.swift in Sources */,
 				BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */,
-				BD52291F1CFB25D30069C831 /* Windmill.swift in Sources */,
+				BD52291F1CFB25D30069C831 /* Export.swift in Sources */,
 				BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */,
+				BD19B6C421F8DAC900743250 /* SubscriptionAuthorizationToken.swift in Sources */,
 				BD21CED71F792EAD0003988F /* ApplicationStorage.swift in Sources */,
 				BD440E741FA0CC8800FA81B3 /* UIColor+Windmill.swift in Sources */,
+				BD4B8C9F2202F86A00D95493 /* MainNavigationController.swift in Sources */,
+				BD19B6C021F8D5F900743250 /* PurchaseOptionsViewController.swift in Sources */,
 				BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */,
 				BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */,
+				BDC55B1F21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift in Sources */,
+				BD1949B9220C273F00ADE6E1 /* WindmillError.swift in Sources */,
 				BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */,
 				BD440E721FA0C84A00FA81B3 /* Button.swift in Sources */,
 				BD0AD8AA1FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift in Sources */,
@@ -448,6 +511,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BDC55B1B21FE7D97007153D6 /* Purchase.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDC55B1C21FE7D97007153D6 /* Base */,
+			);
+			name = Purchase.storyboard;
+			sourceTree = "<group>";
+		};
 		BDD1E96E1CDA92DB00976074 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -476,6 +547,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -545,6 +617,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/windmill-debug.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -628,7 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "windmill/windmill-debug.entitlements";
+				CODE_SIGN_ENTITLEMENTS = windmill/windmill.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -650,7 +723,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "windmill/windmill-debug.entitlements";
+				CODE_SIGN_ENTITLEMENTS = windmill/windmill.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -673,6 +746,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
@@ -722,7 +796,7 @@
 				BDA2D1581F0E2959004EE03D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		BDD1E9621CDA92DB00976074 /* Build configuration list for PBXProject "windmill" */ = {
 			isa = XCConfigurationList;
@@ -731,7 +805,7 @@
 				BDD1E9831CDA92DB00976074 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		BDD1E9841CDA92DB00976074 /* Build configuration list for PBXNativeTarget "windmill" */ = {
 			isa = XCConfigurationList;
@@ -740,7 +814,7 @@
 				BDD1E9861CDA92DB00976074 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		BDD1E9871CDA92DB00976074 /* Build configuration list for PBXNativeTarget "windmillTests" */ = {
 			isa = XCConfigurationList;
@@ -749,7 +823,7 @@
 				BDD1E9891CDA92DB00976074 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
