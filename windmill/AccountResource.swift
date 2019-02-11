@@ -80,12 +80,7 @@ class AccountResource {
         
         let encodedURLRequest = try! URLEncoding.queryString.encode(urlRequest, with: ["token":token])
         
-        return sessionManager.request(encodedURLRequest).validate().responseString(completionHandler: { response in
-            
-            os_log("%{public}@", log: .default, type: .debug, String(describing: response.response))
-            os_log("%{public}@", log: .default, type: .debug, String(describing: response.result.value ?? "Empty HTTP Response."))
-            
-        }).responseData(queue: self.queue) { response in
+        return sessionManager.request(encodedURLRequest).validate().responseData(queue: self.queue) { response in
             
             guard case .success = response.result, let data = response.data else {
                 DispatchQueue.main.async{

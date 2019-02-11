@@ -9,14 +9,17 @@
 import UIKit
 import UserNotifications
 import os
+import StoreKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate  {
 
     var window: UIWindow?
     
     let accountResource = AccountResource()
     let applicationStorage = ApplicationStorage.default
+    
+    var paymentQueue = PaymentQueue.default
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         self.window?.makeKeyAndVisible()
@@ -26,9 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        SKPaymentQueue.default().add(paymentQueue)
+        
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -69,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      If the device token changes while your app is running, the app object calls the application:didRegisterForRemoteNotificationsWithDeviceToken: delegate method again to notify you of the change." - Configuring Remote Notification Support, Obtaining a Device Token in iOS and tvOS, Updated: 2017-03-27
      
      - Note: Should this method get called on a token change AND the windmill service is down, the new device WILL NOT be able to retrieve any push notifications until the token changes again or the app calls `UIApplication.shared.registerForRemoteNotifications()` again.
-     - Precondition: the account must be stored in the `ApplicationStorage.default` under the "account" key.
+     - Precondition: the account must be stored in the `ApplicationStorage.default` under the `Account.CodingKeys.identifier` key.
      - Seealso: `ApplicationStorage.write(value:key:)` on how to store the account
      - Seealso:
      [Local and Remote Notification Programming Guide]
@@ -77,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      */
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        guard let account = try? self.applicationStorage.read(key: "account") else {
+        guard let account = try? self.applicationStorage.read(key: .account) else {
             os_log("%{public}@", log: .default, type: .error, "No account found in the `ApplicationStorage.default`. Did you call `ApplicationStorage.write(value:key:)`?")
             return
         }
@@ -88,14 +93,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.accountResource.requestRegisterDevice(forAccount: account, withToken: tokenString) { device, error in
             
-            guard let device = device else {
-                if let error = error {
-                    os_log("%{public}@", log: .default, type: .error, error.localizedDescription)
-                }
+            switch error {
+            case .some(let error):
+                os_log("%{public}@", log: .default, type: .error, error.localizedDescription)
+                return
+            default:
+                os_log("%{public}@", log: .default, type: .debug, device?.debugDescription ?? "")
                 return
             }
-            
-            os_log("%{public}@", log: .default, type: .debug, device.debugDescription)
             
             }.resume()
     }

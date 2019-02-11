@@ -11,6 +11,12 @@ import os
 
 struct ApplicationStorage {
     
+    enum ApplicationStorageKey: String, CodingKey {
+        case account = "account_identifier"
+        case receiptClaim = "receipt_claim"
+        case subscriptionAuthorizationToken = "subscription_authorization_token"
+    }
+
     static let defaultURLResourceValues: URLResourceValues = {
         var resourceValues = URLResourceValues()
         resourceValues.isExcludedFromBackup = true
@@ -34,21 +40,25 @@ struct ApplicationStorage {
     
     let url: URL
     
-    public func read(key: String) throws -> String {
-        return try String(contentsOf: self.url.appendingPathComponent(key), encoding: .utf8)
+    public func read(key: ApplicationStorageKey) throws -> String {
+        return try String(contentsOf: self.url.appendingPathComponent(key.stringValue), encoding: .utf8)
     }
     
-    public func write(value: Data, key: String, resourceValues: URLResourceValues = ApplicationStorage.defaultURLResourceValues) throws {
+    public func write(value: String, key: ApplicationStorageKey, options: Data.WritingOptions = .completeFileProtectionUnlessOpen, resourceValues: URLResourceValues = ApplicationStorage.defaultURLResourceValues) throws {
         
-        var url = self.url.appendingPathComponent(key)
+        guard let data = value.data(using: .utf8) else {
+            throw NSError()
+        }
         
-        try value.write(to: url, options: .completeFileProtectionUnlessOpen)
+        var url = self.url.appendingPathComponent(key.stringValue)
+        
+        try data.write(to: url, options: options)
         try url.setResourceValues(resourceValues)
     }
 
-    public func delete(key: String) throws {
+    public func delete(key: ApplicationStorageKey) throws {
         
-        let url = self.url.appendingPathComponent(key)
+        let url = self.url.appendingPathComponent(key.stringValue)
      
         try FileManager.default.removeItem(at: url)
     }

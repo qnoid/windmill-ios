@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationsAuthorizedTableViewHeaderView" customModule="windmill" customModuleProvider="target">
             <connections>
-                <outlet property="accountLabel" destination="CL7-PW-H4w" id="atU-Od-YyS"/>
                 <outlet property="label" destination="fHi-Oa-fsy" id="xz1-Xe-We3"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="PLb-Kb-BjZ" userLabel="contens">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[14810686-4690-4900-ADA5-8B0B7338AA39]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CL7-PW-H4w">
-                    <rect key="frame" x="16" y="8" width="288" height="14"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="You will receive a notification when a New Build is deployed." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHi-Oa-fsy">
-                    <rect key="frame" x="16" y="29.5" width="284" height="41.5"/>
+                    <rect key="frame" x="16" y="8" width="284" height="50"/>
                     <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -38,15 +29,11 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="fHi-Oa-fsy" secondAttribute="trailing" constant="20" symbolic="YES" id="3Uj-ei-Uoy"/>
-                <constraint firstItem="fHi-Oa-fsy" firstAttribute="bottom" secondItem="R3c-tn-haS" secondAttribute="bottom" id="GMn-6n-oPI"/>
+                <constraint firstAttribute="bottomMargin" secondItem="fHi-Oa-fsy" secondAttribute="bottom" constant="8" id="B03-sh-RSj"/>
                 <constraint firstItem="fHi-Oa-fsy" firstAttribute="leading" secondItem="PLb-Kb-BjZ" secondAttribute="leadingMargin" id="Xql-bc-3LC"/>
-                <constraint firstItem="fHi-Oa-fsy" firstAttribute="top" secondItem="CL7-PW-H4w" secondAttribute="bottom" constant="8" symbolic="YES" id="ccV-8K-rPV"/>
-                <constraint firstAttribute="trailingMargin" secondItem="CL7-PW-H4w" secondAttribute="trailing" id="dgM-cP-QcU"/>
-                <constraint firstItem="CL7-PW-H4w" firstAttribute="top" secondItem="PLb-Kb-BjZ" secondAttribute="topMargin" constant="8" id="ec8-ao-RPE"/>
-                <constraint firstItem="CL7-PW-H4w" firstAttribute="leading" secondItem="PLb-Kb-BjZ" secondAttribute="leadingMargin" id="zTk-0R-rNu"/>
+                <constraint firstItem="fHi-Oa-fsy" firstAttribute="top" secondItem="PLb-Kb-BjZ" secondAttribute="topMargin" constant="8" id="r4g-dm-B9D"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="R3c-tn-haS"/>
             <point key="canvasLocation" x="84" y="-106.5"/>
         </view>
     </objects>

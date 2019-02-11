@@ -13,4 +13,8 @@ class Storyboards {
     static func main(bundle: Bundle = Bundle(for: Storyboards.self)) -> UIStoryboard {
         return UIStoryboard(name: "Main", bundle: bundle)
     }
+    
+    static func purchase(bundle: Bundle = Bundle(for: Storyboards.self)) -> UIStoryboard {
+        return UIStoryboard(name: "Purchase", bundle: bundle)
+    }
 }

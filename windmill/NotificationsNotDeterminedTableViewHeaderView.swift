@@ -15,7 +15,6 @@ protocol NotifyTableViewHeaderViewDelegate: NSObjectProtocol {
 class NotificationsNotDeterminedTableViewHeaderView: UITableViewHeaderFooterView {
     
     
-    @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var notifyButton: Button! {
         didSet{
             let attributedText = NSMutableAttributedString(string: "Notify me when a ")

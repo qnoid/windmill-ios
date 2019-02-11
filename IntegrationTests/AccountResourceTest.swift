@@ -24,7 +24,7 @@ class AccountResourceTest: XCTestCase {
         var actual: [windmill.Export]?
         
         let expectation = XCTestExpectation(description: #function)
-        let dataTask = accountResource.requestExports(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39"){ exports, error in
+        let dataTask = accountResource.requestExports(forAccount: "14810686-4690-4900-ada5-8b0b7338aa39"){ exports, error in
             
             guard let exports = exports else {
                 XCTFail(error!.localizedDescription)
@@ -49,7 +49,7 @@ class AccountResourceTest: XCTestCase {
         var actual: Device?
         
         let expectation = XCTestExpectation(description: #function)
-        accountResource.requestRegisterDevice(forAccount: "14810686-4690-4900-ADA5-8B0B7338AA39", withToken: tokenString) { device, error in
+        accountResource.requestRegisterDevice(forAccount: "14810686-4690-4900-ada5-8b0b7338aa39", withToken: tokenString) { device, error in
             
         guard let device = device else {
             XCTFail(error!.localizedDescription)

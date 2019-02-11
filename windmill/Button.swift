@@ -11,13 +11,25 @@ import QuartzCore
 
 @IBDesignable
 class Button: UIButton {
-        
+    
+    @IBInspectable var cornerRadius:CGFloat = 5.0 {
+        didSet{
+            self.setNeedsLayout()
+        }
+    }
+
+    @IBInspectable var borderWidth:CGFloat = 1.0 {
+        didSet{
+            self.setNeedsLayout()
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         self.layer.borderColor = self.tintColor.cgColor
-        self.layer.borderWidth = 1.0
-        self.layer.cornerRadius = 5.0
+        self.layer.borderWidth = self.borderWidth
+        self.layer.cornerRadius = self.cornerRadius
         self.layer.masksToBounds = true
     }
 }
