@@ -16,10 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
 
     var window: UIWindow?
     
+    var rootViewController: UITabBarController? {
+        return self.window?.rootViewController as? UITabBarController
+    }
+    
     let accountResource = AccountResource()
     let applicationStorage = ApplicationStorage.default
-    
-    var paymentQueue = PaymentQueue.default
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         self.window?.makeKeyAndVisible()
@@ -29,11 +31,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        SKPaymentQueue.default().add(paymentQueue)
+        SubscriptionManager.shared.startProcessingPayments()
         
         return true
     }
     
+    @IBAction func didTouchUpInsideStore() {
+        guard let initialViewController = WindmillApp.Storyboard.purchase().instantiateInitialViewController() as? UINavigationController else {
+            return
+        }
+        
+        self.window?.rootViewController?.present(initialViewController, animated: true)
+    }
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -49,13 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
+    
     func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
         return true
     }
@@ -63,7 +69,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
         return true
     }
-    
+        
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
     // MARK: UIApplication.shared.registerForRemoteNotifications()
     
     /**
@@ -83,13 +93,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         guard let account = try? self.applicationStorage.read(key: .account) else {
-            os_log("%{public}@", log: .default, type: .error, "No account found in the `ApplicationStorage.default`. Did you call `ApplicationStorage.write(value:key:)`?")
+            os_log("%{public}@", log: .default, type: .debug, "No account found in the `ApplicationStorage.default`. Did you call `ApplicationStorage.write(value:key:)`?")
             return
         }
 
         let tokenString = deviceToken.map { String(format: "%02hhx", $0) }.joined()
-        
-        os_log("device token: %{public}@", log: .default, type: .debug, tokenString)
         
         self.accountResource.requestRegisterDevice(forAccount: account, withToken: tokenString) { device, error in
             

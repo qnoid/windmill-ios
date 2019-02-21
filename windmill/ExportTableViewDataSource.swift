@@ -1,5 +1,5 @@
 //
-//  WindmillTableViewDataSource.swift
+//  ExportTableViewDataSource.swift
 //  windmill
 //
 //  Created by Markos Charatzas on 29/05/2016.
@@ -38,7 +38,7 @@ extension Export {
     }
 }
 
-class WindmillTableViewDataSource: NSObject, UITableViewDataSource {
+class ExportTableViewDataSource: NSObject, UITableViewDataSource {
     
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -59,7 +59,7 @@ class WindmillTableViewDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WindmillTableViewCell") as? WindmillTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExportTableViewCell") as? ExportTableViewCell else {
             return UITableViewCell()
         }
         

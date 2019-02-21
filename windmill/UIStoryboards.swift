@@ -8,13 +8,27 @@
 
 import UIKit
 
-class Storyboards {
+extension UIStoryboard {
     
-    static func main(bundle: Bundle = Bundle(for: Storyboards.self)) -> UIStoryboard {
-        return UIStoryboard(name: "Main", bundle: bundle)
+    func purchase_instantiateInitialViewController() -> UINavigationController? {
+        return self.instantiateInitialViewController() as? UINavigationController
     }
+}
+
+class WindmillApp {
     
-    static func purchase(bundle: Bundle = Bundle(for: Storyboards.self)) -> UIStoryboard {
-        return UIStoryboard(name: "Purchase", bundle: bundle)
+    struct Storyboard {
+        
+        static func main(bundle: Bundle = Bundle(for: WindmillApp.self)) -> UIStoryboard {
+            return UIStoryboard(name: "Main", bundle: bundle)
+        }
+        
+        static func subscriber(bundle: Bundle = Bundle(for: WindmillApp.self)) -> UIStoryboard {
+            return UIStoryboard(name: "Subscriber", bundle: bundle)
+        }
+        
+        static func purchase(bundle: Bundle = Bundle(for: WindmillApp.self)) -> UIStoryboard {
+            return UIStoryboard(name: "Purchase", bundle: bundle)
+        }
     }
 }

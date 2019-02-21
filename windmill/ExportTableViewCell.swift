@@ -1,5 +1,5 @@
 //
-//  WindmillTableViewCell.swift
+//  ExportTableViewCell.swift
 //  windmill
 //
 //  Created by Markos Charatzas on 29/05/2016.
@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-class WindmillTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManagerDelegate {
+class ExportTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManagerDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -23,7 +23,7 @@ class WindmillTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManage
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        wml_addSubview(view: wml_load(view: WindmillTableViewCell.self), layout: { view in
+        wml_addSubview(view: wml_load(view: ExportTableViewCell.self), layout: { view in
             wml_layout(view)
         })
     }
@@ -31,7 +31,7 @@ class WindmillTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManage
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        wml_addSubview(view: wml_load(view: WindmillTableViewCell.self), layout: { view in
+        wml_addSubview(view: wml_load(view: ExportTableViewCell.self), layout: { view in
             wml_layout(view)
         })
     }

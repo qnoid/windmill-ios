@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0112EF22130F55003FA1D1 /* AccountNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0112EE22130F55003FA1D1 /* AccountNavigationController.swift */; };
 		BD0341BA2202DFB800421539 /* receipt.data in Resources */ = {isa = PBXBuildFile; fileRef = BD0341B92202DFB800421539 /* receipt.data */; };
 		BD0AD8A81FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */; };
 		BD0AD8AA1FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */; };
@@ -14,13 +15,21 @@
 		BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */; };
 		BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */; };
 		BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */; };
-		BD1949B9220C273F00ADE6E1 /* WindmillError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1949B8220C273F00ADE6E1 /* WindmillError.swift */; };
+		BD1949B9220C273F00ADE6E1 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1949B8220C273F00ADE6E1 /* Subscription.swift */; };
 		BD19B6C021F8D5F900743250 /* PurchaseOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */; };
 		BD19B6C221F8D7EF00743250 /* SubscriptionResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */; };
 		BD19B6C421F8DAC900743250 /* SubscriptionAuthorizationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19B6C321F8DAC900743250 /* SubscriptionAuthorizationToken.swift */; };
-		BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */; };
+		BD20D5351DC78E1E0016C891 /* ExportTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD20D5341DC78E1E0016C891 /* ExportTableViewDelegate.swift */; };
 		BD212A2B21FDB83900D7D66A /* SubscriptionResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD212A2A21FDB83900D7D66A /* SubscriptionResourceTest.swift */; };
+		BD2136932212B434009CB1A0 /* OpenStoreTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD2136922212B434009CB1A0 /* OpenStoreTableViewFooterView.xib */; };
+		BD2136952212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2136942212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift */; };
+		BD2136992212D713009CB1A0 /* Subscriber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD2136982212D713009CB1A0 /* Subscriber.storyboard */; };
 		BD21CED71F792EAD0003988F /* ApplicationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21CED61F792EAD0003988F /* ApplicationStorage.swift */; };
+		BD3B5F9A2211A01100D1D899 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B5F992211A01100D1D899 /* AccountViewController.swift */; };
+		BD3B5F9C2211C9BB00D1D899 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B5F9B2211C9BB00D1D899 /* WelcomeViewController.swift */; };
+		BD3B5F9E2211CB8100D1D899 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3B5F9D2211CB8100D1D899 /* CloudKit.framework */; };
+		BD3B5FA02211D55900D1D899 /* AccountTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B5F9F2211D55900D1D899 /* AccountTableViewDataSource.swift */; };
+		BD3B5FA22211D58000D1D899 /* AccountTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B5FA12211D58000D1D899 /* AccountTableViewDelegate.swift */; };
 		BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */; };
 		BD440E681FA0B0F100FA81B3 /* InstallTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */; };
 		BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */; };
@@ -29,26 +38,40 @@
 		BD440E701FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E6F1FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift */; };
 		BD440E721FA0C84A00FA81B3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E711FA0C84A00FA81B3 /* Button.swift */; };
 		BD440E741FA0CC8800FA81B3 /* UIColor+Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E731FA0CC8800FA81B3 /* UIColor+Windmill.swift */; };
+		BD47531622144A18004C101E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD47531522144A18004C101E /* MainTabBarController.swift */; };
+		BD47531A22146FF3004C101E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD47531922146FF3004C101E /* MainViewController.swift */; };
+		BD47531C221471E7004C101E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD47531B221471E7004C101E /* MainController.swift */; };
+		BD47532022147E60004C101E /* SlideInFadeOutControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD47531F22147E60004C101E /* SlideInFadeOutControllerTransitioningDelegate.swift */; };
 		BD48898D21F8C37A00B7D535 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD48898C21F8C37A00B7D535 /* StoreKit.framework */; };
 		BD4B00D11F0E30AE004025F3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
-		BD4B8C9F2202F86A00D95493 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0341BB2202E40F00421539 /* MainNavigationController.swift */; };
+		BD4B8C9F2202F86A00D95493 /* AppsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0341BB2202E40F00421539 /* AppsNavigationController.swift */; };
 		BD4B8CA12203679E00D95493 /* PaymentQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8CA02203679E00D95493 /* PaymentQueue.swift */; };
 		BD4B8CA32205DC1000D95493 /* ReceiptClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8CA22205DC1000D95493 /* ReceiptClaim.swift */; };
 		BD52291F1CFB25D30069C831 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52291E1CFB25D30069C831 /* Export.swift */; };
-		BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */; };
-		BD5229251CFB26DF0069C831 /* WindmillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */; };
-		BD5229271CFB27A50069C831 /* WindmillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */; };
+		BD5229231CFB26AC0069C831 /* ExportTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229221CFB26AC0069C831 /* ExportTableViewDataSource.swift */; };
+		BD5229251CFB26DF0069C831 /* ExportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5229241CFB26DF0069C831 /* ExportTableViewCell.xib */; };
+		BD5229271CFB27A50069C831 /* ExportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229261CFB27A50069C831 /* ExportTableViewCell.swift */; };
 		BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229281CFB4B1D0069C831 /* AccountResource.swift */; };
+		BDA1AF90221ABB5D00EFB366 /* SubcriberTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF8E221ABB5C00EFB366 /* SubcriberTableViewFooterView.xib */; };
+		BDA1AF91221ABB5D00EFB366 /* SubcriberTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF8F221ABB5C00EFB366 /* SubcriberTableViewFooterView.swift */; };
+		BDA1AF93221ADB6500EFB366 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF92221ADB6500EFB366 /* MainNavigationController.swift */; };
+		BDA1AF95221AE07900EFB366 /* PurchaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF94221AE07900EFB366 /* PurchaseNavigationController.swift */; };
+		BDA1AF98221B1CCF00EFB366 /* MockExportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF96221B1CCE00EFB366 /* MockExportTableViewCell.xib */; };
+		BDA1AF99221B1CCF00EFB366 /* MockExportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF97221B1CCE00EFB366 /* MockExportTableViewCell.swift */; };
+		BDA1AFA0221BE79C00EFB366 /* MainTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF9E221BE79A00EFB366 /* MainTableViewHeaderView.swift */; };
+		BDA1AFA1221BE79C00EFB366 /* MainTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF9F221BE79B00EFB366 /* MainTableViewHeaderView.xib */; };
 		BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1471F0E26A1004EE03D /* Device.swift */; };
 		BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */; };
 		BDA2D1521F0E2959004EE03D /* AccountResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */; };
+		BDB847FE221C135000A1CE61 /* SubscriptionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB847FD221C135000A1CE61 /* SubscriptionStatus.swift */; };
+		BDB84800221C19B600A1CE61 /* SubscriptionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB847FF221C19B600A1CE61 /* SubscriptionDetailsViewController.swift */; };
 		BDBE8F9A220B341E00872B78 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE8F99220B341E00872B78 /* SubscriptionManager.swift */; };
 		BDC55B1D21FE7D97007153D6 /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC55B1B21FE7D97007153D6 /* Purchase.storyboard */; };
 		BDC55B1F21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC55B1E21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift */; };
 		BDCF33A11F0E7E4100B3EA53 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
 		BDCF33A21F0E7F4000B3EA53 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
 		BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */; };
-		BDD1E96D1CDA92DB00976074 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E96C1CDA92DB00976074 /* MainViewController.swift */; };
+		BDD1E96D1CDA92DB00976074 /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E96C1CDA92DB00976074 /* AppsViewController.swift */; };
 		BDD1E9701CDA92DB00976074 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD1E96E1CDA92DB00976074 /* Main.storyboard */; };
 		BDD1E9721CDA92DB00976074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDD1E9711CDA92DB00976074 /* Assets.xcassets */; };
 		BDD1E9751CDA92DB00976074 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */; };
@@ -74,8 +97,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD0112EE22130F55003FA1D1 /* AccountNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNavigationController.swift; sourceTree = "<group>"; };
 		BD0341B92202DFB800421539 /* receipt.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = receipt.data; sourceTree = "<group>"; wrapsLines = 0; };
-		BD0341BB2202E40F00421539 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		BD0341BB2202E40F00421539 /* AppsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsNavigationController.swift; sourceTree = "<group>"; };
 		BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsDeniedTableViewHeaderView.xib; sourceTree = "<group>"; };
 		BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDeniedTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsAuthorizedTableViewHeaderView.xib; sourceTree = "<group>"; };
@@ -83,13 +107,21 @@
 		BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTextView.swift; sourceTree = "<group>"; };
 		BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BD1949B7220C20FB00ADE6E1 /* windmill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = windmill.entitlements; sourceTree = "<group>"; };
-		BD1949B8220C273F00ADE6E1 /* WindmillError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindmillError.swift; sourceTree = "<group>"; };
+		BD1949B8220C273F00ADE6E1 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOptionsViewController.swift; sourceTree = "<group>"; };
 		BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionResource.swift; sourceTree = "<group>"; };
 		BD19B6C321F8DAC900743250 /* SubscriptionAuthorizationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAuthorizationToken.swift; sourceTree = "<group>"; };
-		BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDelegate.swift; sourceTree = "<group>"; };
+		BD20D5341DC78E1E0016C891 /* ExportTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportTableViewDelegate.swift; sourceTree = "<group>"; };
 		BD212A2A21FDB83900D7D66A /* SubscriptionResourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionResourceTest.swift; sourceTree = "<group>"; };
+		BD2136922212B434009CB1A0 /* OpenStoreTableViewFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenStoreTableViewFooterView.xib; sourceTree = "<group>"; };
+		BD2136942212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenStoreTableViewFooterView.swift; sourceTree = "<group>"; };
+		BD2136982212D713009CB1A0 /* Subscriber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Subscriber.storyboard; sourceTree = "<group>"; };
 		BD21CED61F792EAD0003988F /* ApplicationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStorage.swift; sourceTree = "<group>"; };
+		BD3B5F992211A01100D1D899 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		BD3B5F9B2211C9BB00D1D899 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		BD3B5F9D2211CB8100D1D899 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		BD3B5F9F2211D55900D1D899 /* AccountTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewDataSource.swift; sourceTree = "<group>"; };
+		BD3B5FA12211D58000D1D899 /* AccountTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewDelegate.swift; sourceTree = "<group>"; };
 		BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboards.swift; sourceTree = "<group>"; };
 		BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstallTableViewFooterView.xib; sourceTree = "<group>"; };
 		BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallTableViewFooterView.swift; sourceTree = "<group>"; };
@@ -98,27 +130,41 @@
 		BD440E6F1FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsNotDeterminedTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BD440E711FA0C84A00FA81B3 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		BD440E731FA0CC8800FA81B3 /* UIColor+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Windmill.swift"; sourceTree = "<group>"; };
+		BD47531522144A18004C101E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		BD47531922146FF3004C101E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BD47531B221471E7004C101E /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		BD47531F22147E60004C101E /* SlideInFadeOutControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInFadeOutControllerTransitioningDelegate.swift; sourceTree = "<group>"; };
 		BD48898C21F8C37A00B7D535 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BD4B00D01F0E305D004025F3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		BD4B8CA02203679E00D95493 /* PaymentQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentQueue.swift; sourceTree = "<group>"; };
 		BD4B8CA22205DC1000D95493 /* ReceiptClaim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptClaim.swift; sourceTree = "<group>"; };
 		BD52291E1CFB25D30069C831 /* Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
-		BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewDataSource.swift; sourceTree = "<group>"; };
-		BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindmillTableViewCell.xib; sourceTree = "<group>"; };
-		BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTableViewCell.swift; sourceTree = "<group>"; };
+		BD5229221CFB26AC0069C831 /* ExportTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportTableViewDataSource.swift; sourceTree = "<group>"; };
+		BD5229241CFB26DF0069C831 /* ExportTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExportTableViewCell.xib; sourceTree = "<group>"; };
+		BD5229261CFB27A50069C831 /* ExportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportTableViewCell.swift; sourceTree = "<group>"; };
 		BD5229281CFB4B1D0069C831 /* AccountResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountResource.swift; sourceTree = "<group>"; };
 		BD687C0F20ECB487006B1E09 /* Info-debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-debug.plist"; sourceTree = "<group>"; };
+		BDA1AF8E221ABB5C00EFB366 /* SubcriberTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubcriberTableViewFooterView.xib; sourceTree = "<group>"; };
+		BDA1AF8F221ABB5C00EFB366 /* SubcriberTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubcriberTableViewFooterView.swift; sourceTree = "<group>"; };
+		BDA1AF92221ADB6500EFB366 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		BDA1AF94221AE07900EFB366 /* PurchaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseNavigationController.swift; sourceTree = "<group>"; };
+		BDA1AF96221B1CCE00EFB366 /* MockExportTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MockExportTableViewCell.xib; sourceTree = "<group>"; };
+		BDA1AF97221B1CCE00EFB366 /* MockExportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockExportTableViewCell.swift; sourceTree = "<group>"; };
+		BDA1AF9E221BE79A00EFB366 /* MainTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewHeaderView.swift; sourceTree = "<group>"; };
+		BDA1AF9F221BE79B00EFB366 /* MainTableViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewHeaderView.xib; sourceTree = "<group>"; };
 		BDA2D1471F0E26A1004EE03D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Windmill.swift"; sourceTree = "<group>"; };
 		BDA2D14F1F0E2959004EE03D /* IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountResourceTest.swift; sourceTree = "<group>"; };
 		BDA2D1531F0E2959004EE03D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDB847FD221C135000A1CE61 /* SubscriptionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStatus.swift; sourceTree = "<group>"; };
+		BDB847FF221C19B600A1CE61 /* SubscriptionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailsViewController.swift; sourceTree = "<group>"; };
 		BDBE8F99220B341E00872B78 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		BDC55B1C21FE7D97007153D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = windmill/Base.lproj/Purchase.storyboard; sourceTree = "<group>"; };
 		BDC55B1E21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestorePreviousPurchasesViewController.swift; sourceTree = "<group>"; };
 		BDD1E9671CDA92DB00976074 /* windmill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = windmill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BDD1E96C1CDA92DB00976074 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BDD1E96C1CDA92DB00976074 /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		BDD1E96F1CDA92DB00976074 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDD1E9711CDA92DB00976074 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDD1E9741CDA92DB00976074 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -142,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD3B5F9E2211CB8100D1D899 /* CloudKit.framework in Frameworks */,
 				BD48898D21F8C37A00B7D535 /* StoreKit.framework in Frameworks */,
 				BD4B00D11F0E30AE004025F3 /* Alamofire.framework in Frameworks */,
 			);
@@ -174,10 +221,78 @@
 		BD4B00CB1F0E2F76004025F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD3B5F9D2211CB8100D1D899 /* CloudKit.framework */,
 				BD48898C21F8C37A00B7D535 /* StoreKit.framework */,
 				BD4B00D01F0E305D004025F3 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDA1AF9A221BE17A00EFB366 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				BD2136982212D713009CB1A0 /* Subscriber.storyboard */,
+				BD0341BB2202E40F00421539 /* AppsNavigationController.swift */,
+				BDD1E96C1CDA92DB00976074 /* AppsViewController.swift */,
+				BDA1AF97221B1CCE00EFB366 /* MockExportTableViewCell.swift */,
+				BDA1AF96221B1CCE00EFB366 /* MockExportTableViewCell.xib */,
+				BD5229281CFB4B1D0069C831 /* AccountResource.swift */,
+				BDA1AF9B221BE23600EFB366 /* ExportTableView */,
+			);
+			name = Apps;
+			sourceTree = "<group>";
+		};
+		BDA1AF9B221BE23600EFB366 /* ExportTableView */ = {
+			isa = PBXGroup;
+			children = (
+				BD52291E1CFB25D30069C831 /* Export.swift */,
+				BD5229221CFB26AC0069C831 /* ExportTableViewDataSource.swift */,
+				BD20D5341DC78E1E0016C891 /* ExportTableViewDelegate.swift */,
+				BD5229241CFB26DF0069C831 /* ExportTableViewCell.xib */,
+				BD5229261CFB27A50069C831 /* ExportTableViewCell.swift */,
+				BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */,
+				BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */,
+				BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */,
+				BD440E6D1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib */,
+				BD440E6F1FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift */,
+				BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */,
+				BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */,
+				BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */,
+				BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */,
+			);
+			name = ExportTableView;
+			sourceTree = "<group>";
+		};
+		BDA1AF9C221BE26C00EFB366 /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				BDA1AF94221AE07900EFB366 /* PurchaseNavigationController.swift */,
+				BDC55B1E21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift */,
+				BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */,
+				BDC55B1B21FE7D97007153D6 /* Purchase.storyboard */,
+				BDBE8F99220B341E00872B78 /* SubscriptionManager.swift */,
+				BD4B8CA02203679E00D95493 /* PaymentQueue.swift */,
+				BD1949B8220C273F00ADE6E1 /* Subscription.swift */,
+				BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */,
+				BD47531F22147E60004C101E /* SlideInFadeOutControllerTransitioningDelegate.swift */,
+			);
+			name = StoreKit;
+			sourceTree = "<group>";
+		};
+		BDA1AF9D221BE34B00EFB366 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				BDA1AF8F221ABB5C00EFB366 /* SubcriberTableViewFooterView.swift */,
+				BDA1AF8E221ABB5C00EFB366 /* SubcriberTableViewFooterView.xib */,
+				BDF73C2A2202021000924316 /* Account.swift */,
+				BD0112EE22130F55003FA1D1 /* AccountNavigationController.swift */,
+				BD3B5F992211A01100D1D899 /* AccountViewController.swift */,
+				BD3B5F9F2211D55900D1D899 /* AccountTableViewDataSource.swift */,
+				BD3B5FA12211D58000D1D899 /* AccountTableViewDelegate.swift */,
+				BDB847FD221C135000A1CE61 /* SubscriptionStatus.swift */,
+				BDB847FF221C19B600A1CE61 /* SubscriptionDetailsViewController.swift */,
+			);
+			name = Account;
 			sourceTree = "<group>";
 		};
 		BDA2D1501F0E2959004EE03D /* IntegrationTests */ = {
@@ -216,42 +331,29 @@
 			isa = PBXGroup;
 			children = (
 				BD1949B7220C20FB00ADE6E1 /* windmill.entitlements */,
-				BD13B2151F016ADD00BFC755 /* common */,
-				BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */,
-				BD0341BB2202E40F00421539 /* MainNavigationController.swift */,
-				BDD1E96C1CDA92DB00976074 /* MainViewController.swift */,
-				BDD1E96E1CDA92DB00976074 /* Main.storyboard */,
 				BDD1E9711CDA92DB00976074 /* Assets.xcassets */,
-				BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */,
 				BD687C0F20ECB487006B1E09 /* Info-debug.plist */,
 				BDD1E9761CDA92DB00976074 /* Info.plist */,
-				BD52291E1CFB25D30069C831 /* Export.swift */,
-				BD5229221CFB26AC0069C831 /* WindmillTableViewDataSource.swift */,
-				BD5229241CFB26DF0069C831 /* WindmillTableViewCell.xib */,
-				BD5229261CFB27A50069C831 /* WindmillTableViewCell.swift */,
-				BD5229281CFB4B1D0069C831 /* AccountResource.swift */,
-				BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */,
-				BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */,
-				BD20D5341DC78E1E0016C891 /* WindmillTableViewDelegate.swift */,
-				BDA2D1471F0E26A1004EE03D /* Device.swift */,
+				BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */,
+				BD13B2151F016ADD00BFC755 /* common */,
+				BDA1AF9C221BE26C00EFB366 /* StoreKit */,
+				BDA1AF9A221BE17A00EFB366 /* Apps */,
+				BDA1AF9D221BE34B00EFB366 /* Account */,
+				BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */,
+				BDD1E96E1CDA92DB00976074 /* Main.storyboard */,
+				BD47531522144A18004C101E /* MainTabBarController.swift */,
+				BDA1AF92221ADB6500EFB366 /* MainNavigationController.swift */,
+				BD47531B221471E7004C101E /* MainController.swift */,
+				BD47531922146FF3004C101E /* MainViewController.swift */,
+				BDA1AF9E221BE79A00EFB366 /* MainTableViewHeaderView.swift */,
+				BDA1AF9F221BE79B00EFB366 /* MainTableViewHeaderView.xib */,
+				BD2136942212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift */,
+				BD2136922212B434009CB1A0 /* OpenStoreTableViewFooterView.xib */,
+				BD3B5F9B2211C9BB00D1D899 /* WelcomeViewController.swift */,
 				BD4B8CA22205DC1000D95493 /* ReceiptClaim.swift */,
-				BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */,
-				BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */,
-				BD440E6D1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib */,
-				BD440E6F1FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift */,
-				BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */,
-				BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */,
-				BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */,
-				BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */,
-				BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */,
-				BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */,
+				BDA2D1471F0E26A1004EE03D /* Device.swift */,
 				BD19B6C321F8DAC900743250 /* SubscriptionAuthorizationToken.swift */,
-				BDC55B1E21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift */,
-				BDC55B1B21FE7D97007153D6 /* Purchase.storyboard */,
-				BDF73C2A2202021000924316 /* Account.swift */,
-				BD4B8CA02203679E00D95493 /* PaymentQueue.swift */,
-				BDBE8F99220B341E00872B78 /* SubscriptionManager.swift */,
-				BD1949B8220C273F00ADE6E1 /* WindmillError.swift */,
+				BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */,
 			);
 			path = windmill;
 			sourceTree = "<group>";
@@ -356,7 +458,7 @@
 								enabled = 1;
 							};
 							com.apple.iCloud = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -405,11 +507,16 @@
 				BD0AD8AC1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib in Resources */,
 				BDD1E9751CDA92DB00976074 /* LaunchScreen.storyboard in Resources */,
 				BD440E681FA0B0F100FA81B3 /* InstallTableViewFooterView.xib in Resources */,
-				BD5229251CFB26DF0069C831 /* WindmillTableViewCell.xib in Resources */,
+				BD5229251CFB26DF0069C831 /* ExportTableViewCell.xib in Resources */,
+				BD2136992212D713009CB1A0 /* Subscriber.storyboard in Resources */,
 				BD440E6E1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib in Resources */,
+				BD2136932212B434009CB1A0 /* OpenStoreTableViewFooterView.xib in Resources */,
 				BDD1E9721CDA92DB00976074 /* Assets.xcassets in Resources */,
+				BDA1AF98221B1CCF00EFB366 /* MockExportTableViewCell.xib in Resources */,
 				BD0AD8A81FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib in Resources */,
+				BDA1AF90221ABB5D00EFB366 /* SubcriberTableViewFooterView.xib in Resources */,
 				BDD1E9701CDA92DB00976074 /* Main.storyboard in Resources */,
+				BDA1AFA1221BE79C00EFB366 /* MainTableViewHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,35 +562,52 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD4B8CA12203679E00D95493 /* PaymentQueue.swift in Sources */,
+				BD3B5F9C2211C9BB00D1D899 /* WelcomeViewController.swift in Sources */,
 				BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */,
 				BDF73C2B2202021000924316 /* Account.swift in Sources */,
+				BD3B5FA22211D58000D1D899 /* AccountTableViewDelegate.swift in Sources */,
+				BD47531A22146FF3004C101E /* MainViewController.swift in Sources */,
 				BDBE8F9A220B341E00872B78 /* SubscriptionManager.swift in Sources */,
 				BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */,
 				BD440E701FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift in Sources */,
 				BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */,
+				BD3B5F9A2211A01100D1D899 /* AccountViewController.swift in Sources */,
 				BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */,
 				BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */,
+				BD3B5FA02211D55900D1D899 /* AccountTableViewDataSource.swift in Sources */,
 				BD4B8CA32205DC1000D95493 /* ReceiptClaim.swift in Sources */,
-				BDD1E96D1CDA92DB00976074 /* MainViewController.swift in Sources */,
+				BDA1AFA0221BE79C00EFB366 /* MainTableViewHeaderView.swift in Sources */,
+				BDD1E96D1CDA92DB00976074 /* AppsViewController.swift in Sources */,
 				BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */,
 				BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */,
-				BD5229271CFB27A50069C831 /* WindmillTableViewCell.swift in Sources */,
+				BDA1AF93221ADB6500EFB366 /* MainNavigationController.swift in Sources */,
+				BD5229271CFB27A50069C831 /* ExportTableViewCell.swift in Sources */,
 				BD19B6C221F8D7EF00743250 /* SubscriptionResource.swift in Sources */,
+				BD47531622144A18004C101E /* MainTabBarController.swift in Sources */,
+				BDA1AF95221AE07900EFB366 /* PurchaseNavigationController.swift in Sources */,
 				BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */,
 				BD52291F1CFB25D30069C831 /* Export.swift in Sources */,
-				BD5229231CFB26AC0069C831 /* WindmillTableViewDataSource.swift in Sources */,
+				BD5229231CFB26AC0069C831 /* ExportTableViewDataSource.swift in Sources */,
+				BD47531C221471E7004C101E /* MainController.swift in Sources */,
+				BDB84800221C19B600A1CE61 /* SubscriptionDetailsViewController.swift in Sources */,
+				BDA1AF99221B1CCF00EFB366 /* MockExportTableViewCell.swift in Sources */,
+				BD0112EF22130F55003FA1D1 /* AccountNavigationController.swift in Sources */,
 				BD19B6C421F8DAC900743250 /* SubscriptionAuthorizationToken.swift in Sources */,
+				BD2136952212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift in Sources */,
 				BD21CED71F792EAD0003988F /* ApplicationStorage.swift in Sources */,
 				BD440E741FA0CC8800FA81B3 /* UIColor+Windmill.swift in Sources */,
-				BD4B8C9F2202F86A00D95493 /* MainNavigationController.swift in Sources */,
+				BD4B8C9F2202F86A00D95493 /* AppsNavigationController.swift in Sources */,
 				BD19B6C021F8D5F900743250 /* PurchaseOptionsViewController.swift in Sources */,
-				BD20D5351DC78E1E0016C891 /* WindmillTableViewDelegate.swift in Sources */,
+				BD20D5351DC78E1E0016C891 /* ExportTableViewDelegate.swift in Sources */,
+				BDA1AF91221ABB5D00EFB366 /* SubcriberTableViewFooterView.swift in Sources */,
 				BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */,
 				BDC55B1F21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift in Sources */,
-				BD1949B9220C273F00ADE6E1 /* WindmillError.swift in Sources */,
+				BD1949B9220C273F00ADE6E1 /* Subscription.swift in Sources */,
 				BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */,
 				BD440E721FA0C84A00FA81B3 /* Button.swift in Sources */,
+				BD47532022147E60004C101E /* SlideInFadeOutControllerTransitioningDelegate.swift in Sources */,
 				BD0AD8AA1FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift in Sources */,
+				BDB847FE221C135000A1CE61 /* SubscriptionStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

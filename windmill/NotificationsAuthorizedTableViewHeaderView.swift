@@ -10,13 +10,12 @@ import UIKit
 
 class NotificationsAuthorizedTableViewHeaderView: UITableViewHeaderFooterView {
     
-    @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var label: UILabel! {
         didSet{
             let attributedText = NSMutableAttributedString(string: "You will receive a notification when a ")
             attributedText.append(NSAttributedString(string: "New build", attributes: [.foregroundColor : UIColor.black, .font : UIFont.boldSystemFont(ofSize: 14)]))
             attributedText.append(NSAttributedString(string: " is "))
-            attributedText.append(NSAttributedString(string: "deployed", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
+            attributedText.append(NSAttributedString(string: "published", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
             attributedText.append(NSAttributedString(string: "."))
             label.attributedText = attributedText
         }

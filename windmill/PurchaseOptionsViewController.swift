@@ -22,34 +22,32 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
     
     let subscriptionLabelTitle = "Auto Renewable Subscription\n %@"
     
-    var subscriptionManager: SubscriptionManager? {
+    weak var subscriptionManager: SubscriptionManager? {
         didSet {
-            self.subscriptionManager?.delegate = self
+            subscriptionManager?.delegate = self
         }
     }
-    
-    let queue: PaymentQueue = PaymentQueue.default
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(purchasing(notification:)), name: PaymentQueue.purchasing, object: PaymentQueue.default)
-        NotificationCenter.default.addObserver(self, selector: #selector(purchased(notification:)), name: PaymentQueue.purchased, object: PaymentQueue.default)
-        NotificationCenter.default.addObserver(self, selector: #selector(transactionError(notification:)), name: PaymentQueue.transactionError, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchasing(notification:)), name: SubscriptionManager.SubscriptionPurchasing, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(purchasing(notification:)), name: PaymentQueue.purchasing, object: PaymentQueue.default)
-        NotificationCenter.default.addObserver(self, selector: #selector(purchased(notification:)), name: PaymentQueue.purchased, object: PaymentQueue.default)
-        NotificationCenter.default.addObserver(self, selector: #selector(transactionError(notification:)), name: PaymentQueue.transactionError, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchasing(notification:)), name: SubscriptionManager.SubscriptionPurchasing, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let product = self.subscriptionManager?.products?.first( where: SubscriptionManager.Product.isIndividualMonthly) {
+        if let product = self.subscriptionManager?.products?.first(where: SubscriptionManager.Product.isIndividualMonthly) {
             self.updateView(product: product)
         }
     }
@@ -79,16 +77,16 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         present(alertController, animated: true, completion: nil)
     }
 
-    @objc func purchasing(notification: NSNotification) {
+    @objc func subscriptionPurchasing(notification: NSNotification) {
         self.purchaseButton.isEnabled = false
         self.activityIndicatorViewSubscribe.startAnimating()
     }
     
-    @objc func purchased(notification: NSNotification) {
-        NotificationCenter.default.post(name: Account.isSubscriber, object: self.queue)
+    @objc func subscriptionActive(notification: NSNotification) {
+        self.performSegue(withIdentifier: "SubscriberUnwind", sender: self)
     }
     
-    @objc func transactionError(notification: NSNotification) {
+    @objc func subscriptionFailed(notification: NSNotification) {
         self.purchaseButton?.isEnabled = true
         self.activityIndicatorViewSubscribe?.stopAnimating()
         
@@ -99,7 +97,7 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         switch error {
         case let error as SKError where error.code == SKError.paymentCancelled:
             return
-        case let error as WindmillError:
+        case let error as SubscriptionError:
             let alertController = UIAlertController.Windmill.make(error: error)
             self.present(alertController, animated: true, completion: nil)
         default:
@@ -109,12 +107,11 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
     }
     
     @IBAction func purchase(_ sender: Any) {
-        
-        guard let product = self.subscriptionManager?.products?.first( where: SubscriptionManager.Product.isIndividualMonthly) else {
+
+        guard let product = self.subscriptionManager?.products?.first(where: SubscriptionManager.Product.isIndividualMonthly) else {
             return
         }
         
-        let payment = SKPayment(product: product)
-        self.queue.add(payment)
+        self.subscriptionManager?.purchase(product)
     }
 }

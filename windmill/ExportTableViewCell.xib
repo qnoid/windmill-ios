@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WindmillTableViewCell" customModule="windmill" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExportTableViewCell" customModule="windmill" customModuleProvider="target">
             <connections>
                 <outlet property="dateLabel" destination="Mrx-UF-dRf" id="mWA-Q6-fkY"/>
                 <outlet property="iconImageVIew" destination="NA1-FC-BRk" id="yUc-Tn-Rc5"/>
