@@ -25,9 +25,9 @@ class LoginViewController: UIViewController {
     
     var applicationStorage: ApplicationStorage = ApplicationStorage.default
     
-    static func make(applicationStorage: ApplicationStorage = ApplicationStorage.default) -> LoginViewController? {
+    static func make(applicationStorage: ApplicationStorage = ApplicationStorage.default, storyboard: UIStoryboard = WindmillApp.Storyboard.main()) -> LoginViewController? {
         
-        let loginViewController = Storyboards.main().instantiateViewController(withIdentifier: String(describing: self)) as? LoginViewController
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: String(describing: self)) as? LoginViewController
         
         loginViewController?.applicationStorage = applicationStorage
         
@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        guard let mainViewController = navigationController.topViewController as? MainViewController else {
+        guard let mainViewController = navigationController.topViewController as? AppsViewController else {
             return
         }
         navigationController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(didTouchUpInsideClose(_:)))
@@ -64,11 +64,11 @@ class LoginViewController: UIViewController {
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let navigationController = Storyboards.main().instantiateViewController(withIdentifier: "MainNavigationViewController") as? UINavigationController else {
+        guard let navigationController = WindmillApp.Storyboard.main().instantiateViewController(withIdentifier: "MainNavigationViewController") as? UINavigationController else {
             return false
         }
         
-        guard let viewController = navigationController.topViewController as? MainViewController else {
+        guard let viewController = navigationController.topViewController as? AppsViewController else {
             return false
         }
         navigationController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(didTouchUpInsideClose(_:)))

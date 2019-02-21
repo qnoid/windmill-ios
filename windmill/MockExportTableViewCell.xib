@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.59" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.45"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MockExportTableViewCell" customModule="windmill" customModuleProvider="target">
+            <connections>
+                <outlet property="iconImageVIew" destination="NA1-FC-BRk" id="LK8-5L-xEr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="contentView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ipa" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-FC-BRk">
+                    <rect key="frame" x="20" y="21.5" width="64" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="2Gp-ai-Gai"/>
+                        <constraint firstAttribute="width" constant="64" id="Fhx-Qh-4yI"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHb-FD-Ktb" customClass="Button" customModule="windmill" customModuleProvider="target">
+                    <rect key="frame" x="84" y="38.5" width="228" height="30"/>
+                    <state key="normal" title="Reveal any published apps."/>
+                    <connections>
+                        <action selector="displayAppsNavigationController" destination="-2" eventType="touchUpInside" id="W3U-pd-gJZ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="NA1-FC-BRk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CYC-Oe-3zn"/>
+                <constraint firstItem="NA1-FC-BRk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="TBX-xI-uwi"/>
+                <constraint firstAttribute="trailing" secondItem="rHb-FD-Ktb" secondAttribute="trailing" constant="8" id="VEZ-u5-P7h"/>
+                <constraint firstItem="rHb-FD-Ktb" firstAttribute="leading" secondItem="NA1-FC-BRk" secondAttribute="trailing" id="aLU-AS-2PP"/>
+                <constraint firstItem="rHb-FD-Ktb" firstAttribute="centerY" secondItem="NA1-FC-BRk" secondAttribute="centerY" id="uOx-vd-UaI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="158" y="120.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ipa" width="64" height="64"/>
+    </resources>
+</document>

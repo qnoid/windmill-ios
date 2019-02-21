@@ -26,16 +26,20 @@ struct ApplicationStorage {
     
     static let `default`: ApplicationStorage = {
         
-        let applicationSupportDirectory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!
+        let applicationSupportDirectoryURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).last!
         
-        do {
-            try FileManager.default.createDirectory(at: applicationSupportDirectory, withIntermediateDirectories: false, attributes: [:])
-        }
-        catch let error as NSError {
-            os_log("%{public}@", log: .default, type: .debug, error)
+        if FileManager.default.fileExists(atPath: applicationSupportDirectoryURL.path) {
+            return ApplicationStorage(url: applicationSupportDirectoryURL)
+        } else {
+            do {
+                try FileManager.default.createDirectory(at: applicationSupportDirectoryURL, withIntermediateDirectories: false, attributes: [:])
+            }
+            catch let error as NSError {
+                os_log("%{public}@", log: .default, type: .debug, error)
+            }
         }
         
-        return ApplicationStorage(url: applicationSupportDirectory)
+        return ApplicationStorage(url: applicationSupportDirectoryURL)
     }()
     
     let url: URL

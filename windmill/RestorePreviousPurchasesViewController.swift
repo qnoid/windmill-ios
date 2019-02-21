@@ -24,34 +24,31 @@ class RestorePreviousPurchasesViewController: UIViewController {
     
     @IBOutlet var activityIndicatorViewRestoringPurchases: UIActivityIndicatorView!
     
-    let subscriptionManager = SubscriptionManager()
+    
     var productsRequest: SKProductsRequest?
     
-    let queue: PaymentQueue = PaymentQueue.default
+    let subscriptionManager: SubscriptionManager = SubscriptionManager()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(restored(notification:)), name: PaymentQueue.restored, object: PaymentQueue.default)
-        NotificationCenter.default.addObserver(self, selector: #selector(transactionError(notification:)), name: PaymentQueue.restoreFailedWithError, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestoreFailed(notification:)), name: SubscriptionManager.SubscriptionRestoreFailed, object: subscriptionManager)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(restored(notification:)), name: PaymentQueue.restored, object: PaymentQueue.default)
-        NotificationCenter.default.addObserver(self, selector: #selector(transactionError(notification:)), name: PaymentQueue.restoreFailedWithError, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestoreFailed(notification:)), name: SubscriptionManager.SubscriptionRestoreFailed, object: subscriptionManager)
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         if SKPaymentQueue.canMakePayments() {
             self.productsRequest = subscriptionManager.productsRequest()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,18 +57,14 @@ class RestorePreviousPurchasesViewController: UIViewController {
             return
         }
         
-        purchaseOptionsViewController.subscriptionManager = subscriptionManager
+        purchaseOptionsViewController.subscriptionManager = self.subscriptionManager
     }
     
-    @IBAction func dismiss(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+    @objc func subscriptionActive(notification: NSNotification) {
+        self.performSegue(withIdentifier: "SubscriberUnwind", sender: self)
     }
 
-    @objc func restored(notification: NSNotification) {
-        NotificationCenter.default.post(name: Account.isSubscriber, object: self.queue)
-    }
-
-    @objc func transactionError(notification: NSNotification) {
+    @objc func subscriptionRestoreFailed(notification: NSNotification) {
         self.restorePreviousPurchasesButton.isEnabled = true
         self.activityIndicatorViewRestoringPurchases.stopAnimating()
         
@@ -80,7 +73,7 @@ class RestorePreviousPurchasesViewController: UIViewController {
         }
         
         switch error {
-        case let error as WindmillError:
+        case let error as SubscriptionError:
             let alertController = UIAlertController.Windmill.make(error: error)
             self.present(alertController, animated: true, completion: nil)
         default:
@@ -92,6 +85,6 @@ class RestorePreviousPurchasesViewController: UIViewController {
     @IBAction func restorePreviousPurchases() {
         self.restorePreviousPurchasesButton.isEnabled = false
         self.activityIndicatorViewRestoringPurchases.startAnimating()
-        SKPaymentQueue.default().restoreCompletedTransactions()
+        self.subscriptionManager.restoreSubscriptions()
     }
 }

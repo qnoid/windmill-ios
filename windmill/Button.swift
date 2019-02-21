@@ -27,7 +27,7 @@ class Button: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.layer.borderColor = self.tintColor.cgColor
+        self.layer.borderColor = self.titleColor(for: .normal)?.cgColor
         self.layer.borderWidth = self.borderWidth
         self.layer.cornerRadius = self.cornerRadius
         self.layer.masksToBounds = true

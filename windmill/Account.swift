@@ -9,10 +9,7 @@
 import Foundation
 
 public struct Account: Codable {
-    
-    //Posted when the users purchases a new subscription
-    static let isSubscriber = Notification.Name("account.isSubscriber")
-    
+        
     enum CodingKeys: String, CodingKey {
         case identifier = "account_identifier"
     }

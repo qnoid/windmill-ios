@@ -19,7 +19,7 @@ extension UIAlertController {
             return alertController
         }
         
-        static func make(error: WindmillError) -> UIAlertController {
+        static func make(error: SubscriptionError) -> UIAlertController {
             let message = "\(error.errorDescription ?? "") \(error.failureReason ?? "") \(error.recoverySuggestion ?? "")"
             let alertController = UIAlertController(title: error.errorTitle ?? "Error", message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))

@@ -22,7 +22,7 @@
                 <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0z-LO-GEX" customClass="Button" customModule="windmill" customModuleProvider="target">
                     <rect key="frame" x="16" y="8" width="288" height="50"/>
                     <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="14"/>
-                    <state key="normal" title="Notify me when a New build is deployed."/>
+                    <state key="normal" title="Notify me when a New build is published."/>
                     <connections>
                         <action selector="didTouchUpInsideAuthorizeButton:" destination="-1" eventType="touchUpInside" id="AWG-ig-kcs"/>
                     </connections>

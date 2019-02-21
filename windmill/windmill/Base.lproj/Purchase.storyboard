@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NS5-YE-bJs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NS5-YE-bJs">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,103 +18,125 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Windmill macOS" translatesAutoresizingMaskIntoConstraints="NO" id="8GH-xz-MNG">
-                                <rect key="frame" x="112" y="64" width="96" height="96"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Windmill" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="943-67-gFf">
-                                <rect key="frame" x="125.5" y="168" width="69.5" height="20.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your companion for seamless iOS development." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJI-rq-KEK">
-                                <rect key="frame" x="16" y="196.5" width="288" height="38"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3m-aZ-208">
-                                <rect key="frame" x="16" y="244.5" width="288" height="196"/>
-                                <string key="text">Windmill helps you, the iOS Developer, to deliver your iOS apps in a reliable and predictable way. Its main goal is to provide quality assurance.
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80I-KJ-8zZ">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Windmill macOS" translatesAutoresizingMaskIntoConstraints="NO" id="8GH-xz-MNG">
+                                        <rect key="frame" x="112" y="0.0" width="96" height="96"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="96" id="60g-i2-6No"/>
+                                            <constraint firstAttribute="width" constant="96" id="dE9-jk-fuc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Windmill" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="943-67-gFf">
+                                        <rect key="frame" x="8" y="104" width="304" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your companion for seamless iOS development." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJI-rq-KEK">
+                                        <rect key="frame" x="8" y="132.5" width="304" height="38"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3m-aZ-208">
+                                        <rect key="frame" x="8" y="190.5" width="304" height="178"/>
+                                        <string key="text">Windmill helps you, the iOS Developer, to deliver your iOS apps in a reliable and predictable way. Its main goal is to provide quality assurance.
 
 Windmill on the Mac continuously monitors for code changes, building, testing, archiving and exporting your app.
 
-Windmill on the iPhone further enables the distribution of your app to registered devices.</string>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-x5-Khi" customClass="Button" customModule="windmill" customModuleProvider="target">
-                                <rect key="frame" x="16" y="450.5" width="288" height="44"/>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+Windmill on the iPhone further enables the publishing of your app to registered devices.</string>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-x5-Khi" customClass="Button" customModule="windmill" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="388.5" width="288" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="El9-Iw-jmT"/>
+                                            <constraint firstAttribute="height" constant="44" id="grm-mo-0qM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="Open Purchase Options">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="xKx-cs-ohh" kind="show" id="hPB-yk-k8h"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DV-Ad-8qU" customClass="Button" customModule="windmill" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="442.5" width="288" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="wzJ-fP-Gbd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <state key="normal" title="Restore Purchases">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.039215686270000001" green="0.51764705879999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="restorePreviousPurchases" destination="QAi-zj-0zW" eventType="touchUpInside" id="mnO-8e-A1g"/>
+                                        </connections>
+                                    </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="IFe-1x-jXS">
+                                        <rect key="frame" x="141.5" y="446" width="37" height="37"/>
+                                        <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                                    </activityIndicatorView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="El9-Iw-jmT"/>
-                                    <constraint firstAttribute="height" constant="44" id="grm-mo-0qM"/>
+                                    <constraint firstItem="2DV-Ad-8qU" firstAttribute="centerX" secondItem="fBP-x5-Khi" secondAttribute="centerX" id="073-Xu-AKx"/>
+                                    <constraint firstItem="fBP-x5-Khi" firstAttribute="top" secondItem="B3m-aZ-208" secondAttribute="bottom" constant="20" id="1oL-F7-sAw"/>
+                                    <constraint firstItem="8GH-xz-MNG" firstAttribute="top" secondItem="80I-KJ-8zZ" secondAttribute="top" id="3U9-9Y-9r7"/>
+                                    <constraint firstItem="uYb-6J-JpN" firstAttribute="trailing" secondItem="943-67-gFf" secondAttribute="trailing" constant="8" id="9Tu-Ft-C47"/>
+                                    <constraint firstItem="VJI-rq-KEK" firstAttribute="top" secondItem="943-67-gFf" secondAttribute="bottom" constant="8" id="DB9-lp-Va4"/>
+                                    <constraint firstItem="uYb-6J-JpN" firstAttribute="trailing" secondItem="B3m-aZ-208" secondAttribute="trailing" constant="8" id="Das-ce-P2H"/>
+                                    <constraint firstItem="VJI-rq-KEK" firstAttribute="leading" secondItem="uYb-6J-JpN" secondAttribute="leading" constant="8" id="Eyo-7m-76V"/>
+                                    <constraint firstItem="IFe-1x-jXS" firstAttribute="centerY" secondItem="2DV-Ad-8qU" secondAttribute="centerY" id="GS6-b7-Fif"/>
+                                    <constraint firstItem="IFe-1x-jXS" firstAttribute="centerX" secondItem="2DV-Ad-8qU" secondAttribute="centerX" id="JqW-ae-r7y"/>
+                                    <constraint firstItem="943-67-gFf" firstAttribute="leading" secondItem="uYb-6J-JpN" secondAttribute="leading" constant="8" id="PeT-MQ-2WJ"/>
+                                    <constraint firstItem="B3m-aZ-208" firstAttribute="leading" secondItem="uYb-6J-JpN" secondAttribute="leading" constant="8" id="RKy-U0-BWp"/>
+                                    <constraint firstItem="2DV-Ad-8qU" firstAttribute="top" secondItem="fBP-x5-Khi" secondAttribute="bottom" constant="10" id="ToM-QY-oxl"/>
+                                    <constraint firstItem="B3m-aZ-208" firstAttribute="top" secondItem="VJI-rq-KEK" secondAttribute="bottom" constant="20" id="V2D-YO-qZo"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="2DV-Ad-8qU" secondAttribute="bottom" id="WM4-N6-E2J"/>
+                                    <constraint firstItem="fBP-x5-Khi" firstAttribute="centerX" secondItem="uYb-6J-JpN" secondAttribute="centerX" id="ZRR-dE-iOa"/>
+                                    <constraint firstItem="943-67-gFf" firstAttribute="top" secondItem="8GH-xz-MNG" secondAttribute="bottom" constant="8" id="bdF-ql-tMs"/>
+                                    <constraint firstItem="uYb-6J-JpN" firstAttribute="trailing" secondItem="VJI-rq-KEK" secondAttribute="trailing" constant="8" id="eVj-sg-N5L"/>
+                                    <constraint firstItem="VJI-rq-KEK" firstAttribute="leading" secondItem="80I-KJ-8zZ" secondAttribute="leading" constant="8" id="lf7-y3-GOT"/>
+                                    <constraint firstAttribute="trailing" secondItem="VJI-rq-KEK" secondAttribute="trailing" constant="8" id="nJB-P7-xhv"/>
+                                    <constraint firstItem="2DV-Ad-8qU" firstAttribute="width" secondItem="fBP-x5-Khi" secondAttribute="width" id="rO7-hZ-rQY"/>
+                                    <constraint firstItem="2DV-Ad-8qU" firstAttribute="height" secondItem="fBP-x5-Khi" secondAttribute="height" id="tcd-bs-0en"/>
+                                    <constraint firstItem="8GH-xz-MNG" firstAttribute="centerX" secondItem="uYb-6J-JpN" secondAttribute="centerX" id="xgi-bF-40V"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Open Purchase Options"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="xKx-cs-ohh" kind="show" id="hPB-yk-k8h"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DV-Ad-8qU" customClass="Button" customModule="windmill" customModuleProvider="target">
-                                <rect key="frame" x="16" y="504.5" width="288" height="44"/>
-                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="wzJ-fP-Gbd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Restore Purchases">
-                                    <color key="titleColor" red="0.039215686270000001" green="0.51764705879999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.039215686270000001" green="0.51764705879999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="restorePreviousPurchases" destination="QAi-zj-0zW" eventType="touchUpInside" id="mnO-8e-A1g"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="IFe-1x-jXS">
-                                <rect key="frame" x="150" y="516.5" width="20" height="20"/>
-                                <color key="color" red="0.039215686270000001" green="0.51764705879999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
+                                <viewLayoutGuide key="safeArea" id="uYb-6J-JpN"/>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.12942376732826233" green="0.12940075993537903" blue="0.12943032383918762" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.23921568630000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8GH-xz-MNG" firstAttribute="centerX" secondItem="cgM-Dz-OiX" secondAttribute="centerX" id="17q-kQ-JSV"/>
-                            <constraint firstItem="B3m-aZ-208" firstAttribute="top" secondItem="VJI-rq-KEK" secondAttribute="bottom" constant="10" id="1P9-08-bcO"/>
-                            <constraint firstItem="VJI-rq-KEK" firstAttribute="leading" secondItem="KzN-hx-5Jq" secondAttribute="leadingMargin" id="2Z9-9G-3sy"/>
-                            <constraint firstItem="2DV-Ad-8qU" firstAttribute="centerX" secondItem="fBP-x5-Khi" secondAttribute="centerX" id="3PO-Bj-x8c"/>
-                            <constraint firstItem="8GH-xz-MNG" firstAttribute="top" secondItem="cgM-Dz-OiX" secondAttribute="top" id="7P6-l3-h6v"/>
-                            <constraint firstItem="IFe-1x-jXS" firstAttribute="centerY" secondItem="2DV-Ad-8qU" secondAttribute="centerY" id="HR0-uq-3IE"/>
-                            <constraint firstItem="fBP-x5-Khi" firstAttribute="top" secondItem="B3m-aZ-208" secondAttribute="bottom" constant="10" id="NNv-2j-Kbo"/>
-                            <constraint firstItem="fBP-x5-Khi" firstAttribute="height" secondItem="2DV-Ad-8qU" secondAttribute="height" id="NqB-ip-B6E"/>
-                            <constraint firstItem="2DV-Ad-8qU" firstAttribute="width" secondItem="fBP-x5-Khi" secondAttribute="width" id="QlR-Wb-bfF"/>
-                            <constraint firstItem="943-67-gFf" firstAttribute="centerX" secondItem="cgM-Dz-OiX" secondAttribute="centerX" id="Red-Tx-SSG"/>
-                            <constraint firstItem="VJI-rq-KEK" firstAttribute="top" secondItem="943-67-gFf" secondAttribute="bottom" constant="8" id="YcQ-je-pDr"/>
-                            <constraint firstItem="2DV-Ad-8qU" firstAttribute="top" secondItem="fBP-x5-Khi" secondAttribute="bottom" constant="10" id="by9-Yd-1c4"/>
-                            <constraint firstItem="fBP-x5-Khi" firstAttribute="centerX" secondItem="cgM-Dz-OiX" secondAttribute="centerX" id="kjy-qC-Fdi"/>
-                            <constraint firstItem="IFe-1x-jXS" firstAttribute="centerX" secondItem="2DV-Ad-8qU" secondAttribute="centerX" id="rsa-xm-Edu"/>
-                            <constraint firstItem="943-67-gFf" firstAttribute="top" secondItem="8GH-xz-MNG" secondAttribute="bottom" constant="8" id="szR-D6-C6N"/>
-                            <constraint firstItem="cgM-Dz-OiX" firstAttribute="trailing" secondItem="B3m-aZ-208" secondAttribute="trailing" constant="16" id="xIg-qx-33y"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VJI-rq-KEK" secondAttribute="trailing" id="ycO-42-H80"/>
-                            <constraint firstItem="B3m-aZ-208" firstAttribute="leading" secondItem="cgM-Dz-OiX" secondAttribute="leading" constant="16" id="ysH-r1-qZU"/>
+                            <constraint firstItem="cgM-Dz-OiX" firstAttribute="trailing" secondItem="80I-KJ-8zZ" secondAttribute="trailing" id="Jnl-64-W1D"/>
+                            <constraint firstItem="80I-KJ-8zZ" firstAttribute="bottom" secondItem="cgM-Dz-OiX" secondAttribute="bottom" id="QvS-yS-Ouw"/>
+                            <constraint firstItem="80I-KJ-8zZ" firstAttribute="leading" secondItem="cgM-Dz-OiX" secondAttribute="leading" id="Qw5-ne-XGO"/>
+                            <constraint firstItem="80I-KJ-8zZ" firstAttribute="top" secondItem="cgM-Dz-OiX" secondAttribute="top" id="nVc-Ts-exz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cgM-Dz-OiX"/>
                     </view>
@@ -122,7 +144,7 @@ Windmill on the iPhone further enables the distribution of your app to registere
                     <navigationItem key="navigationItem" title="Windmill Store" id="Pic-GZ-TRc">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="zHe-34-YvA">
                             <connections>
-                                <action selector="dismiss:" destination="QAi-zj-0zW" id="7Uw-bR-G55"/>
+                                <segue destination="9r3-bw-SaY" kind="unwind" unwindAction="unwindToMainTabBarController:" id="4Yr-PY-Jay"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -131,9 +153,11 @@ Windmill on the iPhone further enables the distribution of your app to registere
                         <outlet property="activityIndicatorViewRestoringPurchases" destination="IFe-1x-jXS" id="N9X-Zt-G5K"/>
                         <outlet property="openPurchaseButton" destination="fBP-x5-Khi" id="zD5-OX-fgO"/>
                         <outlet property="restorePreviousPurchasesButton" destination="2DV-Ad-8qU" id="NLn-m0-Nh7"/>
+                        <segue destination="9r3-bw-SaY" kind="unwind" identifier="SubscriberUnwind" unwindAction="unwindToSubscriber:" id="XNz-7O-rCI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TP1-xJ-Cqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="9r3-bw-SaY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="699.375" y="53.87323943661972"/>
         </scene>
@@ -148,16 +172,18 @@ Windmill on the iPhone further enables the distribution of your app to registere
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUj-0q-v2K">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Renewable Subscription" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kg-BT-ufn">
+                                        <rect key="frame" x="8" y="8" width="304" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lights" translatesAutoresizingMaskIntoConstraints="NO" id="34P-We-QhG">
-                                        <rect key="frame" x="32" y="36.5" width="256" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="256" id="4J9-Jq-4sT"/>
-                                            <constraint firstAttribute="height" constant="15" id="ozz-n4-yfL"/>
-                                        </constraints>
+                                        <rect key="frame" x="32" y="44.5" width="256" height="15"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stl-S5-5Tf">
-                                        <rect key="frame" x="16" y="59.5" width="288" height="214"/>
-                                        <string key="text">An Individual Subscription enables Windmill on the Mac to distribute your app every time you make a code change.
+                                        <rect key="frame" x="8" y="75.5" width="304" height="214"/>
+                                        <string key="text">An Individual Subscription enables Windmill on the Mac to publish your app every time you make a code change.
 
 Whether it is the end of a sprint, demo day or keeping your customers, partners and collaborators in the loop, the latest build is available to install on your registered devices* using Windmill on the iPhone.
 
@@ -167,7 +193,7 @@ Whether it is the end of a sprint, demo day or keeping your customers, partners 
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ko-6Y-wzb">
-                                        <rect key="frame" x="8" y="425.5" width="304" height="169.5"/>
+                                        <rect key="frame" x="8" y="441.5" width="304" height="169.5"/>
                                         <string key="text">This subscription automatically renews after the 30 day free trial unless cancelled at least 24 hours before the end of the subscription period. 
 
 This subscription is charged through your iTunes Account. You can cancel and manage your subscription in your iTunes Account Settings at any time. 
@@ -180,15 +206,16 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbO-e7-4p5" customClass="Button" customModule="windmill" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="341.5" width="288" height="44"/>
-                                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="16" y="357.5" width="288" height="44"/>
+                                        <color key="backgroundColor" red="1" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="KaT-Vw-yaK"/>
                                             <constraint firstAttribute="height" constant="44" id="iK7-tf-lTX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="tintColor" red="0.039215686270000001" green="0.51764705879999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Subscribe"/>
+                                        <state key="normal" title="Subscribe">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="20"/>
@@ -202,50 +229,45 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your 30-day free trial." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT1-px-JlN">
-                                        <rect key="frame" x="16" y="313.5" width="288" height="20"/>
+                                        <rect key="frame" x="16" y="329.5" width="288" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Renewable Subscription" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kg-BT-ufn">
-                                        <rect key="frame" x="8" y="8" width="304" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="15V-pF-xoz">
-                                        <rect key="frame" x="150" y="353.5" width="20" height="20"/>
-                                        <color key="color" red="0.039215686270000001" green="0.51764705879999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="15V-pF-xoz">
+                                        <rect key="frame" x="141.5" y="361" width="37" height="37"/>
+                                        <color key="color" cocoaTouchSystemColor="darkTextColor"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="15V-pF-xoz" firstAttribute="centerY" secondItem="cbO-e7-4p5" secondAttribute="centerY" id="7Hf-tj-G80"/>
                                     <constraint firstItem="4Ko-6Y-wzb" firstAttribute="top" secondItem="cbO-e7-4p5" secondAttribute="bottom" constant="40" id="8Rr-pM-sI4"/>
-                                    <constraint firstItem="stl-S5-5Tf" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="16" id="AVm-jq-tjN"/>
+                                    <constraint firstItem="stl-S5-5Tf" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="8" id="AVm-jq-tjN"/>
                                     <constraint firstItem="cbO-e7-4p5" firstAttribute="top" secondItem="bT1-px-JlN" secondAttribute="bottom" constant="8" symbolic="YES" id="CQP-M1-Vls"/>
-                                    <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="stl-S5-5Tf" secondAttribute="trailing" constant="16" id="GaY-w8-85z"/>
+                                    <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="stl-S5-5Tf" secondAttribute="trailing" constant="8" id="GaY-w8-85z"/>
+                                    <constraint firstItem="6kg-BT-ufn" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="8" id="IUD-Pa-QwN"/>
                                     <constraint firstItem="cbO-e7-4p5" firstAttribute="centerX" secondItem="PTn-yk-Pm4" secondAttribute="centerX" id="QhN-rp-edS"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="4Ko-6Y-wzb" secondAttribute="bottom" id="S0c-kS-1FO"/>
-                                    <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="4Ko-6Y-wzb" secondAttribute="trailingMargin" constant="16" id="Td2-Kv-yeT"/>
-                                    <constraint firstItem="stl-S5-5Tf" firstAttribute="top" secondItem="34P-We-QhG" secondAttribute="bottom" constant="8" symbolic="YES" id="Y9b-IR-shL"/>
-                                    <constraint firstItem="34P-We-QhG" firstAttribute="top" secondItem="6kg-BT-ufn" secondAttribute="bottom" constant="8" symbolic="YES" id="Zz7-1U-ID8"/>
-                                    <constraint firstItem="4Ko-6Y-wzb" firstAttribute="leadingMargin" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="16" id="aIi-XR-gDL"/>
-                                    <constraint firstItem="34P-We-QhG" firstAttribute="centerX" secondItem="CUj-0q-v2K" secondAttribute="centerX" id="cDZ-SP-l4r"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="6kg-BT-ufn" secondAttribute="trailing" placeholder="YES" id="eIJ-dl-tpa"/>
-                                    <constraint firstItem="6kg-BT-ufn" firstAttribute="leading" secondItem="CUj-0q-v2K" secondAttribute="leadingMargin" placeholder="YES" id="fVz-Bc-bDI"/>
-                                    <constraint firstItem="6kg-BT-ufn" firstAttribute="centerX" secondItem="PTn-yk-Pm4" secondAttribute="centerX" id="kkb-d3-tY9"/>
+                                    <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="4Ko-6Y-wzb" secondAttribute="trailing" constant="8" id="Td2-Kv-yeT"/>
+                                    <constraint firstItem="stl-S5-5Tf" firstAttribute="top" secondItem="34P-We-QhG" secondAttribute="bottom" constant="16" id="Y9b-IR-shL"/>
+                                    <constraint firstItem="34P-We-QhG" firstAttribute="top" secondItem="6kg-BT-ufn" secondAttribute="bottom" constant="16" id="Zz7-1U-ID8"/>
+                                    <constraint firstItem="4Ko-6Y-wzb" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="8" id="aIi-XR-gDL"/>
+                                    <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="6kg-BT-ufn" secondAttribute="trailing" constant="8" id="oj1-q2-4wL"/>
+                                    <constraint firstItem="stl-S5-5Tf" firstAttribute="leading" secondItem="CUj-0q-v2K" secondAttribute="leading" constant="8" id="rRf-t3-nXk"/>
+                                    <constraint firstAttribute="trailing" secondItem="stl-S5-5Tf" secondAttribute="trailing" constant="8" id="rhI-18-RXo"/>
                                     <constraint firstItem="bT1-px-JlN" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="16" id="uRZ-Nj-VcH"/>
                                     <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="bT1-px-JlN" secondAttribute="trailing" constant="16" id="wLJ-At-YtQ"/>
                                     <constraint firstItem="bT1-px-JlN" firstAttribute="top" secondItem="stl-S5-5Tf" secondAttribute="bottom" constant="40" id="whw-fZ-2Y3"/>
                                     <constraint firstItem="15V-pF-xoz" firstAttribute="centerX" secondItem="cbO-e7-4p5" secondAttribute="centerX" id="xli-Ts-1o5"/>
+                                    <constraint firstItem="34P-We-QhG" firstAttribute="centerX" secondItem="PTn-yk-Pm4" secondAttribute="centerX" id="yHG-Yu-sBp"/>
                                     <constraint firstItem="6kg-BT-ufn" firstAttribute="top" secondItem="CUj-0q-v2K" secondAttribute="topMargin" id="z84-Yi-2qd"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="PTn-yk-Pm4"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.12942376732826233" green="0.12940075993537903" blue="0.12943032383918762" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.23921568630000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CUj-0q-v2K" firstAttribute="top" secondItem="FNM-Cd-KyV" secondAttribute="topMargin" id="3pV-Rf-Eun"/>
+                            <constraint firstItem="CUj-0q-v2K" firstAttribute="top" secondItem="FTs-l0-E1N" secondAttribute="top" id="3pV-Rf-Eun"/>
                             <constraint firstItem="CUj-0q-v2K" firstAttribute="leading" secondItem="FTs-l0-E1N" secondAttribute="leading" id="OzR-Ok-kNQ"/>
                             <constraint firstItem="CUj-0q-v2K" firstAttribute="trailing" secondItem="FTs-l0-E1N" secondAttribute="trailing" id="RzQ-4S-PBx"/>
                             <constraint firstItem="CUj-0q-v2K" firstAttribute="bottom" secondItem="FTs-l0-E1N" secondAttribute="bottom" id="wPT-Hp-3ZX"/>
@@ -258,16 +280,19 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
                         <outlet property="activityIndicatorViewSubscribe" destination="15V-pF-xoz" id="FeK-r7-jj6"/>
                         <outlet property="purchaseButton" destination="cbO-e7-4p5" id="kI7-j9-it9"/>
                         <outlet property="subscriptionLabel" destination="6kg-BT-ufn" id="djH-WQ-O0x"/>
+                        <segue destination="Z28-Sg-b3x" kind="unwind" identifier="UnwindToMainTabBarController" unwindAction="unwindToSubscriber:" id="XFN-O3-wqg"/>
+                        <segue destination="Z28-Sg-b3x" kind="unwind" identifier="SubscriberUnwind" unwindAction="unwindToSubscriber:" id="NdY-oP-1kF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2w-Ch-I3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Z28-Sg-b3x" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1641" y="54"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Purchase Navigation Controller-->
         <scene sceneID="cRQ-LH-CNG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NS5-YE-bJs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NS5-YE-bJs" customClass="PurchaseNavigationController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bxr-07-LJI">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -285,7 +310,7 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
     </scenes>
     <resources>
         <image name="Windmill macOS" width="96" height="96"/>
-        <image name="lights" width="256" height="15"/>
+        <image name="lights" width="256" height="15.5"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
