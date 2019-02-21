@@ -28,14 +28,19 @@ class AccountTableViewDelegate: NSObject, UITableViewDelegate {
         let setting = settings[indexPath.row]
         
         let cell = tableView.cellForRow(at: indexPath)
-        
-        switch setting {
-            case .restorePurchases:
-                cell?.accessoryView = UIActivityIndicatorView(style: .gray)
-            default:
-                break
+
+        if let activityIndicatorView = cell?.accessoryView as? UIActivityIndicatorView {
+            activityIndicatorView.startAnimating()
         }
         
         controller?.didSelect(setting: setting)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+
+        if let activityIndicatorView = cell?.accessoryView as? UIActivityIndicatorView {
+            activityIndicatorView.stopAnimating()
+        }
     }
 }

@@ -78,10 +78,6 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lights" translatesAutoresizingMaskIntoConstraints="NO" id="Y7q-OF-IBQ">
                                 <rect key="frame" x="59.5" y="100.5" width="256" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="EFq-TX-cD3"/>
-                                    <constraint firstAttribute="width" constant="256" id="FtY-TE-hyd"/>
-                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Renewable Individual Subscription" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbo-iD-6md">
                                 <rect key="frame" x="16" y="72" width="343" height="20.5"/>
