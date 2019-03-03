@@ -13,6 +13,8 @@
         <!--Windmill Store-->
         <scene sceneID="2EQ-G4-ck1">
             <objects>
+                <exit id="9r3-bw-SaY" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TP1-xJ-Cqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="QAi-zj-0zW" customClass="RestorePreviousPurchasesViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KzN-hx-5Jq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -142,7 +144,7 @@ Windmill on the iPhone further enables the publishing of your app to registered 
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Windmill Store" id="Pic-GZ-TRc">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="zHe-34-YvA">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="zHe-34-YvA">
                             <connections>
                                 <segue destination="9r3-bw-SaY" kind="unwind" unwindAction="unwindToMainTabBarController:" id="4Yr-PY-Jay"/>
                             </connections>
@@ -156,15 +158,13 @@ Windmill on the iPhone further enables the publishing of your app to registered 
                         <segue destination="9r3-bw-SaY" kind="unwind" identifier="SubscriberUnwind" unwindAction="unwindToSubscriber:" id="XNz-7O-rCI"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TP1-xJ-Cqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="9r3-bw-SaY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="699.375" y="53.87323943661972"/>
         </scene>
         <!--Purchase Options-->
         <scene sceneID="0CI-Bm-d8J">
             <objects>
-                <viewController id="xKx-cs-ohh" customClass="PurchaseOptionsViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PurchaseOptionsViewController" id="xKx-cs-ohh" customClass="PurchaseOptionsViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FNM-Cd-KyV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

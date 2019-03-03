@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  windmill
+
+  Created by Markos Charatzas on 02/03/2019.
+  Copyright © 2019 Windmill. All rights reserved.
+*/
+
+
+"io.windmill.windmill.subscription.expired" = "Your subscription has expired or may have not renewed just yet.\n";

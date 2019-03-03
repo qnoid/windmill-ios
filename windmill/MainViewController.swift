@@ -7,20 +7,21 @@
 //
 
 import UIKit
+import StoreKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var mainTableViewHeaderView: UITableViewHeaderFooterView {
         
-        if case .active = self.subscriptionStatus {
-            return SubcriberTableViewFooterView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44.0))
+        if case .expired = self.subscriptionStatus {
+            return SubscriptionExpiredTableViewFooterView.make(width: tableView.bounds.width)
         } else {
-            return MainTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44.0))
+            return MainTableViewHeaderView.make(width: tableView.bounds.width)
         }
     }
 
     var mainTableViewFooterView: UITableViewHeaderFooterView {
-        if case .active = self.subscriptionStatus {
-            return UITableViewHeaderFooterView()
+        if case .expired = self.subscriptionStatus {
+            return OpenPurchaseOptionsTableViewFooterView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
         } else {
             return OpenStoreTableViewFooterView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
         }
@@ -39,13 +40,19 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    var subscriptionStatus = SubscriptionStatus.shared {
+    var subscriptionStatus = SubscriptionStatus.default {
         didSet {
-            self.tableView?.tableHeaderView = self.mainTableViewHeaderView
-            self.tableView?.tableFooterView = self.mainTableViewFooterView
-            self.tableView?.reloadData()
+            guard let tableView = tableView else {
+                return
+            }
+            
+            tableView.tableHeaderView = self.mainTableViewHeaderView
+            tableView.tableFooterView = self.mainTableViewFooterView
+            tableView.reloadData()
         }
     }
+
+    var subscriptionManager = SubscriptionManager()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -59,8 +66,19 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        switch (self.subscriptionStatus, SKPaymentQueue.canMakePayments()) {
+        case (.none, true), (.expired, true):
+            subscriptionManager.products()
+        default:
+            break
+        }
+    }
+    
     @objc func subscriptionActive(notification: NSNotification) {
-        self.subscriptionStatus = SubscriptionStatus.shared
+        self.subscriptionStatus = SubscriptionStatus.default
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,4 +100,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 107
     }
+    
+    @objc func dismiss(_ sender: Any?) {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func didTouchUpInsideOpenPurchaseOptions() {
+        
+        guard let purchaseOptionsViewController = PurchaseOptionsViewController.make(subscriptionManager: subscriptionManager) else {
+            return
+        }
+        
+        purchaseOptionsViewController.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismiss(_:)))
+        
+        self.present(UINavigationController(rootViewController: purchaseOptionsViewController), animated: true)
+    }
+
 }

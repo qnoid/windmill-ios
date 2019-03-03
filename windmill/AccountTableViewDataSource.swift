@@ -10,24 +10,18 @@ import UIKit
 
 class AccountTableViewDataSource: NSObject, UITableViewDataSource {
  
-    weak var controller: AccountViewController?
+    @IBOutlet weak var controller: AccountViewController?
 
     var sections: [AccountViewController.Section] {
-        return AccountViewController.Section.allValues
+        return AccountViewController.Section.sections()
     }
 
-    let settings: [AccountViewController.Setting]
-    
-    init(settings: [AccountViewController.Setting]) {
-        self.settings = settings
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.settings.count
+        return self.sections[section].settings().count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -38,9 +32,10 @@ class AccountTableViewDataSource: NSObject, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AccountTableViewCell") else {
             return UITableViewCell()
         }
-        
-        let setting = settings[indexPath.row]
-        
+        cell.accessoryView = nil
+
+        let setting = self.sections[indexPath.section].settings()[indexPath.row]
+
         controller?.cell(cell, for:setting)
         cell.textLabel?.text = setting.stringValue
         

@@ -10,6 +10,10 @@ import UIKit
 
 class MainTableViewHeaderView: UITableViewHeaderFooterView {
     
+    class func make(width: CGFloat) -> MainTableViewHeaderView {
+        return MainTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 66.0))
+    }
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         

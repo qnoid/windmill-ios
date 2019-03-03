@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.59" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.45"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubcriberTableViewFooterView" customModule="windmill" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubscriptionExpiredTableViewFooterView" customModule="windmill" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="contens">
-            <rect key="frame" x="0.0" y="0.0" width="341" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="368" height="124"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="You are already a subscriber." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3A-Sz-XWZ">
-                    <rect key="frame" x="44" y="0.0" width="297" height="44"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3A-Sz-XWZ">
+                    <rect key="frame" x="44" y="8" width="316" height="108"/>
+                    <string key="text">Your subscription has expired or may have not renewed just yet. 
+
+Windmill will try again sometime later. Optionally, under your Account, you can choose to Refresh now.</string>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNE-SD-5Tp">
-                    <rect key="frame" x="16" y="12" width="20" height="20"/>
+                    <rect key="frame" x="16" y="20.5" width="20" height="20"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
                     </accessibility>
@@ -38,14 +41,14 @@
             <constraints>
                 <constraint firstItem="k3A-Sz-XWZ" firstAttribute="leading" secondItem="tNE-SD-5Tp" secondAttribute="trailing" constant="8" id="0OZ-PJ-NRC"/>
                 <constraint firstItem="tNE-SD-5Tp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="2Pt-No-yVz"/>
-                <constraint firstItem="k3A-Sz-XWZ" firstAttribute="topMargin" secondItem="aE2-ql-uB5" secondAttribute="top" constant="8" id="NaE-H7-i14"/>
-                <constraint firstItem="k3A-Sz-XWZ" firstAttribute="centerY" secondItem="tNE-SD-5Tp" secondAttribute="centerY" id="UZB-w6-tSd"/>
-                <constraint firstItem="aE2-ql-uB5" firstAttribute="bottom" secondItem="k3A-Sz-XWZ" secondAttribute="bottomMargin" constant="8" id="kl0-s7-mPy"/>
-                <constraint firstItem="k3A-Sz-XWZ" firstAttribute="trailing" secondItem="aE2-ql-uB5" secondAttribute="trailing" id="mda-Rb-cf0"/>
+                <constraint firstItem="k3A-Sz-XWZ" firstAttribute="topMargin" secondItem="aE2-ql-uB5" secondAttribute="top" constant="16" id="NaE-H7-i14"/>
+                <constraint firstItem="tNE-SD-5Tp" firstAttribute="firstBaseline" secondItem="k3A-Sz-XWZ" secondAttribute="firstBaseline" id="VCY-lf-QCR"/>
+                <constraint firstItem="aE2-ql-uB5" firstAttribute="bottom" secondItem="k3A-Sz-XWZ" secondAttribute="bottomMargin" constant="16" id="kl0-s7-mPy"/>
+                <constraint firstItem="aE2-ql-uB5" firstAttribute="trailing" secondItem="k3A-Sz-XWZ" secondAttribute="trailing" constant="8" id="mda-Rb-cf0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="aE2-ql-uB5"/>
-            <point key="canvasLocation" x="48.799999999999997" y="160.11994002998503"/>
+            <point key="canvasLocation" x="70.400000000000006" y="180.80959520239881"/>
         </view>
     </objects>
     <resources>

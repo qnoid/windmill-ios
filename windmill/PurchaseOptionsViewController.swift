@@ -11,6 +11,14 @@ import StoreKit
 import Alamofire
 
 class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelegate  {
+    
+    class func make(subscriptionManager: SubscriptionManager, for account: String? = nil, storyboard: UIStoryboard = WindmillApp.Storyboard.purchase()) -> PurchaseOptionsViewController? {
+        let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: self)) as? PurchaseOptionsViewController
+        viewController?.subscriptionManager = subscriptionManager
+        
+        return viewController
+    }
+
     @IBOutlet weak var subscriptionLabel: UILabel!
     @IBOutlet weak var purchaseButton: Button! {
         didSet {
@@ -28,11 +36,23 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         }
     }
     
+    var product: SKProduct? {
+        didSet {
+            self.purchaseButton?.isEnabled = true
+            self.activityIndicatorViewSubscribe?.stopAnimating()
+            if let product = product {
+                updateView(product: product)
+            } else {
+                self.purchaseButton?.setTitle("Refresh", for: .normal)
+            }
+        }
+    }
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchasing(notification:)), name: SubscriptionManager.SubscriptionPurchasing, object: subscriptionManager)
-        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchased(notification:)), name: SubscriptionManager.SubscriptionPurchased, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
     }
     
@@ -40,16 +60,20 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         super.init(coder: aDecoder)
         
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchasing(notification:)), name: SubscriptionManager.SubscriptionPurchasing, object: subscriptionManager)
-        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchased(notification:)), name: SubscriptionManager.SubscriptionPurchased, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.purchaseButton.isEnabled = false
+        self.activityIndicatorViewSubscribe.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let product = self.subscriptionManager?.products?.first(where: SubscriptionManager.Product.isIndividualMonthly) {
-            self.updateView(product: product)
-        }
+        self.product = self.subscriptionManager?.products?.first(where: SubscriptionManager.Product.isIndividualMonthly)
     }
     
     @IBAction func didTouchUpInsideHelp(_ sender: Any) {
@@ -65,24 +89,27 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         
         let formattedString = formatter.string(from: product?.price ?? 0.0) ?? ""
         
-        self.purchaseButton.setTitle(String(format: "Subscribe for %@ a \(SubscriptionManager.Product.individualMonthly.duration)", formattedString), for: .normal)
+        self.purchaseButton?.setTitle(String(format: "Subscribe for %@ a \(SubscriptionManager.Product.individualMonthly.duration)", formattedString), for: .normal)
     }
     
     func success(_ manager: SubscriptionManager, products: [SKProduct]) {
-        updateView(product: products.first)
+        self.product = products.first
     }
     
     func error(_ manager: SubscriptionManager, didFailWithError error: Error) {
+        self.product = nil
+
         let alertController = UIAlertController.Windmill.make(title: "Error", error: error)
         present(alertController, animated: true, completion: nil)
     }
 
     @objc func subscriptionPurchasing(notification: NSNotification) {
-        self.purchaseButton.isEnabled = false
+        self.purchaseButton?.isEnabled = false
         self.activityIndicatorViewSubscribe.startAnimating()
     }
     
-    @objc func subscriptionActive(notification: NSNotification) {
+    @objc func subscriptionPurchased(notification: NSNotification) {
+        self.product = nil
         self.performSegue(withIdentifier: "SubscriberUnwind", sender: self)
     }
     
@@ -108,7 +135,12 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
     
     @IBAction func purchase(_ sender: Any) {
 
-        guard let product = self.subscriptionManager?.products?.first(where: SubscriptionManager.Product.isIndividualMonthly) else {
+        guard let product = self.product else {
+            
+            self.subscriptionManager?.products()
+            self.purchaseButton?.isEnabled = false
+            self.activityIndicatorViewSubscribe.startAnimating()
+            
             return
         }
         

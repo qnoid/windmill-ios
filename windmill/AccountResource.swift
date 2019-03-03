@@ -21,6 +21,8 @@ let WINDMILL_BASE_URL = WINDMILL_BASE_URL_PRODUCTION
 
 class AccountResource {
     
+    typealias ExportsCompletion = (_ exports: [Export]?, _ error: Error?) -> Void
+    
     let queue = DispatchQueue(label: "io.windmill.manager")
     
     let session: URLSession = {
@@ -32,44 +34,66 @@ class AccountResource {
     
     let sessionManager = SessionManager()
     
-    @discardableResult func requestExports(forAccount account: String, completion: @escaping (_ exports: [Export]?, _ error: Error?) -> Void) -> DataRequest {
+    func requestExports(forAccount account: String, authorizationToken: SubscriptionAuthorizationToken, completion: @escaping ExportsCompletion) -> DataRequest {
         
-        let url = "\(WINDMILL_BASE_URL)/account/\(account)/exports"
+        var urlRequest = try! URLRequest(url: "\(WINDMILL_BASE_URL)/account/\(account)/exports", method: .get)
+        urlRequest.addValue("Bearer \(authorizationToken.value)", forHTTPHeaderField: "Authorization")
+        urlRequest.timeoutInterval = 10 //seconds
         
-        return sessionManager.request(url).validate().responseData(queue: self.queue) { response in
+        return sessionManager.request(urlRequest).validate().responseData(queue: self.queue) { response in
             
-            if case .failure(let error as AFError) = response.result, case let .responseSerializationFailed(reason) = error, case .inputDataNilOrZeroLength = reason {
-                DispatchQueue.main.async{
-                    completion([], nil)
+            switch (response.result, response.result.value) {
+            case (.failure(let error), _):
+                switch error {
+                case let error as AFError where error.isResponseSerializationError: //case .inputDataNilOrZeroLength: = reason:
+                    DispatchQueue.main.async{
+                        completion([], nil)
+                    }
+                case let error as AFError where error.isResponseValidationError:
+                    switch (error.responseCode, response.data) {
+                    case (401, let data?):
+                        if let response = String(data: data, encoding: .utf8), let reason = SubscriptionError.UnauthorisationReason(rawValue: response) {
+                            DispatchQueue.main.async{
+                                completion(nil, SubscriptionError.unauthorised(reason:reason))
+                            }
+                        } else {
+                            DispatchQueue.main.async{
+                                completion(nil, SubscriptionError.unauthorised(reason: nil))
+                            }
+                        }
+                    default:
+                        DispatchQueue.main.async{
+                            completion(nil, error)
+                        }
+                    }
+                default:
+                    DispatchQueue.main.async{
+                        completion(nil, response.error)
+                    }
                 }
-                return
-            }
-            
-            guard case .success = response.result, let data = response.data else {
-                DispatchQueue.main.async{
-                    completion(nil, response.error)
-                }
-            return
-            }
-            
-            let decoder = JSONDecoder()
-            
-            decoder.dateDecodingStrategy = .custom{ decoder -> Date in
-                let date = try decoder.singleValueContainer().decode(Double.self)
+            case (.success, let data?):
+                let decoder = JSONDecoder()
                 
-                return Date(timeIntervalSince1970: date)
-            }
-            
-            do {
-                let exports = try decoder.decode([Export].self, from: data)
+                decoder.dateDecodingStrategy = .custom{ decoder -> Date in
+                    let date = try decoder.singleValueContainer().decode(Double.self)
+                    
+                    return Date(timeIntervalSince1970: date)
+                }
                 
-                DispatchQueue.main.async{
-                    completion(exports, nil)
+                do {
+                    let exports = try decoder.decode([Export].self, from: data)
+                    
+                    DispatchQueue.main.async{
+                        completion(exports, nil)
+                    }
+                } catch {
+                    os_log("There was an unexpected error while parsing the list of exports: '%{public}@'", log: .default, type: .debug, error.localizedDescription)
+                    DispatchQueue.main.async{
+                        completion([], nil)
+                    }
                 }
-            } catch {
-                DispatchQueue.main.async{
-                    completion(nil, error)
-                }
+            default:
+                completion(nil, response.error)
             }
         }
     }

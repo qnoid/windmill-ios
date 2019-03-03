@@ -11,8 +11,8 @@ import Foundation
 struct SubscriptionAuthorizationToken: Codable {
     
     enum CodingKeys: String, CodingKey {
-        case value = "subscription_authorization_token"
+        case value = "access_token"
     }
 
-    let value: String;    
+    let value: String
 }

@@ -13,4 +13,12 @@ class AccountNavigationController: UINavigationController {
     static func make(storyboard: UIStoryboard = WindmillApp.Storyboard.main()) -> AccountNavigationController? {
         return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as? AccountNavigationController
     }
+    
+    
+    @IBAction func unwindToSubscriber(_ segue: UIStoryboardSegue) {
+
+        if self.topViewController is PurchaseOptionsViewController {
+            self.popViewController(animated: true)
+        }
+    }
 }

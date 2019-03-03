@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PvH-Am-Sl2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AppsTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PvH-Am-Sl2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
@@ -52,7 +52,7 @@
         <scene sceneID="0pY-r9-THf">
             <objects>
                 <navigationController storyboardIdentifier="AppsNavigationController" title="Apps" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3me-UH-KP0" userLabel="AppsNavigationController" customClass="AppsNavigationController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Apps" id="bq2-eL-fJ0"/>
+                    <tabBarItem key="tabBarItem" title="Apps" image="apps_icon" id="bq2-eL-fJ0"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="LCk-V7-omd">
@@ -141,6 +141,7 @@ Any free trial period remaining, is forfeited if you purchase a new Windmill Ind
         </scene>
     </scenes>
     <resources>
+        <image name="apps_icon" width="25" height="25"/>
         <image name="lights" width="256" height="15.5"/>
     </resources>
 </document>

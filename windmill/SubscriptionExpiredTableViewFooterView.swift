@@ -1,5 +1,5 @@
 //
-//  SubcriberTableViewFooterView.swift
+//  SubscriptionExpiredTableViewFooterView.swift
 //  windmill
 //
 //  Created by Markos Charatzas on 25/10/2017.
@@ -8,8 +8,11 @@
 
 import UIKit
 
-class SubcriberTableViewFooterView: UITableViewHeaderFooterView {
+class SubscriptionExpiredTableViewFooterView: UITableViewHeaderFooterView {
     
+    public class func make(width: CGFloat) -> SubscriptionExpiredTableViewFooterView {
+        return SubscriptionExpiredTableViewFooterView(frame: CGRect(x: 0, y: 0, width: width, height: 124.0))
+    }
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         

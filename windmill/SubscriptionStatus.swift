@@ -9,23 +9,42 @@
 import Foundation
 
 enum SubscriptionStatus {
-    
-    static var shared: SubscriptionStatus {
-        let account = try? ApplicationStorage.default.read(key: .account)
-        let receiptClaim = try? ApplicationStorage.default.read(key: .receiptClaim)
+
+    static func make(account: String?, authorizationToken: String?) -> SubscriptionStatus? {
         
-        return SubscriptionStatus(account: account, receiptClaim: receiptClaim) ?? .none
-    }
-    
-    case active
-    case none
-    
-    init?(account: String?, receiptClaim: String?){
-        guard case .some = account, case .some = receiptClaim else {
+        guard let identifier = account else {
             return nil
         }
         
-        self = .active
+        if let authorizationToken = authorizationToken {
+            return SubscriptionStatus(account: Account(identifier: identifier), authorizationToken: SubscriptionAuthorizationToken(value: authorizationToken))
+        } else {
+            return SubscriptionStatus(account: Account(identifier: identifier), authorizationToken: nil)
+        }
+    }
+    
+    static var `default`: SubscriptionStatus {
+        let account = try? ApplicationStorage.default.read(key: .account)
+        let authorizationToken = try? ApplicationStorage.default.read(key: .subscriptionAuthorizationToken)
+        
+        return make(account: account, authorizationToken: authorizationToken) ?? .none
+    }
+
+    case active(account: Account)
+    case expired(account: Account)
+    case none
+    
+    init?(account: Account?, authorizationToken: SubscriptionAuthorizationToken?){
+        guard let account = account else {
+            return nil
+        }
+        
+        guard let authorizationToken = authorizationToken, let jwt = try? JWT.jws(jwt: authorizationToken.value), let claims = try? Claims<SubscriptionAuthorizationToken>.accessToken(jwt: jwt), !claims.hasExpired() else {
+            self = .expired(account: account)
+            return
+        }
+            
+        self = .active(account: account)
     }
     
     public var isActive: Bool {
@@ -35,5 +54,5 @@ enum SubscriptionStatus {
         default:
             return false
         }
-    }
+    }    
 }

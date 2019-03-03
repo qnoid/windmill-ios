@@ -39,19 +39,18 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     
     weak var paymentQueue: PaymentQueue? = PaymentQueue.default
 
-    let accountResource = AccountResource()
+    let subscriptionManager = SubscriptionManager()
     
-    var account: String? = try? ApplicationStorage.default.read(key: .account) {
+    var subscriptionStatus: SubscriptionStatus? {
         didSet {
-            if oldValue == nil, let account = account {
+            if oldValue == nil, case .active(let account) = SubscriptionStatus.default {
                 self.reloadWindmills(account: account)
             }
         }
     }
     
-    class func make(for account: String? = nil, storyboard: UIStoryboard = WindmillApp.Storyboard.subscriber()) -> AppsViewController? {
+    class func make(storyboard: UIStoryboard = WindmillApp.Storyboard.subscriber()) -> AppsViewController? {
         let viewController = storyboard.instantiateViewController(withIdentifier: String(describing: self)) as? AppsViewController
-        viewController?.account = account
         
         return viewController
     }
@@ -70,16 +69,6 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: UIApplication.shared)
     }
     
-    override func encodeRestorableState(with coder: NSCoder) {
-        super.encodeRestorableState(with: coder)
-    }
-    
-    override func decodeRestorableState(with coder: NSCoder) {
-        self.account = try? ApplicationStorage.default.read(key: .account)
-        
-        super.decodeRestorableState(with: coder)
-    }
-    
     @objc func didBecomeActive(notification: NSNotification) {
 
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
@@ -90,7 +79,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     }
     
     @objc func subscriptionActive(notification: NSNotification) {
-        self.account = try? ApplicationStorage.default.read(key: .account)
+        self.subscriptionStatus = SubscriptionStatus.default
     }
     
     private func didGetNotificationSettings(settings: UNNotificationSettings) {
@@ -120,14 +109,14 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         }
     }
     
-    private func reloadWindmills(account: String) {
+    private func reloadWindmills(account: Account) {
         let activityIndicatorView = UIActivityIndicatorView(style: .gray)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
         activityIndicatorView.startAnimating()
 
-        self.accountResource.requestExports(forAccount: account) { [weak self] exports, error in
+        self.subscriptionManager.listExports(forAccount: account.identifier) { [weak self] exports, error in
             self?.didFinishURLSessionTaskExports(activityIndicatorView: activityIndicatorView, exports: exports, error: error)
-            }.resume()
+            }
     }
     
     func didFinishURLSessionTaskExports(activityIndicatorView: UIActivityIndicatorView, exports: [Export]?, error: Error?) {
@@ -136,21 +125,26 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         self.navigationItem.rightBarButtonItem = self.rightBarButtonItem
         
         switch error {
+        case let error as SubscriptionError:
+            let alertController = UIAlertController.Windmill.make(error: error)
+            present(alertController, animated: true, completion: nil)
         case .some(let error):
             let alertController = UIAlertController.Windmill.make(title: "Error", error: error)
-            self.present(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         default:
-            guard let exports = exports else {
-                return
-            }
-        
-            guard !exports.isEmpty else {
-                return
-            }
-        
-            self.dataSource.exports = exports
-            self.tableView?.reloadData()
+            break
         }
+        
+        guard let exports = exports else {
+            return
+        }
+        
+        guard !exports.isEmpty else {
+            return
+        }
+        
+        self.dataSource.exports = exports
+        self.tableView?.reloadData()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -160,10 +154,10 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let account = self.account {
-            reloadWindmills(account: account)
+        if case .active(let account) = SubscriptionStatus.default {
+            self.reloadWindmills(account: account)
         }
-        
+
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
             DispatchQueue.main.async {
                 self?.didGetNotificationSettings(settings: settings)
@@ -171,16 +165,14 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
     @IBAction func didTouchUpInsideRefresh(_ sender: UIBarButtonItem) {
-        guard let account = try? ApplicationStorage.default.read(key: .account) else {
+        
+        switch SubscriptionStatus.default {
+        case .active(let account), .expired(let account):
+            self.reloadWindmills(account: account)
+        default:
             return
         }
-        
-        self.reloadWindmills(account: account)
     }
     
     func didTouchUpInsideAuthorizeButton(_ headerView: NotificationsNotDeterminedTableViewHeaderView, button: UIButton) {

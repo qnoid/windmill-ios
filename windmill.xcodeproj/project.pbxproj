@@ -14,7 +14,7 @@
 		BD0AD8AC1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */; };
 		BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */; };
 		BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */; };
-		BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */; };
+		BD1644452227DFD1005448B6 /* SubscriptionClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1644442227DFD1005448B6 /* SubscriptionClaim.swift */; };
 		BD1949B9220C273F00ADE6E1 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1949B8220C273F00ADE6E1 /* Subscription.swift */; };
 		BD19B6C021F8D5F900743250 /* PurchaseOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */; };
 		BD19B6C221F8D7EF00743250 /* SubscriptionResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */; };
@@ -46,14 +46,19 @@
 		BD4B00D11F0E30AE004025F3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4B00D01F0E305D004025F3 /* Alamofire.framework */; };
 		BD4B8C9F2202F86A00D95493 /* AppsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0341BB2202E40F00421539 /* AppsNavigationController.swift */; };
 		BD4B8CA12203679E00D95493 /* PaymentQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8CA02203679E00D95493 /* PaymentQueue.swift */; };
-		BD4B8CA32205DC1000D95493 /* ReceiptClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4B8CA22205DC1000D95493 /* ReceiptClaim.swift */; };
 		BD52291F1CFB25D30069C831 /* Export.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52291E1CFB25D30069C831 /* Export.swift */; };
 		BD5229231CFB26AC0069C831 /* ExportTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229221CFB26AC0069C831 /* ExportTableViewDataSource.swift */; };
 		BD5229251CFB26DF0069C831 /* ExportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD5229241CFB26DF0069C831 /* ExportTableViewCell.xib */; };
 		BD5229271CFB27A50069C831 /* ExportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229261CFB27A50069C831 /* ExportTableViewCell.swift */; };
 		BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5229281CFB4B1D0069C831 /* AccountResource.swift */; };
-		BDA1AF90221ABB5D00EFB366 /* SubcriberTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF8E221ABB5C00EFB366 /* SubcriberTableViewFooterView.xib */; };
-		BDA1AF91221ABB5D00EFB366 /* SubcriberTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF8F221ABB5C00EFB366 /* SubcriberTableViewFooterView.swift */; };
+		BD6F9D5B222826CF00CC3B27 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6F9D5A222826CF00CC3B27 /* JWT.swift */; };
+		BD6F9D5D2228287100CC3B27 /* Claims.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6F9D5C2228287100CC3B27 /* Claims.swift */; };
+		BD6F9D5F22282C7B00CC3B27 /* ClaimsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6F9D5E22282C7B00CC3B27 /* ClaimsTest.swift */; };
+		BD6F9D6222293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6F9D6022293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift */; };
+		BD6F9D6322293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6F9D6122293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib */; };
+		BD6F9D6C222A7F4F00CC3B27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD6F9D6A222A7F4F00CC3B27 /* Localizable.strings */; };
+		BDA1AF90221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF8E221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.xib */; };
+		BDA1AF91221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF8F221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.swift */; };
 		BDA1AF93221ADB6500EFB366 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF92221ADB6500EFB366 /* MainNavigationController.swift */; };
 		BDA1AF95221AE07900EFB366 /* PurchaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF94221AE07900EFB366 /* PurchaseNavigationController.swift */; };
 		BDA1AF98221B1CCF00EFB366 /* MockExportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF96221B1CCE00EFB366 /* MockExportTableViewCell.xib */; };
@@ -105,7 +110,7 @@
 		BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsAuthorizedTableViewHeaderView.xib; sourceTree = "<group>"; };
 		BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAuthorizedTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTextView.swift; sourceTree = "<group>"; };
-		BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BD1644442227DFD1005448B6 /* SubscriptionClaim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionClaim.swift; sourceTree = "<group>"; };
 		BD1949B7220C20FB00ADE6E1 /* windmill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = windmill.entitlements; sourceTree = "<group>"; };
 		BD1949B8220C273F00ADE6E1 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseOptionsViewController.swift; sourceTree = "<group>"; };
@@ -137,15 +142,20 @@
 		BD48898C21F8C37A00B7D535 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BD4B00D01F0E305D004025F3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		BD4B8CA02203679E00D95493 /* PaymentQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentQueue.swift; sourceTree = "<group>"; };
-		BD4B8CA22205DC1000D95493 /* ReceiptClaim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptClaim.swift; sourceTree = "<group>"; };
 		BD52291E1CFB25D30069C831 /* Export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Export.swift; sourceTree = "<group>"; };
 		BD5229221CFB26AC0069C831 /* ExportTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportTableViewDataSource.swift; sourceTree = "<group>"; };
 		BD5229241CFB26DF0069C831 /* ExportTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExportTableViewCell.xib; sourceTree = "<group>"; };
 		BD5229261CFB27A50069C831 /* ExportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportTableViewCell.swift; sourceTree = "<group>"; };
 		BD5229281CFB4B1D0069C831 /* AccountResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountResource.swift; sourceTree = "<group>"; };
 		BD687C0F20ECB487006B1E09 /* Info-debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-debug.plist"; sourceTree = "<group>"; };
-		BDA1AF8E221ABB5C00EFB366 /* SubcriberTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubcriberTableViewFooterView.xib; sourceTree = "<group>"; };
-		BDA1AF8F221ABB5C00EFB366 /* SubcriberTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubcriberTableViewFooterView.swift; sourceTree = "<group>"; };
+		BD6F9D5A222826CF00CC3B27 /* JWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWT.swift; sourceTree = "<group>"; };
+		BD6F9D5C2228287100CC3B27 /* Claims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Claims.swift; sourceTree = "<group>"; };
+		BD6F9D5E22282C7B00CC3B27 /* ClaimsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimsTest.swift; sourceTree = "<group>"; };
+		BD6F9D6022293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenPurchaseOptionsTableViewFooterView.swift; sourceTree = "<group>"; };
+		BD6F9D6122293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenPurchaseOptionsTableViewFooterView.xib; sourceTree = "<group>"; };
+		BD6F9D6D222A7F5D00CC3B27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = windmill/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BDA1AF8E221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionExpiredTableViewFooterView.xib; sourceTree = "<group>"; };
+		BDA1AF8F221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionExpiredTableViewFooterView.swift; sourceTree = "<group>"; };
 		BDA1AF92221ADB6500EFB366 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		BDA1AF94221AE07900EFB366 /* PurchaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseNavigationController.swift; sourceTree = "<group>"; };
 		BDA1AF96221B1CCE00EFB366 /* MockExportTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MockExportTableViewCell.xib; sourceTree = "<group>"; };
@@ -228,6 +238,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BD6F9D59222826BF00CC3B27 /* JWT */ = {
+			isa = PBXGroup;
+			children = (
+				BD6F9D5A222826CF00CC3B27 /* JWT.swift */,
+				BD6F9D5C2228287100CC3B27 /* Claims.swift */,
+			);
+			name = JWT;
+			sourceTree = "<group>";
+		};
 		BDA1AF9A221BE17A00EFB366 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,8 +301,8 @@
 		BDA1AF9D221BE34B00EFB366 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				BDA1AF8F221ABB5C00EFB366 /* SubcriberTableViewFooterView.swift */,
-				BDA1AF8E221ABB5C00EFB366 /* SubcriberTableViewFooterView.xib */,
+				BDA1AF8F221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.swift */,
+				BDA1AF8E221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.xib */,
 				BDF73C2A2202021000924316 /* Account.swift */,
 				BD0112EE22130F55003FA1D1 /* AccountNavigationController.swift */,
 				BD3B5F992211A01100D1D899 /* AccountViewController.swift */,
@@ -330,11 +349,13 @@
 		BDD1E9691CDA92DB00976074 /* windmill */ = {
 			isa = PBXGroup;
 			children = (
+				BD6F9D6A222A7F4F00CC3B27 /* Localizable.strings */,
 				BD1949B7220C20FB00ADE6E1 /* windmill.entitlements */,
 				BDD1E9711CDA92DB00976074 /* Assets.xcassets */,
 				BD687C0F20ECB487006B1E09 /* Info-debug.plist */,
 				BDD1E9761CDA92DB00976074 /* Info.plist */,
 				BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */,
+				BD6F9D59222826BF00CC3B27 /* JWT */,
 				BD13B2151F016ADD00BFC755 /* common */,
 				BDA1AF9C221BE26C00EFB366 /* StoreKit */,
 				BDA1AF9A221BE17A00EFB366 /* Apps */,
@@ -349,11 +370,12 @@
 				BDA1AF9F221BE79B00EFB366 /* MainTableViewHeaderView.xib */,
 				BD2136942212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift */,
 				BD2136922212B434009CB1A0 /* OpenStoreTableViewFooterView.xib */,
+				BD6F9D6022293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift */,
+				BD6F9D6122293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib */,
 				BD3B5F9B2211C9BB00D1D899 /* WelcomeViewController.swift */,
-				BD4B8CA22205DC1000D95493 /* ReceiptClaim.swift */,
+				BD1644442227DFD1005448B6 /* SubscriptionClaim.swift */,
 				BDA2D1471F0E26A1004EE03D /* Device.swift */,
 				BD19B6C321F8DAC900743250 /* SubscriptionAuthorizationToken.swift */,
-				BD18F4B71DC0B03A00CD596B /* LoginViewController.swift */,
 			);
 			path = windmill;
 			sourceTree = "<group>";
@@ -363,6 +385,7 @@
 			children = (
 				BDD1E97F1CDA92DB00976074 /* ApplicationStorageTest.swift */,
 				BDD1E9811CDA92DB00976074 /* Info.plist */,
+				BD6F9D5E22282C7B00CC3B27 /* ClaimsTest.swift */,
 			);
 			path = windmillTests;
 			sourceTree = "<group>";
@@ -512,9 +535,11 @@
 				BD440E6E1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib in Resources */,
 				BD2136932212B434009CB1A0 /* OpenStoreTableViewFooterView.xib in Resources */,
 				BDD1E9721CDA92DB00976074 /* Assets.xcassets in Resources */,
+				BD6F9D6322293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib in Resources */,
 				BDA1AF98221B1CCF00EFB366 /* MockExportTableViewCell.xib in Resources */,
 				BD0AD8A81FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib in Resources */,
-				BDA1AF90221ABB5D00EFB366 /* SubcriberTableViewFooterView.xib in Resources */,
+				BDA1AF90221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.xib in Resources */,
+				BD6F9D6C222A7F4F00CC3B27 /* Localizable.strings in Resources */,
 				BDD1E9701CDA92DB00976074 /* Main.storyboard in Resources */,
 				BDA1AFA1221BE79C00EFB366 /* MainTableViewHeaderView.xib in Resources */,
 			);
@@ -562,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD4B8CA12203679E00D95493 /* PaymentQueue.swift in Sources */,
+				BD6F9D5D2228287100CC3B27 /* Claims.swift in Sources */,
 				BD3B5F9C2211C9BB00D1D899 /* WelcomeViewController.swift in Sources */,
 				BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */,
 				BDF73C2B2202021000924316 /* Account.swift in Sources */,
@@ -574,8 +600,9 @@
 				BD3B5F9A2211A01100D1D899 /* AccountViewController.swift in Sources */,
 				BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */,
 				BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */,
+				BD1644452227DFD1005448B6 /* SubscriptionClaim.swift in Sources */,
+				BD6F9D6222293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift in Sources */,
 				BD3B5FA02211D55900D1D899 /* AccountTableViewDataSource.swift in Sources */,
-				BD4B8CA32205DC1000D95493 /* ReceiptClaim.swift in Sources */,
 				BDA1AFA0221BE79C00EFB366 /* MainTableViewHeaderView.swift in Sources */,
 				BDD1E96D1CDA92DB00976074 /* AppsViewController.swift in Sources */,
 				BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */,
@@ -585,7 +612,6 @@
 				BD19B6C221F8D7EF00743250 /* SubscriptionResource.swift in Sources */,
 				BD47531622144A18004C101E /* MainTabBarController.swift in Sources */,
 				BDA1AF95221AE07900EFB366 /* PurchaseNavigationController.swift in Sources */,
-				BD18F4B81DC0B03A00CD596B /* LoginViewController.swift in Sources */,
 				BD52291F1CFB25D30069C831 /* Export.swift in Sources */,
 				BD5229231CFB26AC0069C831 /* ExportTableViewDataSource.swift in Sources */,
 				BD47531C221471E7004C101E /* MainController.swift in Sources */,
@@ -599,9 +625,10 @@
 				BD4B8C9F2202F86A00D95493 /* AppsNavigationController.swift in Sources */,
 				BD19B6C021F8D5F900743250 /* PurchaseOptionsViewController.swift in Sources */,
 				BD20D5351DC78E1E0016C891 /* ExportTableViewDelegate.swift in Sources */,
-				BDA1AF91221ABB5D00EFB366 /* SubcriberTableViewFooterView.swift in Sources */,
+				BDA1AF91221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.swift in Sources */,
 				BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */,
 				BDC55B1F21FE84ED007153D6 /* RestorePreviousPurchasesViewController.swift in Sources */,
+				BD6F9D5B222826CF00CC3B27 /* JWT.swift in Sources */,
 				BD1949B9220C273F00ADE6E1 /* Subscription.swift in Sources */,
 				BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */,
 				BD440E721FA0C84A00FA81B3 /* Button.swift in Sources */,
@@ -615,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD6F9D5F22282C7B00CC3B27 /* ClaimsTest.swift in Sources */,
 				BDD1E9801CDA92DB00976074 /* ApplicationStorageTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +663,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BD6F9D6A222A7F4F00CC3B27 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD6F9D6D222A7F5D00CC3B27 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		BDC55B1B21FE7D97007153D6 /* Purchase.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -718,6 +754,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -776,6 +813,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

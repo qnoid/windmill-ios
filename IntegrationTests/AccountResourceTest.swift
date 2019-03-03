@@ -20,11 +20,12 @@ class AccountResourceTest: XCTestCase {
     func testGivenAccountAssertExports() {
         
         let accountResource = AccountResource()
-                
+        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMlZqY21WMCIsInN1YiI6IjEwMDAwMDA0OTc5MzE5OTMiLCJleHAiOjMzMTA4MTg4NTc0LCJ0eXAiOiJhdCIsInYiOjF9.rzEzm5S0N0fxb2mp83aFwOXduHRjKPI3m18cwkPaiqY"
+
         var actual: [windmill.Export]?
         
         let expectation = XCTestExpectation(description: #function)
-        let dataTask = accountResource.requestExports(forAccount: "14810686-4690-4900-ada5-8b0b7338aa39"){ exports, error in
+        let dataTask = accountResource.requestExports(forAccount: "14810686-4690-4900-ada5-8b0b7338aa39", authorizationToken: SubscriptionAuthorizationToken(value: claim)){ exports, error in
             
             guard let exports = exports else {
                 XCTFail(error!.localizedDescription)
@@ -39,6 +40,27 @@ class AccountResourceTest: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         
         XCTAssertNotEqual(0, actual?.count)
+    }
+    
+    func testGivenExpiredTokenAssertUnauthorisedExpired() {
+        
+        let accountResource = AccountResource()
+        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMlZqY21WMCIsInN1YiI6IjEwMDAwMDA0OTc5MzE5OTMiLCJleHAiOjAsInR5cCI6ImF0IiwidiI6MX0.O1WL0ny5pneJLYTtQR6Qti-EHxmLpcmO6T_cY-JsjUw"
+
+        var actual: SubscriptionError?
+
+        let expectation = XCTestExpectation(description: #function)
+        let dataTask = accountResource.requestExports(forAccount: "14810686-4690-4900-ada5-8b0b7338aa39", authorizationToken: SubscriptionAuthorizationToken(value: claim)){ exports, error in
+            
+            actual = error as? SubscriptionError
+            expectation.fulfill()
+        }
+        
+        dataTask.resume();
+        wait(for: [expectation], timeout: 5.0)
+        
+        XCTAssertTrue(actual?.isUnauthorised ?? false)
+        XCTAssertTrue(actual?.isExpired ?? false)
     }
     
     func testGivenRequestRegisterDeviceAssertDevice() {
