@@ -33,9 +33,9 @@ class ClaimsTest: XCTestCase {
         XCTAssertTrue(claims.hasExpired())
     }
     
-    func testGivenExpiredAccessTokenClaimsAssertHasExpiredLeeway() {
+    func testGivenValidAccessTokenClaimsAssertHasNotExpired() {
         let claims = Claims<SubscriptionAuthorizationToken>()
-        claims.exp = Date()
+        claims.exp = Date.distantFuture
         
         XCTAssertFalse(claims.hasExpired())
     }
