@@ -25,21 +25,19 @@ class RestorePreviousPurchasesViewController: UIViewController {
     @IBOutlet var activityIndicatorViewRestoringPurchases: UIActivityIndicatorView!
     
     
-    var productsRequest: SKProductsRequest?
-    
     let subscriptionManager: SubscriptionManager = SubscriptionManager()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestored(notification:)), name: SubscriptionManager.SubscriptionRestored, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestoreFailed(notification:)), name: SubscriptionManager.SubscriptionRestoreFailed, object: subscriptionManager)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestored(notification:)), name: SubscriptionManager.SubscriptionRestored, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestoreFailed(notification:)), name: SubscriptionManager.SubscriptionRestoreFailed, object: subscriptionManager)
     }
     
@@ -47,7 +45,7 @@ class RestorePreviousPurchasesViewController: UIViewController {
         super.viewDidLoad()
         
         if SKPaymentQueue.canMakePayments() {
-            self.productsRequest = subscriptionManager.productsRequest()
+            subscriptionManager.products()
         }
     }
     
@@ -60,7 +58,7 @@ class RestorePreviousPurchasesViewController: UIViewController {
         purchaseOptionsViewController.subscriptionManager = self.subscriptionManager
     }
     
-    @objc func subscriptionActive(notification: NSNotification) {
+    @objc func subscriptionRestored(notification: NSNotification) {
         self.performSegue(withIdentifier: "SubscriberUnwind", sender: self)
     }
 

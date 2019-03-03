@@ -10,32 +10,35 @@ import UIKit
 
 class AccountTableViewDelegate: NSObject, UITableViewDelegate {
     
-    weak var controller: AccountViewController?
+    @IBOutlet weak var controller: AccountViewController?
     
-    let settings: [AccountViewController.Setting]
-    
-    init(settings: [AccountViewController.Setting]) {
-        self.settings = settings
+    var sections: [AccountViewController.Section] {
+        return AccountViewController.Section.sections()
     }
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let setting = settings[indexPath.row]
+        let setting = self.sections[indexPath.section].settings()[indexPath.row]
         
         controller?.accessoryButtonTapped(setting: setting)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setting = settings[indexPath.row]
+        let setting = self.sections[indexPath.section].settings()[indexPath.row]
         
         let cell = tableView.cellForRow(at: indexPath)
-        
-        switch setting {
-            case .restorePurchases:
-                cell?.accessoryView = UIActivityIndicatorView(style: .gray)
-            default:
-                break
+
+        if let activityIndicatorView = cell?.accessoryView as? UIActivityIndicatorView {
+            activityIndicatorView.startAnimating()
         }
         
         controller?.didSelect(setting: setting)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+
+        if let activityIndicatorView = cell?.accessoryView as? UIActivityIndicatorView {
+            activityIndicatorView.stopAnimating()
+        }
     }
 }

@@ -9,10 +9,24 @@
 import Foundation
 
 public enum SubscriptionError : Error {
+    
     case failed
     case connectionError(error: URLError)
     case restoreFailed
     case restoreConnectionError(error: URLError)
+    
+    public enum UnauthorisationReason: String {
+        case expired
+        
+        var key: String {
+            switch self {
+            case .expired:
+                return "subscription.expired"
+            }
+        }
+    }
+    
+    case unauthorised(reason: UnauthorisationReason?)
 }
 
 extension SubscriptionError : CustomNSError, LocalizedError {
@@ -31,6 +45,13 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             return "Restore Purchases Failed"
         case .restoreConnectionError:
             return "Restore Purchases Failed"
+        case .unauthorised(let reason):
+            switch reason {
+            case (.expired?):
+                return "Subscription Expired"
+            default:
+                return "Subscription Access"
+            }
         }
     }
     
@@ -44,6 +65,13 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             return "There was an unexpected error while restoring your subscription."
         case .restoreConnectionError:
             return nil
+        case .unauthorised(let reason):
+            if let reason = reason {
+                return NSLocalizedString("\(SubscriptionError.errorDomain).\(reason.key)", comment: "Your subscription has expired or may have not renewed just yet.\n")
+            }
+            else {
+                return "Your Windmill subscription is no longer active.\n"
+            }
         }
     }
     
@@ -57,6 +85,8 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             return nil
         case .restoreConnectionError:
             return "Restoring your subscription failed because of a network error."
+        case .unauthorised:
+            return nil
         }
     }
     
@@ -70,6 +100,31 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             return "You can try again some time later or contact qnoid@windmill.io."
         case .restoreConnectionError:
             return nil
+        case .unauthorised(let reason):
+            switch reason {
+            case (.expired?):
+                return "In the latter case, Windmill will try again sometime later. Optionally, under your Account, you can choose to Refresh now."
+            default:
+                return "You can purchase a new subscription or contact qnoid@windmill.io"
+            }
+        }
+    }
+    
+    public var isUnauthorised: Bool {
+        switch self {
+        case .unauthorised:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    public var isExpired: Bool {
+        switch self {
+        case .unauthorised(let reason?):
+            return reason == .expired
+        default:
+            return false
         }
     }
 }

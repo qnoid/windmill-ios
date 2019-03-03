@@ -13,8 +13,10 @@ import Alamofire
 class SubscriptionResource {
      
     
-    typealias TransactionsCompletion = (_ account: Account?, _ receiptClaim: ReceiptClaim?, _ error: Error?) -> Void
+    typealias TransactionsCompletion = (_ account: Account?, _ claim: SubscriptionClaim?, _ error: Error?) -> Void
     
+    typealias SubscriptionCompletion = (_ token: SubscriptionAuthorizationToken?, _ error: Error?) -> Void
+
     let queue = DispatchQueue(label: "io.windmill.manager")
     
     let session: URLSession = {
@@ -32,7 +34,7 @@ class SubscriptionResource {
         
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpBody = "{\"data\":\"\(receiptData)\"}".data(using: .utf8)
-        
+        urlRequest.timeoutInterval = 10 //seconds
         return sessionManager.request(urlRequest).validate().responseData(queue: self.queue) { response in
             
             switch (response.result, response.data) {
@@ -44,11 +46,11 @@ class SubscriptionResource {
                     let decoder = JSONDecoder()
                     
                     do {
-                        let receiptClaim = try decoder.decode(ReceiptClaim.self, from: data)
+                        let subscriptionClaim = try decoder.decode(SubscriptionClaim.self, from: data)
                         let account = try decoder.decode(Account.self, from: data)
                         
                         DispatchQueue.main.async{
-                            completion(account, receiptClaim, nil)
+                            completion(account, subscriptionClaim, nil)
                         }
                     } catch {
                         DispatchQueue.main.async{
@@ -61,6 +63,66 @@ class SubscriptionResource {
                     DispatchQueue.main.async{
                         completion(nil, nil, response.error)
                     }
+            }
+        }
+    }
+    
+    @discardableResult func requestSubscription(account: String, claim: SubscriptionClaim, completion: @escaping SubscriptionCompletion) -> DataRequest {
+        
+        var urlRequest = try! URLRequest(url: "\(WINDMILL_BASE_URL)/subscription", method: .post)
+        
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("Bearer \(claim.value)", forHTTPHeaderField: "Authorization")
+        urlRequest.httpBody = "{\"account_identifier\":\"\(account)\"}".data(using: .utf8)
+        urlRequest.timeoutInterval = 10 //seconds
+        
+        return sessionManager.request(urlRequest).validate().responseData(queue: self.queue) { response in
+
+            switch (response.result, response.result.value) {
+            case (.failure(let error), _):
+                switch error {
+                case let error as AFError where error.isResponseValidationError:
+                    switch (error.responseCode, response.data) {
+                    case (401, let data?):
+                        if let response = String(data: data, encoding: .utf8), let reason = SubscriptionError.UnauthorisationReason(rawValue: response) {
+                            DispatchQueue.main.async{
+                                completion(nil, SubscriptionError.unauthorised(reason:reason))
+                            }
+                        } else {
+                            DispatchQueue.main.async{
+                                completion(nil, SubscriptionError.unauthorised(reason: nil))
+                            }
+                        }
+                    default:
+                        DispatchQueue.main.async{
+                            completion(nil, error)
+                        }
+                    }
+                default:
+                    DispatchQueue.main.async{
+                        completion(nil, error)
+                    }
+                }
+            case (.success, let data?):
+                let decoder = JSONDecoder()
+                
+                do {
+                    let subscriptionAuthorizationToken = try decoder.decode(SubscriptionAuthorizationToken.self, from: data)
+                    
+                    DispatchQueue.main.async{
+                        completion(subscriptionAuthorizationToken, nil)
+                    }
+                } catch {
+                    DispatchQueue.main.async{
+                        completion(nil, error)
+                    }
+                }
+                
+                return
+            default:
+                DispatchQueue.main.async{
+                    completion(nil, response.error)
+                }
             }
         }
     }

@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
 
     var window: UIWindow?
     
-    var rootViewController: UITabBarController? {
-        return self.window?.rootViewController as? UITabBarController
+    var rootViewController: MainTabBarController? {
+        return self.window?.rootViewController as? MainTabBarController
     }
     
     let accountResource = AccountResource()
@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         self.window?.makeKeyAndVisible()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionExpired(notification:)), name: SubscriptionManager.SubscriptionExpired, object: nil)
+
         return true
     }
     
@@ -34,6 +35,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         SubscriptionManager.shared.startProcessingPayments()
         
         return true
+    }
+    
+    @objc func subscriptionExpired(notification: NSNotification) {
+        
+        guard let error = notification.userInfo?["error"] as? Error else {
+            return
+        }
+        
+        switch error {
+        case let error as SubscriptionError:
+            let alertController = UIAlertController.Windmill.make(error: error)
+            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        default:
+            let alertController = UIAlertController.Windmill.make(title: "Error", error: error)
+            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func didTouchUpInsideStore() {
@@ -93,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         guard let account = try? self.applicationStorage.read(key: .account) else {
-            os_log("%{public}@", log: .default, type: .debug, "No account found in the `ApplicationStorage.default`. Did you call `ApplicationStorage.write(value:key:)`?")
+            os_log("No account found in the `ApplicationStorage.default`. Did you call `ApplicationStorage.write(value:key:)`?", log: .default, type: .debug)
             return
         }
 

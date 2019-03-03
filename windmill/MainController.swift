@@ -21,12 +21,18 @@ class MainController: UIViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: nil)
+        
+        if SubscriptionStatus.default.isActive, let appsNavigationController = AppsNavigationController.make() {
+            self.addChild(appsNavigationController)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: nil)
+        
+        if SubscriptionStatus.default.isActive, let appsNavigationController = AppsNavigationController.make() {
+            self.addChild(appsNavigationController)
+        }
     }
     
     override func encodeRestorableState(with coder: NSCoder) {
@@ -49,6 +55,7 @@ class MainController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         self.tabBarItem.title = self.children.first?.title
+        self.tabBarItem.image = self.children.first?.tabBarItem.image
 
         switch (self.mainNavigationController, self.appsNavigationController) {
         case (let mainNavigationController?, let appsNavigationController?):
@@ -63,12 +70,12 @@ class MainController: UIViewController {
      
      e.g.
         `self.addChild(destination)`
-        `try? self.switch(source: source, destination: destination)`
+        `self.switch(source: source, destination: destination)`
      
-     @param source the `UIViewController` to switch from
-     @param destination the `UIViewController` to switch to
-     @precondition the given `destination` UIViewController must be a child of this container controller
-     @return
+     - Parameters:
+        - source: the `UIViewController` to switch from
+        - param: destination the `UIViewController` to switch to
+     - Precondition: the given `destination` UIViewController must be a child of this container controller
      */
     func `switch`(source: UIViewController, destination: UIViewController) {
         
@@ -95,12 +102,20 @@ class MainController: UIViewController {
         }
     }
     
-    @IBAction func unwindToMainTabBarController(_ segue: UIStoryboardSegue) {}
+    @IBAction @objc func unwindToMainTabBarController(_ segue: UIStoryboardSegue) {}
     
     @IBAction func unwindToSubscriber(_ segue: UIStoryboardSegue) {
         
-        if let appsNavigationController = AppsNavigationController.make() {
-            transitionAppsNavigationController(appsNavigationController)
+        switch segue.source.presentingViewController {
+        case is MainTabBarController:
+            if let appsNavigationController = AppsNavigationController.make() {
+                transitionAppsNavigationController(appsNavigationController)
+            }
+        default:
+            if let appsNavigationController = AppsNavigationController.make() {
+                self.displayAppsNavigationController(appsNavigationController)
+            }
+            break
         }
     }
     
@@ -120,12 +135,6 @@ class MainController: UIViewController {
         if let mainNavigationController = self.mainNavigationController {
             self.addChild(destination)
             self.switch(source: mainNavigationController, destination: destination)
-        }
-    }
-    
-    @objc func subscriptionActive(notification: NSNotification) {
-        if let appsNavigationController = AppsNavigationController.make() {
-            self.displayAppsNavigationController(appsNavigationController)
         }
     }
 }

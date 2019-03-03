@@ -13,7 +13,7 @@ struct ApplicationStorage {
     
     enum ApplicationStorageKey: String, CodingKey {
         case account = "account_identifier"
-        case receiptClaim = "receipt_claim"
+        case subscriptionClaim = "subscription_claim"
         case subscriptionAuthorizationToken = "subscription_authorization_token"
     }
 

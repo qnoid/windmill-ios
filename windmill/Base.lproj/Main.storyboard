@@ -76,75 +76,7 @@ Once you have done so, return here.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xtc-96-pQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-356.25" y="-345.42253521126759"/>
-        </scene>
-        <!--Login View Controller-->
-        <scene sceneID="8uu-rl-QUU">
-            <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0R1-wd-WVo" customClass="LoginViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ego-WN-J9c">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have to enter your account string to view any deployed apps." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5S-5k-kQQ">
-                                <rect key="frame" x="16" y="20" width="288" height="42.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="R0h-y2-icD">
-                                <rect key="frame" x="16" y="70.5" width="288" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="continue"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-az-WQu">
-                                <rect key="frame" x="16" y="108.5" width="288" height="32"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                <state key="normal" title="Continue"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will find the account string on windmill for macOS." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOi-Kr-j7K">
-                                <rect key="frame" x="54" y="146.5" width="242" height="34"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="question" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-sB-BlX">
-                                <rect key="frame" x="16" y="148.5" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="B8H-0d-71M"/>
-                                    <constraint firstAttribute="height" constant="30" id="G39-h9-X6e"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="bOi-Kr-j7K" secondAttribute="trailing" constant="8" id="54W-En-uzG"/>
-                            <constraint firstItem="aoa-sB-BlX" firstAttribute="top" secondItem="4Ou-az-WQu" secondAttribute="bottom" constant="8" symbolic="YES" id="9zs-V9-qRv"/>
-                            <constraint firstItem="Z5G-BE-mHI" firstAttribute="top" secondItem="D5S-5k-kQQ" secondAttribute="top" id="EpV-PT-htg"/>
-                            <constraint firstItem="4Ou-az-WQu" firstAttribute="leading" secondItem="R0h-y2-icD" secondAttribute="leading" id="F5Y-Wq-h2Z"/>
-                            <constraint firstItem="bOi-Kr-j7K" firstAttribute="centerY" secondItem="aoa-sB-BlX" secondAttribute="centerY" id="GIk-bt-HLk"/>
-                            <constraint firstItem="R0h-y2-icD" firstAttribute="top" secondItem="D5S-5k-kQQ" secondAttribute="bottom" constant="8" symbolic="YES" id="KCu-nj-T8a"/>
-                            <constraint firstItem="bOi-Kr-j7K" firstAttribute="leading" secondItem="aoa-sB-BlX" secondAttribute="trailing" constant="8" symbolic="YES" id="Y5Y-1V-mrc"/>
-                            <constraint firstItem="R0h-y2-icD" firstAttribute="leading" secondItem="Ego-WN-J9c" secondAttribute="leadingMargin" id="ZZl-we-28L"/>
-                            <constraint firstItem="4Ou-az-WQu" firstAttribute="top" secondItem="R0h-y2-icD" secondAttribute="bottom" constant="8" symbolic="YES" id="aQE-qs-XRy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="D5S-5k-kQQ" secondAttribute="trailing" id="fsX-xa-8x2"/>
-                            <constraint firstItem="4Ou-az-WQu" firstAttribute="trailing" secondItem="R0h-y2-icD" secondAttribute="trailing" id="gjU-T7-5l7"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="aoa-sB-BlX" secondAttribute="leading" id="rkg-rf-w3Y"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="D5S-5k-kQQ" secondAttribute="leading" id="wbV-Wv-nvz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="R0h-y2-icD" secondAttribute="trailing" id="zoD-xc-RNt"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Z5G-BE-mHI"/>
-                    </view>
-                    <connections>
-                        <outlet property="accountTextField" destination="R0h-y2-icD" id="TUf-vB-VIc"/>
-                        <outlet property="continueButton" destination="4Ou-az-WQu" id="wkz-RI-xfh"/>
-                        <outlet property="questionImageView" destination="aoa-sB-BlX" id="LDq-W7-ulv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A3g-Wb-Rzm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1155" y="-354"/>
+            <point key="canvasLocation" x="-1155" y="-338"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="ab0-FB-AhQ">
@@ -155,6 +87,7 @@ Once you have done so, return here.
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="1" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="t5i-Uv-ryg" kind="relationship" relationship="viewControllers" id="7Mr-MG-0WH"/>
@@ -194,6 +127,10 @@ Once you have done so, return here.
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uh4-2m-BSh">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QjO-VT-UPQ" id="cFN-QE-eWa"/>
+                                    <outlet property="delegate" destination="ERq-Xn-0YA" id="17e-Sz-Uma"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -212,6 +149,16 @@ Once you have done so, return here.
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POG-bh-IkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="QjO-VT-UPQ" customClass="AccountTableViewDataSource" customModule="windmill" customModuleProvider="target">
+                    <connections>
+                        <outlet property="controller" destination="hsP-yc-cGu" id="8SR-LR-N3e"/>
+                    </connections>
+                </customObject>
+                <customObject id="ERq-Xn-0YA" customClass="AccountTableViewDelegate" customModule="windmill" customModuleProvider="target">
+                    <connections>
+                        <outlet property="controller" destination="hsP-yc-cGu" id="Z6o-pI-d3r"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="454" y="397"/>
         </scene>
@@ -226,7 +173,7 @@ Once you have done so, return here.
                             <segue destination="czc-re-KSl" kind="embed" id="Vm2-zo-f4W"/>
                         </connections>
                     </containerView>
-                    <tabBarItem key="tabBarItem" title="Main" id="D5K-Ia-lf6"/>
+                    <tabBarItem key="tabBarItem" title="Main" image="apps_icon" id="D5K-Ia-lf6"/>
                     <navigationItem key="navigationItem" id="TDw-rs-aDf"/>
                     <connections>
                         <outlet property="_tabBarItem" destination="D5K-Ia-lf6" id="mKt-Ur-HGM"/>
@@ -275,7 +222,7 @@ Once you have done so, return here.
         <scene sceneID="6A0-cy-6CX">
             <objects>
                 <navigationController storyboardIdentifier="MainNavigationController" title="Main" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="czc-re-KSl" userLabel="MainNavigationController" customClass="MainNavigationController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main" id="4IP-Mx-XJN"/>
+                    <tabBarItem key="tabBarItem" title="Main" image="apps_icon" id="4IP-Mx-XJN"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ma8-59-CeP">
@@ -294,6 +241,6 @@ Once you have done so, return here.
     </scenes>
     <resources>
         <image name="account_icon" width="25" height="25"/>
-        <image name="question" width="60" height="60"/>
+        <image name="apps_icon" width="25" height="25"/>
     </resources>
 </document>
