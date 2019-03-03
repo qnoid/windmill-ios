@@ -43,22 +43,29 @@ class SubscriptionResource {
                         completion(nil, nil, response.error)
                     }
                 case (.success, let data?):
-                    let decoder = JSONDecoder()
-                    
-                    do {
-                        let subscriptionClaim = try decoder.decode(SubscriptionClaim.self, from: data)
-                        let account = try decoder.decode(Account.self, from: data)
-                        
-                        DispatchQueue.main.async{
-                            completion(account, subscriptionClaim, nil)
-                        }
-                    } catch {
-                        DispatchQueue.main.async{
-                            completion(nil, nil, error)
-                        }
-                    }
-
-                    return
+                    switch (response.response?.statusCode) {
+                        case 200, 201:
+                            let decoder = JSONDecoder()
+                            
+                            do {
+                                let subscriptionClaim = try decoder.decode(SubscriptionClaim.self, from: data)
+                                let account = try decoder.decode(Account.self, from: data)
+                                
+                                DispatchQueue.main.async{
+                                    completion(account, subscriptionClaim, nil)
+                                }
+                            } catch {
+                                DispatchQueue.main.async{
+                                    completion(nil, nil, error)
+                                }
+                            }
+                        case 202:
+                            completion(nil, nil, SubscriptionError.outdated)
+                        case 204:
+                            completion(nil, nil, SubscriptionError.expired)
+                    default:
+                        break
+                }
                 default:
                     DispatchQueue.main.async{
                         completion(nil, nil, response.error)

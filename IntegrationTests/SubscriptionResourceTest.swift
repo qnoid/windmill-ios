@@ -42,7 +42,7 @@ class SubscriptionResourceTest: XCTestCase {
         XCTAssertEqual(403, error?.responseCode)
     }
 
-    func testGivenValidTransactionReceiptAssertToken() {
+    func testGivenExpiredTransactionReceiptAssertSubscriptionExpired() {
         
         let receiptURL = Bundle(for: SubscriptionResourceTest.self).url(forResource: "receipt", withExtension: "data")!
         let receiptData = try! Data(contentsOf: receiptURL)
@@ -50,24 +50,19 @@ class SubscriptionResourceTest: XCTestCase {
         
         let subscriptionResource = SubscriptionResource()
         
-        var actual: SubscriptionClaim?
+        var actual: SubscriptionError?
         
         let expectation = XCTestExpectation(description: #function)
         
         subscriptionResource.requestTransactions(forReceipt: receipt) { (account, claim, error) in
             
-            guard let claim = claim else {
-                XCTFail(error!.localizedDescription)
-                return
-            }
-            
-            actual = claim
+            actual = error as? SubscriptionError
             expectation.fulfill()
         }
         
         wait(for: [expectation], timeout: 5.0)
         
-        XCTAssertNotNil(actual)
+        XCTAssertTrue(actual?.isExpired ?? false)
     }
     
     func testGivenInvalidClaimTypAssertUnauthorised() {

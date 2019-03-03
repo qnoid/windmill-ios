@@ -82,30 +82,10 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(restoreCompletedTransactionsFailed(notification:)), name: PaymentQueue.RestoreCompletedTransactionsFailed, object: paymentQueue)
     }
     
-    func subscriptionHasSinceExpired(claim: SubscriptionClaim?) -> Bool {
-        guard let claim = claim, let jwt = try? JWT.jws(jwt: claim.value), let claims = try? Claims<SubscriptionClaim>.subscription(jwt: jwt) else {
-            return false
-        }
-        
-        return claims.hasExpired()
-    }
-    
     func purchaseSubscription(receiptData: String, completion: @escaping SubscriptionResource.TransactionsCompletion) {
         
         self.requestTransactions(receiptData: receiptData){ (account, claim, error) in
             
-            /**
-             This is the case where transactions for an expired subscription are sent for processing, in this case:
-             
-             * No need to notify. This is stale information and not neccesarily relevant at this thime.
-             * No need to acquire a new authorisation token since it will be expired.
-             
-             - see: `Processing StoreKit transactions`, under considerations.md for a detailed scenario of this case.
-            */
-            if self.subscriptionHasSinceExpired(claim: claim) {
-                return
-            }
-
             switch error {
             case let error as AFError where error.isResponseValidationError:
                 switch error.responseCode {
@@ -116,6 +96,16 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
                 }
             case let error as URLError:
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionFailed, object: self, userInfo: ["error": SubscriptionError.connectionError(error: error)])
+            case let subscriptionError as SubscriptionError where subscriptionError.isExpired:
+                /**
+                 This is the case where transactions for an expired subscription are sent for processing, in this case:
+                 
+                 * No need to notify. This is stale information and not neccesarily relevant at this thime.
+                 * No need to acquire a new authorisation token since it will be expired.
+                 
+                 - see: `Processing StoreKit transactions`, under considerations.md for a detailed scenario of this case.
+                 */
+                os_log("Subscription has expired", log: .default, type: .debug)
             case .some(let error):
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionFailed, object: self, userInfo: ["error": error])
             case .none:
