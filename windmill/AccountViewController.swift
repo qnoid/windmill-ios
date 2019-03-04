@@ -125,8 +125,6 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
     @objc func subscriptionFailed(notification: NSNotification) {
         self.subscriptionStatus = SubscriptionStatus.default
         
-        self.deselect(setting: Setting.restorePurchases)
-        
         guard let error = notification.userInfo?["error"] as? Error else {
             return
         }
@@ -134,7 +132,8 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         self.error(self.subscriptionManager, didFailWithError: error)
     }
 
-    @objc func subscriptionRestoreFailed(notification: NSNotification) {        
+    @objc func subscriptionRestoreFailed(notification: NSNotification) {
+        
         self.deselect(setting: Setting.restorePurchases)
         
         guard let error = notification.userInfo?["error"] as? Error else {

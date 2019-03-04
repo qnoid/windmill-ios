@@ -44,9 +44,9 @@ extension SubscriptionError : CustomNSError, LocalizedError {
         case .connectionError:
             return "Your purchase was succesful"
         case .restoreFailed:
-            return "Restore Purchases Failed"
+            return "Restore Failed"
         case .restoreConnectionError:
-            return "Restore Purchases Failed"
+            return "Restore Failed"
         case .unauthorised(let reason):
             switch reason {
             case (.expired?):
@@ -54,6 +54,8 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             default:
                 return "Subscription Access"
             }
+        case .expired:
+            return "Subscription Expired"
         default:
             return ""
         }
@@ -66,7 +68,7 @@ extension SubscriptionError : CustomNSError, LocalizedError {
         case .connectionError:
             return nil
         case .restoreFailed:
-            return "There was an unexpected error while restoring your subscription."
+            return "There was an unexpected error while restoring your subscription.\n"
         case .restoreConnectionError:
             return nil
         case .unauthorised(let reason):
@@ -76,6 +78,8 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             else {
                 return "Your Windmill subscription is no longer active.\n"
             }
+        case .expired:
+            return NSLocalizedString("\(SubscriptionError.errorDomain).\(UnauthorisationReason.expired.key)", comment: "Your subscription has expired or may have not renewed just yet.\n")
         default:
             return nil
         }
@@ -93,6 +97,8 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             return "Restoring your subscription failed because of a network error."
         case .unauthorised:
             return nil
+        case .expired:
+            return nil
         default:
             return nil
         }
@@ -103,7 +109,7 @@ extension SubscriptionError : CustomNSError, LocalizedError {
         case .failed:
             return "Windmill will try again sometime later.\nOptionally, you can contact qnoid@windmill.io"
         case .connectionError:
-            return "Windmill will try again sometime later."
+            return "Windmill will try again sometime later.\nOptionally, under your Account, you can choose to Refresh later."
         case .restoreFailed:
             return "You can try again some time later or contact qnoid@windmill.io."
         case .restoreConnectionError:
@@ -115,6 +121,8 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             default:
                 return "You can purchase a new subscription or contact qnoid@windmill.io"
             }
+        case .expired:
+            return "In the latter case, Windmill will try again sometime later. Optionally, under your Account, you can choose to Refresh now."
         default:
             return nil
         }

@@ -60,9 +60,13 @@ class SubscriptionResource {
                                 }
                             }
                         case 202:
-                            completion(nil, nil, SubscriptionError.outdated)
+                            DispatchQueue.main.async{
+                                completion(nil, nil, SubscriptionError.outdated)
+                            }
                         case 204:
-                            completion(nil, nil, SubscriptionError.expired)
+                            DispatchQueue.main.async{
+                                completion(nil, nil, SubscriptionError.expired)
+                            }
                     default:
                         break
                 }

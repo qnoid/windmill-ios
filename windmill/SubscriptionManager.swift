@@ -159,6 +159,8 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
                 }
             case let error as URLError:
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionRestoreFailed, object: self, userInfo: ["error": SubscriptionError.restoreConnectionError(error: error)])
+            case let subscriptionError as SubscriptionError where subscriptionError.isExpired:
+                NotificationCenter.default.post(name: SubscriptionManager.SubscriptionExpired, object: self, userInfo: ["error": subscriptionError])
             case .some(let error):
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionRestoreFailed, object: self, userInfo: ["error": error])
             case .none:                
@@ -167,11 +169,6 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
             }
             
             if let claim = claim, let account = account {
-                
-                guard let jwt = try? JWT.jws(jwt: claim.value), let claims = try? Claims<SubscriptionClaim>.subscription(jwt: jwt), !claims.hasExpired() else {
-                    NotificationCenter.default.post(name: SubscriptionManager.SubscriptionExpired, object: self, userInfo: ["error": SubscriptionError.unauthorised(reason: .expired)])
-                    return
-                }
                 
                 self.requestSubscription(account: account, claim: claim) { token, error in
                     

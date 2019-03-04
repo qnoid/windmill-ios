@@ -93,7 +93,9 @@ class AccountResource {
                     }
                 }
             default:
-                completion(nil, response.error)
+                DispatchQueue.main.async{
+                    completion(nil, response.error)
+                }
             }
         }
     }
@@ -128,7 +130,9 @@ class AccountResource {
                     completion(device, nil)
                 }
             } catch {
-                completion(nil, error)
+                DispatchQueue.main.async{
+                    completion(nil, error)
+                }
             }
         }
     }
