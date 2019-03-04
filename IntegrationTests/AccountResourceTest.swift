@@ -20,7 +20,7 @@ class AccountResourceTest: XCTestCase {
     func testGivenAccountAssertExports() {
         
         let accountResource = AccountResource()
-        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMlZqY21WMCIsInN1YiI6IjEwMDAwMDA0OTc5MzE5OTMiLCJleHAiOjMzMTA4MTg4NTc0LCJ0eXAiOiJhdCIsInYiOjF9.rzEzm5S0N0fxb2mp83aFwOXduHRjKPI3m18cwkPaiqY"
+        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMlZqY21WMCIsInN1YiI6IjU1ZmQyYWMzLTdkZTItNGM2Ny1iMGY4LTc5ZTdjZmEwMjBjMiIsImV4cCI6MzMxMDgxODg1NzQsInR5cCI6ImF0IiwidiI6MX0.yxmDN4QLq0eJeJ1D42ZoIb9HO67o8bRvYXFjDy9bLcs"
 
         var actual: [windmill.Export]?
         
@@ -45,7 +45,7 @@ class AccountResourceTest: XCTestCase {
     func testGivenExpiredTokenAssertUnauthorisedExpired() {
         
         let accountResource = AccountResource()
-        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMlZqY21WMCIsInN1YiI6IjEwMDAwMDA0OTc5MzE5OTMiLCJleHAiOjAsInR5cCI6ImF0IiwidiI6MX0.O1WL0ny5pneJLYTtQR6Qti-EHxmLpcmO6T_cY-JsjUw"
+        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMlZqY21WMCIsInN1YiI6IjU1ZmQyYWMzLTdkZTItNGM2Ny1iMGY4LTc5ZTdjZmEwMjBjMiIsImV4cCI6MCwidHlwIjoiYXQiLCJ2IjoxfQ.P-ajI8U1I1sjlFuRNOpJctRDd9rgktiErhsnbbnVlwE"
 
         var actual: SubscriptionError?
 

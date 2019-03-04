@@ -78,13 +78,12 @@ class SubscriptionResource {
         }
     }
     
-    @discardableResult func requestSubscription(account: String, claim: SubscriptionClaim, completion: @escaping SubscriptionCompletion) -> DataRequest {
+    @discardableResult func requestSubscription(claim: SubscriptionClaim, completion: @escaping SubscriptionCompletion) -> DataRequest {
         
         var urlRequest = try! URLRequest(url: "\(WINDMILL_BASE_URL)/subscription", method: .post)
         
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("Bearer \(claim.value)", forHTTPHeaderField: "Authorization")
-        urlRequest.httpBody = "{\"account_identifier\":\"\(account)\"}".data(using: .utf8)
         urlRequest.timeoutInterval = 10 //seconds
         
         return sessionManager.request(urlRequest).validate().responseData(queue: self.queue) { response in

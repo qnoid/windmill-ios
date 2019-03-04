@@ -106,6 +106,7 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
                  - see: `Processing StoreKit transactions`, under considerations.md for a detailed scenario of this case.
                  */
                 os_log("The receipt sent for processing was for an expired subscription. Nothing to see here.", log: .default, type: .debug)
+                completion(account, claim, error)
             case .some(let error):
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionFailed, object: self, userInfo: ["error": error])
             case .none:
@@ -113,8 +114,8 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
                 break;
             }
             
-            if let claim = claim, let account = account {
-                self.requestSubscription(account: account, claim: claim) { token, error in
+            if let claim = claim {
+                self.requestSubscription(claim: claim) { token, error in
                     
                     switch error {
                     case let error as AFError where error.isResponseValidationError:
@@ -168,9 +169,9 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
                 break;
             }
             
-            if let claim = claim, let account = account {
+            if let claim = claim {
                 
-                self.requestSubscription(account: account, claim: claim) { token, error in
+                self.requestSubscription(claim: claim) { token, error in
                     
                     switch error {
                     case let error as AFError where error.isResponseValidationError:
@@ -256,9 +257,9 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
         NotificationCenter.default.post(name: SubscriptionManager.SubscriptionRestoreFailed, object: self, userInfo: notification.userInfo)
     }
     
-    private func requestSubscription(account: Account, claim: SubscriptionClaim, completion: @escaping SubscriptionResource.SubscriptionCompletion = SubscriptionCompletionIgnore) {
+    private func requestSubscription(claim: SubscriptionClaim, completion: @escaping SubscriptionResource.SubscriptionCompletion = SubscriptionCompletionIgnore) {
         
-        self.subscriptionResource.requestSubscription(account: account.identifier, claim: claim){ (token, error) in
+        self.subscriptionResource.requestSubscription(claim: claim){ (token, error) in
             
             switch error {
             case .some(let error):

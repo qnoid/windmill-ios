@@ -489,7 +489,7 @@
 			};
 			buildConfigurationList = BDD1E9621CDA92DB00976074 /* Build configuration list for PBXProject "windmill" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,

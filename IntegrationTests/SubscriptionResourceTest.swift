@@ -69,14 +69,13 @@ class SubscriptionResourceTest: XCTestCase {
         
         let subscriptionResource = SubscriptionResource()
 
-        let account = "14810686-4690-4900-ada5-8b0b7338aa38";
-        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiY0ROTzd6TXp4Q290QXJ1dlJleCIsInN1YiI6IjEwMDAwMDA0OTc5MzE5OTMiLCJleHAiOjE1NTA3NDk4NzgsInR5cCI6ImZvbyIsInYiOjF9.GqSAmeZsJJfsKrqmp-DXBd1qO8TclTZ591V1MQ_6cuI"
+        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiY0ROTzd6TXp4Q290QXJ1dlJleCIsInN1YiI6IjU1ZmQyYWMzLTdkZTItNGM2Ny1iMGY4LTc5ZTdjZmEwMjBjMiIsInR5cCI6ImZvbyIsInYiOjF9.5p1dxT8R7io1cRzi-La8116AruCrw0QJ_XRSTVO_7ME"
         
         var actual: SubscriptionError?
 
         let expectation = XCTestExpectation(description: #function)
 
-        subscriptionResource.requestSubscription(account: account, claim: SubscriptionClaim(value: claim)) { (token, error) in
+        subscriptionResource.requestSubscription(claim: SubscriptionClaim(value: claim)) { (token, error) in
             
             actual = error as? SubscriptionError
             expectation.fulfill()
@@ -91,14 +90,13 @@ class SubscriptionResourceTest: XCTestCase {
         
         let subscriptionResource = SubscriptionResource()
         
-        let account = "14810686-4690-4900-ada5-8b0b7338aa38";
-        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiY0ROTzd6TXp4Q290QXJ1dlJleCIsInN1YiI6IjEwMDAwMDA0OTc5MzE5OTMiLCJleHAiOjAsInR5cCI6InN1YiIsInYiOjF9.HqwXYJPM0ZMv3hzxGk4kSjzGhwwYa0VkIURdDisWBks"
+        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJpOGVkZTE1OFhkdHpVZUFYZVFEbSIsInN1YiI6IjU1RkQyQUMzLTdERTItNEM2Ny1CMEY4LTc5RTdDRkEwMjBDMiIsInR5cCI6InN1YiIsInYiOjF9.j9TRWYwXSp8KPhDXS9P1Cz-L2ldBwlZ8Gb4EssLvHzw"
         
         var actual: SubscriptionError?
         
         let expectation = XCTestExpectation(description: #function)
         
-        subscriptionResource.requestSubscription(account: account, claim: SubscriptionClaim(value: claim)) { (token, error) in
+        subscriptionResource.requestSubscription(claim: SubscriptionClaim(value: claim)) { (token, error) in
             
             actual = error as? SubscriptionError
             expectation.fulfill()
@@ -114,14 +112,13 @@ class SubscriptionResourceTest: XCTestCase {
         
         let subscriptionResource = SubscriptionResource()
         
-        let account = "14810686-4690-4900-ada5-8b0b7338aa38";
-        let claim = "eyJhbGciOiJub25lIn0.eyJqdGkiOiJiY0ROTzd6TXp4Q290QXJ1dlJleCIsInN1YiI6IjEwMDAwMDA0OTc5MzE5OTQiLCJleHAiOjE1NTA4NDk4NzgsInR5cCI6InN1YiIsInYiOjF9.fCZLoen435voR0sj2_2tY-1sk13f0gwR8y9Tb-vhClQ"
+        let claim = "eyJhbGciOiJub25lIn0.eyJqdGkiOiJiY0ROTzd6TXp4Q290QXJ1dlJleCIsInN1YiI6IjU1ZmQyYWMzLTdkZTItNGM2Ny1iMGY4LTc5ZTdjZmEwMjBjMiIsInR5cCI6InN1YiIsInYiOjF9.j9TRWYwXSp8KPhDXS9P1Cz-L2ldBwlZ8Gb4EssLvHzw"
         
         var actual: SubscriptionError?
 
         let expectation = XCTestExpectation(description: #function)
         
-        subscriptionResource.requestSubscription(account: account, claim: SubscriptionClaim(value: claim)) { (token, error) in
+        subscriptionResource.requestSubscription(claim: SubscriptionClaim(value: claim)) { (token, error) in
             
             actual = error as? SubscriptionError
             expectation.fulfill()

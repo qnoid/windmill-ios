@@ -68,7 +68,7 @@ class AccountResource {
                     }
                 default:
                     DispatchQueue.main.async{
-                        completion(nil, response.error)
+                        completion(nil, error)
                     }
                 }
             case (.success, let data?):
