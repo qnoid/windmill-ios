@@ -61,8 +61,6 @@
 		BDA1AF91221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF8F221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.swift */; };
 		BDA1AF93221ADB6500EFB366 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF92221ADB6500EFB366 /* MainNavigationController.swift */; };
 		BDA1AF95221AE07900EFB366 /* PurchaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF94221AE07900EFB366 /* PurchaseNavigationController.swift */; };
-		BDA1AF98221B1CCF00EFB366 /* MockExportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF96221B1CCE00EFB366 /* MockExportTableViewCell.xib */; };
-		BDA1AF99221B1CCF00EFB366 /* MockExportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF97221B1CCE00EFB366 /* MockExportTableViewCell.swift */; };
 		BDA1AFA0221BE79C00EFB366 /* MainTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF9E221BE79A00EFB366 /* MainTableViewHeaderView.swift */; };
 		BDA1AFA1221BE79C00EFB366 /* MainTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF9F221BE79B00EFB366 /* MainTableViewHeaderView.xib */; };
 		BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1471F0E26A1004EE03D /* Device.swift */; };
@@ -158,8 +156,6 @@
 		BDA1AF8F221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionExpiredTableViewFooterView.swift; sourceTree = "<group>"; };
 		BDA1AF92221ADB6500EFB366 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		BDA1AF94221AE07900EFB366 /* PurchaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseNavigationController.swift; sourceTree = "<group>"; };
-		BDA1AF96221B1CCE00EFB366 /* MockExportTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MockExportTableViewCell.xib; sourceTree = "<group>"; };
-		BDA1AF97221B1CCE00EFB366 /* MockExportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockExportTableViewCell.swift; sourceTree = "<group>"; };
 		BDA1AF9E221BE79A00EFB366 /* MainTableViewHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BDA1AF9F221BE79B00EFB366 /* MainTableViewHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewHeaderView.xib; sourceTree = "<group>"; };
 		BDA2D1471F0E26A1004EE03D /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -253,8 +249,6 @@
 				BD2136982212D713009CB1A0 /* Subscriber.storyboard */,
 				BD0341BB2202E40F00421539 /* AppsNavigationController.swift */,
 				BDD1E96C1CDA92DB00976074 /* AppsViewController.swift */,
-				BDA1AF97221B1CCE00EFB366 /* MockExportTableViewCell.swift */,
-				BDA1AF96221B1CCE00EFB366 /* MockExportTableViewCell.xib */,
 				BD5229281CFB4B1D0069C831 /* AccountResource.swift */,
 				BDA1AF9B221BE23600EFB366 /* ExportTableView */,
 			);
@@ -536,7 +530,6 @@
 				BD2136932212B434009CB1A0 /* OpenStoreTableViewFooterView.xib in Resources */,
 				BDD1E9721CDA92DB00976074 /* Assets.xcassets in Resources */,
 				BD6F9D6322293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib in Resources */,
-				BDA1AF98221B1CCF00EFB366 /* MockExportTableViewCell.xib in Resources */,
 				BD0AD8A81FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib in Resources */,
 				BDA1AF90221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.xib in Resources */,
 				BD6F9D6C222A7F4F00CC3B27 /* Localizable.strings in Resources */,
@@ -616,7 +609,6 @@
 				BD5229231CFB26AC0069C831 /* ExportTableViewDataSource.swift in Sources */,
 				BD47531C221471E7004C101E /* MainController.swift in Sources */,
 				BDB84800221C19B600A1CE61 /* SubscriptionDetailsViewController.swift in Sources */,
-				BDA1AF99221B1CCF00EFB366 /* MockExportTableViewCell.swift in Sources */,
 				BD0112EF22130F55003FA1D1 /* AccountNavigationController.swift in Sources */,
 				BD19B6C421F8DAC900743250 /* SubscriptionAuthorizationToken.swift in Sources */,
 				BD2136952212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift in Sources */,

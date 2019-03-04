@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController {
     var mainTableViewHeaderView: UITableViewHeaderFooterView {
         
         if case .expired = self.subscriptionStatus {
@@ -30,28 +30,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView! {
         didSet{
             self.tableView.tableHeaderView = self.mainTableViewHeaderView
-            self.tableView.register(MockExportTableViewCell.self, forCellReuseIdentifier: "MockExportTableViewCell")
             self.tableView.rowHeight = UITableView.automaticDimension
-            self.tableView.dataSource = self
-            self.tableView.delegate = self
             self.tableView.allowsSelection = false
             self.tableView.alwaysBounceVertical = false
             self.tableView.tableFooterView = self.mainTableViewFooterView
         }
     }
     
-    var subscriptionStatus = SubscriptionStatus.default {
-        didSet {
-            guard let tableView = tableView else {
-                return
-            }
-            
-            tableView.tableHeaderView = self.mainTableViewHeaderView
-            tableView.tableFooterView = self.mainTableViewFooterView
-            tableView.reloadData()
-        }
-    }
-
+    var subscriptionStatus = SubscriptionStatus.default
     var subscriptionManager = SubscriptionManager()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -79,28 +65,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func subscriptionActive(notification: NSNotification) {
         self.subscriptionStatus = SubscriptionStatus.default
+        
+        self.performSegue(withIdentifier: "SubscriberUnwind", sender: self)
     }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.subscriptionStatus.isActive ? 1 : 0
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.subscriptionStatus.isActive ? 1 : 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "MockExportTableViewCell") as? MockExportTableViewCell ?? UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 107
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 107
-    }
-    
     @objc func dismiss(_ sender: Any?) {
         self.dismiss(animated: true)
     }

@@ -194,9 +194,6 @@ Once you have done so, return here.
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tjl-k3-D6h">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="WKa-Oc-1Y7" id="nNf-sa-IjO"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -212,9 +209,11 @@ Once you have done so, return here.
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Tjl-k3-D6h" id="PSx-Yd-mXg"/>
+                        <segue destination="2xt-ll-45U" kind="unwind" identifier="SubscriberUnwind" unwindAction="unwindToSubscriber:" id="QQp-3T-2oq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEn-Qs-4kH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2xt-ll-45U" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="454" y="1203"/>
         </scene>

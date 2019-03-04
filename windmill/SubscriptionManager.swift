@@ -105,7 +105,7 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
                  
                  - see: `Processing StoreKit transactions`, under considerations.md for a detailed scenario of this case.
                  */
-                os_log("Subscription has expired", log: .default, type: .debug)
+                os_log("The receipt sent for processing was for an expired subscription. Nothing to see here.", log: .default, type: .debug)
             case .some(let error):
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionFailed, object: self, userInfo: ["error": error])
             case .none:
