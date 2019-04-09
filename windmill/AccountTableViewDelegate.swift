@@ -9,21 +9,27 @@
 import UIKit
 
 class AccountTableViewDelegate: NSObject, UITableViewDelegate {
-    
+
+    typealias Section = AccountViewController.Section
+    typealias Setting = AccountViewController.Setting
+
     @IBOutlet weak var controller: AccountViewController?
     
-    var sections: [AccountViewController.Section] {
-        return AccountViewController.Section.sections()
+    var subscriptionStatus = SubscriptionStatus.default {
+        didSet {
+            self.sections = Section.sections(for: subscriptionStatus)
+        }
     }
+    var sections = [Section]()
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let setting = self.sections[indexPath.section].settings()[indexPath.row]
+        let setting = self.sections[indexPath.section].settings(for: self.subscriptionStatus)[indexPath.row]
         
         controller?.accessoryButtonTapped(setting: setting)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setting = self.sections[indexPath.section].settings()[indexPath.row]
+        let setting = self.sections[indexPath.section].settings(for: self.subscriptionStatus)[indexPath.row]
         
         let cell = tableView.cellForRow(at: indexPath)
 

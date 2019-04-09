@@ -20,7 +20,7 @@ class NotificationsNotDeterminedTableViewHeaderView: UITableViewHeaderFooterView
             let attributedText = NSMutableAttributedString(string: "Notify me when a ")
             attributedText.append(NSAttributedString(string: "New build", attributes: [.foregroundColor : UIColor.black, .font : UIFont.boldSystemFont(ofSize: 14)]))
             attributedText.append(NSAttributedString(string: " is "))
-            attributedText.append(NSAttributedString(string: "published", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
+            attributedText.append(NSAttributedString(string: "distributed", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
             attributedText.append(NSAttributedString(string: "."))
             notifyButton.setAttributedTitle(attributedText, for: .normal)
         }

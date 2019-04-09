@@ -15,7 +15,7 @@ class InstallTableViewFooterView: UITableViewHeaderFooterView {
             let attributedText = NSMutableAttributedString(string: "This device must be registered in the developer profile to be able to ")
             attributedText.append(NSAttributedString(string: "INSTALL", attributes: [.foregroundColor : UIColor.Windmill.greenColor]))
             attributedText.append(NSAttributedString(string: " apps "))
-            attributedText.append(NSAttributedString(string: "published", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
+            attributedText.append(NSAttributedString(string: "distributed", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
             attributedText.append(NSAttributedString(string: " by Windmill."))
             label.attributedText = attributedText
         }

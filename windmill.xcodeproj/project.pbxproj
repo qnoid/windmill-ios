@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BD0112EF22130F55003FA1D1 /* AccountNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0112EE22130F55003FA1D1 /* AccountNavigationController.swift */; };
-		BD0341BA2202DFB800421539 /* receipt.data in Resources */ = {isa = PBXBuildFile; fileRef = BD0341B92202DFB800421539 /* receipt.data */; };
 		BD0AD8A81FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */; };
 		BD0AD8AA1FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */; };
 		BD0AD8AC1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */; };
@@ -66,6 +65,7 @@
 		BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1471F0E26A1004EE03D /* Device.swift */; };
 		BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */; };
 		BDA2D1521F0E2959004EE03D /* AccountResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */; };
+		BDA7E435223E65AC0022459E /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA7E434223E65AC0022459E /* CloudKitManager.swift */; };
 		BDB847FE221C135000A1CE61 /* SubscriptionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB847FD221C135000A1CE61 /* SubscriptionStatus.swift */; };
 		BDB84800221C19B600A1CE61 /* SubscriptionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB847FF221C19B600A1CE61 /* SubscriptionDetailsViewController.swift */; };
 		BDBE8F9A220B341E00872B78 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBE8F99220B341E00872B78 /* SubscriptionManager.swift */; };
@@ -101,7 +101,6 @@
 
 /* Begin PBXFileReference section */
 		BD0112EE22130F55003FA1D1 /* AccountNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNavigationController.swift; sourceTree = "<group>"; };
-		BD0341B92202DFB800421539 /* receipt.data */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = receipt.data; sourceTree = "<group>"; wrapsLines = 0; };
 		BD0341BB2202E40F00421539 /* AppsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsNavigationController.swift; sourceTree = "<group>"; };
 		BD0AD8A71FA0EDB3007337CA /* NotificationsDeniedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsDeniedTableViewHeaderView.xib; sourceTree = "<group>"; };
 		BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDeniedTableViewHeaderView.swift; sourceTree = "<group>"; };
@@ -163,6 +162,7 @@
 		BDA2D14F1F0E2959004EE03D /* IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountResourceTest.swift; sourceTree = "<group>"; };
 		BDA2D1531F0E2959004EE03D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDA7E434223E65AC0022459E /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		BDB847FD221C135000A1CE61 /* SubscriptionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionStatus.swift; sourceTree = "<group>"; };
 		BDB847FF221C19B600A1CE61 /* SubscriptionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailsViewController.swift; sourceTree = "<group>"; };
 		BDBE8F99220B341E00872B78 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 			name = ExportTableView;
 			sourceTree = "<group>";
 		};
-		BDA1AF9C221BE26C00EFB366 /* StoreKit */ = {
+		BDA1AF9C221BE26C00EFB366 /* Subscriber */ = {
 			isa = PBXGroup;
 			children = (
 				BDA1AF94221AE07900EFB366 /* PurchaseNavigationController.swift */,
@@ -288,8 +288,9 @@
 				BD1949B8220C273F00ADE6E1 /* Subscription.swift */,
 				BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */,
 				BD47531F22147E60004C101E /* SlideInFadeOutControllerTransitioningDelegate.swift */,
+				BDA7E434223E65AC0022459E /* CloudKitManager.swift */,
 			);
-			name = StoreKit;
+			name = Subscriber;
 			sourceTree = "<group>";
 		};
 		BDA1AF9D221BE34B00EFB366 /* Account */ = {
@@ -314,7 +315,6 @@
 				BDA2D1511F0E2959004EE03D /* AccountResourceTest.swift */,
 				BDA2D1531F0E2959004EE03D /* Info.plist */,
 				BD212A2A21FDB83900D7D66A /* SubscriptionResourceTest.swift */,
-				BD0341B92202DFB800421539 /* receipt.data */,
 			);
 			path = IntegrationTests;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */,
 				BD6F9D59222826BF00CC3B27 /* JWT */,
 				BD13B2151F016ADD00BFC755 /* common */,
-				BDA1AF9C221BE26C00EFB366 /* StoreKit */,
+				BDA1AF9C221BE26C00EFB366 /* Subscriber */,
 				BDA1AF9A221BE17A00EFB366 /* Apps */,
 				BDA1AF9D221BE34B00EFB366 /* Account */,
 				BDD1E96A1CDA92DB00976074 /* AppDelegate.swift */,
@@ -512,7 +512,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD0341BA2202DFB800421539 /* receipt.data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +582,7 @@
 				BD6F9D5D2228287100CC3B27 /* Claims.swift in Sources */,
 				BD3B5F9C2211C9BB00D1D899 /* WelcomeViewController.swift in Sources */,
 				BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */,
+				BDA7E435223E65AC0022459E /* CloudKitManager.swift in Sources */,
 				BDF73C2B2202021000924316 /* Account.swift in Sources */,
 				BD3B5FA22211D58000D1D899 /* AccountTableViewDelegate.swift in Sources */,
 				BD47531A22146FF3004C101E /* MainViewController.swift in Sources */,

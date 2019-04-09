@@ -24,7 +24,7 @@ class SubscriptionResourceTest: XCTestCase {
         
         let expectation = XCTestExpectation(description: #function)
 
-        subscriptionResource.requestTransactions(forReceipt: "vuRiNscyxrlB24Eh9VW9KQ=") { (account, token, error) in
+        subscriptionResource.requestTransactions(forReceipt: "vuRiNscyxrlB24Eh9VW9KQ=") { (claim, error) in
             
             guard let error = error else {
                 XCTFail()
@@ -41,29 +41,6 @@ class SubscriptionResourceTest: XCTestCase {
         XCTAssertNotNil(error)
         XCTAssertEqual(403, error?.responseCode)
     }
-
-    func testGivenExpiredTransactionReceiptAssertSubscriptionExpired() {
-        
-        let receiptURL = Bundle(for: SubscriptionResourceTest.self).url(forResource: "receipt", withExtension: "data")!
-        let receiptData = try! Data(contentsOf: receiptURL)
-        let receipt = String(data: receiptData, encoding: .utf8)!.replacingOccurrences(of: "\n", with: "")
-        
-        let subscriptionResource = SubscriptionResource()
-        
-        var actual: SubscriptionError?
-        
-        let expectation = XCTestExpectation(description: #function)
-        
-        subscriptionResource.requestTransactions(forReceipt: receipt) { (account, claim, error) in
-            
-            actual = error as? SubscriptionError
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 5.0)
-        
-        XCTAssertTrue(actual?.isExpired ?? false)
-    }
     
     func testGivenInvalidClaimTypAssertUnauthorised() {
         
@@ -75,7 +52,7 @@ class SubscriptionResourceTest: XCTestCase {
 
         let expectation = XCTestExpectation(description: #function)
 
-        subscriptionResource.requestSubscription(claim: SubscriptionClaim(value: claim)) { (token, error) in
+        subscriptionResource.requestSubscription(user: "apple@windmill.io", container: "iCloud.io.windmill.windmill.test", claim: SubscriptionClaim(value: claim)) { (account, token, error) in
             
             actual = error as? SubscriptionError
             expectation.fulfill()
@@ -84,28 +61,6 @@ class SubscriptionResourceTest: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         
         XCTAssertTrue(actual?.isUnauthorised ?? false)
-    }
-
-    func testGivenExpiredClaimAssertUnauthorisedExpired() {
-        
-        let subscriptionResource = SubscriptionResource()
-        
-        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJpOGVkZTE1OFhkdHpVZUFYZVFEbSIsInN1YiI6IjU1RkQyQUMzLTdERTItNEM2Ny1CMEY4LTc5RTdDRkEwMjBDMiIsInR5cCI6InN1YiIsInYiOjF9.j9TRWYwXSp8KPhDXS9P1Cz-L2ldBwlZ8Gb4EssLvHzw"
-        
-        var actual: SubscriptionError?
-        
-        let expectation = XCTestExpectation(description: #function)
-        
-        subscriptionResource.requestSubscription(claim: SubscriptionClaim(value: claim)) { (token, error) in
-            
-            actual = error as? SubscriptionError
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 5.0)
-        
-        XCTAssertTrue(actual?.isUnauthorised ?? false)
-        XCTAssertTrue(actual?.isExpired ?? false)
     }
 
     func testGivenNoneSignatureClaimAssertUnauthorised() {
@@ -118,7 +73,7 @@ class SubscriptionResourceTest: XCTestCase {
 
         let expectation = XCTestExpectation(description: #function)
         
-        subscriptionResource.requestSubscription(claim: SubscriptionClaim(value: claim)) { (token, error) in
+        subscriptionResource.requestSubscription(user: "apple@windmill.io", container: "iCloud.io.windmill.windmill.test", claim: SubscriptionClaim(value: claim)) { (account, token, error) in
             
             actual = error as? SubscriptionError
             expectation.fulfill()

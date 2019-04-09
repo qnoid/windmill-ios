@@ -13,9 +13,9 @@ import Alamofire
 class SubscriptionResource {
      
     
-    typealias TransactionsCompletion = (_ account: Account?, _ claim: SubscriptionClaim?, _ error: Error?) -> Void
+    typealias TransactionsCompletion = (_ claim: SubscriptionClaim?, _ error: Error?) -> Void
     
-    typealias SubscriptionCompletion = (_ token: SubscriptionAuthorizationToken?, _ error: Error?) -> Void
+    typealias SubscriptionCompletion = (_ account: Account?, _ token: SubscriptionAuthorizationToken?, _ error: Error?) -> Void
 
     let queue = DispatchQueue(label: "io.windmill.manager")
     
@@ -34,13 +34,13 @@ class SubscriptionResource {
         
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpBody = "{\"data\":\"\(receiptData)\"}".data(using: .utf8)
-        urlRequest.timeoutInterval = 10 //seconds
+        urlRequest.timeoutInterval = 30 //seconds
         return sessionManager.request(urlRequest).validate().responseData(queue: self.queue) { response in
             
             switch (response.result, response.data) {
                 case (.failure, _):
                     DispatchQueue.main.async{
-                        completion(nil, nil, response.error)
+                        completion(nil, response.error)
                     }
                 case (.success, let data?):
                     switch (response.response?.statusCode) {
@@ -49,41 +49,41 @@ class SubscriptionResource {
                             
                             do {
                                 let subscriptionClaim = try decoder.decode(SubscriptionClaim.self, from: data)
-                                let account = try decoder.decode(Account.self, from: data)
                                 
                                 DispatchQueue.main.async{
-                                    completion(account, subscriptionClaim, nil)
+                                    completion(subscriptionClaim, nil)
                                 }
                             } catch {
                                 DispatchQueue.main.async{
-                                    completion(nil, nil, error)
+                                    completion(nil, error)
                                 }
                             }
                         case 202:
                             DispatchQueue.main.async{
-                                completion(nil, nil, SubscriptionError.outdated)
+                                completion(nil, SubscriptionError.outdated)
                             }
                         case 204:
                             DispatchQueue.main.async{
-                                completion(nil, nil, SubscriptionError.expired)
+                                completion(nil, SubscriptionError.expired)
                             }
                     default:
                         break
                 }
                 default:
                     DispatchQueue.main.async{
-                        completion(nil, nil, response.error)
+                        completion(nil, response.error)
                     }
             }
         }
     }
     
-    @discardableResult func requestSubscription(claim: SubscriptionClaim, completion: @escaping SubscriptionCompletion) -> DataRequest {
+    @discardableResult func requestSubscription(user: String, container: String, claim: SubscriptionClaim, completion: @escaping SubscriptionCompletion) -> DataRequest {
         
         var urlRequest = try! URLRequest(url: "\(WINDMILL_BASE_URL)/subscription", method: .post)
         
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("Bearer \(claim.value)", forHTTPHeaderField: "Authorization")
+        urlRequest.httpBody = "{\"user_identifier\":\"\(user)\", \"user_container\":\"\(container)\"}".data(using: .utf8)
         urlRequest.timeoutInterval = 10 //seconds
         
         return sessionManager.request(urlRequest).validate().responseData(queue: self.queue) { response in
@@ -96,42 +96,43 @@ class SubscriptionResource {
                     case (401, let data?):
                         if let response = String(data: data, encoding: .utf8), let reason = SubscriptionError.UnauthorisationReason(rawValue: response) {
                             DispatchQueue.main.async{
-                                completion(nil, SubscriptionError.unauthorised(reason:reason))
+                                completion(nil, nil, SubscriptionError.unauthorised(reason:reason))
                             }
                         } else {
                             DispatchQueue.main.async{
-                                completion(nil, SubscriptionError.unauthorised(reason: nil))
+                                completion(nil, nil, SubscriptionError.unauthorised(reason: nil))
                             }
                         }
                     default:
                         DispatchQueue.main.async{
-                            completion(nil, error)
+                            completion(nil, nil, error)
                         }
                     }
                 default:
                     DispatchQueue.main.async{
-                        completion(nil, error)
+                        completion(nil, nil, error)
                     }
                 }
             case (.success, let data?):
                 let decoder = JSONDecoder()
                 
                 do {
+                    let account = try decoder.decode(Account.self, from: data)
                     let subscriptionAuthorizationToken = try decoder.decode(SubscriptionAuthorizationToken.self, from: data)
                     
                     DispatchQueue.main.async{
-                        completion(subscriptionAuthorizationToken, nil)
+                        completion(account, subscriptionAuthorizationToken, nil)
                     }
                 } catch {
                     DispatchQueue.main.async{
-                        completion(nil, error)
+                        completion(nil, nil, error)
                     }
                 }
                 
                 return
             default:
                 DispatchQueue.main.async{
-                    completion(nil, response.error)
+                    completion(nil, nil, response.error)
                 }
             }
         }

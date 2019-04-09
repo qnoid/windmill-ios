@@ -7,9 +7,53 @@
 //
 
 import UIKit
-import CloudKit
 import StoreKit
+import os
 
+
+extension Dictionary where Key == AccountViewController.Section, Value == [AccountViewController.Setting] {
+    
+    typealias Section = AccountViewController.Section
+    typealias Setting = AccountViewController.Setting
+    typealias Entry = (key: Section, value: [Setting])
+    
+    func section(for entry: Entry) -> Int? {
+        let key = entry.key
+        
+        guard let index = self.keys.firstIndex(of: key) else {
+            return nil
+        }
+
+        return self.keys.distance(from: startIndex, to: index)
+    }
+    
+    func row(for setting: Setting, entry: Entry) -> Int? {
+        let value = entry.value
+        
+        guard let index = value.index(of: setting) else {
+            return nil
+        }
+        
+        return index
+    }
+
+    func indexPath(for setting: Setting) -> IndexPath? {
+        
+        guard let entry = self.first(where: { $0.value.contains(setting) }) else {
+            return nil
+        }
+        
+        guard let section = self.section(for: entry) else {
+            return nil
+        }
+        
+        guard let row = self.row(for: setting, entry: entry) else {
+            return nil
+        }
+        
+        return IndexPath(row: row, section: section)
+    }
+}
 /**
     The AccountViewController guarantees that a user has logged in their Apple ID and has iCloud Drive for Windmill turned on.
  
@@ -26,6 +70,8 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
                 return [.subscription]
             case .expired, .none:
                 return [.subscription, .store]
+            case .valid:
+                return []
             }
         }
         
@@ -36,13 +82,13 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
             switch (self, status) {
             case (.subscription, .active):
                 return [.subscription, .refreshSubscription]
-            case (.subscription, .expired):
+            case (.subscription, .expired), (.subscription, .valid):
                 return [.refreshSubscription]
             case (.subscription, .none):
                 return [.refreshSubscription, .restorePurchases]
             case (.store, .expired), (.store, .none):
                 return [.purchaseOptions]
-            case (.store, .active):
+            case (.store, .active), (.store, .valid):
                 return []
             }
         }
@@ -65,9 +111,21 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
             self.tableView.tableFooterView = UITableViewHeaderFooterView()
         }
     }
-
-    var subscriptionStatus: SubscriptionStatus = SubscriptionStatus.default {
+    @IBOutlet weak var tableViewDataSource: AccountTableViewDataSource! {
+        didSet{
+            tableViewDataSource?.subscriptionStatus = SubscriptionStatus.default
+        }
+    }
+    @IBOutlet weak var tableViewDelegate: AccountTableViewDelegate! {
+        didSet{
+            tableViewDelegate?.subscriptionStatus = SubscriptionStatus.default
+        }
+    }
+    
+    var subscriptionStatus = SubscriptionStatus.default {
         didSet {
+            self.tableViewDataSource?.subscriptionStatus = subscriptionStatus
+            self.tableViewDelegate?.subscriptionStatus = subscriptionStatus
             self.tableView?.reloadData()
         }
     }
@@ -81,8 +139,10 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchased(notification:)), name: SubscriptionManager.SubscriptionPurchased, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestored(notification:)), name: SubscriptionManager.SubscriptionRestored, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionExpired(notification:)), name: SubscriptionManager.SubscriptionExpired, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestoreFailed(notification:)), name: SubscriptionManager.SubscriptionRestoreFailed, object: subscriptionManager)
     }
@@ -90,11 +150,24 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchased(notification:)), name: SubscriptionManager.SubscriptionPurchased, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestored(notification:)), name: SubscriptionManager.SubscriptionRestored, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionExpired(notification:)), name: SubscriptionManager.SubscriptionExpired, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestoreFailed(notification:)), name: SubscriptionManager.SubscriptionRestoreFailed, object: subscriptionManager)
 
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        switch (self.subscriptionStatus) {
+        case .valid(let claim), .expired(_, let claim):
+            self.subscribeUser(claim: claim)
+        default:
+            break
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,18 +182,63 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         }
     }
     
+    private func subscribeUser(manager: CloudKitManager = CloudKitManager.shared, claim: SubscriptionClaim) {
+        
+        let container = manager.container
+        
+        guard let containerIdentifier = container.containerIdentifier else {
+            os_log("CKContainer.containerIdentifier returned null. Will not procceed with subscribing user. This is a critical error and should be investigated further.", log: .default, type: .error)
+            return
+        }
+        
+        container.fetchUserRecordID { [weak self, subscriptionManager = self.subscriptionManager] (user, error) in
+            
+            switch(user, error){
+            case(let user?, _):
+                self?.subscriptionManager.subscribe(user: user.recordName, container: containerIdentifier, claim: claim) { (account, token, error) in                    
+                    switch(account, error) {
+                    case(let account?, _):
+                        self?.subscriptionManager.share(account: account, claim: claim)
+                    case(_, let error?):
+                        self?.error(subscriptionManager, didFailWithError: error)
+                    case (.none, .none):
+                        preconditionFailure("SubscriptionManager.subscribe must callback with either an account/token or an error")
+                    }
+                }
+            case(_, let error?):
+                os_log("There was an error while fetching the user record: '%{public}@'", log: .default, type: .error, error.localizedDescription)
+            case (.none, .none):
+                preconditionFailure("CKContainer.fetchUserRecordID must call with either a user record or an error")
+            }
+            
+        }
+    }
+    
+    @objc func subscriptionPurchased(notification: NSNotification) {
+        switch SubscriptionStatus.default {
+        case .valid(let claim), .expired(_, let claim):
+            self.subscribeUser(claim: claim)
+        default:
+            self.deselect(setting: .refreshSubscription)
+        }
+    }
+    
+    @objc func subscriptionRestored(notification: NSNotification) {
+        switch SubscriptionStatus.default {
+        case .valid(let claim), .expired(_, let claim):
+            self.subscribeUser(claim: claim)
+        default:
+            self.deselect(setting: .refreshSubscription)
+        }
+    }
+
     @objc func subscriptionActive(notification: NSNotification) {
         self.subscriptionStatus = SubscriptionStatus.default
-        
-        CKContainer.default().fetchUserRecordID { (id, error) in
-            debugPrint("\(#function), id:\(String(describing: id?.recordName))")
-        }
     }
     
     @objc func subscriptionExpired(notification: NSNotification) {
         self.subscriptionStatus = SubscriptionStatus.default
     }
-
 
     @objc func subscriptionFailed(notification: NSNotification) {
         self.subscriptionStatus = SubscriptionStatus.default
@@ -145,17 +263,11 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
     
     func deselect(setting: AccountViewController.Setting) {
 
-        let entry = self.sections.first(where: { $0.value.contains(setting) })
-        
-        guard let key = entry?.key, let section = Section.sections().index(of: key) else {
+        guard let indexPath = self.sections.indexPath(for: setting) else {
             return
         }
         
-        guard let value = entry?.value, let row = value.index(of: setting) else {
-            return
-        }
-
-        self.tableView?.delegate?.tableView?(self.tableView, didDeselectRowAt: IndexPath(row: row, section: section))
+        self.tableView?.delegate?.tableView?(self.tableView, didDeselectRowAt: indexPath)
     }
 
     func cell(_ cell: UITableViewCell, for setting: Setting) {

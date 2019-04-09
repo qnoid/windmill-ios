@@ -43,8 +43,8 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     
     var subscriptionStatus: SubscriptionStatus? {
         didSet {
-            if oldValue == nil, case .active(let account) = SubscriptionStatus.default {
-                self.reloadWindmills(account: account)
+            if oldValue == nil, case .active(let account, let authorizationToken)? = subscriptionStatus {
+                self.reloadWindmills(account: account, authorizationToken: authorizationToken)
             }
         }
     }
@@ -109,12 +109,12 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         }
     }
     
-    private func reloadWindmills(account: Account) {
+    private func reloadWindmills(account: Account, authorizationToken token: SubscriptionAuthorizationToken) {
         let activityIndicatorView = UIActivityIndicatorView(style: .gray)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
         activityIndicatorView.startAnimating()
 
-        self.subscriptionManager.listExports(forAccount: account.identifier) { [weak self] exports, error in
+        self.subscriptionManager.listExports(forAccount: account.identifier, token: token) { [weak self] exports, error in
             self?.didFinishURLSessionTaskExports(activityIndicatorView: activityIndicatorView, exports: exports, error: error)
             }
     }
@@ -125,6 +125,8 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         self.navigationItem.rightBarButtonItem = self.rightBarButtonItem
         
         switch error {
+        case let error as SubscriptionError where error.isExpired:
+            return //not responsible for handling a SubscriptionManager.SubscriptionExpired notification
         case let error as SubscriptionError:
             let alertController = UIAlertController.Windmill.make(error: error)
             present(alertController, animated: true, completion: nil)
@@ -154,8 +156,8 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if case .active(let account) = SubscriptionStatus.default {
-            self.reloadWindmills(account: account)
+        if case .active(let account, let authorizationToken) = SubscriptionStatus.default {
+            self.reloadWindmills(account: account, authorizationToken: authorizationToken)
         }
 
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
@@ -168,8 +170,12 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     @IBAction func didTouchUpInsideRefresh(_ sender: UIBarButtonItem) {
         
         switch SubscriptionStatus.default {
-        case .active(let account), .expired(let account):
-            self.reloadWindmills(account: account)
+        case .active(let account, let authorizationToken):
+            self.reloadWindmills(account: account, authorizationToken: authorizationToken)
+        case .expired(let account, _):
+            if let token = try? ApplicationStorage.default.read(key: .subscriptionAuthorizationToken) {
+                self.reloadWindmills(account: account, authorizationToken: SubscriptionAuthorizationToken(value: token))
+            }
         default:
             return
         }

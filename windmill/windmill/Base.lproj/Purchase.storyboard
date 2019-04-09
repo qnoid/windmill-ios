@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NS5-YE-bJs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NS5-YE-bJs">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,8 +13,6 @@
         <!--Windmill Store-->
         <scene sceneID="2EQ-G4-ck1">
             <objects>
-                <exit id="9r3-bw-SaY" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TP1-xJ-Cqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="QAi-zj-0zW" customClass="RestorePreviousPurchasesViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KzN-hx-5Jq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -48,7 +46,7 @@
 
 Windmill on the Mac continuously monitors for code changes, building, testing, archiving and exporting your app.
 
-Windmill on the iPhone further enables the publishing of your app to registered devices.</string>
+Windmill on the iPhone further enables the distribution of your app to registered devices.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -158,6 +156,8 @@ Windmill on the iPhone further enables the publishing of your app to registered 
                         <segue destination="9r3-bw-SaY" kind="unwind" identifier="SubscriberUnwind" unwindAction="unwindToSubscriber:" id="XNz-7O-rCI"/>
                     </connections>
                 </viewController>
+                <exit id="9r3-bw-SaY" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TP1-xJ-Cqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="699.375" y="53.87323943661972"/>
         </scene>
@@ -183,7 +183,7 @@ Windmill on the iPhone further enables the publishing of your app to registered 
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stl-S5-5Tf">
                                         <rect key="frame" x="8" y="75.5" width="304" height="214"/>
-                                        <string key="text">An Individual Subscription enables Windmill on the Mac to publish your app every time you make a code change.
+                                        <string key="text">An Individual Subscription enables Windmill on the Mac to distribute your app every time you make a code change.
 
 Whether it is the end of a sprint, demo day or keeping your customers, partners and collaborators in the loop, the latest build is available to install on your registered devices* using Windmill on the iPhone.
 

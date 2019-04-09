@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Dl-9f-xFg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Dl-9f-xFg">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,11 +29,11 @@ to Windmill </string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqQ-Cv-Nd6">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqQ-Cv-Nd6">
                                         <rect key="frame" x="8" y="87.5" width="312" height="376"/>
-                                        <string key="text">Windmill on the iPhone requires you to be logged in using your Apple ID to show your published apps.
+                                        <string key="text">Windmill requires you to be logged in using your Apple ID to start distributing your apps.
 
-Windmill uses your Apple credentials to secure your Windmill account and create a seamless experience. The added benefits are:
+Windmill uses your Apple credentials to secure your Windmill account and create a seamless experience across. The added benefits are:
 
 * No extra password to remember
 * You remain anonymous to Windmill
@@ -146,6 +146,8 @@ Once you have done so, return here.
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Uh4-2m-BSh" id="pZp-Fi-7SQ"/>
+                        <outlet property="tableViewDataSource" destination="QjO-VT-UPQ" id="6RW-fL-IOR"/>
+                        <outlet property="tableViewDelegate" destination="ERq-Xn-0YA" id="k4Z-XZ-VxW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POG-bh-IkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
