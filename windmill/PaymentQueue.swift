@@ -62,7 +62,7 @@ class PaymentQueue: NSObject, SKPaymentTransactionObserver {
                 
                 let receiptData = rawReceiptData.base64EncodedString()
                 
-                self.purchaseSubscription(receiptData: receiptData){ (account, token, error) in                    
+                self.purchaseSubscription(receiptData: receiptData){ (token, error) in                    
                     self.queue.finishTransaction(transaction)
                 }
                 

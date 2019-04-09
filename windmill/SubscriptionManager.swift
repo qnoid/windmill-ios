@@ -27,7 +27,7 @@ extension SubscriptionManagerDelegate {
 
 class SubscriptionManager: NSObject, SKProductsRequestDelegate {
     
-    public static let SubscriptionCompletionIgnore: SubscriptionResource.SubscriptionCompletion = { token, error in
+    public static let SubscriptionCompletionIgnore: SubscriptionResource.SubscriptionCompletion = { account, token, error in
     
     }
     
@@ -55,6 +55,8 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
     
     //This `SubscriptionManager` is meant to be used as a reasonable default. You shouldn't assume ownership when using this instance. i.e. Don't set its `delegate` and expect it to remain.
     static let shared: SubscriptionManager = SubscriptionManager()
+    
+    let cloudKitManager = CloudKitManager()
     
     let subscriptionResource = SubscriptionResource()
     let accountResource = AccountResource()
@@ -84,7 +86,7 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
     
     func purchaseSubscription(receiptData: String, completion: @escaping SubscriptionResource.TransactionsCompletion) {
         
-        self.requestTransactions(receiptData: receiptData){ (account, claim, error) in
+        self.requestTransactions(receiptData: receiptData){ (claim, error) in
             
             switch error {
             case let error as AFError where error.isResponseValidationError:
@@ -106,34 +108,13 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
                  - see: `Processing StoreKit transactions`, under considerations.md for a detailed scenario of this case.
                  */
                 os_log("The receipt sent for processing was for an expired subscription. Nothing to see here.", log: .default, type: .debug)
-                completion(account, claim, error)
+                completion(claim, error)
             case .some(let error):
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionFailed, object: self, userInfo: ["error": error])
             case .none:
+                completion(claim, error)
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionPurchased, object: self)
                 break;
-            }
-            
-            if let claim = claim {
-                self.requestSubscription(claim: claim) { token, error in
-                    
-                    switch error {
-                    case let error as AFError where error.isResponseValidationError:
-                        switch error.responseCode {
-                        case 403:
-                            os_log("The claim was invalid: '%{public}@'", log: .default, type: .error, error.localizedDescription)
-                        default:
-                            NotificationCenter.default.post(name: SubscriptionManager.SubscriptionFailed, object: self, userInfo: ["error": SubscriptionError.failed])
-                        }
-                    case let error as URLError:
-                        NotificationCenter.default.post(name: SubscriptionManager.SubscriptionFailed, object: self, userInfo: ["error": SubscriptionError.connectionError(error: error)])
-                    case .some(let error):
-                        NotificationCenter.default.post(name: SubscriptionManager.SubscriptionFailed, object: self, userInfo: ["error": error])
-                    case .none:
-                        completion(account, claim, error)
-                        break
-                    }
-                }
             }
         }
     }
@@ -147,7 +128,7 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
     */
     public func restoreSubscription(receiptData: String) {
         
-        self.requestTransactions(receiptData: receiptData) { (account, claim, error) in
+        self.requestTransactions(receiptData: receiptData) { (claim, error) in
             
             switch error {
             case let error as AFError where error.isResponseValidationError:
@@ -167,30 +148,6 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
             case .none:                
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionRestored, object: self)
                 break;
-            }
-            
-            if let claim = claim {
-                
-                self.requestSubscription(claim: claim) { token, error in
-                    
-                    switch error {
-                    case let error as AFError where error.isResponseValidationError:
-                        switch error.responseCode {
-                        case 403:
-                            os_log("The claim was invalid: '%{public}@'", log: .default, type: .error, error.localizedDescription)
-                        default:
-                            NotificationCenter.default.post(name: SubscriptionManager.SubscriptionRestoreFailed, object: self, userInfo: ["error": SubscriptionError.failed])
-                        }
-                    case let subscriptionError as SubscriptionError where subscriptionError.isExpired:
-                        NotificationCenter.default.post(name: SubscriptionManager.SubscriptionExpired, object: self, userInfo: ["error": subscriptionError])
-                    case let error as URLError:
-                        NotificationCenter.default.post(name: SubscriptionManager.SubscriptionRestoreFailed, object: self, userInfo: ["error": SubscriptionError.connectionError(error: error)])
-                    case .some(let error):
-                        NotificationCenter.default.post(name: SubscriptionManager.SubscriptionRestoreFailed, object: self, userInfo: ["error": error])
-                    case .none:
-                        break
-                    }
-                }
             }
         }
     }
@@ -257,45 +214,21 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
         NotificationCenter.default.post(name: SubscriptionManager.SubscriptionRestoreFailed, object: self, userInfo: notification.userInfo)
     }
     
-    private func requestSubscription(claim: SubscriptionClaim, completion: @escaping SubscriptionResource.SubscriptionCompletion = SubscriptionCompletionIgnore) {
-        
-        self.subscriptionResource.requestSubscription(claim: claim){ (token, error) in
-            
-            switch error {
-            case .some(let error):
-                completion(token, error)
-            case .none:
-                if let token = token?.value {
-                    try? ApplicationStorage.default.write(value: token,
-                                                          key: .subscriptionAuthorizationToken,
-                                                          options: .completeFileProtectionUntilFirstUserAuthentication)
-                }
-                
-                NotificationCenter.default.post(name: SubscriptionManager.SubscriptionActive, object: self)
-
-                completion(token, error)
-            }
-        }
-    }
-
     private func requestTransactions(receiptData: String, completion: @escaping SubscriptionResource.TransactionsCompletion) {
         
-        self.subscriptionResource.requestTransactions(forReceipt: receiptData) { (account, claim, error) in
+        self.subscriptionResource.requestTransactions(forReceipt: receiptData) { (claim, error) in
             
             switch error {
             case .some(let error):
-                completion(account, claim, error)
+                completion(claim, error)
             case .none:
-                if let claim = claim?.value, let account = account?.identifier {
+                if let claim = claim?.value {
                     try? ApplicationStorage.default.write(value: claim,
                                                           key: .subscriptionClaim,
                                                           options: .completeFileProtectionUnlessOpen)
-                    try? ApplicationStorage.default.write(value: account,
-                                                          key: .account,
-                                                          options: .completeFileProtectionUntilFirstUserAuthentication)
                 }
                 
-                completion(account, claim, error)
+                completion(claim, error)
             }
         }
     }
@@ -314,18 +247,38 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
         self.paymentQueue.add(payment)
     }
     
-    func listExports(forAccount account: String, completion: @escaping AccountResource.ExportsCompletion) {
+    func subscribe(user: String, container: String, claim: SubscriptionClaim, completion: @escaping SubscriptionResource.SubscriptionCompletion = SubscriptionCompletionIgnore) {
         
-        guard let authorizationToken = try? ApplicationStorage.default.read(key: .subscriptionAuthorizationToken) else { //just a reasonable fallback, shouldn't happen.
-            os_log("The subscription authorization token appears to have been deleted. This is not according to spec. Should the spec had changed, remove this log.", log: .default, type: .error)
-            let error = SubscriptionError.unauthorised(reason: .expired)
-            NotificationCenter.default.post(name: SubscriptionManager.SubscriptionExpired, object: self, userInfo: ["error": error])
-            completion(nil, error)
-        return
-        }
+        self.subscriptionResource.requestSubscription(user: user, container: container, claim: claim){ (account, token, error) in
+            
+            switch error {
+            case .some(let error):
+                completion(account, token, error)
+            case .none:
+                if let account = account?.identifier , let token = token?.value {
+                    try? ApplicationStorage.default.write(value: account,
+                                                          key: .account,
+                                                          options: .completeFileProtectionUntilFirstUserAuthentication)
+                    
+                    try? ApplicationStorage.default.write(value: token,
+                                                          key: .subscriptionAuthorizationToken,
+                                                          options: .completeFileProtectionUntilFirstUserAuthentication)
+                }
+                
+                NotificationCenter.default.post(name: SubscriptionManager.SubscriptionActive, object: self)
+                
+                completion(account, token, error)
+            }
+        }.resume()
+    }
+    
+    func share(account: Account, claim: SubscriptionClaim) {
+        self.cloudKitManager.publish(account: account, claim: claim)
+    }
+
+    func listExports(forAccount account: String, token: SubscriptionAuthorizationToken, completion: @escaping AccountResource.ExportsCompletion) {
         
-        //an invalid token will generate a different error message
-        self.accountResource.requestExports(forAccount: account, authorizationToken: SubscriptionAuthorizationToken(value: authorizationToken) ) { (exports, error) in
+        self.accountResource.requestExports(forAccount: account, authorizationToken: token) { (exports, error) in
          
             if case let error as SubscriptionError = error, error.isExpired {
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionExpired, object: self, userInfo: ["error": error])

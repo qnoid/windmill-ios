@@ -15,7 +15,7 @@ class NotificationsAuthorizedTableViewHeaderView: UITableViewHeaderFooterView {
             let attributedText = NSMutableAttributedString(string: "You will receive a notification when a ")
             attributedText.append(NSAttributedString(string: "New build", attributes: [.foregroundColor : UIColor.black, .font : UIFont.boldSystemFont(ofSize: 14)]))
             attributedText.append(NSAttributedString(string: " is "))
-            attributedText.append(NSAttributedString(string: "published", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
+            attributedText.append(NSAttributedString(string: "distributed", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
             attributedText.append(NSAttributedString(string: "."))
             label.attributedText = attributedText
         }

@@ -10,18 +10,24 @@ import UIKit
 
 class AccountTableViewDataSource: NSObject, UITableViewDataSource {
  
+    typealias Section = AccountViewController.Section
+    typealias Setting = AccountViewController.Setting
+    
     @IBOutlet weak var controller: AccountViewController?
 
-    var sections: [AccountViewController.Section] {
-        return AccountViewController.Section.sections()
+    var subscriptionStatus = SubscriptionStatus.default {
+        didSet {
+            self.sections = Section.sections(for: subscriptionStatus)
+        }
     }
-
+    var sections = [Section]()
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sections[section].settings().count
+        return self.sections[section].settings(for: self.subscriptionStatus).count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -34,7 +40,7 @@ class AccountTableViewDataSource: NSObject, UITableViewDataSource {
         }
         cell.accessoryView = nil
 
-        let setting = self.sections[indexPath.section].settings()[indexPath.row]
+        let setting = self.sections[indexPath.section].settings(for: self.subscriptionStatus)[indexPath.row]
 
         controller?.cell(cell, for:setting)
         cell.textLabel?.text = setting.stringValue
