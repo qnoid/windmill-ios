@@ -30,7 +30,7 @@ extension Dictionary where Key == AccountViewController.Section, Value == [Accou
     func row(for setting: Setting, entry: Entry) -> Int? {
         let value = entry.value
         
-        guard let index = value.index(of: setting) else {
+        guard let index = value.firstIndex(of: setting) else {
             return nil
         }
         
