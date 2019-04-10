@@ -43,10 +43,14 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
     struct Product {
         enum Identifier: String {
             case individualMonthly = "io.windmill.windmill.individual_monthly"
+            case distributionMonthly = "io.windmill.windmill.distribution_monthly"
         }
         static let isIndividualMonthly: (SKProduct) -> Bool = { SubscriptionManager.Product.Identifier(rawValue: $0.productIdentifier) == .individualMonthly }
-        
+
+        static let isDistributionMonthly: (SKProduct) -> Bool = { SubscriptionManager.Product.Identifier(rawValue: $0.productIdentifier) == .distributionMonthly }
+
         static let individualMonthly = Product(identifier: .individualMonthly, duration: "month")
+        static let distributionMonthly = Product(identifier: .distributionMonthly, duration: "month")
         
         let identifier: Product.Identifier
         let duration: String
@@ -152,7 +156,7 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
         }
     }
     
-    @discardableResult func products(productIdentifiers: [Product.Identifier] = [.individualMonthly]) -> SKProductsRequest {
+    @discardableResult func products(productIdentifiers: [Product.Identifier] = [.distributionMonthly]) -> SKProductsRequest {
         
         let productsRequest = SKProductsRequest(productIdentifiers: Set(productIdentifiers.compactMap{ $0.rawValue }))
         productsRequest.delegate = self

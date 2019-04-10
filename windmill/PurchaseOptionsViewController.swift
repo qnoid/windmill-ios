@@ -73,7 +73,7 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.product = self.subscriptionManager?.products?.first(where: SubscriptionManager.Product.isIndividualMonthly)
+        self.product = self.subscriptionManager?.products?.first(where: SubscriptionManager.Product.isDistributionMonthly)
     }
     
     @IBAction func didTouchUpInsideHelp(_ sender: Any) {
@@ -89,7 +89,7 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         
         let formattedString = formatter.string(from: product?.price ?? 0.0) ?? ""
         
-        self.purchaseButton?.setTitle(String(format: "Subscribe for %@ a \(SubscriptionManager.Product.individualMonthly.duration)", formattedString), for: .normal)
+        self.purchaseButton?.setTitle(String(format: "Subscribe for %@ a \(SubscriptionManager.Product.distributionMonthly.duration)", formattedString), for: .normal)
     }
     
     func success(_ manager: SubscriptionManager, products: [SKProduct]) {

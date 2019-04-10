@@ -97,7 +97,7 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
     enum Setting: String, CodingKey {
         static var allValues: [Setting] = [.subscription, .refreshSubscription, .restorePurchases, .purchaseOptions]
         
-        case subscription = "Individual Monthly"
+        case subscription = "Distribution Monthly"
         case refreshSubscription = "Refresh Subscription"
         case restorePurchases = "Restore Purchases"
         case purchaseOptions = "Open Purchase Options"        

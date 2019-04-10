@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NS5-YE-bJs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NS5-YE-bJs">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -183,7 +183,7 @@ Windmill on the iPhone further enables the distribution of your app to registere
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stl-S5-5Tf">
                                         <rect key="frame" x="8" y="75.5" width="304" height="214"/>
-                                        <string key="text">An Individual Subscription enables Windmill on the Mac to distribute your app every time you make a code change.
+                                        <string key="text">A Distribution Subscription enables Windmill on the Mac to distribute your app every time you make a code change.
 
 Whether it is the end of a sprint, demo day or keeping your customers, partners and collaborators in the loop, the latest build is available to install on your registered devices* using Windmill on the iPhone.
 
@@ -198,7 +198,7 @@ Whether it is the end of a sprint, demo day or keeping your customers, partners 
 
 This subscription is charged through your iTunes Account. You can cancel and manage your subscription in your iTunes Account Settings at any time. 
 
-Any free trial period remaining, is forfeited if you purchase a new Windmill Individual subscription.
+Any free trial period remaining, is forfeited if you purchase a new Windmill Distribution subscription.
 
 By signing up you agree to Windmill's Terms of Service and Privacy Policy.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
