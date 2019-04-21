@@ -100,10 +100,11 @@ class AccountResource {
         }
     }
     
-    @discardableResult func requestRegisterDevice(forAccount account: String, withToken token: String, completion: @escaping (_ device: Device?, _ error: Error?) -> Void) -> DataRequest {
+    @discardableResult func requestDevice(forAccount account: Account, withToken token: String, authorizationToken: SubscriptionAuthorizationToken, completion: @escaping (_ device: Device?, _ error: Error?) -> Void) -> DataRequest {
         
-        let urlRequest = try! URLRequest(url: "\(WINDMILL_BASE_URL)/account/\(account)/device/register", method: .post)
-        
+        var urlRequest = try! URLRequest(url: "\(WINDMILL_BASE_URL)/account/\(account.identifier)/device", method: .post)
+        urlRequest.addValue("Bearer \(authorizationToken.value)", forHTTPHeaderField: "Authorization")
+
         let encodedURLRequest = try! URLEncoding.queryString.encode(urlRequest, with: ["token":token])
         
         return sessionManager.request(encodedURLRequest).validate().responseData(queue: self.queue) { response in

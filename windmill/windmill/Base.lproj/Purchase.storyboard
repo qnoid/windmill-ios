@@ -182,10 +182,10 @@ Windmill on the iPhone further enables the distribution of your app to registere
                                         <rect key="frame" x="32" y="44.5" width="256" height="15"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stl-S5-5Tf">
-                                        <rect key="frame" x="8" y="75.5" width="304" height="214"/>
+                                        <rect key="frame" x="8" y="75.5" width="304" height="196"/>
                                         <string key="text">A Distribution Subscription enables Windmill on the Mac to distribute your app every time you make a code change.
 
-Whether it is the end of a sprint, demo day or keeping your customers, partners and collaborators in the loop, the latest build is available to install on your registered devices* using Windmill on the iPhone.
+Whether it is the end of a sprint, demo day or keeping your team in the loop, the latest build is available to install on your registered devices* using Windmill on the iPhone.
 
 * The device needs to be registered in your Apple developer account.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
@@ -193,7 +193,7 @@ Whether it is the end of a sprint, demo day or keeping your customers, partners 
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ko-6Y-wzb">
-                                        <rect key="frame" x="8" y="441.5" width="304" height="169.5"/>
+                                        <rect key="frame" x="8" y="423.5" width="304" height="169.5"/>
                                         <string key="text">This subscription automatically renews after the 30 day free trial unless cancelled at least 24 hours before the end of the subscription period. 
 
 This subscription is charged through your iTunes Account. You can cancel and manage your subscription in your iTunes Account Settings at any time. 
@@ -206,7 +206,7 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbO-e7-4p5" customClass="Button" customModule="windmill" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="357.5" width="288" height="44"/>
+                                        <rect key="frame" x="16" y="339.5" width="288" height="44"/>
                                         <color key="backgroundColor" red="1" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="KaT-Vw-yaK"/>
@@ -229,13 +229,13 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your 30-day free trial." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT1-px-JlN">
-                                        <rect key="frame" x="16" y="329.5" width="288" height="20"/>
+                                        <rect key="frame" x="16" y="311.5" width="288" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="15V-pF-xoz">
-                                        <rect key="frame" x="141.5" y="361" width="37" height="37"/>
+                                        <rect key="frame" x="141.5" y="343" width="37" height="37"/>
                                         <color key="color" cocoaTouchSystemColor="darkTextColor"/>
                                     </activityIndicatorView>
                                 </subviews>
