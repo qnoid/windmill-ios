@@ -11,6 +11,7 @@ import Foundation
 public struct Export: Codable {
     let id: UInt
     let identifier: String
+    let bundle: String
     let version: Double
     let title: String
     let url: String

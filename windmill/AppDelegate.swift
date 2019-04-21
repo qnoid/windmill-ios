@@ -109,14 +109,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
      */
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        guard let account = try? self.applicationStorage.read(key: .account) else {
-            os_log("No account found in the `ApplicationStorage.default`. Did you call `ApplicationStorage.write(value:key:)`?", log: .default, type: .debug)
+        guard case .active(let account, let authorizationToken) = SubscriptionStatus.default else { 
+            os_log("No active subscription found. Ensure the account holds a valid subscription prior to allowing to register for notifications", log: .default, type: .debug)
             return
         }
 
         let tokenString = deviceToken.map { String(format: "%02hhx", $0) }.joined()
         
-        self.accountResource.requestRegisterDevice(forAccount: account, withToken: tokenString) { device, error in
+        self.accountResource.requestDevice(forAccount: account, withToken: tokenString, authorizationToken: authorizationToken) { device, error in
             
             switch error {
             case .some(let error):

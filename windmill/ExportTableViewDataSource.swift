@@ -63,12 +63,12 @@ class ExportTableViewDataSource: NSObject, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let bundle = self.exports[indexPath.row]
+        let export = self.exports[indexPath.row]
         
-        cell.titleLabel.text = bundle.title
-        cell.versionLabel.text = "\(bundle.version)"
-        cell.dateLabel.text = bundle.modifiedAt.timestampString
-        cell.installTextView.attributedText = bundle.urlAsAttributedString
+        cell.titleLabel.text = export.title
+        cell.versionLabel.text = "\(export.version)"
+        cell.dateLabel.text = export.modifiedAt.timestampString
+        cell.installTextView.attributedText = export.urlAsAttributedString
         cell.installTextView.textAlignment = .center
         
         return cell

@@ -199,7 +199,7 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
                     switch(account, error) {
                     case(let account?, _):
                         self?.subscriptionManager.share(account: account, claim: claim)
-                    case(_, let error?):
+                    case(_, let error?): //when expired, show under Account rather an alert?
                         self?.error(subscriptionManager, didFailWithError: error)
                     case (.none, .none):
                         preconditionFailure("SubscriptionManager.subscribe must callback with either an account/token or an error")

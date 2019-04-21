@@ -67,11 +67,12 @@ class AccountResourceTest: XCTestCase {
         
         let accountResource = AccountResource()
         let tokenString = "651743ecad5704a088ff54a0234f37a013bd17b3401d1612cb8ded8af1fa2225"
-        
+        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMlZqY21WMCIsInN1YiI6IjU1ZmQyYWMzLTdkZTItNGM2Ny1iMGY4LTc5ZTdjZmEwMjBjMiIsImV4cCI6MzMxMDgxODg1NzQsInR5cCI6ImF0IiwidiI6MX0.yxmDN4QLq0eJeJ1D42ZoIb9HO67o8bRvYXFjDy9bLcs"
+
         var actual: Device?
         
         let expectation = XCTestExpectation(description: #function)
-        accountResource.requestRegisterDevice(forAccount: "14810686-4690-4900-ada5-8b0b7338aa39", withToken: tokenString) { device, error in
+        accountResource.requestDevice(forAccount: Account(identifier: "14810686-4690-4900-ada5-8b0b7338aa39"), withToken: tokenString, authorizationToken: SubscriptionAuthorizationToken(value: claim)) { device, error in
             
         guard let device = device else {
             XCTFail(error!.localizedDescription)
@@ -92,11 +93,12 @@ class AccountResourceTest: XCTestCase {
         
         let accountResource = AccountResource()
         let tokenString = "e14113c658cd67f35a870433f4218d51233eba0cbdc02c88e80adaad1dcc94c6"
-        
+        let claim = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjMlZqY21WMCIsInN1YiI6IjU1ZmQyYWMzLTdkZTItNGM2Ny1iMGY4LTc5ZTdjZmEwMjBjMiIsImV4cCI6MzMxMDgxODg1NzQsInR5cCI6ImF0IiwidiI6MX0.yxmDN4QLq0eJeJ1D42ZoIb9HO67o8bRvYXFjDy9bLcs"
+
         var actual: NSInteger?
         
         let expectation = XCTestExpectation(description: #function)
-        accountResource.requestRegisterDevice(forAccount: "uknown_account_identifier", withToken: tokenString, completion: { device, error in
+        accountResource.requestDevice(forAccount: Account(identifier: "uknown_account_identifier"), withToken: tokenString, authorizationToken: SubscriptionAuthorizationToken(value: claim), completion: { device, error in
 
         }).responseString { response in
             
@@ -108,5 +110,4 @@ class AccountResourceTest: XCTestCase {
         
         XCTAssertEqual(actual, 400)
     }
-    
 }
