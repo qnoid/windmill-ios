@@ -20,6 +20,7 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
     }
 
     @IBOutlet weak var subscriptionLabel: UILabel!
+    @IBOutlet weak var youAreOnTrialLabel: UILabel!
     @IBOutlet weak var purchaseButton: Button! {
         didSet {
             purchaseButton.setTitle("", for: .disabled)
@@ -39,10 +40,10 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
     var product: SKProduct? {
         didSet {
             self.purchaseButton?.isEnabled = true
-            self.activityIndicatorViewSubscribe?.stopAnimating()
             if let product = product {
                 updateView(product: product)
             } else {
+                self.activityIndicatorViewSubscribe?.stopAnimating()
                 self.purchaseButton?.setTitle("Refresh", for: .normal)
             }
         }
@@ -81,6 +82,7 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
     }
     
     fileprivate func updateView(product: SKProduct?) {
+        self.activityIndicatorViewSubscribe?.stopAnimating()
         self.subscriptionLabel.text = String(format: self.subscriptionLabelTitle, product?.localizedTitle ?? "")
         
         let formatter = NumberFormatter()
@@ -125,7 +127,7 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         case let error as SKError where error.code == SKError.paymentCancelled:
             return
         case let error as SubscriptionError:
-            let alertController = UIAlertController.Windmill.make(error: error)
+            let alertController = UIAlertController.Windmill.makeSubscription(error: error)
             self.present(alertController, animated: true, completion: nil)
         default:
             let alertController = UIAlertController.Windmill.make(title: "Error", error: error)

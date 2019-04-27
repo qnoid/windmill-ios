@@ -92,18 +92,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHM-xZ-bpG">
-                                <rect key="frame" x="16" y="275.5" width="343" height="130.5"/>
+                                <rect key="frame" x="16" y="215.5" width="343" height="130.5"/>
                                 <string key="text">This subscription automatically renews after the 30 day free trial unless cancelled at least 24 hours before the end of the subscription period. 
 
 This subscription is charged through your iTunes Account. You can cancel and manage your subscription in your iTunes Account Settings at any time. 
 
-Any free trial period remaining, is forfeited if you purchase a new Windmill Distribution subscription.</string>
+Any free trial period remaining, is forfeited if you purchase a new Windmill subscription.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are on a 30-day free trial." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbB-B7-9YI">
-                                <rect key="frame" x="16" y="215.5" width="343" height="20"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are on a 30-day free trial." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbB-B7-9YI">
+                                <rect key="frame" x="16" y="185.5" width="343" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -118,12 +118,12 @@ Any free trial period remaining, is forfeited if you purchase a new Windmill Dis
                             <constraint firstItem="DTB-tu-Wh7" firstAttribute="leading" secondItem="IW8-Qt-Znk" secondAttribute="leadingMargin" id="80x-Yg-YtP"/>
                             <constraint firstItem="VHM-xZ-bpG" firstAttribute="leading" secondItem="IW8-Qt-Znk" secondAttribute="leadingMargin" id="Bud-Tk-gcf"/>
                             <constraint firstItem="Y7q-OF-IBQ" firstAttribute="top" secondItem="pbo-iD-6md" secondAttribute="bottom" constant="8" symbolic="YES" id="S7d-Xi-kKI"/>
-                            <constraint firstItem="cbB-B7-9YI" firstAttribute="top" secondItem="DTB-tu-Wh7" secondAttribute="bottom" constant="40" id="Wm5-lr-Gf4"/>
+                            <constraint firstItem="cbB-B7-9YI" firstAttribute="top" secondItem="DTB-tu-Wh7" secondAttribute="bottom" constant="10" id="Wm5-lr-Gf4"/>
                             <constraint firstItem="Y7q-OF-IBQ" firstAttribute="centerX" secondItem="zug-Xr-LaA" secondAttribute="centerX" id="YZ3-2c-q7y"/>
                             <constraint firstItem="pbo-iD-6md" firstAttribute="centerX" secondItem="zug-Xr-LaA" secondAttribute="centerX" id="aUb-Zo-ubc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DTB-tu-Wh7" secondAttribute="trailing" id="mAg-pK-GQ3"/>
                             <constraint firstItem="cbB-B7-9YI" firstAttribute="leading" secondItem="IW8-Qt-Znk" secondAttribute="leadingMargin" id="oby-Ar-5Fe"/>
-                            <constraint firstItem="VHM-xZ-bpG" firstAttribute="top" secondItem="cbB-B7-9YI" secondAttribute="bottom" constant="40" id="usT-hQ-pgB"/>
+                            <constraint firstItem="VHM-xZ-bpG" firstAttribute="top" secondItem="cbB-B7-9YI" secondAttribute="bottom" constant="10" id="usT-hQ-pgB"/>
                             <constraint firstItem="DTB-tu-Wh7" firstAttribute="top" secondItem="Y7q-OF-IBQ" secondAttribute="bottom" constant="8" symbolic="YES" id="vCO-SJ-I1U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VHM-xZ-bpG" secondAttribute="trailing" id="vVg-OU-moM"/>
                         </constraints>

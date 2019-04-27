@@ -326,7 +326,7 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         case let error as SKError where error.code == SKError.paymentCancelled:
             return
         case let error as SubscriptionError:
-            let alertController = UIAlertController.Windmill.make(error: error)
+            let alertController = UIAlertController.Windmill.makeSubscription(error: error)
             present(alertController, animated: true, completion: nil)
         default:
             let alertController = UIAlertController.Windmill.make(title: "Error", error: error)

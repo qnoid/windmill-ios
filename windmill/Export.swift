@@ -9,6 +9,37 @@
 import Foundation
 
 public struct Export: Codable {
+    
+    enum Status {
+        case error(_ error: ExportError)
+        case ok
+    }
+    
+    public struct Metadata: Codable {
+        
+        enum CodingKeys: CodingKey {
+            case commit
+            case deployment
+            case configuration
+            case distributionSummary
+        }
+        
+        let configuration: Configuration
+        let commit: Repository.Commit
+        let deployment: BuildSettings.Deployment
+        let distributionSummary: DistributionSummary
+        
+        func targetsEqualOrLowerThan(version: String) -> Bool {
+            let targetsEqualOrLowerThan = version.compare(self.deployment.target, options: .numeric)
+            return targetsEqualOrLowerThan == .orderedDescending || targetsEqualOrLowerThan == .orderedSame
+        }
+        
+        func isExpired(date: Date = Date()) -> Bool {
+            return self.distributionSummary.certificateExpiryDate < date
+        }
+    }
+
+    
     let id: UInt
     let identifier: String
     let bundle: String
@@ -16,5 +47,16 @@ public struct Export: Codable {
     let title: String
     let url: String
     let createdAt: Date
-    let modifiedAt: Date    
+    let modifiedAt: Date?
+    let accessedAt: Date?
+    
+    let metadata: Metadata
+    
+    func targetsEqualOrLowerThan(version: String) -> Bool {
+        return metadata.targetsEqualOrLowerThan(version: version)
+    }
+    
+    var isExpired: Bool {
+        return self.metadata.isExpired()
+    }
 }

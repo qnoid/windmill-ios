@@ -13,10 +13,9 @@ class InstallTableViewFooterView: UITableViewHeaderFooterView {
     @IBOutlet weak var label: UILabel! {
         didSet{
             let attributedText = NSMutableAttributedString(string: "This device must be registered in the developer profile to be able to ")
-            attributedText.append(NSAttributedString(string: "INSTALL", attributes: [.foregroundColor : UIColor.Windmill.greenColor]))
-            attributedText.append(NSAttributedString(string: " apps "))
-            attributedText.append(NSAttributedString(string: "distributed", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
-            attributedText.append(NSAttributedString(string: " by Windmill."))
+            attributedText.append(NSAttributedString(string: "INSTALL", attributes: [.foregroundColor : UIColor.black, .font : UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold)]))
+            attributedText.append(NSAttributedString(string: " an application that Windmill on the Mac "))
+            attributedText.append(NSAttributedString(string: "distributes.", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
             label.attributedText = attributedText
         }
     }

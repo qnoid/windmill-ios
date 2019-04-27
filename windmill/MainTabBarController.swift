@@ -59,6 +59,8 @@ class MainTabBarController: UITabBarController {
             os_log("%{public}@", log: .default, type: .debug, "CKAccountStatus: Access was denied due to Parental Controls or Mobile Device Management restrictions.")
         case (_, let error?):
             os_log("%{public}@", log: .default, type: .error, "CKAccountStatus error: \(error.localizedDescription)")
+        @unknown default:
+            return
         }
     }
 

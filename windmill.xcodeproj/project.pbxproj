@@ -12,7 +12,7 @@
 		BD0AD8AA1FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */; };
 		BD0AD8AC1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */; };
 		BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */; };
-		BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */; };
+		BD0FEBA11CFC3400005AC9F0 /* InstallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0FEBA01CFC3400005AC9F0 /* InstallButton.swift */; };
 		BD1644452227DFD1005448B6 /* SubscriptionClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1644442227DFD1005448B6 /* SubscriptionClaim.swift */; };
 		BD1949B9220C273F00ADE6E1 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1949B8220C273F00ADE6E1 /* Subscription.swift */; };
 		BD19B6C021F8D5F900743250 /* PurchaseOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19B6BF21F8D5F900743250 /* PurchaseOptionsViewController.swift */; };
@@ -24,11 +24,17 @@
 		BD2136952212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2136942212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift */; };
 		BD2136992212D713009CB1A0 /* Subscriber.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD2136982212D713009CB1A0 /* Subscriber.storyboard */; };
 		BD21CED71F792EAD0003988F /* ApplicationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD21CED61F792EAD0003988F /* ApplicationStorage.swift */; };
+		BD2BAF6E2274CB7800BB12B2 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BAF6D2274CB7800BB12B2 /* Repository.swift */; };
+		BD2BAF702274CB9A00BB12B2 /* BuildSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BAF6F2274CB9A00BB12B2 /* BuildSettings.swift */; };
+		BD2BAF782274D0BF00BB12B2 /* DistributionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BAF772274D0BF00BB12B2 /* DistributionSummary.swift */; };
 		BD3B5F9A2211A01100D1D899 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B5F992211A01100D1D899 /* AccountViewController.swift */; };
 		BD3B5F9C2211C9BB00D1D899 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B5F9B2211C9BB00D1D899 /* WelcomeViewController.swift */; };
 		BD3B5F9E2211CB8100D1D899 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3B5F9D2211CB8100D1D899 /* CloudKit.framework */; };
 		BD3B5FA02211D55900D1D899 /* AccountTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B5F9F2211D55900D1D899 /* AccountTableViewDataSource.swift */; };
 		BD3B5FA22211D58000D1D899 /* AccountTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B5FA12211D58000D1D899 /* AccountTableViewDelegate.swift */; };
+		BD42AF4C226F76D800F3E9CA /* ExportTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42AF4B226F76D800F3E9CA /* ExportTest.swift */; };
+		BD42AF4E2270541700F3E9CA /* ExportError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42AF4D2270541700F3E9CA /* ExportError.swift */; };
+		BD42AF502270543500F3E9CA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42AF4F2270543500F3E9CA /* Configuration.swift */; };
 		BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */; };
 		BD440E681FA0B0F100FA81B3 /* InstallTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */; };
 		BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */; };
@@ -106,7 +112,7 @@
 		BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDeniedTableViewHeaderView.swift; sourceTree = "<group>"; };
 		BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsAuthorizedTableViewHeaderView.xib; sourceTree = "<group>"; };
 		BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsAuthorizedTableViewHeaderView.swift; sourceTree = "<group>"; };
-		BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindmillTextView.swift; sourceTree = "<group>"; };
+		BD0FEBA01CFC3400005AC9F0 /* InstallButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstallButton.swift; sourceTree = "<group>"; };
 		BD1644442227DFD1005448B6 /* SubscriptionClaim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionClaim.swift; sourceTree = "<group>"; };
 		BD1949B7220C20FB00ADE6E1 /* windmill.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = windmill.entitlements; sourceTree = "<group>"; };
 		BD1949B8220C273F00ADE6E1 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
@@ -119,11 +125,17 @@
 		BD2136942212B45B009CB1A0 /* OpenStoreTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenStoreTableViewFooterView.swift; sourceTree = "<group>"; };
 		BD2136982212D713009CB1A0 /* Subscriber.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Subscriber.storyboard; sourceTree = "<group>"; };
 		BD21CED61F792EAD0003988F /* ApplicationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStorage.swift; sourceTree = "<group>"; };
+		BD2BAF6D2274CB7800BB12B2 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		BD2BAF6F2274CB9A00BB12B2 /* BuildSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildSettings.swift; sourceTree = "<group>"; };
+		BD2BAF772274D0BF00BB12B2 /* DistributionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionSummary.swift; sourceTree = "<group>"; };
 		BD3B5F992211A01100D1D899 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		BD3B5F9B2211C9BB00D1D899 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BD3B5F9D2211CB8100D1D899 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		BD3B5F9F2211D55900D1D899 /* AccountTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewDataSource.swift; sourceTree = "<group>"; };
 		BD3B5FA12211D58000D1D899 /* AccountTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewDelegate.swift; sourceTree = "<group>"; };
+		BD42AF4B226F76D800F3E9CA /* ExportTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportTest.swift; sourceTree = "<group>"; };
+		BD42AF4D2270541700F3E9CA /* ExportError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportError.swift; sourceTree = "<group>"; };
+		BD42AF4F2270543500F3E9CA /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboards.swift; sourceTree = "<group>"; };
 		BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstallTableViewFooterView.xib; sourceTree = "<group>"; };
 		BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallTableViewFooterView.swift; sourceTree = "<group>"; };
@@ -220,6 +232,10 @@
 				BD440E6B1FA0B4BE00FA81B3 /* UIView+Windmill.swift */,
 				BD440E711FA0C84A00FA81B3 /* Button.swift */,
 				BD440E731FA0CC8800FA81B3 /* UIColor+Windmill.swift */,
+				BD42AF4F2270543500F3E9CA /* Configuration.swift */,
+				BD2BAF6D2274CB7800BB12B2 /* Repository.swift */,
+				BD2BAF6F2274CB9A00BB12B2 /* BuildSettings.swift */,
+				BD2BAF772274D0BF00BB12B2 /* DistributionSummary.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -263,7 +279,7 @@
 				BD20D5341DC78E1E0016C891 /* ExportTableViewDelegate.swift */,
 				BD5229241CFB26DF0069C831 /* ExportTableViewCell.xib */,
 				BD5229261CFB27A50069C831 /* ExportTableViewCell.swift */,
-				BD0FEBA01CFC3400005AC9F0 /* WindmillTextView.swift */,
+				BD0FEBA01CFC3400005AC9F0 /* InstallButton.swift */,
 				BD440E671FA0B0F100FA81B3 /* InstallTableViewFooterView.xib */,
 				BD440E691FA0B45900FA81B3 /* InstallTableViewFooterView.swift */,
 				BD440E6D1FA0C2DF00FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.xib */,
@@ -272,6 +288,7 @@
 				BD0AD8A91FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift */,
 				BD0AD8AB1FA0F5EA007337CA /* NotificationsAuthorizedTableViewHeaderView.xib */,
 				BD0AD8AD1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift */,
+				BD42AF4D2270541700F3E9CA /* ExportError.swift */,
 			);
 			name = ExportTableView;
 			sourceTree = "<group>";
@@ -380,6 +397,7 @@
 				BDD1E97F1CDA92DB00976074 /* ApplicationStorageTest.swift */,
 				BDD1E9811CDA92DB00976074 /* Info.plist */,
 				BD6F9D5E22282C7B00CC3B27 /* ClaimsTest.swift */,
+				BD42AF4B226F76D800F3E9CA /* ExportTest.swift */,
 			);
 			path = windmillTests;
 			sourceTree = "<group>";
@@ -581,18 +599,20 @@
 				BD4B8CA12203679E00D95493 /* PaymentQueue.swift in Sources */,
 				BD6F9D5D2228287100CC3B27 /* Claims.swift in Sources */,
 				BD3B5F9C2211C9BB00D1D899 /* WelcomeViewController.swift in Sources */,
+				BD2BAF6E2274CB7800BB12B2 /* Repository.swift in Sources */,
 				BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */,
 				BDA7E435223E65AC0022459E /* CloudKitManager.swift in Sources */,
 				BDF73C2B2202021000924316 /* Account.swift in Sources */,
 				BD3B5FA22211D58000D1D899 /* AccountTableViewDelegate.swift in Sources */,
 				BD47531A22146FF3004C101E /* MainViewController.swift in Sources */,
+				BD2BAF702274CB9A00BB12B2 /* BuildSettings.swift in Sources */,
 				BDBE8F9A220B341E00872B78 /* SubscriptionManager.swift in Sources */,
 				BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */,
 				BD440E701FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift in Sources */,
 				BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */,
 				BD3B5F9A2211A01100D1D899 /* AccountViewController.swift in Sources */,
 				BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */,
-				BD0FEBA11CFC3400005AC9F0 /* WindmillTextView.swift in Sources */,
+				BD0FEBA11CFC3400005AC9F0 /* InstallButton.swift in Sources */,
 				BD1644452227DFD1005448B6 /* SubscriptionClaim.swift in Sources */,
 				BD6F9D6222293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift in Sources */,
 				BD3B5FA02211D55900D1D899 /* AccountTableViewDataSource.swift in Sources */,
@@ -605,6 +625,8 @@
 				BD19B6C221F8D7EF00743250 /* SubscriptionResource.swift in Sources */,
 				BD47531622144A18004C101E /* MainTabBarController.swift in Sources */,
 				BDA1AF95221AE07900EFB366 /* PurchaseNavigationController.swift in Sources */,
+				BD42AF502270543500F3E9CA /* Configuration.swift in Sources */,
+				BD2BAF782274D0BF00BB12B2 /* DistributionSummary.swift in Sources */,
 				BD52291F1CFB25D30069C831 /* Export.swift in Sources */,
 				BD5229231CFB26AC0069C831 /* ExportTableViewDataSource.swift in Sources */,
 				BD47531C221471E7004C101E /* MainController.swift in Sources */,
@@ -616,6 +638,7 @@
 				BD440E741FA0CC8800FA81B3 /* UIColor+Windmill.swift in Sources */,
 				BD4B8C9F2202F86A00D95493 /* AppsNavigationController.swift in Sources */,
 				BD19B6C021F8D5F900743250 /* PurchaseOptionsViewController.swift in Sources */,
+				BD42AF4E2270541700F3E9CA /* ExportError.swift in Sources */,
 				BD20D5351DC78E1E0016C891 /* ExportTableViewDelegate.swift in Sources */,
 				BDA1AF91221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.swift in Sources */,
 				BDD1E96B1CDA92DB00976074 /* AppDelegate.swift in Sources */,
@@ -634,6 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD42AF4C226F76D800F3E9CA /* ExportTest.swift in Sources */,
 				BD6F9D5F22282C7B00CC3B27 /* ClaimsTest.swift in Sources */,
 				BDD1E9801CDA92DB00976074 /* ApplicationStorageTest.swift in Sources */,
 			);

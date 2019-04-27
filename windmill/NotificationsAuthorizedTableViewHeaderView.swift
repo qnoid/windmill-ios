@@ -12,11 +12,10 @@ class NotificationsAuthorizedTableViewHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet weak var label: UILabel! {
         didSet{
-            let attributedText = NSMutableAttributedString(string: "You will receive a notification when a ")
-            attributedText.append(NSAttributedString(string: "New build", attributes: [.foregroundColor : UIColor.black, .font : UIFont.boldSystemFont(ofSize: 14)]))
-            attributedText.append(NSAttributedString(string: " is "))
-            attributedText.append(NSAttributedString(string: "distributed", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
-            attributedText.append(NSAttributedString(string: "."))
+            let attributedText = NSMutableAttributedString(string: "You will receive a notification when Windmill on the Mac ")
+            attributedText.append(NSAttributedString(string: "distributes", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
+            attributedText.append(NSAttributedString(string: " a new build", attributes: [.foregroundColor : UIColor.black, .font : UIFont.boldSystemFont(ofSize: 14)]))
+            attributedText.append(NSAttributedString(string: " for an application."))
             label.attributedText = attributedText
         }
     }
