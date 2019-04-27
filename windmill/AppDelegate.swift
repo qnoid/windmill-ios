@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         
         switch error {
         case let error as SubscriptionError:
-            let alertController = UIAlertController.Windmill.make(error: error)
+            let alertController = UIAlertController.Windmill.makeSubscription(error: error)
             self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
         default:
             let alertController = UIAlertController.Windmill.make(title: "Error", error: error)

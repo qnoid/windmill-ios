@@ -13,8 +13,7 @@ import os
 /**
     The `AppsViewController` guarantees that a user was once a subscriber.
  */
-class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, NotificationsDisabledTableViewHeaderViewDelegate {
-
+class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, NotificationsDisabledTableViewHeaderViewDelegate, ExportTableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView! {
         didSet{
             self.tableView.tableHeaderView = NotificationsNotDeterminedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
@@ -27,8 +26,10 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         }
     }
     
-    lazy var dataSource = {
-        return ExportTableViewDataSource()
+    lazy var dataSource: ExportTableViewDataSource = { [weak self] in
+        let dataSource = ExportTableViewDataSource()
+        dataSource.controller = self
+        return dataSource
     }()
     
     lazy var delegate = {
@@ -106,6 +107,11 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
             let tableHeaderView = NotificationsAuthorizedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
             
             return tableHeaderView
+        @unknown default:
+            let tableHeaderView = NotificationsNotDeterminedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
+            tableHeaderView.delegate = self
+            
+            return tableHeaderView
         }
     }
     
@@ -128,7 +134,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         case let error as SubscriptionError where error.isExpired:
             return //not responsible for handling a SubscriptionManager.SubscriptionExpired notification
         case let error as SubscriptionError:
-            let alertController = UIAlertController.Windmill.make(error: error)
+            let alertController = UIAlertController.Windmill.makeSubscription(error: error)
             present(alertController, animated: true, completion: nil)
         case .some(let error):
             let alertController = UIAlertController.Windmill.make(title: "Error", error: error)
@@ -138,10 +144,6 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         }
         
         guard let exports = exports else {
-            return
-        }
-        
-        guard !exports.isEmpty else {
             return
         }
         
@@ -225,5 +227,12 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         completionHandler([.alert])
     }
 
+    func tableViewCell(_ cell: ExportTableViewCell, installButtonTapped: InstallButton, forExport export: Export) {
+        
+        if case .error(let error) = export.status {
+            let alertController = UIAlertController.Windmill.makeExport(error: error)
+            present(alertController, animated: true, completion: nil)
+        }
+    }
 }
 

@@ -30,13 +30,13 @@ to Windmill </string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqQ-Cv-Nd6">
-                                        <rect key="frame" x="8" y="87.5" width="312" height="376"/>
-                                        <string key="text">Windmill requires you to be logged in using your Apple ID to start distributing your apps.
+                                        <rect key="frame" x="8" y="87.5" width="312" height="394"/>
+                                        <mutableString key="text">Windmill requires you to be logged in using your Apple ID to start distributing your apps.
 
-Windmill uses your Apple credentials to secure your Windmill account and create a seamless experience across. The added benefits are:
+Windmill uses your Apple credentials to secure your Windmill account and create a seamless experience across your devices. The added benefits are:
 
-* No extra password to remember
-* You remain anonymous to Windmill
+* No extra password to remember.
+* You remain anonymous to Windmill.
 
 For security reasons, you can only do that from the Settings.app.
 
@@ -44,7 +44,7 @@ On the iPhone Home screen, launch Settings, tap Sign in to your iPhone*. Under i
 
 Once you have done so, return here.
 
-* If you don't have an Apple ID, you can create a new one.</string>
+* If you don't have an Apple ID, you can create a new one.</mutableString>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

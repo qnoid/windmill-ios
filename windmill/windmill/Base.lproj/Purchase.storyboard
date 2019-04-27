@@ -193,20 +193,26 @@ Whether it is the end of a sprint, demo day or keeping your team in the loop, th
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ko-6Y-wzb">
-                                        <rect key="frame" x="8" y="423.5" width="304" height="169.5"/>
+                                        <rect key="frame" x="8" y="425" width="304" height="169.5"/>
                                         <string key="text">This subscription automatically renews after the 30 day free trial unless cancelled at least 24 hours before the end of the subscription period. 
 
 This subscription is charged through your iTunes Account. You can cancel and manage your subscription in your iTunes Account Settings at any time. 
 
-Any free trial period remaining, is forfeited if you purchase a new Windmill Distribution subscription.
+Any free trial period remaining, is forfeited if you purchase a new Windmill subscription.
 
 By signing up you agree to Windmill's Terms of Service and Privacy Policy.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your 30-day free trial." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT1-px-JlN">
+                                        <rect key="frame" x="16" y="291.5" width="288" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbO-e7-4p5" customClass="Button" customModule="windmill" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="339.5" width="288" height="44"/>
+                                        <rect key="frame" x="16" y="341" width="288" height="44"/>
                                         <color key="backgroundColor" red="1" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="KaT-Vw-yaK"/>
@@ -228,36 +234,39 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
                                             <action selector="purchase:" destination="xKx-cs-ohh" eventType="touchUpInside" id="OR9-Kh-igv"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start your 30-day free trial." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT1-px-JlN">
-                                        <rect key="frame" x="16" y="311.5" width="288" height="20"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                    <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="15V-pF-xoz">
+                                        <rect key="frame" x="141.5" y="344.5" width="37" height="37"/>
+                                        <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="The free trial is limited to new subscribers only." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4Q-EQ-OMD">
+                                        <rect key="frame" x="16" y="319.5" width="288" height="13.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="15V-pF-xoz">
-                                        <rect key="frame" x="141.5" y="343" width="37" height="37"/>
-                                        <color key="color" cocoaTouchSystemColor="darkTextColor"/>
-                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="15V-pF-xoz" firstAttribute="centerY" secondItem="cbO-e7-4p5" secondAttribute="centerY" id="7Hf-tj-G80"/>
                                     <constraint firstItem="4Ko-6Y-wzb" firstAttribute="top" secondItem="cbO-e7-4p5" secondAttribute="bottom" constant="40" id="8Rr-pM-sI4"/>
                                     <constraint firstItem="stl-S5-5Tf" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="8" id="AVm-jq-tjN"/>
-                                    <constraint firstItem="cbO-e7-4p5" firstAttribute="top" secondItem="bT1-px-JlN" secondAttribute="bottom" constant="8" symbolic="YES" id="CQP-M1-Vls"/>
+                                    <constraint firstItem="B4Q-EQ-OMD" firstAttribute="top" secondItem="bT1-px-JlN" secondAttribute="bottom" constant="8" symbolic="YES" id="G9I-nz-Bxd"/>
                                     <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="stl-S5-5Tf" secondAttribute="trailing" constant="8" id="GaY-w8-85z"/>
                                     <constraint firstItem="6kg-BT-ufn" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="8" id="IUD-Pa-QwN"/>
+                                    <constraint firstItem="cbO-e7-4p5" firstAttribute="top" secondItem="B4Q-EQ-OMD" secondAttribute="bottom" constant="8" symbolic="YES" id="Jxy-fa-69I"/>
                                     <constraint firstItem="cbO-e7-4p5" firstAttribute="centerX" secondItem="PTn-yk-Pm4" secondAttribute="centerX" id="QhN-rp-edS"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="4Ko-6Y-wzb" secondAttribute="bottom" id="S0c-kS-1FO"/>
                                     <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="4Ko-6Y-wzb" secondAttribute="trailing" constant="8" id="Td2-Kv-yeT"/>
                                     <constraint firstItem="stl-S5-5Tf" firstAttribute="top" secondItem="34P-We-QhG" secondAttribute="bottom" constant="16" id="Y9b-IR-shL"/>
+                                    <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="B4Q-EQ-OMD" secondAttribute="trailing" constant="16" id="YTv-Uk-wnC"/>
                                     <constraint firstItem="34P-We-QhG" firstAttribute="top" secondItem="6kg-BT-ufn" secondAttribute="bottom" constant="16" id="Zz7-1U-ID8"/>
                                     <constraint firstItem="4Ko-6Y-wzb" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="8" id="aIi-XR-gDL"/>
                                     <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="6kg-BT-ufn" secondAttribute="trailing" constant="8" id="oj1-q2-4wL"/>
+                                    <constraint firstItem="B4Q-EQ-OMD" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="16" id="qEs-Bp-Yg6"/>
                                     <constraint firstItem="stl-S5-5Tf" firstAttribute="leading" secondItem="CUj-0q-v2K" secondAttribute="leading" constant="8" id="rRf-t3-nXk"/>
                                     <constraint firstAttribute="trailing" secondItem="stl-S5-5Tf" secondAttribute="trailing" constant="8" id="rhI-18-RXo"/>
                                     <constraint firstItem="bT1-px-JlN" firstAttribute="leading" secondItem="PTn-yk-Pm4" secondAttribute="leading" constant="16" id="uRZ-Nj-VcH"/>
                                     <constraint firstItem="PTn-yk-Pm4" firstAttribute="trailing" secondItem="bT1-px-JlN" secondAttribute="trailing" constant="16" id="wLJ-At-YtQ"/>
-                                    <constraint firstItem="bT1-px-JlN" firstAttribute="top" secondItem="stl-S5-5Tf" secondAttribute="bottom" constant="40" id="whw-fZ-2Y3"/>
+                                    <constraint firstItem="bT1-px-JlN" firstAttribute="top" secondItem="stl-S5-5Tf" secondAttribute="bottom" constant="20" id="whw-fZ-2Y3"/>
                                     <constraint firstItem="15V-pF-xoz" firstAttribute="centerX" secondItem="cbO-e7-4p5" secondAttribute="centerX" id="xli-Ts-1o5"/>
                                     <constraint firstItem="34P-We-QhG" firstAttribute="centerX" secondItem="PTn-yk-Pm4" secondAttribute="centerX" id="yHG-Yu-sBp"/>
                                     <constraint firstItem="6kg-BT-ufn" firstAttribute="top" secondItem="CUj-0q-v2K" secondAttribute="topMargin" id="z84-Yi-2qd"/>
@@ -280,6 +289,7 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
                         <outlet property="activityIndicatorViewSubscribe" destination="15V-pF-xoz" id="FeK-r7-jj6"/>
                         <outlet property="purchaseButton" destination="cbO-e7-4p5" id="kI7-j9-it9"/>
                         <outlet property="subscriptionLabel" destination="6kg-BT-ufn" id="djH-WQ-O0x"/>
+                        <outlet property="youAreOnTrialLabel" destination="bT1-px-JlN" id="kU4-hm-G3O"/>
                         <segue destination="Z28-Sg-b3x" kind="unwind" identifier="UnwindToMainTabBarController" unwindAction="unwindToSubscriber:" id="XFN-O3-wqg"/>
                         <segue destination="Z28-Sg-b3x" kind="unwind" identifier="SubscriberUnwind" unwindAction="unwindToSubscriber:" id="NdY-oP-1kF"/>
                     </connections>
@@ -287,7 +297,7 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2w-Ch-I3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Z28-Sg-b3x" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="54"/>
+            <point key="canvasLocation" x="1640.625" y="53.87323943661972"/>
         </scene>
         <!--Purchase Navigation Controller-->
         <scene sceneID="cRQ-LH-CNG">

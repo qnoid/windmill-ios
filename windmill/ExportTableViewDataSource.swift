@@ -26,15 +26,61 @@ extension Date {
 }
 
 extension Export {
-    var urlAsAttributedString: NSAttributedString{
-        let paragraph = NSMutableParagraphStyle()
-        paragraph.minimumLineHeight = 27
+    
+    func isAvailable() -> Bool {
+        return !self.isExpired && self.isCompatible()
+    }    
 
-        return NSAttributedString(string: "INSTALL", attributes: [
-            NSAttributedString.Key.link: self.url,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.medium),
-            NSAttributedString.Key.paragraphStyle: paragraph,
-            NSAttributedString.Key.baselineOffset: 5.0])
+    func isCompatible(device: UIDevice = UIDevice.current) -> Bool {
+        return self.targetsEqualOrLowerThan(version: device.systemVersion)
+    }
+     
+    var status: Export.Status {
+        switch (self.isExpired, self.isCompatible()) {
+        case (_, false):
+            return .error(.incompatible(target: self.metadata.deployment.target))
+        case (true, _):
+            return .error(.expired)
+        case (false, _):
+            return .ok
+        }
+    }
+
+    func urlAsAttributedString() -> NSAttributedString {
+        
+        switch self.status {
+        case .error(let error):
+            switch error {
+            case .incompatible:
+                let paragraph = NSMutableParagraphStyle()
+                paragraph.minimumLineHeight = 27
+                
+                return NSAttributedString(string: "DISABLED", attributes: [
+                    NSAttributedString.Key.foregroundColor: UIColor.black,
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold),
+                    NSAttributedString.Key.paragraphStyle: paragraph,
+                    NSAttributedString.Key.baselineOffset: 5.0])
+            case .expired:
+                let paragraph = NSMutableParagraphStyle()
+                paragraph.minimumLineHeight = 27
+                
+                return NSAttributedString(string: "EXPIRED", attributes: [
+                    NSAttributedString.Key.foregroundColor: UIColor.black,
+                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold),
+                    NSAttributedString.Key.paragraphStyle: paragraph,
+                    NSAttributedString.Key.baselineOffset: 5.0])
+            }
+        case .ok:
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.minimumLineHeight = 27
+            
+            return NSAttributedString(string: "INSTALL", attributes: [
+                NSAttributedString.Key.link: self.url,
+                NSAttributedString.Key.foregroundColor: UIColor.Windmill.pinkColor,
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.medium),
+                NSAttributedString.Key.paragraphStyle: paragraph,
+                NSAttributedString.Key.baselineOffset: 5.0])
+        }
     }
 }
 
@@ -50,6 +96,8 @@ class ExportTableViewDataSource: NSObject, UITableViewDataSource {
     
     var exports: [Export] = []
     
+    weak var controller: AppsViewController?
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -64,12 +112,9 @@ class ExportTableViewDataSource: NSObject, UITableViewDataSource {
         }
         
         let export = self.exports[indexPath.row]
-        
-        cell.titleLabel.text = export.title
-        cell.versionLabel.text = "\(export.version)"
-        cell.dateLabel.text = export.modifiedAt.timestampString
-        cell.installTextView.attributedText = export.urlAsAttributedString
-        cell.installTextView.textAlignment = .center
+
+        cell.delegate = controller
+        cell.export = export
         
         return cell
     }

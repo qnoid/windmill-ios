@@ -86,7 +86,9 @@ class PaymentQueue: NSObject, SKPaymentTransactionObserver {
             case .restored:
                 self.queue.finishTransaction(transaction)
             case .deferred:
-                return
+                break
+            @unknown default:
+                break
             }
         }
     }

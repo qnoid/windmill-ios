@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,9 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExportTableViewCell" customModule="windmill" customModuleProvider="target">
             <connections>
+                <outlet property="commitLabel" destination="SRm-fk-nbo" id="Egq-hp-IWg"/>
                 <outlet property="dateLabel" destination="Mrx-UF-dRf" id="mWA-Q6-fkY"/>
                 <outlet property="iconImageVIew" destination="NA1-FC-BRk" id="yUc-Tn-Rc5"/>
-                <outlet property="installTextView" destination="adk-iF-Y0P" id="Nn3-5T-cxh"/>
+                <outlet property="installButton" destination="adk-iF-Y0P" id="Nn3-5T-cxh"/>
                 <outlet property="titleLabel" destination="cmm-u9-Vbg" id="orR-tO-bCq"/>
                 <outlet property="versionLabel" destination="9xP-12-1TD" id="e1y-PL-Zgx"/>
             </connections>
@@ -23,28 +24,27 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Brainmap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmm-u9-Vbg">
-                    <rect key="frame" x="92" y="15" width="73" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="init" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmm-u9-Vbg">
+                    <rect key="frame" x="92" y="15" width="23" height="21"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrx-UF-dRf">
-                    <rect key="frame" x="92" y="71.5" width="46" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="May 4 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrx-UF-dRf">
+                    <rect key="frame" x="92" y="71" width="90" height="21"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-12-1TD">
-                    <rect key="frame" x="92" y="43.5" width="83" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-12-1TD">
+                    <rect key="frame" x="92" y="44" width="21.5" height="19"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adk-iF-Y0P" customClass="WindmillTextView" customModule="windmill" customModuleProvider="target">
+                <textView clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adk-iF-Y0P" customClass="InstallButton" customModule="windmill" customModuleProvider="target">
                     <rect key="frame" x="219.5" y="40" width="83.5" height="27"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="tintColor" red="0.079777561128139496" green="0.60719430446624756" blue="0.0096293557435274124" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="83.5" id="4j8-vV-Rka"/>
                         <constraint firstAttribute="height" constant="27" id="70d-Ds-mPe"/>
@@ -52,7 +52,7 @@
                     <attributedString key="attributedText">
                         <fragment content="INSTALL">
                             <attributes>
-                                <color key="NSColor" red="0.19607843137254902" green="0.84313725490196079" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="NSColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <font key="NSFont" size="14" name="SFMono-Medium"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
@@ -68,6 +68,12 @@
                         <constraint firstAttribute="width" constant="64" id="Fhx-Qh-4yI"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(95a9b91)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRm-fk-nbo">
+                    <rect key="frame" x="121.5" y="43" width="90" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -75,13 +81,16 @@
                 <constraint firstItem="cmm-u9-Vbg" firstAttribute="leading" secondItem="9xP-12-1TD" secondAttribute="leading" id="7GN-2N-m4m"/>
                 <constraint firstItem="Mrx-UF-dRf" firstAttribute="leading" secondItem="9xP-12-1TD" secondAttribute="leading" id="8Oa-tL-6ha"/>
                 <constraint firstItem="NA1-FC-BRk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CYC-Oe-3zn"/>
+                <constraint firstItem="adk-iF-Y0P" firstAttribute="leading" secondItem="SRm-fk-nbo" secondAttribute="trailing" constant="8" symbolic="YES" id="CYE-63-BRF"/>
                 <constraint firstItem="9xP-12-1TD" firstAttribute="centerY" secondItem="NA1-FC-BRk" secondAttribute="centerY" id="H52-he-Gmj"/>
                 <constraint firstItem="cmm-u9-Vbg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Hqn-nG-8kP"/>
+                <constraint firstItem="SRm-fk-nbo" firstAttribute="leading" secondItem="9xP-12-1TD" secondAttribute="trailing" constant="8" symbolic="YES" id="JnH-Ak-SKg"/>
                 <constraint firstItem="NA1-FC-BRk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="TBX-xI-uwi"/>
                 <constraint firstItem="Mrx-UF-dRf" firstAttribute="top" secondItem="9xP-12-1TD" secondAttribute="bottom" constant="8" symbolic="YES" id="TT5-e5-Agz"/>
                 <constraint firstItem="9xP-12-1TD" firstAttribute="top" secondItem="cmm-u9-Vbg" secondAttribute="bottom" constant="8" symbolic="YES" id="ZH1-HY-oPl"/>
                 <constraint firstAttribute="trailing" secondItem="adk-iF-Y0P" secondAttribute="trailing" constant="17" id="ety-5J-Abb"/>
                 <constraint firstItem="cmm-u9-Vbg" firstAttribute="leading" secondItem="NA1-FC-BRk" secondAttribute="trailing" constant="8" symbolic="YES" id="fqi-X7-C0c"/>
+                <constraint firstItem="SRm-fk-nbo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="lCp-Ao-W22"/>
                 <constraint firstItem="adk-iF-Y0P" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sbs-mA-EqO"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
