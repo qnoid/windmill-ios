@@ -9,13 +9,29 @@
 import UIKit
 
 extension Date {
-    var timestampString: String? {
+    
+    var duration: String? {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .full
         formatter.maximumUnitCount = 1
         formatter.allowedUnits = [.year, .month, .day, .hour, .minute, .second]
         
-        guard let timeString = formatter.string(from: self, to: Date(timeIntervalSinceNow: 60)) else {
+        guard let timeString = formatter.string(from: Date(), to: self) else {
+            return nil
+        }
+        
+        let formatString = NSLocalizedString("In %@", comment: "")
+        
+        return String(format: formatString, timeString)
+    }
+
+    var ago: String? {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
+        formatter.maximumUnitCount = 1
+        formatter.allowedUnits = [.year, .month, .day, .hour, .minute, .second]
+        
+        guard let timeString = formatter.string(from: self, to: Date(timeIntervalSinceNow: 30)) else {
             return nil
         }
         
@@ -86,14 +102,6 @@ extension Export {
 
 class ExportTableViewDataSource: NSObject, UITableViewDataSource {
     
-    lazy var dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .medium
-        
-        return dateFormatter
-    }()
-    
     var exports: [Export] = []
     
     weak var controller: AppsViewController?
@@ -112,7 +120,8 @@ class ExportTableViewDataSource: NSObject, UITableViewDataSource {
         }
         
         let export = self.exports[indexPath.row]
-
+        cell.accessoryType = .disclosureIndicator
+        
         cell.delegate = controller
         cell.export = export
         

@@ -32,8 +32,10 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         return dataSource
     }()
     
-    lazy var delegate = {
-        return ExportTableViewDelegate()
+    lazy var delegate: ExportTableViewDelegate = { [weak self] in
+        let delegate = ExportTableViewDelegate()
+        delegate.controller = self
+        return delegate
     }()
     
     @IBOutlet var rightBarButtonItem: UIBarButtonItem!
@@ -147,6 +149,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
             return
         }
         
+        self.delegate.exports = exports
         self.dataSource.exports = exports
         self.tableView?.reloadData()
     }
@@ -234,5 +237,15 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
             present(alertController, animated: true, completion: nil)
         }
     }
+    
+    func didSelectExport(_ export: Export) {
+        
+        guard let appDetailViewController = AppDetailViewController.make(export: export) else {
+            return
+        }
+        
+        self.show(appDetailViewController, sender: self)
+    }
+    
 }
 

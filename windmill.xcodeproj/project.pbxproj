@@ -62,6 +62,7 @@
 		BD6F9D6222293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6F9D6022293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift */; };
 		BD6F9D6322293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6F9D6122293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib */; };
 		BD6F9D6C222A7F4F00CC3B27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD6F9D6A222A7F4F00CC3B27 /* Localizable.strings */; };
+		BD93EC2B2279A36200E8A573 /* ApplicationProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD93EC2A2279A36200E8A573 /* ApplicationProperties.swift */; };
 		BDA1AF90221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF8E221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.xib */; };
 		BDA1AF91221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF8F221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.swift */; };
 		BDA1AF93221ADB6500EFB366 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF92221ADB6500EFB366 /* MainNavigationController.swift */; };
@@ -85,6 +86,7 @@
 		BDD1E9721CDA92DB00976074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDD1E9711CDA92DB00976074 /* Assets.xcassets */; };
 		BDD1E9751CDA92DB00976074 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD1E9731CDA92DB00976074 /* LaunchScreen.storyboard */; };
 		BDD1E9801CDA92DB00976074 /* ApplicationStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E97F1CDA92DB00976074 /* ApplicationStorageTest.swift */; };
+		BDF304CF22797CF50066361F /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF304CE22797CF50066361F /* AppDetailViewController.swift */; };
 		BDF73C2B2202021000924316 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF73C2A2202021000924316 /* Account.swift */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +165,7 @@
 		BD6F9D6022293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenPurchaseOptionsTableViewFooterView.swift; sourceTree = "<group>"; };
 		BD6F9D6122293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenPurchaseOptionsTableViewFooterView.xib; sourceTree = "<group>"; };
 		BD6F9D6D222A7F5D00CC3B27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = windmill/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BD93EC2A2279A36200E8A573 /* ApplicationProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationProperties.swift; sourceTree = "<group>"; };
 		BDA1AF8E221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionExpiredTableViewFooterView.xib; sourceTree = "<group>"; };
 		BDA1AF8F221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionExpiredTableViewFooterView.swift; sourceTree = "<group>"; };
 		BDA1AF92221ADB6500EFB366 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 		BDD1E97B1CDA92DB00976074 /* windmillTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = windmillTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD1E97F1CDA92DB00976074 /* ApplicationStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStorageTest.swift; sourceTree = "<group>"; };
 		BDD1E9811CDA92DB00976074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDF304CE22797CF50066361F /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
 		BDF73C2A2202021000924316 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +230,7 @@
 		BD13B2151F016ADD00BFC755 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				BD93EC2A2279A36200E8A573 /* ApplicationProperties.swift */,
 				BDA2D1491F0E2791004EE03D /* UIAlertController+Windmill.swift */,
 				BD21CED61F792EAD0003988F /* ApplicationStorage.swift */,
 				BD440E641F9FABAD00FA81B3 /* UIStoryboards.swift */,
@@ -267,6 +272,7 @@
 				BDD1E96C1CDA92DB00976074 /* AppsViewController.swift */,
 				BD5229281CFB4B1D0069C831 /* AccountResource.swift */,
 				BDA1AF9B221BE23600EFB366 /* ExportTableView */,
+				BDF304CE22797CF50066361F /* AppDetailViewController.swift */,
 			);
 			name = Apps;
 			sourceTree = "<group>";
@@ -627,6 +633,7 @@
 				BDA1AF95221AE07900EFB366 /* PurchaseNavigationController.swift in Sources */,
 				BD42AF502270543500F3E9CA /* Configuration.swift in Sources */,
 				BD2BAF782274D0BF00BB12B2 /* DistributionSummary.swift in Sources */,
+				BD93EC2B2279A36200E8A573 /* ApplicationProperties.swift in Sources */,
 				BD52291F1CFB25D30069C831 /* Export.swift in Sources */,
 				BD5229231CFB26AC0069C831 /* ExportTableViewDataSource.swift in Sources */,
 				BD47531C221471E7004C101E /* MainController.swift in Sources */,
@@ -647,6 +654,7 @@
 				BD1949B9220C273F00ADE6E1 /* Subscription.swift in Sources */,
 				BDA2D1481F0E26A1004EE03D /* Device.swift in Sources */,
 				BD440E721FA0C84A00FA81B3 /* Button.swift in Sources */,
+				BDF304CF22797CF50066361F /* AppDetailViewController.swift in Sources */,
 				BD47532022147E60004C101E /* SlideInFadeOutControllerTransitioningDelegate.swift in Sources */,
 				BD0AD8AA1FA0EDBD007337CA /* NotificationsDeniedTableViewHeaderView.swift in Sources */,
 				BDB847FE221C135000A1CE61 /* SubscriptionStatus.swift in Sources */,

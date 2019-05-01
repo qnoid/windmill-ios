@@ -38,7 +38,7 @@ class ExportTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManagerD
                 commitLabel?.text = "(\(shortSha))"
             }
 
-            dateLabel?.text = export?.modifiedAt?.timestampString ?? export?.createdAt.timestampString
+            dateLabel?.text = export?.modifiedAt?.ago ?? export?.createdAt.ago
             installButton?.attributedText = export?.urlAsAttributedString()
             installButton?.textAlignment = .center
             if let isAvailable = export?.isAvailable() {
@@ -63,9 +63,9 @@ class ExportTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManagerD
         })
     }
     
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {        
-        let point = self.installButton.convert(point, from: self)
-        return self.installButton.hitTest(point, with: event)
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let installButton = self.installButton.hitTest(self.installButton.convert(point, from: self), with: event)
+        return installButton ?? super.hitTest(point, with: event)
     }
     
     override func layoutSubviews() {
@@ -80,21 +80,27 @@ class ExportTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManagerD
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
-        self.installButton.highlighted = false
+        super.touchesBegan(touches, with: event)
+        self.isHighlighted = true
+        self.isSelected = true
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.installButton.highlighted = false
+        super.touchesEnded(touches, with: event)
+        self.isHighlighted = false
+        self.isSelected = false
     }
     
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        self.isHighlighted = false
+        self.isSelected = false
+    }
+
     func didTouchUpInside(_ button: InstallButton) {
         if let export = export {
             self.delegate?.tableViewCell(self, installButtonTapped: button, forExport: export)
