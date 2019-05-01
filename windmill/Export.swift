@@ -22,12 +22,14 @@ public struct Export: Codable {
             case deployment
             case configuration
             case distributionSummary
+            case applicationProperties
         }
         
         let configuration: Configuration
         let commit: Repository.Commit
         let deployment: BuildSettings.Deployment
         let distributionSummary: DistributionSummary
+        let applicationProperties: ApplicationProperties
         
         func targetsEqualOrLowerThan(version: String) -> Bool {
             let targetsEqualOrLowerThan = version.compare(self.deployment.target, options: .numeric)
@@ -43,7 +45,7 @@ public struct Export: Codable {
     let id: UInt
     let identifier: String
     let bundle: String
-    let version: Double
+    let version: String
     let title: String
     let url: String
     let createdAt: Date
