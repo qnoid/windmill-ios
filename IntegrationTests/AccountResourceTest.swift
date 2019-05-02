@@ -25,7 +25,7 @@ class AccountResourceTest: XCTestCase {
         var actual: [windmill.Export]?
         
         let expectation = XCTestExpectation(description: #function)
-        let dataTask = accountResource.requestExports(forAccount: "14810686-4690-4900-ada5-8b0b7338aa39", authorizationToken: SubscriptionAuthorizationToken(value: claim)){ exports, error in
+        let dataTask = accountResource.requestExports(forAccount: Account(identifier: "14810686-4690-4900-ada5-8b0b7338aa39"), authorizationToken: SubscriptionAuthorizationToken(value: claim)){ exports, error in
             
             guard let exports = exports else {
                 XCTFail(error!.localizedDescription)
@@ -50,7 +50,7 @@ class AccountResourceTest: XCTestCase {
         var actual: SubscriptionError?
 
         let expectation = XCTestExpectation(description: #function)
-        let dataTask = accountResource.requestExports(forAccount: "14810686-4690-4900-ada5-8b0b7338aa39", authorizationToken: SubscriptionAuthorizationToken(value: claim)){ exports, error in
+        let dataTask = accountResource.requestExports(forAccount: Account(identifier: "14810686-4690-4900-ada5-8b0b7338aa39"), authorizationToken: SubscriptionAuthorizationToken(value: claim)){ exports, error in
             
             actual = error as? SubscriptionError
             expectation.fulfill()

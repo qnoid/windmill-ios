@@ -25,28 +25,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="init" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmm-u9-Vbg">
-                    <rect key="frame" x="92" y="15" width="23" height="21"/>
+                    <rect key="frame" x="80" y="15" width="23" height="21"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="May 4 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrx-UF-dRf">
-                    <rect key="frame" x="92" y="71" width="90" height="21"/>
+                    <rect key="frame" x="80" y="71" width="90" height="21"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xP-12-1TD">
-                    <rect key="frame" x="92" y="44" width="21.5" height="19"/>
+                    <rect key="frame" x="80" y="44" width="21.5" height="19"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adk-iF-Y0P" customClass="InstallButton" customModule="windmill" customModuleProvider="target">
-                    <rect key="frame" x="219.5" y="40" width="83.5" height="27"/>
+                    <rect key="frame" x="236" y="40" width="76" height="27"/>
                     <color key="tintColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="83.5" id="4j8-vV-Rka"/>
+                        <constraint firstAttribute="width" constant="76" id="4j8-vV-Rka"/>
                         <constraint firstAttribute="height" constant="27" id="70d-Ds-mPe"/>
                     </constraints>
                     <attributedString key="attributedText">
@@ -62,15 +62,15 @@
                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                 </textView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ipa" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-FC-BRk">
-                    <rect key="frame" x="20" y="21.5" width="64" height="64"/>
+                    <rect key="frame" x="8" y="21.5" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="2Gp-ai-Gai"/>
                         <constraint firstAttribute="width" constant="64" id="Fhx-Qh-4yI"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(95a9b91)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRm-fk-nbo">
-                    <rect key="frame" x="121.5" y="43" width="90" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(95a9b91)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRm-fk-nbo">
+                    <rect key="frame" x="109.5" y="43" width="118.5" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -85,10 +85,10 @@
                 <constraint firstItem="9xP-12-1TD" firstAttribute="centerY" secondItem="NA1-FC-BRk" secondAttribute="centerY" id="H52-he-Gmj"/>
                 <constraint firstItem="cmm-u9-Vbg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Hqn-nG-8kP"/>
                 <constraint firstItem="SRm-fk-nbo" firstAttribute="leading" secondItem="9xP-12-1TD" secondAttribute="trailing" constant="8" symbolic="YES" id="JnH-Ak-SKg"/>
-                <constraint firstItem="NA1-FC-BRk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="TBX-xI-uwi"/>
+                <constraint firstItem="NA1-FC-BRk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="TBX-xI-uwi"/>
                 <constraint firstItem="Mrx-UF-dRf" firstAttribute="top" secondItem="9xP-12-1TD" secondAttribute="bottom" constant="8" symbolic="YES" id="TT5-e5-Agz"/>
                 <constraint firstItem="9xP-12-1TD" firstAttribute="top" secondItem="cmm-u9-Vbg" secondAttribute="bottom" constant="8" symbolic="YES" id="ZH1-HY-oPl"/>
-                <constraint firstAttribute="trailing" secondItem="adk-iF-Y0P" secondAttribute="trailing" constant="17" id="ety-5J-Abb"/>
+                <constraint firstAttribute="trailing" secondItem="adk-iF-Y0P" secondAttribute="trailing" constant="8" id="ety-5J-Abb"/>
                 <constraint firstItem="cmm-u9-Vbg" firstAttribute="leading" secondItem="NA1-FC-BRk" secondAttribute="trailing" constant="8" symbolic="YES" id="fqi-X7-C0c"/>
                 <constraint firstItem="SRm-fk-nbo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="lCp-Ao-W22"/>
                 <constraint firstItem="adk-iF-Y0P" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sbs-mA-EqO"/>

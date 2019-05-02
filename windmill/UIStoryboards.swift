@@ -17,6 +17,14 @@ extension UIStoryboard {
 
 class WindmillApp {
     
+    public static let ContentAvailable = Notification.Name("io.windmill.windmill.content-available")
+    
+    static let `default` = WindmillApp()
+    
+    private init() {
+        
+    }
+    
     struct Storyboard {
         
         static func main(bundle: Bundle = Bundle(for: WindmillApp.self)) -> UIStoryboard {

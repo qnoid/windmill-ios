@@ -23,20 +23,17 @@ class AccountResource {
     
     typealias ExportsCompletion = (_ exports: [Export]?, _ error: Error?) -> Void
     
-    let queue = DispatchQueue(label: "io.windmill.manager")
+    let queue = DispatchQueue(label: "io.windmill.windmill.manager")
     
-    let session: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 5
+    let sessionManager: SessionManager
+    
+    init(configuration: URLSessionConfiguration = URLSessionConfiguration.default) {
+        self.sessionManager = SessionManager(configuration: configuration)
+    }
+    
+    func requestExports(forAccount account: Account, authorizationToken: SubscriptionAuthorizationToken, completion: @escaping ExportsCompletion) -> DataRequest {
         
-        return URLSession(configuration: configuration)
-    }()
-    
-    let sessionManager = SessionManager()
-    
-    func requestExports(forAccount account: String, authorizationToken: SubscriptionAuthorizationToken, completion: @escaping ExportsCompletion) -> DataRequest {
-        
-        var urlRequest = try! URLRequest(url: "\(WINDMILL_BASE_URL)/account/\(account)/exports", method: .get)
+        var urlRequest = try! URLRequest(url: "\(WINDMILL_BASE_URL)/account/\(account.identifier)/exports", method: .get)
         urlRequest.addValue("Bearer \(authorizationToken.value)", forHTTPHeaderField: "Authorization")
         urlRequest.timeoutInterval = 10 //seconds
         

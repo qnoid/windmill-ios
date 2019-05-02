@@ -88,6 +88,7 @@
 		BDD1E9801CDA92DB00976074 /* ApplicationStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD1E97F1CDA92DB00976074 /* ApplicationStorageTest.swift */; };
 		BDF304CF22797CF50066361F /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF304CE22797CF50066361F /* AppDetailViewController.swift */; };
 		BDF73C2B2202021000924316 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF73C2A2202021000924316 /* Account.swift */; };
+		BDFCF5D1227B65D100392269 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFCF5D0227B65D100392269 /* ContentType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +196,7 @@
 		BDD1E9811CDA92DB00976074 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDF304CE22797CF50066361F /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
 		BDF73C2A2202021000924316 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		BDFCF5D0227B65D100392269 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 				BD2BAF6D2274CB7800BB12B2 /* Repository.swift */,
 				BD2BAF6F2274CB9A00BB12B2 /* BuildSettings.swift */,
 				BD2BAF772274D0BF00BB12B2 /* DistributionSummary.swift */,
+				BDFCF5D0227B65D100392269 /* ContentType.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 			files = (
 				BD4B8CA12203679E00D95493 /* PaymentQueue.swift in Sources */,
 				BD6F9D5D2228287100CC3B27 /* Claims.swift in Sources */,
+				BDFCF5D1227B65D100392269 /* ContentType.swift in Sources */,
 				BD3B5F9C2211C9BB00D1D899 /* WelcomeViewController.swift in Sources */,
 				BD2BAF6E2274CB7800BB12B2 /* Repository.swift in Sources */,
 				BD440E6C1FA0B4BE00FA81B3 /* UIView+Windmill.swift in Sources */,

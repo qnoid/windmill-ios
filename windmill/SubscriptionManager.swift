@@ -58,12 +58,14 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
     
     
     //This `SubscriptionManager` is meant to be used as a reasonable default. You shouldn't assume ownership when using this instance. i.e. Don't set its `delegate` and expect it to remain.
-    static let shared: SubscriptionManager = SubscriptionManager()
+    static let shared: SubscriptionManager =
+        SubscriptionManager(subscriptionResource: SubscriptionResource(configuration:
+            URLSessionConfiguration.background(withIdentifier: "io.windmill.windmill.subscription.manager")))
     
     let cloudKitManager = CloudKitManager()
     
-    let subscriptionResource = SubscriptionResource()
-    let accountResource = AccountResource()
+    let subscriptionResource: SubscriptionResource
+    let accountResource: AccountResource
     let paymentQueue: PaymentQueue
     
     var receiptRefreshRequest: SKReceiptRefreshRequest?
@@ -79,7 +81,9 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
     
     var delegate: SubscriptionManagerDelegate?
     
-    init(paymentQueue: PaymentQueue = PaymentQueue.default) {
+    init(paymentQueue: PaymentQueue = PaymentQueue.default, subscriptionResource: SubscriptionResource = SubscriptionResource(), accountResource: AccountResource = AccountResource()) {
+        self.subscriptionResource = subscriptionResource
+        self.accountResource = accountResource
         self.paymentQueue = paymentQueue
         super.init()
         self.paymentQueue.subscriptionManager = self
@@ -280,7 +284,7 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
         self.cloudKitManager.publish(account: account, claim: claim)
     }
 
-    func listExports(forAccount account: String, token: SubscriptionAuthorizationToken, completion: @escaping AccountResource.ExportsCompletion) {
+    func listExports(forAccount account: Account, token: SubscriptionAuthorizationToken, completion: @escaping AccountResource.ExportsCompletion) {
         
         self.accountResource.requestExports(forAccount: account, authorizationToken: token) { (exports, error) in
          
