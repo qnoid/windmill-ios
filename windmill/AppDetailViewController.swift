@@ -67,7 +67,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     
     let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("EEE, d MMM y")
+        dateFormatter.setLocalizedDateFormatFromTemplate("EEE, d MMM y HH:mm")
         
         return dateFormatter
     }()
@@ -101,7 +101,6 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         let setting = self.sections[indexPath.section].settings()[indexPath.row]
-        
         cell.textLabel?.text = setting.stringValue
         
         switch setting {

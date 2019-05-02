@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         return self.window?.rootViewController as? MainTabBarController
     }
     
-    let accountResource = AccountResource()
+    let accountResource = AccountResource(configuration: URLSessionConfiguration.background(withIdentifier: "io.windmill.windmill.manager"))
     let applicationStorage = ApplicationStorage.default
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -132,6 +132,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         os_log("%{public}@", log: .default, type: .error, error.localizedDescription)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        guard let type = userInfo["type"] as? String, let contentType = APS.ContentType.init(rawValue: type) else {
+            completionHandler(.noData)
+            return
+        }
+        
+        guard case .export = contentType, case .active(let account, let authorizationToken) = SubscriptionStatus.default else {
+            completionHandler(.noData)
+            return
+        }
+        
+        self.accountResource.requestExports(forAccount: account, authorizationToken: authorizationToken) { (exports, error) in
+            switch (exports, error) {
+            case (_, .some(_)):
+                completionHandler(.failed)
+            case (let exports?, _):
+                NotificationCenter.default.post(name: WindmillApp.ContentAvailable, object: WindmillApp.default, userInfo: ["exports": exports])
+                completionHandler(.newData)
+            case (.none, .none):
+                preconditionFailure("Must have either exports returned or an error")
+            }
+        }.resume()
     }
     
 }

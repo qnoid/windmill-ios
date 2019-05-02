@@ -31,7 +31,7 @@ extension Date {
         formatter.maximumUnitCount = 1
         formatter.allowedUnits = [.year, .month, .day, .hour, .minute, .second]
         
-        guard let timeString = formatter.string(from: self, to: Date(timeIntervalSinceNow: 30)) else {
+        guard let timeString = formatter.string(from: self, to: Date(timeIntervalSinceNow: 10)) else {
             return nil
         }
         

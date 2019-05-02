@@ -61,6 +61,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(contentAvailable(notification:)), name: WindmillApp.ContentAvailable, object: WindmillApp.default)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: UIApplication.shared)
     }
@@ -68,6 +69,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(contentAvailable(notification:)), name: WindmillApp.ContentAvailable, object: WindmillApp.default)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: UIApplication.shared)
     }
@@ -79,6 +81,16 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
                 self?.didGetNotificationSettings(settings: settings)
             }
         }
+    }
+    
+    @objc func contentAvailable(notification: NSNotification) {
+        guard let exports = notification.userInfo?["exports"] as? [Export] else {
+            return
+        }
+        
+        self.delegate.exports = exports
+        self.dataSource.exports = exports
+        self.tableView?.reloadData()
     }
     
     @objc func subscriptionActive(notification: NSNotification) {
@@ -122,7 +134,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
         activityIndicatorView.startAnimating()
 
-        self.subscriptionManager.listExports(forAccount: account.identifier, token: token) { [weak self] exports, error in
+        self.subscriptionManager.listExports(forAccount: account, token: token) { [weak self] exports, error in
             self?.didFinishURLSessionTaskExports(activityIndicatorView: activityIndicatorView, exports: exports, error: error)
             }
     }

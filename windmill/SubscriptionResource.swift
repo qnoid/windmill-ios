@@ -17,16 +17,13 @@ class SubscriptionResource {
     
     typealias SubscriptionCompletion = (_ account: Account?, _ token: SubscriptionAuthorizationToken?, _ error: Error?) -> Void
 
-    let queue = DispatchQueue(label: "io.windmill.manager")
+    let queue = DispatchQueue(label: "io.windmill.windmill.manager")
     
-    let session: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 5
-        
-        return URLSession(configuration: configuration)
-    }()
+    let sessionManager: SessionManager
     
-    let sessionManager = SessionManager()
+    init(configuration: URLSessionConfiguration = URLSessionConfiguration.default) {
+        self.sessionManager = SessionManager(configuration: configuration)
+    }
 
     @discardableResult func requestTransactions(forReceipt receiptData: String, completion: @escaping TransactionsCompletion) -> DataRequest {
         
