@@ -185,8 +185,11 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     }
     
     @IBAction func didTouchUpInsideRefresh(_ sender: UIBarButtonItem) {
-        
-        switch SubscriptionStatus.default {
+        self.reloadWindmills()
+    }
+    
+    func reloadWindmills(subscriptionStatus: SubscriptionStatus = SubscriptionStatus.default) {
+        switch subscriptionStatus {
         case .active(let account, let authorizationToken):
             self.reloadWindmills(account: account, authorizationToken: authorizationToken)
         case .expired(let account, _):
@@ -259,5 +262,8 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         self.show(appDetailViewController, sender: self)
     }
     
+    @IBAction @objc func unwindToAppsViewController(_ segue: UIStoryboardSegue) {
+        self.reloadWindmills()
+    }
 }
 

@@ -10,15 +10,6 @@ import Foundation
 import os
 import Alamofire
 
-let WINDMILL_BASE_URL_PRODUCTION = "https://api.windmill.io"
-let WINDMILL_BASE_URL_DEVELOPMENT = "http://192.168.1.2:8080"
-
-#if DEBUG
-let WINDMILL_BASE_URL = WINDMILL_BASE_URL_DEVELOPMENT
-#else
-let WINDMILL_BASE_URL = WINDMILL_BASE_URL_PRODUCTION
-#endif
-
 class AccountResource {
     
     typealias ExportsCompletion = (_ exports: [Export]?, _ error: Error?) -> Void

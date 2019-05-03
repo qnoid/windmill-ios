@@ -89,6 +89,7 @@
 		BDF304CF22797CF50066361F /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF304CE22797CF50066361F /* AppDetailViewController.swift */; };
 		BDF73C2B2202021000924316 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF73C2A2202021000924316 /* Account.swift */; };
 		BDFCF5D1227B65D100392269 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFCF5D0227B65D100392269 /* ContentType.swift */; };
+		BDFCF5D3227B885700392269 /* ExportResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFCF5D2227B885700392269 /* ExportResource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +198,7 @@
 		BDF304CE22797CF50066361F /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
 		BDF73C2A2202021000924316 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		BDFCF5D0227B65D100392269 /* ContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
+		BDFCF5D2227B885700392269 /* ExportResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportResource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 				BD19B6C121F8D7EF00743250 /* SubscriptionResource.swift */,
 				BD47531F22147E60004C101E /* SlideInFadeOutControllerTransitioningDelegate.swift */,
 				BDA7E434223E65AC0022459E /* CloudKitManager.swift */,
+				BDFCF5D2227B885700392269 /* ExportResource.swift */,
 			);
 			name = Subscriber;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				BDA7E435223E65AC0022459E /* CloudKitManager.swift in Sources */,
 				BDF73C2B2202021000924316 /* Account.swift in Sources */,
 				BD3B5FA22211D58000D1D899 /* AccountTableViewDelegate.swift in Sources */,
+				BDFCF5D3227B885700392269 /* ExportResource.swift in Sources */,
 				BD47531A22146FF3004C101E /* MainViewController.swift in Sources */,
 				BD2BAF702274CB9A00BB12B2 /* BuildSettings.swift in Sources */,
 				BDBE8F9A220B341E00872B78 /* SubscriptionManager.swift in Sources */,
