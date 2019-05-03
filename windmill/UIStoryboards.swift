@@ -15,6 +15,15 @@ extension UIStoryboard {
     }
 }
 
+let WINDMILL_BASE_URL_PRODUCTION = "https://api.windmill.io"
+let WINDMILL_BASE_URL_DEVELOPMENT = "http://192.168.2.7:8080"
+
+#if DEBUG
+let WINDMILL_BASE_URL = WINDMILL_BASE_URL_DEVELOPMENT
+#else
+let WINDMILL_BASE_URL = WINDMILL_BASE_URL_PRODUCTION
+#endif
+
 class WindmillApp {
     
     public static let ContentAvailable = Notification.Name("io.windmill.windmill.content-available")

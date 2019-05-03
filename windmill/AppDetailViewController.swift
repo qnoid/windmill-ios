@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os
 
 class AppDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -81,6 +82,54 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
                 tableView?.reloadData()
             }
         }
+    }
+    
+    let exportResource = ExportResource()
+    
+    func delete(export: Export, claim: SubscriptionClaim) {
+        
+        let activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityIndicatorView.color = UIColor.red
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
+        activityIndicatorView.startAnimating()
+
+        self.exportResource.requestDelete(export: export, claim: claim, completion: { [weak self] (error) in
+            self?.didFinishRequestDeleteExport(activityIndicatorView: activityIndicatorView, error: error)
+        }).resume()
+    }
+    
+    func didFinishRequestDeleteExport(activityIndicatorView: UIActivityIndicatorView, error: Error?) {
+        activityIndicatorView.removeFromSuperview()
+        activityIndicatorView.stopAnimating()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteDistribution(_:)))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+        
+        if let error = error {
+            let alertController = UIAlertController.Windmill.make(title: "Delete Distribution Failed", error: error)
+            self.present(alertController, animated: true)
+        } else {
+            self.performSegue(withIdentifier: "DeleteExportUnwind", sender: self)
+        }
+    }
+    
+    @IBAction func deleteDistribution(_ sender: Any) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let deleteDistribution = UIAlertAction(title: "Delete Distribution", style: .destructive) { alert in
+            
+            guard let export = self.export, let claim = try? ApplicationStorage.default.read(key: .subscriptionClaim) else {
+                return
+            }
+            
+            self.delete(export: export, claim: SubscriptionClaim(value: claim))
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(deleteDistribution)
+        alertController.addAction(cancel)
+
+        self.present(alertController, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
