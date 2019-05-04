@@ -47,7 +47,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     var subscriptionStatus: SubscriptionStatus? {
         didSet {
             if oldValue == nil, case .active(let account, let authorizationToken)? = subscriptionStatus {
-                self.reloadWindmills(account: account, authorizationToken: authorizationToken)
+                self.refreshExports(account: account, authorizationToken: authorizationToken)
             }
         }
     }
@@ -63,6 +63,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         
         NotificationCenter.default.addObserver(self, selector: #selector(contentAvailable(notification:)), name: WindmillApp.ContentAvailable, object: WindmillApp.default)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestored(notification:)), name: SubscriptionManager.SubscriptionRestored, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: UIApplication.shared)
     }
     
@@ -71,6 +72,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         
         NotificationCenter.default.addObserver(self, selector: #selector(contentAvailable(notification:)), name: WindmillApp.ContentAvailable, object: WindmillApp.default)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestored(notification:)), name: SubscriptionManager.SubscriptionRestored, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(notification:)), name: UIApplication.didBecomeActiveNotification, object: UIApplication.shared)
     }
     
@@ -96,7 +98,11 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     @objc func subscriptionActive(notification: NSNotification) {
         self.subscriptionStatus = SubscriptionStatus.default
     }
-    
+
+    @objc func subscriptionRestored(notification: NSNotification) {
+        self.refreshExports()
+    }
+
     private func didGetNotificationSettings(settings: UNNotificationSettings) {
         if let tableView = self.tableView {
             tableView.tableHeaderView = self.headerFor(tableView: tableView, settings: settings)
@@ -129,7 +135,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         }
     }
     
-    private func reloadWindmills(account: Account, authorizationToken token: SubscriptionAuthorizationToken) {
+    private func refreshExports(account: Account, authorizationToken token: SubscriptionAuthorizationToken) {
         let activityIndicatorView = UIActivityIndicatorView(style: .gray)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicatorView)
         activityIndicatorView.startAnimating()
@@ -174,7 +180,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         super.viewDidLoad()
 
         if case .active(let account, let authorizationToken) = SubscriptionStatus.default {
-            self.reloadWindmills(account: account, authorizationToken: authorizationToken)
+            self.refreshExports(account: account, authorizationToken: authorizationToken)
         }
 
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
@@ -185,16 +191,16 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     }
     
     @IBAction func didTouchUpInsideRefresh(_ sender: UIBarButtonItem) {
-        self.reloadWindmills()
+        self.refreshExports()
     }
     
-    func reloadWindmills(subscriptionStatus: SubscriptionStatus = SubscriptionStatus.default) {
+    func refreshExports(subscriptionStatus: SubscriptionStatus = SubscriptionStatus.default) {
         switch subscriptionStatus {
         case .active(let account, let authorizationToken):
-            self.reloadWindmills(account: account, authorizationToken: authorizationToken)
+            self.refreshExports(account: account, authorizationToken: authorizationToken)
         case .expired(let account, _):
             if let token = try? ApplicationStorage.default.read(key: .subscriptionAuthorizationToken) {
-                self.reloadWindmills(account: account, authorizationToken: SubscriptionAuthorizationToken(value: token))
+                self.refreshExports(account: account, authorizationToken: SubscriptionAuthorizationToken(value: token))
             }
         default:
             return
@@ -267,7 +273,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     }
     
     @IBAction @objc func unwindToAppsViewControllerReload(_ segue: UIStoryboardSegue) {
-        self.reloadWindmills()
+        self.refreshExports()
     }
 }
 

@@ -223,11 +223,11 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
     }
     
     func deselect(section: Section, setting: AccountViewController.Setting) {
-        guard let indexPath = self.tableViewDataSource.indexPath(for: section, setting: setting) else {
+        guard let indexPath = self.tableViewDataSource.indexPath(for: section, setting: setting), let tableView = self.tableView else {
             return
         }
         
-        self.tableViewDelegate?.tableView(self.tableView, didDeselectRowAt: indexPath)
+        self.tableViewDelegate?.tableView(tableView, didDeselectRowAt: indexPath)
     }
 
     func accessoryButtonTapped(setting: Setting, cell: UITableViewCell) {
