@@ -82,13 +82,11 @@ class ExportTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManagerD
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.isHighlighted = true
-        self.isSelected = true
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         self.isHighlighted = false
-        self.isSelected = false
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -98,7 +96,6 @@ class ExportTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManagerD
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
         self.isHighlighted = false
-        self.isSelected = false
     }
 
     func didTouchUpInside(_ button: InstallButton) {

@@ -253,16 +253,20 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         }
     }
     
-    func didSelectExport(_ export: Export) {
+    func detailDisclosureFor(export: Export) {
         
-        guard let appDetailViewController = AppDetailViewController.make(export: export) else {
+        guard let appDetailNavigationController = AppDetailNavigationController.make(export: export) else {
             return
         }
         
-        self.show(appDetailViewController, sender: self)
+        self.present(appDetailNavigationController, animated: true)
     }
     
     @IBAction @objc func unwindToAppsViewController(_ segue: UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction @objc func unwindToAppsViewControllerReload(_ segue: UIStoryboardSegue) {
         self.reloadWindmills()
     }
 }

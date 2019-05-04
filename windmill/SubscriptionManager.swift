@@ -14,14 +14,12 @@ import os
 protocol SubscriptionManagerDelegate: NSObjectProtocol {
     
     func success(_ manager: SubscriptionManager, products: [SKProduct])
-    func success(_ manager: SubscriptionManager, receipt: URL)
     func error(_ manager: SubscriptionManager, didFailWithError error: Error)
 }
 
 extension SubscriptionManagerDelegate {
     
     func success(_ manager: SubscriptionManager, products: [SKProduct]) {}
-    func success(_ manager: SubscriptionManager, receipt: URL) {}
     func error(_ manager: SubscriptionManager, didFailWithError error: Error) {}
 }
 
@@ -66,9 +64,8 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
     
     let subscriptionResource: SubscriptionResource
     let accountResource: AccountResource
-    let paymentQueue: PaymentQueue
+    let paymentQueue = PaymentQueue.default
     
-    var receiptRefreshRequest: SKReceiptRefreshRequest?
     var productsRequest: SKProductsRequest?
     
     var products: [SKProduct]? {
@@ -81,10 +78,9 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
     
     var delegate: SubscriptionManagerDelegate?
     
-    init(paymentQueue: PaymentQueue = PaymentQueue.default, subscriptionResource: SubscriptionResource = SubscriptionResource(), accountResource: AccountResource = AccountResource()) {
+    init(subscriptionResource: SubscriptionResource = SubscriptionResource(), accountResource: AccountResource = AccountResource()) {
         self.subscriptionResource = subscriptionResource
         self.accountResource = accountResource
-        self.paymentQueue = paymentQueue
         super.init()
         self.paymentQueue.subscriptionManager = self
         NotificationCenter.default.addObserver(self, selector: #selector(transactionPurchasing(notification:)), name: PaymentQueue.TransactionPurchasing, object: paymentQueue)
@@ -169,36 +165,6 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
         self.productsRequest = productsRequest
         
         return productsRequest
-    }
-    
-    @discardableResult func refreshReceipt() -> SKReceiptRefreshRequest {
-        
-        let receiptRefreshRequest = SKReceiptRefreshRequest()
-        receiptRefreshRequest.delegate = self
-        receiptRefreshRequest.start()
-        
-        self.receiptRefreshRequest = receiptRefreshRequest
-        
-        return receiptRefreshRequest
-    }
-    
-    // MARK: SKRequestDelegate
-    func requestDidFinish(_ request: SKRequest) {
-        
-        /*
-            the delegate also receives a callback for the #products(productIdentifiers:) request.
-            since the SKProductsRequest, on success, calls back on the #productsRequest(:didReceive:), this is done so as
-            to avoid the double callback
-        */
-        guard request == self.receiptRefreshRequest else {
-            return
-        }
-        
-        guard let appStoreReceiptURL = Bundle.main.appStoreReceiptURL, FileManager.default.fileExists(atPath: appStoreReceiptURL.path) else {
-            return
-        }
-        
-        self.delegate?.success(self, receipt: appStoreReceiptURL)
     }
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {

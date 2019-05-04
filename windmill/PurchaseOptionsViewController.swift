@@ -83,7 +83,7 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
     
     fileprivate func updateView(product: SKProduct?) {
         self.activityIndicatorViewSubscribe?.stopAnimating()
-        self.subscriptionLabel.text = String(format: self.subscriptionLabelTitle, product?.localizedTitle ?? "")
+        self.subscriptionLabel?.text = String(format: self.subscriptionLabelTitle, product?.localizedTitle ?? "")
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency

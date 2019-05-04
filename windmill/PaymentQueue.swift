@@ -11,19 +11,28 @@ import Alamofire
 import StoreKit
 import os
 
-class PaymentQueue: NSObject, SKPaymentTransactionObserver {
+class PaymentQueue: NSObject, SKPaymentTransactionObserver, SKRequestDelegate {
 
     static let TransactionPurchased = Notification.Name("io.windmill.windmill.transaction.purchased")
     static let TransactionPurchasing = Notification.Name("io.windmill.windmill.transaction.purchasing")
     static let TransactionError = Notification.Name("io.windmill.windmill.transaction.error")
     static let RestoreCompletedTransactionsFinished = Notification.Name("io.windmill.windmill.transaction.restore.finished")
     static let RestoreCompletedTransactionsFailed = Notification.Name("io.windmill.windmill.transaction.restore.error")
+    
+    static let ReceiptRefreshing = Notification.Name("io.windmill.windmill.receipt.refreshing")
+    static let ReceiptRefreshed = Notification.Name("io.windmill.windmill.receipt.refreshed")
+    static let ReceiptRefreshFailed = Notification.Name("io.windmill.windmill.receipt.refresh.failed")
 
     static let `default` = PaymentQueue()
     
     private let queue = SKPaymentQueue.default()
     
     /* unowned */ weak var subscriptionManager: SubscriptionManager?
+    var receiptRefreshRequest: SKReceiptRefreshRequest?
+    
+    deinit {
+        self.receiptRefreshRequest?.cancel()
+    }
     
     private override init() {
         
@@ -116,5 +125,46 @@ class PaymentQueue: NSObject, SKPaymentTransactionObserver {
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: PaymentQueue.RestoreCompletedTransactionsFailed, object: self, userInfo: ["error": error])
         }
+    }
+    
+    @discardableResult func refreshReceipt() -> SKReceiptRefreshRequest {
+        
+        let receiptRefreshRequest = SKReceiptRefreshRequest()
+        receiptRefreshRequest.delegate = self
+        receiptRefreshRequest.start()
+        
+        self.receiptRefreshRequest = receiptRefreshRequest
+        
+        NotificationCenter.default.post(name: PaymentQueue.ReceiptRefreshing, object: self)
+        
+        return receiptRefreshRequest
+    }
+    
+    // MARK: SKRequestDelegate
+    func requestDidFinish(_ request: SKRequest) {
+        
+        /*
+         the delegate also receives a callback for the #products(productIdentifiers:) request.
+         since the SKProductsRequest, on success, calls back on the #productsRequest(:didReceive:), this is done so as
+         to avoid the double callback
+         */
+        guard request == self.receiptRefreshRequest else {
+            return
+        }
+        
+        guard let appStoreReceiptURL = Bundle.main.appStoreReceiptURL, FileManager.default.fileExists(atPath: appStoreReceiptURL.path) else {
+            return
+        }
+        
+        guard let rawReceiptData = try? Data(contentsOf: appStoreReceiptURL) else {
+            return
+        }
+        
+        let receipt = rawReceiptData.base64EncodedString()
+        NotificationCenter.default.post(name: PaymentQueue.ReceiptRefreshed, object: self, userInfo: ["receipt": receipt])
+    }
+    
+    func request(_ request: SKRequest, didFailWithError error: Error) {
+        NotificationCenter.default.post(name: PaymentQueue.ReceiptRefreshFailed, object: self, userInfo: ["error": error])
     }
 }

@@ -18,9 +18,10 @@ class ExportTableViewDelegate: NSObject, UITableViewDelegate {
         return 107
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+
         let export = self.exports[indexPath.row]
         
-        self.controller?.didSelectExport(export)
+        self.controller?.detailDisclosureFor(export: export)
     }
 }
