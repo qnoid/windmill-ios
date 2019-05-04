@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,41 +16,24 @@
             <rect key="frame" x="0.0" y="0.0" width="433" height="66"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Windmill on the iPhone requires a subscription." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGj-b3-j15">
-                    <rect key="frame" x="48" y="8" width="377" height="50"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Windmill on the iPhone requires a subscription." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGj-b3-j15">
+                    <rect key="frame" x="8" y="0.0" width="417" height="66"/>
                     <viewLayoutGuide key="safeArea" id="br9-7k-XGX"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Kl-IV-d8U">
-                    <rect key="frame" x="20" y="23" width="20" height="20"/>
-                    <accessibility key="accessibilityConfiguration">
-                        <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
-                    </accessibility>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="5C1-K1-2a2"/>
-                        <constraint firstAttribute="width" constant="20" id="XzX-Lu-fJg"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                    <state key="normal" image="Info"/>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="h3b-yL-VmD" firstAttribute="bottom" secondItem="dGj-b3-j15" secondAttribute="bottomMargin" constant="16" id="HtS-ng-bbf"/>
-                <constraint firstItem="dGj-b3-j15" firstAttribute="leading" secondItem="7Kl-IV-d8U" secondAttribute="trailing" constant="8" id="T0h-it-0Yt"/>
-                <constraint firstItem="7Kl-IV-d8U" firstAttribute="centerY" secondItem="dGj-b3-j15" secondAttribute="centerY" id="Xrg-jG-Ngj"/>
-                <constraint firstItem="7Kl-IV-d8U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="eRo-9Z-Rf1"/>
-                <constraint firstItem="dGj-b3-j15" firstAttribute="topMargin" secondItem="h3b-yL-VmD" secondAttribute="top" constant="16" id="ofb-tZ-ZUX"/>
-                <constraint firstItem="h3b-yL-VmD" firstAttribute="trailing" secondItem="dGj-b3-j15" secondAttribute="trailing" constant="8" id="pj5-Yd-wNJ"/>
+                <constraint firstItem="dGj-b3-j15" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="6Se-2Q-JGu"/>
+                <constraint firstAttribute="bottom" secondItem="dGj-b3-j15" secondAttribute="bottomMargin" constant="8" id="HtS-ng-bbf"/>
+                <constraint firstItem="dGj-b3-j15" firstAttribute="topMargin" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ofb-tZ-ZUX"/>
+                <constraint firstAttribute="trailing" secondItem="dGj-b3-j15" secondAttribute="trailing" constant="8" id="pj5-Yd-wNJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="h3b-yL-VmD"/>
             <point key="canvasLocation" x="122.40000000000001" y="192.95352323838082"/>
         </view>
     </objects>
-    <resources>
-        <image name="Info" width="20" height="20"/>
-    </resources>
 </document>

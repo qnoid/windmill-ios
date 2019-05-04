@@ -17,11 +17,12 @@ class SubscriptionDetailsViewController: UIViewController {
     }
     
     @IBOutlet weak var subscriptionLabel: UILabel!
-    @IBOutlet weak var youAreOnTrialLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBAction func didTouchUpInsideManager(_ sender: Any) {
+        
+        guard let manageSubscriptionsURL = URL(string: "itms-apps://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions") else {
+            return
+        }
+        UIApplication.shared.open(manageSubscriptionsURL, options: [:], completionHandler: nil)
     }
 }

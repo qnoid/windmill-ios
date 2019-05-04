@@ -120,7 +120,7 @@ class ExportTableViewDataSource: NSObject, UITableViewDataSource {
         }
         
         let export = self.exports[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
+        cell.accessoryType = .detailButton
         
         cell.delegate = controller
         cell.export = export

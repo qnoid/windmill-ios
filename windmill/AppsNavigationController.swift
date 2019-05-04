@@ -1,6 +1,6 @@
 //
-//  MainNavigationViewController.swift
-//  IntegrationTests
+//  AppsNavigationController.swift
+//  windmill
 //
 //  Created by Markos Charatzas on 31/01/2019.
 //  Copyright © 2019 Windmill. All rights reserved.

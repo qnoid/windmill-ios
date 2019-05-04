@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AppsTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PvH-Am-Sl2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AppsTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="93" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PvH-Am-Sl2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
@@ -97,15 +97,20 @@
                             <constraint firstItem="OGu-rg-4Ug" firstAttribute="leading" secondItem="G3y-gh-gJu" secondAttribute="leading" id="BIY-qO-Vxg"/>
                             <constraint firstItem="OGu-rg-4Ug" firstAttribute="trailing" secondItem="G3y-gh-gJu" secondAttribute="trailing" id="Hgf-Hh-olC"/>
                             <constraint firstItem="OGu-rg-4Ug" firstAttribute="bottom" secondItem="G3y-gh-gJu" secondAttribute="bottom" id="JdF-mv-19V"/>
-                            <constraint firstItem="OGu-rg-4Ug" firstAttribute="top" secondItem="G3y-gh-gJu" secondAttribute="top" id="rsA-5P-wbg"/>
+                            <constraint firstItem="OGu-rg-4Ug" firstAttribute="top" secondItem="G3y-gh-gJu" secondAttribute="top" id="ehu-IQ-FDf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G3y-gh-gJu"/>
                     </view>
                     <navigationItem key="navigationItem" id="vKx-wM-l6U">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="g6L-QH-FZF">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="Lxe-uH-Ehg">
+                            <connections>
+                                <segue destination="Zmy-Qr-S06" kind="unwind" unwindAction="unwindToAppsViewController:" id="IWM-K0-zRo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="trash" id="YT4-HS-dQu">
                             <color key="tintColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="deleteDistribution:" destination="EtZ-m9-fy9" id="4E0-dZ-5nA"/>
+                                <action selector="deleteDistribution:" destination="EtZ-m9-fy9" id="qhg-mi-VkA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -113,13 +118,13 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="OGu-rg-4Ug" id="6Du-64-Eun"/>
-                        <segue destination="Zmy-Qr-S06" kind="unwind" identifier="DeleteExportUnwind" unwindAction="unwindToAppsViewController:" id="v9L-2e-BrL"/>
+                        <segue destination="Zmy-Qr-S06" kind="unwind" identifier="DeleteExportUnwind" unwindAction="unwindToAppsViewControllerReload:" id="v9L-2e-BrL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBc-t7-sZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Zmy-Qr-S06" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3733.5999999999999" y="384.55772113943033"/>
+            <point key="canvasLocation" x="4672.8000000000002" y="384.55772113943033"/>
         </scene>
         <!--AppsNavigationController-->
         <scene sceneID="0pY-r9-THf">
@@ -152,7 +157,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lights" translatesAutoresizingMaskIntoConstraints="NO" id="Y7q-OF-IBQ">
                                 <rect key="frame" x="59.5" y="100.5" width="256" height="15"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Renewable Distribution Subscription" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbo-iD-6md">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Renewable Subscription Distribution" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbo-iD-6md">
                                 <rect key="frame" x="16" y="72" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -175,40 +180,78 @@ Any free trial period remaining, is forfeited if you purchase a new Windmill sub
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are on a 30-day free trial." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbB-B7-9YI">
-                                <rect key="frame" x="16" y="185.5" width="343" height="20"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.25098039220000001" green="0.23921568630000001" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="cbB-B7-9YI" secondAttribute="trailing" id="0bj-Dn-aPC"/>
                             <constraint firstItem="pbo-iD-6md" firstAttribute="leading" secondItem="IW8-Qt-Znk" secondAttribute="leadingMargin" id="4ZI-1o-Ir8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pbo-iD-6md" secondAttribute="trailing" id="4xW-Su-v6Z"/>
                             <constraint firstItem="pbo-iD-6md" firstAttribute="top" secondItem="IW8-Qt-Znk" secondAttribute="topMargin" constant="8" id="7PD-zC-RBr"/>
                             <constraint firstItem="DTB-tu-Wh7" firstAttribute="leading" secondItem="IW8-Qt-Znk" secondAttribute="leadingMargin" id="80x-Yg-YtP"/>
                             <constraint firstItem="VHM-xZ-bpG" firstAttribute="leading" secondItem="IW8-Qt-Znk" secondAttribute="leadingMargin" id="Bud-Tk-gcf"/>
+                            <constraint firstItem="VHM-xZ-bpG" firstAttribute="top" secondItem="DTB-tu-Wh7" secondAttribute="bottom" constant="40" id="EyB-3h-eB0"/>
                             <constraint firstItem="Y7q-OF-IBQ" firstAttribute="top" secondItem="pbo-iD-6md" secondAttribute="bottom" constant="8" symbolic="YES" id="S7d-Xi-kKI"/>
-                            <constraint firstItem="cbB-B7-9YI" firstAttribute="top" secondItem="DTB-tu-Wh7" secondAttribute="bottom" constant="10" id="Wm5-lr-Gf4"/>
                             <constraint firstItem="Y7q-OF-IBQ" firstAttribute="centerX" secondItem="zug-Xr-LaA" secondAttribute="centerX" id="YZ3-2c-q7y"/>
                             <constraint firstItem="pbo-iD-6md" firstAttribute="centerX" secondItem="zug-Xr-LaA" secondAttribute="centerX" id="aUb-Zo-ubc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DTB-tu-Wh7" secondAttribute="trailing" id="mAg-pK-GQ3"/>
-                            <constraint firstItem="cbB-B7-9YI" firstAttribute="leading" secondItem="IW8-Qt-Znk" secondAttribute="leadingMargin" id="oby-Ar-5Fe"/>
-                            <constraint firstItem="VHM-xZ-bpG" firstAttribute="top" secondItem="cbB-B7-9YI" secondAttribute="bottom" constant="10" id="usT-hQ-pgB"/>
                             <constraint firstItem="DTB-tu-Wh7" firstAttribute="top" secondItem="Y7q-OF-IBQ" secondAttribute="bottom" constant="8" symbolic="YES" id="vCO-SJ-I1U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VHM-xZ-bpG" secondAttribute="trailing" id="vVg-OU-moM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zug-Xr-LaA"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationItem key="navigationItem" title="Subscription Details" id="5hg-hu-aSj">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="5W1-fJ-gIs">
+                            <connections>
+                                <segue destination="IT6-j0-byP" kind="unwind" unwindAction="unwindToAccountViewController:" id="2yM-0g-dVY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Manage" style="done" id="yEz-on-VX9">
+                            <connections>
+                                <action selector="didTouchUpInsideManager:" destination="JZc-md-8e7" id="24Q-DO-JFk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="subscriptionLabel" destination="pbo-iD-6md" id="jLc-d2-WHJ"/>
-                        <outlet property="youAreOnTrialLabel" destination="cbB-B7-9YI" id="fP3-cV-2nT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3g-Kn-YLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="IT6-j0-byP" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3007.1999999999998" y="1105.9970014992505"/>
+        </scene>
+        <!--App Detail Navigation Controller-->
+        <scene sceneID="pA3-UO-zaZ">
+            <objects>
+                <navigationController storyboardIdentifier="AppDetailNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="HPT-iR-OBH" customClass="AppDetailNavigationController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xeI-Ok-x3P">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EtZ-m9-fy9" kind="relationship" relationship="rootViewController" id="mAU-KP-CuK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5u5-Jo-Aft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3733.5999999999999" y="384.55772113943033"/>
+        </scene>
+        <!--Subscription Details Navigation Controller-->
+        <scene sceneID="jId-9m-R7Z">
+            <objects>
+                <navigationController storyboardIdentifier="SubscriptionDetailsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Pld-sg-1EB" customClass="SubscriptionDetailsNavigationController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Krb-Vg-7oF">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JZc-md-8e7" kind="relationship" relationship="rootViewController" id="KoQ-H9-IK0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lCI-7f-VRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2068" y="1105.9970014992505"/>
         </scene>

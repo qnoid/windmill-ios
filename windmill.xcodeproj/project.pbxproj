@@ -62,6 +62,9 @@
 		BD6F9D6222293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6F9D6022293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift */; };
 		BD6F9D6322293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD6F9D6122293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib */; };
 		BD6F9D6C222A7F4F00CC3B27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD6F9D6A222A7F4F00CC3B27 /* Localizable.strings */; };
+		BD8BB36B227C26F40018A88D /* WindmillApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8BB36A227C26F40018A88D /* WindmillApp.swift */; };
+		BD8BB36D227C93C70018A88D /* AppDetailNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8BB36C227C93C70018A88D /* AppDetailNavigationController.swift */; };
+		BD8BB36F227CBEBD0018A88D /* SubscriptionDetailsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8BB36E227CBEBD0018A88D /* SubscriptionDetailsNavigationController.swift */; };
 		BD93EC2B2279A36200E8A573 /* ApplicationProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD93EC2A2279A36200E8A573 /* ApplicationProperties.swift */; };
 		BDA1AF90221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA1AF8E221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.xib */; };
 		BDA1AF91221ABB5D00EFB366 /* SubscriptionExpiredTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA1AF8F221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.swift */; };
@@ -167,6 +170,9 @@
 		BD6F9D6022293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenPurchaseOptionsTableViewFooterView.swift; sourceTree = "<group>"; };
 		BD6F9D6122293FCB00CC3B27 /* OpenPurchaseOptionsTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenPurchaseOptionsTableViewFooterView.xib; sourceTree = "<group>"; };
 		BD6F9D6D222A7F5D00CC3B27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = windmill/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BD8BB36A227C26F40018A88D /* WindmillApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindmillApp.swift; sourceTree = "<group>"; };
+		BD8BB36C227C93C70018A88D /* AppDetailNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailNavigationController.swift; sourceTree = "<group>"; };
+		BD8BB36E227CBEBD0018A88D /* SubscriptionDetailsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDetailsNavigationController.swift; sourceTree = "<group>"; };
 		BD93EC2A2279A36200E8A573 /* ApplicationProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationProperties.swift; sourceTree = "<group>"; };
 		BDA1AF8E221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubscriptionExpiredTableViewFooterView.xib; sourceTree = "<group>"; };
 		BDA1AF8F221ABB5C00EFB366 /* SubscriptionExpiredTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionExpiredTableViewFooterView.swift; sourceTree = "<group>"; };
@@ -246,6 +252,7 @@
 				BD2BAF6F2274CB9A00BB12B2 /* BuildSettings.swift */,
 				BD2BAF772274D0BF00BB12B2 /* DistributionSummary.swift */,
 				BDFCF5D0227B65D100392269 /* ContentType.swift */,
+				BD8BB36A227C26F40018A88D /* WindmillApp.swift */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -278,6 +285,7 @@
 				BD5229281CFB4B1D0069C831 /* AccountResource.swift */,
 				BDA1AF9B221BE23600EFB366 /* ExportTableView */,
 				BDF304CE22797CF50066361F /* AppDetailViewController.swift */,
+				BD8BB36C227C93C70018A88D /* AppDetailNavigationController.swift */,
 			);
 			name = Apps;
 			sourceTree = "<group>";
@@ -334,6 +342,7 @@
 				BD3B5FA12211D58000D1D899 /* AccountTableViewDelegate.swift */,
 				BDB847FD221C135000A1CE61 /* SubscriptionStatus.swift */,
 				BDB847FF221C19B600A1CE61 /* SubscriptionDetailsViewController.swift */,
+				BD8BB36E227CBEBD0018A88D /* SubscriptionDetailsNavigationController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -624,6 +633,7 @@
 				BD440E6A1FA0B45900FA81B3 /* InstallTableViewFooterView.swift in Sources */,
 				BD440E701FA0C30000FA81B3 /* NotificationsNotDeterminedTableViewHeaderView.swift in Sources */,
 				BD440E651F9FABAD00FA81B3 /* UIStoryboards.swift in Sources */,
+				BD8BB36F227CBEBD0018A88D /* SubscriptionDetailsNavigationController.swift in Sources */,
 				BD3B5F9A2211A01100D1D899 /* AccountViewController.swift in Sources */,
 				BD0AD8AE1FA0F5F7007337CA /* NotificationsAuthorizedTableViewHeaderView.swift in Sources */,
 				BD0FEBA11CFC3400005AC9F0 /* InstallButton.swift in Sources */,
@@ -634,10 +644,12 @@
 				BDD1E96D1CDA92DB00976074 /* AppsViewController.swift in Sources */,
 				BDA2D14A1F0E2791004EE03D /* UIAlertController+Windmill.swift in Sources */,
 				BD5229291CFB4B1D0069C831 /* AccountResource.swift in Sources */,
+				BD8BB36D227C93C70018A88D /* AppDetailNavigationController.swift in Sources */,
 				BDA1AF93221ADB6500EFB366 /* MainNavigationController.swift in Sources */,
 				BD5229271CFB27A50069C831 /* ExportTableViewCell.swift in Sources */,
 				BD19B6C221F8D7EF00743250 /* SubscriptionResource.swift in Sources */,
 				BD47531622144A18004C101E /* MainTabBarController.swift in Sources */,
+				BD8BB36B227C26F40018A88D /* WindmillApp.swift in Sources */,
 				BDA1AF95221AE07900EFB366 /* PurchaseNavigationController.swift in Sources */,
 				BD42AF502270543500F3E9CA /* Configuration.swift in Sources */,
 				BD2BAF782274D0BF00BB12B2 /* DistributionSummary.swift in Sources */,

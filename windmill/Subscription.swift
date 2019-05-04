@@ -117,12 +117,12 @@ extension SubscriptionError : CustomNSError, LocalizedError {
         case .unauthorised(let reason):
             switch reason {
             case (.expired?):
-                return "In the latter case, Windmill will try again sometime later. Optionally, under your Account, you can choose to Refresh now."
+                return "In the latter case, Windmill will try again sometime later. Optionally, you can choose to Refresh now."
             default:
                 return "You can purchase a new subscription or contact qnoid@windmill.io"
             }
         case .expired:
-            return "In the latter case, Windmill will try again sometime later. Optionally, under your Account, you can choose to Refresh now."
+            return "In the latter case, Windmill will try again sometime later. Optionally, you can choose to Refresh now."
         default:
             return nil
         }

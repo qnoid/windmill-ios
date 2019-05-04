@@ -8,12 +8,36 @@
 
 import UIKit
 
+extension Array where Element == AccountViewController.Section {
+    
+    typealias Section = AccountViewController.Section
+    
+    func section(for section: Section) -> Int? {
+        guard let index = self.firstIndex(of: section) else {
+            return nil
+        }
+        
+        return self.distance(from: startIndex, to: index)
+    }
+}
+
+extension Array where Element == AccountViewController.Setting {
+    
+    typealias Setting = AccountViewController.Setting
+    
+    func row(for setting: Setting) -> Int? {
+        guard let index = self.firstIndex(of: setting) else {
+            return nil
+        }
+        
+        return self.distance(from: startIndex, to: index)
+    }
+}
+
 class AccountTableViewDataSource: NSObject, UITableViewDataSource {
  
     typealias Section = AccountViewController.Section
     typealias Setting = AccountViewController.Setting
-    
-    @IBOutlet weak var controller: AccountViewController?
 
     var subscriptionStatus = SubscriptionStatus.default {
         didSet {
@@ -21,6 +45,24 @@ class AccountTableViewDataSource: NSObject, UITableViewDataSource {
         }
     }
     var sections = [Section]()
+    
+    func indexPath(for section: Section, setting: Setting) -> IndexPath? {
+        
+        guard let row = section.settings(for: self.subscriptionStatus).row(for: setting) else {
+            return nil
+        }
+        
+        
+        guard let section = self.sections.section(for: section) else {
+            return nil
+        }
+        
+        return IndexPath(row: row, section: section)
+    }
+
+    func indexPath(section: Section, setting: Setting) -> IndexPath? {
+        return self.indexPath(for: section, setting: setting)
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.sections.count
@@ -42,7 +84,15 @@ class AccountTableViewDataSource: NSObject, UITableViewDataSource {
 
         let setting = self.sections[indexPath.section].settings(for: self.subscriptionStatus)[indexPath.row]
 
-        controller?.cell(cell, for:setting)
+        switch setting {
+        case .subscription:
+            cell.accessoryType = .detailButton
+        case .refreshSubscription, .restorePurchases:
+            cell.accessoryView = UIActivityIndicatorView(style: .gray)
+        default:
+            break
+        }
+
         cell.textLabel?.text = setting.stringValue
         
         return cell

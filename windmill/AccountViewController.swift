@@ -11,49 +11,6 @@ import StoreKit
 import os
 
 
-extension Dictionary where Key == AccountViewController.Section, Value == [AccountViewController.Setting] {
-    
-    typealias Section = AccountViewController.Section
-    typealias Setting = AccountViewController.Setting
-    typealias Entry = (key: Section, value: [Setting])
-    
-    func section(for entry: Entry) -> Int? {
-        let key = entry.key
-        
-        guard let index = self.keys.firstIndex(of: key) else {
-            return nil
-        }
-
-        return self.keys.distance(from: startIndex, to: index)
-    }
-    
-    func row(for setting: Setting, entry: Entry) -> Int? {
-        let value = entry.value
-        
-        guard let index = value.firstIndex(of: setting) else {
-            return nil
-        }
-        
-        return index
-    }
-
-    func indexPath(for setting: Setting) -> IndexPath? {
-        
-        guard let entry = self.first(where: { $0.value.contains(setting) }) else {
-            return nil
-        }
-        
-        guard let section = self.section(for: entry) else {
-            return nil
-        }
-        
-        guard let row = self.row(for: setting, entry: entry) else {
-            return nil
-        }
-        
-        return IndexPath(row: row, section: section)
-    }
-}
 /**
     The AccountViewController guarantees that a user has logged in their Apple ID and has iCloud Drive for Windmill turned on.
  
@@ -126,13 +83,12 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         didSet {
             self.tableViewDataSource?.subscriptionStatus = subscriptionStatus
             self.tableViewDelegate?.subscriptionStatus = subscriptionStatus
+            self.sections = Section.sections(for: subscriptionStatus)
             self.tableView?.reloadData()
         }
     }
 
-    lazy var sections: [Section: [Setting]] = Section.sections().reduce(into: [Section: [Setting]]()) { sections, section in
-        sections[section] = section.settings()
-    }
+    var sections = Section.sections(for: SubscriptionStatus.default)
     
     var subscriptionManager = SubscriptionManager()
     
@@ -145,6 +101,9 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestoreFailed(notification:)), name: SubscriptionManager.SubscriptionRestoreFailed, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshing(notification:)), name: PaymentQueue.ReceiptRefreshing, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshed(notification:)), name: PaymentQueue.ReceiptRefreshed, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshFailed(notification:)), name: PaymentQueue.ReceiptRefreshFailed, object: PaymentQueue.default)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -156,7 +115,9 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionActive(notification:)), name: SubscriptionManager.SubscriptionActive, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionRestoreFailed(notification:)), name: SubscriptionManager.SubscriptionRestoreFailed, object: subscriptionManager)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshing(notification:)), name: PaymentQueue.ReceiptRefreshing, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshed(notification:)), name: PaymentQueue.ReceiptRefreshed, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshFailed(notification:)), name: PaymentQueue.ReceiptRefreshFailed, object: PaymentQueue.default)
     }
     
     override func viewDidLoad() {
@@ -199,7 +160,7 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
                     switch(account, error) {
                     case(let account?, _):
                         self?.subscriptionManager.share(account: account, claim: claim)
-                    case(_, let error?): //when expired, show under Account rather an alert?
+                    case(_, let error?):
                         self?.error(subscriptionManager, didFailWithError: error)
                     case (.none, .none):
                         preconditionFailure("SubscriptionManager.subscribe must callback with either an account/token or an error")
@@ -210,7 +171,6 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
             case (.none, .none):
                 preconditionFailure("CKContainer.fetchUserRecordID must call with either a user record or an error")
             }
-            
         }
     }
     
@@ -219,7 +179,7 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         case .valid(let claim), .expired(_, let claim):
             self.subscribeUser(claim: claim)
         default:
-            self.deselect(setting: .refreshSubscription)
+            self.deselect(section: .subscription, setting: .refreshSubscription)
         }
     }
     
@@ -228,7 +188,7 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         case .valid(let claim), .expired(_, let claim):
             self.subscribeUser(claim: claim)
         default:
-            self.deselect(setting: .refreshSubscription)
+            self.deselect(section: .subscription, setting: .refreshSubscription)
         }
     }
 
@@ -241,6 +201,7 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
     }
 
     @objc func subscriptionFailed(notification: NSNotification) {
+        self.deselect(section: .subscription, setting: .refreshSubscription)
         self.subscriptionStatus = SubscriptionStatus.default
         
         guard let error = notification.userInfo?["error"] as? Error else {
@@ -251,8 +212,8 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
     }
 
     @objc func subscriptionRestoreFailed(notification: NSNotification) {
-        
-        self.deselect(setting: Setting.restorePurchases)
+        self.deselect(section: .subscription, setting: .refreshSubscription)
+        self.deselect(section: .subscription, setting: .restorePurchases)
         
         guard let error = notification.userInfo?["error"] as? Error else {
             return
@@ -261,32 +222,33 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         self.error(self.subscriptionManager, didFailWithError: error)
     }
     
-    func deselect(setting: AccountViewController.Setting) {
-
-        guard let indexPath = self.sections.indexPath(for: setting) else {
+    func deselect(section: Section, setting: AccountViewController.Setting) {
+        guard let indexPath = self.tableViewDataSource.indexPath(for: section, setting: setting) else {
             return
         }
         
-        self.tableView?.delegate?.tableView?(self.tableView, didDeselectRowAt: indexPath)
+        self.tableViewDelegate?.tableView(self.tableView, didDeselectRowAt: indexPath)
     }
 
-    func cell(_ cell: UITableViewCell, for setting: Setting) {
+    func accessoryButtonTapped(setting: Setting, cell: UITableViewCell) {
+        
         switch setting {
         case .subscription:
-            cell.accessoryType = .detailButton
-        case .refreshSubscription, .restorePurchases:
-            cell.accessoryView = UIActivityIndicatorView(style: .gray)
+            guard let subscriptionDetailsNavigationController = SubscriptionDetailsNavigationController.make() else {
+                return
+            }
+            
+            present(subscriptionDetailsNavigationController, animated: true)
+        case .refreshSubscription:
+            let alertController = UIAlertController.Windmill.makeSubscription(error: SubscriptionError.expired)
+            alertController.addAction(UIAlertAction(title: "Refresh Subscription", style: .default) { action in
+                cell.accessoryView = UIActivityIndicatorView(style: .gray)
+                PaymentQueue.default.refreshReceipt()
+            })
+            present(alertController, animated: true, completion: nil)
         default:
             return
         }
-    }
-
-    func accessoryButtonTapped(setting: Setting) {
-        guard let subscriptionDetailsViewController = SubscriptionDetailsViewController.make() else {
-            return
-        }
-        
-        self.show(subscriptionDetailsViewController, sender: self)
     }
     
     func didSelect(setting: Setting) {
@@ -297,7 +259,7 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
             }
             UIApplication.shared.open(manageSubscriptionsURL, options: [:], completionHandler: nil)
         case .refreshSubscription:
-            self.subscriptionManager.refreshReceipt()
+            PaymentQueue.default.refreshReceipt()
         case .restorePurchases:
             self.subscriptionManager.restoreSubscriptions()
         case .purchaseOptions:
@@ -309,21 +271,46 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
         }
     }
     
-    func success(_ manager: SubscriptionManager, receipt: URL) {
-        guard let rawReceiptData = try? Data(contentsOf: receipt) else {
+    @objc func receiptRefreshing(notification: NSNotification) {
+        guard let indexPath = self.tableViewDataSource.indexPath(section: .subscription, setting: .refreshSubscription) else {
             return
         }
         
-        let receiptData = rawReceiptData.base64EncodedString()
+        self.tableViewDelegate.animateActivityIndicatorView(tableView, at: indexPath)
+    }
+    
+    @objc func receiptRefreshed(notification: NSNotification) {
+        guard let receipt = notification.userInfo?["receipt"] as? String else {
+            return
+        }
         
-        self.subscriptionManager.restoreSubscription(receiptData: receiptData)
+        self.subscriptionManager.restoreSubscription(receiptData: receipt)
+    }
+
+    @objc func receiptRefreshFailed(notification: NSNotification) {
+        self.deselect(section: .subscription, setting: .refreshSubscription)
+        
+        guard let error = notification.userInfo?["error"] as? Error else {
+            return
+        }
+        
+        let alertController = UIAlertController.Windmill.make(title: "Error", error: error)
+        present(alertController, animated: true, completion: nil)
     }
     
     func error(_ manager: SubscriptionManager, didFailWithError error: Error) {
-        self.deselect(setting: Setting.refreshSubscription)
 
         switch error {
         case let error as SKError where error.code == SKError.paymentCancelled:
+            return
+        case let error as SubscriptionError where error.isExpired:
+            guard let indexPath = self.tableViewDataSource.indexPath(for: .subscription, setting: .refreshSubscription) else {
+                return
+            }
+            
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.accessoryView = nil
+            cell?.accessoryType = .detailButton
             return
         case let error as SubscriptionError:
             let alertController = UIAlertController.Windmill.makeSubscription(error: error)
@@ -333,4 +320,9 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
             present(alertController, animated: true, completion: nil)
         }
     }
+    
+    @IBAction @objc func unwindToAccountViewController(_ segue: UIStoryboardSegue) {
+        
+    }
+
 }

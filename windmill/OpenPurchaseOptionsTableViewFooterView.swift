@@ -11,6 +11,12 @@ import UIKit
 
 class OpenPurchaseOptionsTableViewFooterView: UITableViewHeaderFooterView {
     
+    @IBOutlet weak var button: Button! {
+        didSet {
+            button.titleLabel?.adjustsFontForContentSizeCategory = true
+        }
+    }
+
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
