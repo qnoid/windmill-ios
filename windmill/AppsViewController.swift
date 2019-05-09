@@ -97,6 +97,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     
     @objc func subscriptionActive(notification: NSNotification) {
         self.subscriptionStatus = SubscriptionStatus.default
+        self.tableView.tableFooterView = InstallTableViewFooterView.make(width: self.tableView.bounds.width)
     }
 
     @objc func subscriptionRestored(notification: NSNotification) {
@@ -169,7 +170,6 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         
         self.delegate.exports = exports
         self.dataSource.exports = exports
-        self.tableView?.tableFooterView = InstallTableViewFooterView.make(width: self.tableView.bounds.width)
         self.tableView?.reloadData()
     }
     
