@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="You will receive a notification when Windmill on the Mac distributes a new build for an application." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHi-Oa-fsy">
-                    <rect key="frame" x="8" y="8" width="304" height="104"/>
+                    <rect key="frame" x="8" y="50.5" width="304" height="61.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -30,11 +30,10 @@
             <constraints>
                 <constraint firstItem="fHi-Oa-fsy" firstAttribute="leading" secondItem="PLb-Kb-BjZ" secondAttribute="leading" constant="8" id="D63-Vg-hhp"/>
                 <constraint firstAttribute="trailing" secondItem="fHi-Oa-fsy" secondAttribute="trailing" constant="8" id="j25-V4-6xr"/>
-                <constraint firstItem="fHi-Oa-fsy" firstAttribute="top" secondItem="PLb-Kb-BjZ" secondAttribute="top" constant="8" id="knv-L4-jSk"/>
                 <constraint firstAttribute="bottom" secondItem="fHi-Oa-fsy" secondAttribute="bottom" constant="8" id="oL3-pP-eVj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="83.200000000000003" y="-107.0464767616192"/>
+            <point key="canvasLocation" x="82.5" y="-107.74647887323944"/>
         </view>
     </objects>
 </document>
