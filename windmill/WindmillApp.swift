@@ -40,5 +40,10 @@ class WindmillApp {
         static func purchase(bundle: Bundle = Bundle(for: WindmillApp.self)) -> UIStoryboard {
             return UIStoryboard(name: "Purchase", bundle: bundle)
         }
+        
+        static func help(bundle: Bundle = Bundle(for: WindmillApp.self)) -> UIStoryboard {
+            return UIStoryboard(name: "Help", bundle: bundle)
+        }
+
     }
 }

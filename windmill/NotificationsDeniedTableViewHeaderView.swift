@@ -14,7 +14,10 @@ protocol NotificationsDisabledTableViewHeaderViewDelegate: NSObjectProtocol {
 
 class NotificationsDeniedTableViewHeaderView: UITableViewHeaderFooterView {
     
-    
+    class func make(width: CGFloat) -> NotificationsDeniedTableViewHeaderView {
+        return NotificationsDeniedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 66.0))
+    }
+
     weak var delegate: NotificationsDisabledTableViewHeaderViewDelegate?
     
     override init(reuseIdentifier: String?) {

@@ -11,12 +11,10 @@ import UIKit
 class SubscriptionExpiredTableViewFooterView: UITableViewHeaderFooterView {
     
     public class func make(width: CGFloat) -> SubscriptionExpiredTableViewFooterView {
-        return SubscriptionExpiredTableViewFooterView(frame: CGRect(x: 0, y: 0, width: width, height: 148.0))
+        return SubscriptionExpiredTableViewFooterView(frame: CGRect(x: 0, y: 0, width: width, height: 248.0))
     }
     
     @IBOutlet var label: UILabel!
-    @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -34,10 +32,5 @@ class SubscriptionExpiredTableViewFooterView: UITableViewHeaderFooterView {
         wml_addSubview(view: wml_load(view: type(of: self)), layout: { view in
             wml_layout(view)
         })
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.bounds.size.height = label.intrinsicContentSize.height + (self.topLayoutConstraint.constant + self.bottomLayoutConstraint.constant) * 2
     }
 }

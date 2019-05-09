@@ -14,14 +14,13 @@ protocol NotifyTableViewHeaderViewDelegate: NSObjectProtocol {
 
 class NotificationsNotDeterminedTableViewHeaderView: UITableViewHeaderFooterView {
     
+    class func make(width: CGFloat) -> NotificationsNotDeterminedTableViewHeaderView {
+        return NotificationsNotDeterminedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 66.0))
+    }
     
     @IBOutlet weak var notifyButton: Button! {
         didSet{
-            let attributedText = NSMutableAttributedString(string: "Notify me when a ")
-            attributedText.append(NSAttributedString(string: "New build", attributes: [.foregroundColor : UIColor.black, .font : UIFont.boldSystemFont(ofSize: 14)]))
-            attributedText.append(NSAttributedString(string: " is "))
-            attributedText.append(NSAttributedString(string: "distributed", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
-            attributedText.append(NSAttributedString(string: "."))
+            let attributedText = NSMutableAttributedString(string: self.notifyButton.titleLabel?.text ?? "")
             notifyButton.setAttributedTitle(attributedText, for: .normal)
         }
     }

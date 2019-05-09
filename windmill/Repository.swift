@@ -13,5 +13,6 @@ public struct Repository {
     public struct Commit: Codable {
         let branch: String
         let shortSha: String
+        let date: Date
     }
 }

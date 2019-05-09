@@ -16,13 +16,13 @@ import os
 class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, NotificationsDisabledTableViewHeaderViewDelegate, ExportTableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView! {
         didSet{
-            self.tableView.tableHeaderView = NotificationsNotDeterminedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
+            self.tableView.tableHeaderView = NotificationsNotDeterminedTableViewHeaderView.make(width: tableView.bounds.width)
             self.tableView.register(ExportTableViewCell.self, forCellReuseIdentifier: "ExportTableViewCell")
             self.tableView.rowHeight = UITableView.automaticDimension
             self.tableView.dataSource = self.dataSource
             self.tableView.delegate = self.delegate
             self.tableView.alwaysBounceVertical = false
-            self.tableView.tableFooterView = InstallTableViewFooterView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 60.0))
+            self.tableView.tableFooterView = InstallTableViewFooterView.make(width: self.tableView.bounds.width)
         }
     }
     
@@ -114,21 +114,21 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         switch settings.authorizationStatus {
             
         case .notDetermined:
-            let tableHeaderView = NotificationsNotDeterminedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
+            let tableHeaderView = NotificationsNotDeterminedTableViewHeaderView.make(width: tableView.bounds.width)
             tableHeaderView.delegate = self
             
             return tableHeaderView
         case .denied:
-            let tableHeaderView = NotificationsDeniedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
+            let tableHeaderView = NotificationsDeniedTableViewHeaderView.make(width: tableView.bounds.width)
             tableHeaderView.delegate = self
             
             return tableHeaderView
         case .authorized, .provisional:
-            let tableHeaderView = NotificationsAuthorizedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
+            let tableHeaderView = NotificationsAuthorizedTableViewHeaderView.make(width: tableView.bounds.width)
             
             return tableHeaderView
         @unknown default:
-            let tableHeaderView = NotificationsNotDeterminedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
+            let tableHeaderView = NotificationsNotDeterminedTableViewHeaderView.make(width: tableView.bounds.width)
             tableHeaderView.delegate = self
             
             return tableHeaderView
@@ -152,7 +152,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         
         switch error {
         case let error as SubscriptionError where error.isExpired:
-            return //not responsible for handling a SubscriptionManager.SubscriptionExpired notification
+            self.tableView.tableFooterView = SubscriptionExpiredTableViewFooterView.make(width: self.tableView.bounds.width)
         case let error as SubscriptionError:
             let alertController = UIAlertController.Windmill.makeSubscription(error: error)
             present(alertController, animated: true, completion: nil)
@@ -169,6 +169,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         
         self.delegate.exports = exports
         self.dataSource.exports = exports
+        self.tableView?.tableFooterView = InstallTableViewFooterView.make(width: self.tableView.bounds.width)
         self.tableView?.reloadData()
     }
     
@@ -232,7 +233,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
             return
         }
         
-        let tableHeaderView = NotificationsAuthorizedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 66.0))
+        let tableHeaderView = NotificationsAuthorizedTableViewHeaderView.make(width: self.tableView.bounds.width)
         self.tableView.tableHeaderView = tableHeaderView
         
         UIApplication.shared.registerForRemoteNotifications()

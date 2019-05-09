@@ -72,30 +72,30 @@ extension Export {
                 paragraph.minimumLineHeight = 27
                 
                 return NSAttributedString(string: "DISABLED", attributes: [
-                    NSAttributedString.Key.foregroundColor: UIColor.black,
-                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold),
-                    NSAttributedString.Key.paragraphStyle: paragraph,
-                    NSAttributedString.Key.baselineOffset: 5.0])
+                    .foregroundColor: UIColor.black,
+                    .font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold),
+                    .paragraphStyle: paragraph,
+                    .baselineOffset: 5.0])
             case .expired:
                 let paragraph = NSMutableParagraphStyle()
                 paragraph.minimumLineHeight = 27
                 
                 return NSAttributedString(string: "EXPIRED", attributes: [
-                    NSAttributedString.Key.foregroundColor: UIColor.black,
-                    NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold),
-                    NSAttributedString.Key.paragraphStyle: paragraph,
-                    NSAttributedString.Key.baselineOffset: 5.0])
+                    .foregroundColor: UIColor.black,
+                    .font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold),
+                    .paragraphStyle: paragraph,
+                    .baselineOffset: 5.0])
             }
         case .ok:
             let paragraph = NSMutableParagraphStyle()
             paragraph.minimumLineHeight = 27
             
             return NSAttributedString(string: "INSTALL", attributes: [
-                NSAttributedString.Key.link: self.url,
-                NSAttributedString.Key.foregroundColor: UIColor.Windmill.pinkColor,
-                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.medium),
-                NSAttributedString.Key.paragraphStyle: paragraph,
-                NSAttributedString.Key.baselineOffset: 5.0])
+                .link: self.url,
+                .foregroundColor: UIColor.Windmill.pinkColor,
+                .font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.medium),
+                .paragraphStyle: paragraph,
+                .baselineOffset: 5.0])
         }
     }
 }

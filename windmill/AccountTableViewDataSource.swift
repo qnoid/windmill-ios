@@ -8,11 +8,9 @@
 
 import UIKit
 
-extension Array where Element == AccountViewController.Section {
+extension Array where Element : Equatable {
     
-    typealias Section = AccountViewController.Section
-    
-    func section(for section: Section) -> Int? {
+    func section(for section: Element) -> Int? {
         guard let index = self.firstIndex(of: section) else {
             return nil
         }
@@ -21,12 +19,10 @@ extension Array where Element == AccountViewController.Section {
     }
 }
 
-extension Array where Element == AccountViewController.Setting {
+extension Array where Element : Equatable {
     
-    typealias Setting = AccountViewController.Setting
-    
-    func row(for setting: Setting) -> Int? {
-        guard let index = self.firstIndex(of: setting) else {
+    func row(for row: Element) -> Int? {
+        guard let index = self.firstIndex(of: row) else {
             return nil
         }
         
