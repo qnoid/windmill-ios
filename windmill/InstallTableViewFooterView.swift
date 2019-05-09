@@ -10,15 +10,22 @@ import UIKit
 
 class InstallTableViewFooterView: UITableViewHeaderFooterView {
     
-    @IBOutlet weak var label: UILabel! {
+    static func make(width: CGFloat) -> InstallTableViewFooterView {
+        return InstallTableViewFooterView(frame: CGRect(x: 0, y: 0, width: width, height: 160.0))
+    }
+    @IBOutlet weak var textView: UITextView!{
         didSet{
-            let attributedText = NSMutableAttributedString(string: "This device must be registered in the developer profile to be able to ")
-            attributedText.append(NSAttributedString(string: "INSTALL", attributes: [.foregroundColor : UIColor.black, .font : UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold)]))
-            attributedText.append(NSAttributedString(string: " an application that Windmill on the Mac "))
-            attributedText.append(NSAttributedString(string: "distributes.", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
-            label.attributedText = attributedText
+            let attributedText = NSMutableAttributedString(string: "This ", attributes: [.font :  UIFont.preferredFont(forTextStyle: .callout)])
+            
+            if let url = URL(string: "https://help.apple.com/developer-account/#/dev40df0d9fa") {
+                attributedText.append(NSAttributedString(string: "device must be registered", attributes: [.link: url, .font :  UIFont.preferredFont(forTextStyle: .callout)]))
+            }
+            
+            attributedText.append(NSAttributedString(string: " in the Apple Developer Account to be able to install an application that Windmill on the Mac distributes.", attributes: [.font :  UIFont.preferredFont(forTextStyle: .callout)]))
+            textView.attributedText = attributedText
         }
     }
+    @IBOutlet weak var label: UILabel!
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

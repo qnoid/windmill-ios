@@ -21,7 +21,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80I-KJ-8zZ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Windmill macOS" translatesAutoresizingMaskIntoConstraints="NO" id="8GH-xz-MNG">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="windmill iOS icon" translatesAutoresizingMaskIntoConstraints="NO" id="8GH-xz-MNG">
                                         <rect key="frame" x="112" y="0.0" width="96" height="96"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="96" id="60g-i2-6No"/>
@@ -187,7 +187,7 @@ Windmill on the iPhone further enables the distribution of your app to registere
 
 Whether it is the end of a sprint, demo day or keeping your team in the loop, the latest build is available to install on your registered devices* using Windmill on the iPhone.
 
-* The device needs to be registered in your Apple developer account.</string>
+* The device needs to be registered in your Apple Developer Account.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -319,8 +319,8 @@ By signing up you agree to Windmill's Terms of Service and Privacy Policy.</stri
         </scene>
     </scenes>
     <resources>
-        <image name="Windmill macOS" width="96" height="96"/>
         <image name="lights" width="256" height="15.5"/>
+        <image name="windmill iOS icon" width="70" height="70"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -11,18 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubscriptionExpiredTableViewFooterView" customModule="windmill" customModuleProvider="target">
             <connections>
-                <outlet property="bottomLayoutConstraint" destination="tTD-Ze-dvy" id="0i7-Ly-749"/>
                 <outlet property="label" destination="k3A-Sz-XWZ" id="03U-5f-Pfn"/>
-                <outlet property="topLayoutConstraint" destination="Nrj-Ha-nJm" id="NFh-Lr-VBX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" userLabel="contens">
-            <rect key="frame" x="0.0" y="0.0" width="359" height="148"/>
+            <rect key="frame" x="0.0" y="0.0" width="359" height="248"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3A-Sz-XWZ">
-                    <rect key="frame" x="8" y="8" width="343" height="132"/>
+                    <rect key="frame" x="8" y="8" width="343" height="130.5"/>
                     <string key="text">Your subscription has expired or may have not renewed just yet. 
 
 Windmill will try again sometime later. Optionally, under your Account, you can choose to Refresh now.</string>
@@ -35,7 +33,6 @@ Windmill will try again sometime later. Optionally, under your Account, you can 
             <constraints>
                 <constraint firstItem="k3A-Sz-XWZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="8" id="Nrj-Ha-nJm"/>
                 <constraint firstItem="k3A-Sz-XWZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="jXB-32-oQ9"/>
-                <constraint firstAttribute="bottomMargin" secondItem="k3A-Sz-XWZ" secondAttribute="bottom" constant="8" id="tTD-Ze-dvy"/>
                 <constraint firstAttribute="trailing" secondItem="k3A-Sz-XWZ" secondAttribute="trailing" constant="8" id="xLM-gf-KuI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

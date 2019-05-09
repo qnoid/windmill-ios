@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yG3-tF-aXC">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Help-->
+        <scene sceneID="ZLk-i8-OLd">
+            <objects>
+                <navigationController id="yG3-tF-aXC" customClass="HelpNavigationController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Help" image="question" id="OJX-jL-9wL"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="lG6-Ig-EHs">
+                        <rect key="frame" x="0.0" y="20" width="320" height="91"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="c1X-eQ-VDK" kind="relationship" relationship="rootViewController" id="jwY-dD-Mec"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fGh-uq-Kmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-356" y="-338"/>
+        </scene>
+        <!--Help Section View Controller-->
+        <scene sceneID="ayK-bp-j2U">
+            <objects>
+                <viewController storyboardIdentifier="HelpSectionViewController" id="Dlu-5X-XrA" customClass="HelpSectionViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yg1-Vb-VAz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where to start" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XT-VH-b1R">
+                                <rect key="frame" x="8" y="119" width="158" height="31.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feP-Mk-kdQ">
+                                <rect key="frame" x="8" y="158.5" width="312" height="360.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Make sure Windmill is running on your development Mac and is currently monitoring an Xcode project/workspace.
+
+Windmill requires you to be logged in on both your Mac and iPhone using your Apple ID to start distributing your apps.
+
+Once you have an active subscription, Windmill on the Mac will start to distribute your app.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2XT-VH-b1R" firstAttribute="top" secondItem="yg1-Vb-VAz" secondAttribute="topMargin" constant="8" id="2C3-xj-VQn"/>
+                            <constraint firstItem="feP-Mk-kdQ" firstAttribute="top" secondItem="2XT-VH-b1R" secondAttribute="bottom" constant="8" id="51y-Dv-t7a"/>
+                            <constraint firstAttribute="trailing" secondItem="feP-Mk-kdQ" secondAttribute="trailing" id="Wp6-Pn-lcF"/>
+                            <constraint firstItem="feP-Mk-kdQ" firstAttribute="leading" secondItem="2XT-VH-b1R" secondAttribute="leading" id="gOj-5j-KIv"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="feP-Mk-kdQ" secondAttribute="bottom" id="rJQ-59-SUr"/>
+                            <constraint firstItem="cgT-Yf-GDL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2XT-VH-b1R" secondAttribute="trailing" id="tOm-nG-64l"/>
+                            <constraint firstItem="2XT-VH-b1R" firstAttribute="leading" secondItem="yg1-Vb-VAz" secondAttribute="leadingMargin" constant="-8" id="ykz-qH-uXe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cgT-Yf-GDL"/>
+                    </view>
+                    <connections>
+                        <outlet property="childLabel" destination="2XT-VH-b1R" id="U0f-7D-S0y"/>
+                        <outlet property="textView" destination="feP-Mk-kdQ" id="jML-yA-Njn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fZX-SD-VJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2160" y="-338"/>
+        </scene>
+        <!--Welcome-->
+        <scene sceneID="uTs-3f-nKk">
+            <objects>
+                <viewController storyboardIdentifier="HelpViewController" title="Welcome" id="c1X-eQ-VDK" customClass="HelpViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s2I-Rj-K8A">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="windmill iOS icon" translatesAutoresizingMaskIntoConstraints="NO" id="csB-gh-m15">
+                                <rect key="frame" x="0.0" y="111" width="320" height="67"/>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Windmill Help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1D-aM-lJM">
+                                <rect key="frame" x="0.0" y="178" width="320" height="33.5"/>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVq-LG-h3R">
+                                <rect key="frame" x="0.0" y="251.5" width="320" height="267.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">#PoweredByWindmill
+
+Windmill on the iPhone enables the distribution of your app to registered devices.
+
+Make sure Windmill is also running on your development Mac.
+
+Whether it is the end of a sprint, demo day or keeping your team in the loop, the latest build is but a tap away.</string>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkf-42-Jkq" customClass="TopicButton" customModule="windmill" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="219.5" width="320" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="9t4-2l-mNO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="Show topics" image="toc"/>
+                                <connections>
+                                    <segue destination="G7i-jP-opF" kind="show" id="wd1-U3-ZoZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eVq-LG-h3R" firstAttribute="top" secondItem="kkf-42-Jkq" secondAttribute="bottom" constant="8" id="0sB-r9-Jd9"/>
+                            <constraint firstItem="a1D-aM-lJM" firstAttribute="top" secondItem="csB-gh-m15" secondAttribute="bottom" id="1Xs-so-9p0"/>
+                            <constraint firstItem="eVq-LG-h3R" firstAttribute="height" secondItem="csB-gh-m15" secondAttribute="height" multiplier="4:1" id="BZ4-GO-41G"/>
+                            <constraint firstItem="kkf-42-Jkq" firstAttribute="top" secondItem="a1D-aM-lJM" secondAttribute="bottom" constant="8" id="Che-iV-Dd9"/>
+                            <constraint firstItem="a1D-aM-lJM" firstAttribute="topMargin" secondItem="csB-gh-m15" secondAttribute="bottom" constant="8" id="DaL-U9-u7b"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="eVq-LG-h3R" secondAttribute="bottom" id="FP0-f5-AFP"/>
+                            <constraint firstItem="kkf-42-Jkq" firstAttribute="leadingMargin" secondItem="1WU-lE-s9o" secondAttribute="leading" constant="8" id="JP8-d6-dUg"/>
+                            <constraint firstItem="a1D-aM-lJM" firstAttribute="trailing" secondItem="1WU-lE-s9o" secondAttribute="trailing" id="UhJ-oy-jE4"/>
+                            <constraint firstItem="1WU-lE-s9o" firstAttribute="trailing" secondItem="eVq-LG-h3R" secondAttribute="trailing" id="Zeb-sj-3l2"/>
+                            <constraint firstItem="eVq-LG-h3R" firstAttribute="leading" secondItem="1WU-lE-s9o" secondAttribute="leading" id="a9H-y6-oOo"/>
+                            <constraint firstItem="1WU-lE-s9o" firstAttribute="trailing" secondItem="kkf-42-Jkq" secondAttribute="trailingMargin" constant="8" id="hmn-sA-YMB"/>
+                            <constraint firstItem="a1D-aM-lJM" firstAttribute="height" secondItem="csB-gh-m15" secondAttribute="height" multiplier="1:2" id="ht2-YX-eSw"/>
+                            <constraint firstItem="csB-gh-m15" firstAttribute="leading" secondItem="1WU-lE-s9o" secondAttribute="leading" id="kUn-Om-Ys3"/>
+                            <constraint firstItem="a1D-aM-lJM" firstAttribute="leading" secondItem="1WU-lE-s9o" secondAttribute="leading" id="px8-C8-qOa"/>
+                            <constraint firstItem="csB-gh-m15" firstAttribute="top" secondItem="1WU-lE-s9o" secondAttribute="top" id="vak-lV-LUx"/>
+                            <constraint firstItem="csB-gh-m15" firstAttribute="trailing" secondItem="1WU-lE-s9o" secondAttribute="trailing" id="xnp-D3-0Ba"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1WU-lE-s9o"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Welcome" id="wD0-ed-WSv">
+                        <barButtonItem key="leftBarButtonItem" image="toc" style="done" id="7vx-8G-mdz">
+                            <connections>
+                                <segue destination="G7i-jP-opF" kind="show" id="D8i-1i-gKo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="eVq-LG-h3R" id="cVA-aY-Gen"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZTe-EQ-seh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="510" y="-338"/>
+        </scene>
+        <!--Windmill Help-->
+        <scene sceneID="91P-82-aoS">
+            <objects>
+                <tableViewController storyboardIdentifier="HelpTableViewController" title="Windmill Help" id="G7i-jP-opF" customClass="HelpTableViewController" customModule="windmill" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bah-zD-K3F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HelpTableViewCell" textLabel="NZd-S2-GDL" style="IBUITableViewCellStyleDefault" id="Zqn-zl-lDo">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zqn-zl-lDo" id="xVx-e7-t87">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="NZd-S2-GDL">
+                                            <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Dlu-5X-XrA" kind="show" id="pES-fc-0D8"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="G7i-jP-opF" id="Res-0Q-fzH"/>
+                            <outlet property="delegate" destination="G7i-jP-opF" id="2R7-WP-AKJ"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="bah-zD-K3F" id="r99-jy-74F"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2N2-u5-SId" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1344" y="-338"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="question" width="25" height="25"/>
+        <image name="toc" width="24" height="24"/>
+        <image name="windmill iOS icon" width="70" height="70"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="D8i-1i-gKo"/>
+    </inferredMetricsTieBreakers>
+</document>

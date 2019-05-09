@@ -28,10 +28,10 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         case distributionSummary = "Distribution Summary"
         case information = "Information"
         
-        func settings() -> [Setting] {
+        func details() -> [Detail] {
             switch self {
             case .identity:
-                return [.displayName, .bundleIdentifier, .version, .build, .branch, .commit]
+                return [.displayName, .bundleIdentifier, .version, .build, .branch, .commit, .date]
             case .deploymentInfo:
                 return [.deploymentTarget]
             case .buildSettings:
@@ -39,23 +39,24 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
             case .distributionSummary:
                 return [.certificateExpiryDate]
             case .information:
-                return [.date]
+                return [.distributed]
             }
         }
 
     }
     
-    enum Setting: String, CodingKey {
+    enum Detail: String, CodingKey {
         case displayName = "Display Name"
         case bundleIdentifier = "Bundle Identifier"
         case version = "Version"
         case build = "Build"
         case branch = "Branch"
         case commit = "Commit"
+        case date = "Date"
         case configuration = "Configuration"
         case deploymentTarget = "Deployment Target"
         case certificateExpiryDate = "Certificate Expires"
-        case date = "Updated at"
+        case distributed = "Distributed at"
     }
     
     @IBOutlet weak var tableView: UITableView! {
@@ -105,7 +106,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
         
         if let error = error {
-            let alertController = UIAlertController.Windmill.make(title: "Delete Distribution Failed", error: error)
+            let alertController = UIAlertController.Windmill.make(title: "Delete Build Failed", error: error)
             self.present(alertController, animated: true)
         } else {
             self.performSegue(withIdentifier: "DeleteExportUnwind", sender: self)
@@ -115,7 +116,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func deleteDistribution(_ sender: Any) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let deleteDistribution = UIAlertAction(title: "Delete Distribution", style: .destructive) { alert in
+        let deleteDistribution = UIAlertAction(title: "Delete Build", style: .destructive) { alert in
             
             guard let export = self.export, let claim = try? ApplicationStorage.default.read(key: .subscriptionClaim) else {
                 return
@@ -137,7 +138,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].settings().count
+        return sections[section].details().count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -149,7 +150,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
             return UITableViewCell()
         }
         
-        let setting = self.sections[indexPath.section].settings()[indexPath.row]
+        let setting = self.sections[indexPath.section].details()[indexPath.row]
         cell.textLabel?.text = setting.stringValue
         
         switch setting {
@@ -165,6 +166,10 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
             cell.detailTextLabel?.text = export?.metadata.commit.branch
         case .commit:
             cell.detailTextLabel?.text = export?.metadata.commit.shortSha
+        case .date:
+            if let date = export?.metadata.commit.date {
+                cell.detailTextLabel?.text = dateFormatter.string(from: date)
+            }
         case .deploymentTarget:
             cell.detailTextLabel?.text = export?.metadata.deployment.target
         case .configuration:
@@ -173,7 +178,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
             if let certificateExpiryDate = export?.metadata.distributionSummary.certificateExpiryDate {
                 cell.detailTextLabel?.text = certificateExpiryDate.duration
             }
-        case .date:
+        case .distributed:
             if let modifiedAt = export?.modifiedAt {
                 cell.detailTextLabel?.text = dateFormatter.string(from: modifiedAt)
             } else if let createdAt = export?.createdAt {

@@ -10,12 +10,13 @@ import UIKit
 
 class NotificationsAuthorizedTableViewHeaderView: UITableViewHeaderFooterView {
     
+    class func make(width: CGFloat) -> NotificationsAuthorizedTableViewHeaderView {
+        return NotificationsAuthorizedTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: width, height: 120.0))
+    }
+    
     @IBOutlet weak var label: UILabel! {
         didSet{
-            let attributedText = NSMutableAttributedString(string: "You will receive a notification when Windmill on the Mac ")
-            attributedText.append(NSAttributedString(string: "distributes", attributes: [.foregroundColor : UIColor.Windmill.pinkColor]))
-            attributedText.append(NSAttributedString(string: " a new build", attributes: [.foregroundColor : UIColor.black, .font : UIFont.boldSystemFont(ofSize: 14)]))
-            attributedText.append(NSAttributedString(string: " for an application."))
+            let attributedText = NSMutableAttributedString(string: self.label?.text ?? "")
             label.attributedText = attributedText
         }
     }
