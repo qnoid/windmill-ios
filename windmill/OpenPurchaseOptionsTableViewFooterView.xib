@@ -22,7 +22,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMq-AE-xXD" customClass="Button" customModule="windmill" customModuleProvider="target">
                     <rect key="frame" x="8" y="8" width="304" height="50"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                     <state key="normal" title="Open Purchase Options"/>
                     <connections>
                         <action selector="didTouchUpInsideOpenPurchaseOptions" destination="-2" eventType="touchUpInside" id="Z4x-t8-ZYd"/>

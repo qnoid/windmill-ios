@@ -13,17 +13,17 @@ class MainViewController: UIViewController {
     var mainTableViewHeaderView: UITableViewHeaderFooterView {
         
         if case .expired = self.subscriptionStatus {
-            return SubscriptionExpiredTableViewFooterView.make(width: tableView.bounds.width)
+            return OpenPurchaseOptionsTableViewFooterView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
         } else {
-            return MainTableViewHeaderView.make(width: tableView.bounds.width)
+            return OpenStoreTableViewFooterView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
         }
     }
 
     var mainTableViewFooterView: UITableViewHeaderFooterView {
         if case .expired = self.subscriptionStatus {
-            return OpenPurchaseOptionsTableViewFooterView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
+            return SubscriptionExpiredTableViewFooterView.make(width: tableView.bounds.width)
         } else {
-            return OpenStoreTableViewFooterView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 66.0))
+            return MainTableViewHeaderView.make(width: tableView.bounds.width)
         }
     }
 

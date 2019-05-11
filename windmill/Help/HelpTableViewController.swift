@@ -25,7 +25,7 @@ class HelpTableViewController: UITableViewController {
             case .welcome:
                 return [.welcome]
             case .gettingStarted:
-                return [.whereToStart, .registerADevice, .running, .distribution]
+                return [.whereToStart, .registerADevice, .distribution]
             case .basics:
                 return [.installation, .details, .delete]
             case .installation:
@@ -42,7 +42,6 @@ class HelpTableViewController: UITableViewController {
     enum Child: String, CodingKey {
         case welcome = "Welcome"
         case whereToStart = "Where to start"
-        case running = "Running"
         case registerADevice = "Register a device"
         case distribution = "Distributing your application"
         case installation = "Install your application"
@@ -62,8 +61,6 @@ class HelpTableViewController: UITableViewController {
             switch self {
             case .whereToStart:
                 return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.getting_started.where_to_start.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
-            case .running:
-                return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.getting_started.running.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
             case .registerADevice:
                 let string = NSLocalizedString("io.windmill.windmill.help.getting_started.register_a_device.message", comment: "")
                 let message = NSMutableAttributedString(string: string as String, attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
@@ -77,14 +74,14 @@ class HelpTableViewController: UITableViewController {
                 }
                 
                 return message
+            case .distribution:
+                return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.getting_started.distribution.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
             case .installation:
                 return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.basics.installation.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
             case .details:
                 return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.basics.details.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
             case .delete:
                 return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.basics.delete.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
-            case .distribution:
-                return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.getting_started.distribution.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
             case .distributionCertificatedExpired:
                 return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.installation.errors.certificate_expired.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
             case .unsupported:
@@ -111,10 +108,10 @@ class HelpTableViewController: UITableViewController {
                 return message
             case .access:
                 return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.security.access.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
-            case .expiredBuilds:
-                return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.security.expiry.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
             case .registeredDevice:
                 return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.security.registered_devices.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
+            case .expiredBuilds:
+                return NSAttributedString(string: NSLocalizedString("io.windmill.windmill.help.security.expiry.message", comment: ""), attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
             case .revokeBuild:
                 let string = NSLocalizedString("io.windmill.windmill.help.security.revoke_build.message", comment: "")
                 let message = NSMutableAttributedString(string: string, attributes:[.font: UIFont.preferredFont(forTextStyle: .body)])
