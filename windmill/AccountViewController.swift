@@ -156,14 +156,12 @@ class AccountViewController: UIViewController, SubscriptionManagerDelegate {
             
             switch(user, error){
             case(let user?, _):
-                self?.subscriptionManager.subscribe(user: user.recordName, container: containerIdentifier, claim: claim) { (account, token, error) in                    
-                    switch(account, error) {
-                    case(let account?, _):
+                self?.subscriptionManager.subscribe(user: user.recordName, container: containerIdentifier, claim: claim) { result in
+                    switch result {
+                    case .success(let account):
                         self?.subscriptionManager.share(account: account, claim: claim)
-                    case(_, let error?):
+                    case .failure(let error):
                         self?.error(subscriptionManager, didFailWithError: error)
-                    case (.none, .none):
-                        preconditionFailure("SubscriptionManager.subscribe must callback with either an account/token or an error")
                     }
                 }
             case(_, let error?):

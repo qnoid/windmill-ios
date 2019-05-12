@@ -44,7 +44,7 @@ extension Date {
 extension Export {
     
     func isAvailable() -> Bool {
-        return !self.isExpired && self.isCompatible()
+        return !self.isElapsed && !self.isExpired && self.isCompatible()
     }    
 
     func isCompatible(device: UIDevice = UIDevice.current) -> Bool {
@@ -52,12 +52,14 @@ extension Export {
     }
      
     var status: Export.Status {
-        switch (self.isExpired, self.isCompatible()) {
-        case (_, false):
+        switch (self.isElapsed, self.isCompatible(), self.isExpired) {
+        case (true, _, _):
+            return .error(.elapsed)
+        case (_, false, _):
             return .error(.incompatible(target: self.metadata.deployment.target))
-        case (true, _):
+        case (_, _, true):
             return .error(.expired)
-        case (false, _):
+        case (_, _, false):
             return .ok
         }
     }
@@ -85,13 +87,22 @@ extension Export {
                     .font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold),
                     .paragraphStyle: paragraph,
                     .baselineOffset: 5.0])
+            case .elapsed:
+                let paragraph = NSMutableParagraphStyle()
+                paragraph.minimumLineHeight = 27
+                
+                return NSAttributedString(string: "ELAPSED", attributes: [
+                    .foregroundColor: UIColor.black,
+                    .font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold),
+                    .paragraphStyle: paragraph,
+                    .baselineOffset: 5.0])
             }
         case .ok:
             let paragraph = NSMutableParagraphStyle()
             paragraph.minimumLineHeight = 27
             
             return NSAttributedString(string: "INSTALL", attributes: [
-                .link: self.url,
+                .link: self.manifest.itms,
                 .foregroundColor: UIColor.Windmill.pinkColor,
                 .font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.medium),
                 .paragraphStyle: paragraph,

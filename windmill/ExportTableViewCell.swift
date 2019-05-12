@@ -76,7 +76,9 @@ class ExportTableViewCell: UITableViewCell, UITextViewDelegate, NSLayoutManagerD
     }
     
     func textViewDidChangeSelection(_ textView: UITextView) {
-        textView.selectedTextRange = nil //so no selection carrots appear
+        DispatchQueue.main.async {
+            textView.selectedTextRange = nil //so no selection carrots appear
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -39,7 +39,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
             case .distributionSummary:
                 return [.certificateExpiryDate]
             case .information:
-                return [.distributed]
+                return [.distributed, .elapses]
             }
         }
 
@@ -57,6 +57,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         case deploymentTarget = "Deployment Target"
         case certificateExpiryDate = "Certificate Expires"
         case distributed = "Distributed at"
+        case elapses = "Elapses"
     }
     
     @IBOutlet weak var tableView: UITableView! {
@@ -175,14 +176,27 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         case .configuration:
             cell.detailTextLabel?.text = export?.metadata.configuration.name
         case .certificateExpiryDate:
-            if let certificateExpiryDate = export?.metadata.distributionSummary.certificateExpiryDate {
+            if let export = export, export.isExpired {
+                cell.detailTextLabel?.text = "EXPIRED"
+            }
+            else if let certificateExpiryDate = export?.metadata.distributionSummary.certificateExpiryDate {
                 cell.detailTextLabel?.text = certificateExpiryDate.duration
+            } else {
+                cell.detailTextLabel?.text = ""
             }
         case .distributed:
             if let modifiedAt = export?.modifiedAt {
                 cell.detailTextLabel?.text = dateFormatter.string(from: modifiedAt)
             } else if let createdAt = export?.createdAt {
                 cell.detailTextLabel?.text = dateFormatter.string(from: createdAt)
+            }
+        case .elapses:
+            if let export = export, export.isElapsed {
+                cell.detailTextLabel?.text = "ELAPSED"
+            } else if let elapsesAt = export?.manifest.elapsesAt{
+                cell.detailTextLabel?.text = elapsesAt.duration
+            } else {
+                cell.detailTextLabel?.text = ""
             }
         }
         

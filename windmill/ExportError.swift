@@ -12,6 +12,7 @@ public enum ExportError : Error {
     
     case incompatible(target: String)
     case expired
+    case elapsed
 }
 
 extension ExportError : CustomNSError, LocalizedError {
@@ -26,6 +27,8 @@ extension ExportError : CustomNSError, LocalizedError {
             return "Unsupported iOS"
         case .expired:
             return "Distribution Certificated Expired"
+        case .elapsed:
+            return "Access Elapsed"
         }
     }
     
@@ -35,6 +38,8 @@ extension ExportError : CustomNSError, LocalizedError {
             return "This application requires iOS \(target) or later."
         case .expired:
             return "The distribution certificate used to export this application has expired.\n"
+        case .elapsed:
+            return "Access to this application has elapsed.\n"
         }
     }
     
@@ -43,6 +48,8 @@ extension ExportError : CustomNSError, LocalizedError {
         case .incompatible:
             return nil
         case .expired:
+            return nil
+        case .elapsed:
             return nil
         }
     }
@@ -53,6 +60,17 @@ extension ExportError : CustomNSError, LocalizedError {
             return "You must update this device to iOS \(target) in order to download and use this application."
         case .expired:
             return "Use Windmill on the Mac to distribute the application with an up-to-date certificate."
+        case .elapsed:
+            return "You can choose to Refresh your list of applications for as long as your Subscription is still active."
+        }
+    }
+    
+    public var isDenied: Bool {
+        switch self {
+        case .elapsed:
+            return true
+        default:
+            return false
         }
     }
 }

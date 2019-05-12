@@ -46,7 +46,7 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
     
     var subscriptionStatus: SubscriptionStatus? {
         didSet {
-            if oldValue == nil, case .active(let account, let authorizationToken)? = subscriptionStatus {
+            if case .active(let account, let authorizationToken)? = subscriptionStatus {
                 self.refreshExports(account: account, authorizationToken: authorizationToken)
             }
         }
@@ -191,6 +191,11 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView?.reloadData()
+    }
+    
     @IBAction func didTouchUpInsideRefresh(_ sender: UIBarButtonItem) {
         self.refreshExports()
     }
@@ -254,9 +259,18 @@ class AppsViewController: UIViewController, NotifyTableViewHeaderViewDelegate, N
 
     func tableViewCell(_ cell: ExportTableViewCell, installButtonTapped: InstallButton, forExport export: Export) {
         
-        if case .error(let error) = export.status {
+        switch export.status {
+        case .error(let error) where error.isDenied:
+            let alertController = UIAlertController.Windmill.makeExport(error: error)
+            alertController.addAction(UIAlertAction(title: "Refresh Applications", style: .default) { action in
+                self.refreshExports()
+            })
+            present(alertController, animated: true, completion: nil)
+        case .error(let error):
             let alertController = UIAlertController.Windmill.makeExport(error: error)
             present(alertController, animated: true, completion: nil)
+        default:
+            return
         }
     }
     

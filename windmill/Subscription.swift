@@ -56,8 +56,8 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             }
         case .expired:
             return "Subscription Expired"
-        default:
-            return ""
+        case .outdated:
+            return "Outdated Receipt"
         }
     }
     
@@ -80,8 +80,8 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             }
         case .expired:
             return NSLocalizedString("\(SubscriptionError.errorDomain).\(UnauthorisationReason.expired.key)", comment: "Your subscription has expired or may have not renewed just yet.\n")
-        default:
-            return nil
+        case .outdated:
+            return NSLocalizedString("\(SubscriptionError.errorDomain).subscription.outdated", comment: "Your purchase receipt has not recorded any payment transactions yet.\n")
         }
     }
     
@@ -99,7 +99,7 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             return nil
         case .expired:
             return nil
-        default:
+        case .outdated:
             return nil
         }
     }
@@ -109,7 +109,7 @@ extension SubscriptionError : CustomNSError, LocalizedError {
         case .failed:
             return "Windmill will try again sometime later.\nOptionally, you can contact qnoid@windmill.io"
         case .connectionError:
-            return "Windmill will try again sometime later.\nOptionally, under your Account, you can choose to Refresh later."
+            return "Windmill will try again sometime later.\nOptionally, under your Account, you can choose to Refresh the Subscription now."
         case .restoreFailed:
             return "You can try again some time later or contact qnoid@windmill.io."
         case .restoreConnectionError:
@@ -117,14 +117,14 @@ extension SubscriptionError : CustomNSError, LocalizedError {
         case .unauthorised(let reason):
             switch reason {
             case (.expired?):
-                return "In the latter case, Windmill will try again sometime later. Optionally, you can choose to Refresh now."
+                return "In the latter case, Windmill will try again sometime later. Optionally, you can choose to Refresh the Subscription now."
             default:
                 return "You can purchase a new subscription or contact qnoid@windmill.io"
             }
         case .expired:
-            return "In the latter case, Windmill will try again sometime later. Optionally, you can choose to Refresh now."
-        default:
-            return nil
+            return "In the latter case, Windmill will try again sometime later. Optionally, you can choose to Refresh the Subscription now."
+        case .outdated:
+            return "Windmill will try again sometime later. Optionally, you can choose to Refresh the Receipt now."
         }
     }
     
@@ -147,4 +147,14 @@ extension SubscriptionError : CustomNSError, LocalizedError {
             return false
         }
     }
+    
+    public var isOutdated: Bool {
+        switch self {
+        case .outdated:
+            return true
+        default:
+            return false
+        }
+    }
+
 }

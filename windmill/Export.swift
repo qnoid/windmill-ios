@@ -40,6 +40,15 @@ public struct Export: Codable {
             return self.distributionSummary.certificateExpiryDate < date
         }
     }
+    
+    public struct Manifest: Codable {
+        let itms: String
+        let elapsesAt: Date
+        
+        func isElapsed(date: Date = Date()) -> Bool {
+            return self.elapsesAt < date
+        }
+    }
 
     
     let id: UInt
@@ -47,7 +56,7 @@ public struct Export: Codable {
     let bundle: String
     let version: String
     let title: String
-    let url: String
+    let manifest: Manifest
     let createdAt: Date
     let modifiedAt: Date?
     let accessedAt: Date?
@@ -60,5 +69,9 @@ public struct Export: Codable {
     
     var isExpired: Bool {
         return self.metadata.isExpired()
+    }
+    
+    var isElapsed: Bool {
+        return self.manifest.isElapsed()
     }
 }

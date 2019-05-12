@@ -221,28 +221,30 @@ class SubscriptionManager: NSObject, SKProductsRequestDelegate {
         self.paymentQueue.add(payment)
     }
     
-    func subscribe(user: String, container: String, claim: SubscriptionClaim, completion: @escaping SubscriptionResource.SubscriptionCompletion = SubscriptionCompletionIgnore) {
+    func subscribe(user: String, container: String, claim: SubscriptionClaim, completion: @escaping (Swift.Result<Account, Error>) -> Void) {
         
         self.subscriptionResource.requestSubscription(user: user, container: container, claim: claim){ (account, token, error) in
             
-            switch error {
-            case .some(let error):
-                completion(account, token, error)
-            case .none:
-                if let account = account?.identifier , let token = token?.value {
-                    try? ApplicationStorage.default.write(value: account,
-                                                          key: .account,
-                                                          options: .completeFileProtectionUntilFirstUserAuthentication)
-                    
-                    try? ApplicationStorage.default.write(value: token,
-                                                          key: .subscriptionAuthorizationToken,
-                                                          options: .completeFileProtectionUntilFirstUserAuthentication)
-                }
+            switch (account, token, error) {
+            case (_, _, let error?):
+                completion(.failure(error))
+            case (let account?, let token?, _):
+                
+                try? ApplicationStorage.default.write(value: account.identifier,
+                                                      key: .account,
+                                                      options: .completeFileProtectionUntilFirstUserAuthentication)
+                
+                try? ApplicationStorage.default.write(value: token.value,
+                                                      key: .subscriptionAuthorizationToken,
+                                                      options: .completeFileProtectionUntilFirstUserAuthentication)
                 
                 NotificationCenter.default.post(name: SubscriptionManager.SubscriptionActive, object: self)
                 
-                completion(account, token, error)
+                completion(.success(account))
+            default:
+                preconditionFailure("SubscriptionResource.requestSubscription must callback with either an account/token or an error")
             }
+
         }.resume()
     }
     

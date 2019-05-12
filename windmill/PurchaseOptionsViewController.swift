@@ -55,6 +55,9 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchasing(notification:)), name: SubscriptionManager.SubscriptionPurchasing, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchased(notification:)), name: SubscriptionManager.SubscriptionPurchased, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshing(notification:)), name: PaymentQueue.ReceiptRefreshing, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshed(notification:)), name: PaymentQueue.ReceiptRefreshed, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshFailed(notification:)), name: PaymentQueue.ReceiptRefreshFailed, object: PaymentQueue.default)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -63,6 +66,9 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchasing(notification:)), name: SubscriptionManager.SubscriptionPurchasing, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionPurchased(notification:)), name: SubscriptionManager.SubscriptionPurchased, object: subscriptionManager)
         NotificationCenter.default.addObserver(self, selector: #selector(subscriptionFailed(notification:)), name: SubscriptionManager.SubscriptionFailed, object: subscriptionManager)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshing(notification:)), name: PaymentQueue.ReceiptRefreshing, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshed(notification:)), name: PaymentQueue.ReceiptRefreshed, object: PaymentQueue.default)
+        NotificationCenter.default.addObserver(self, selector: #selector(receiptRefreshFailed(notification:)), name: PaymentQueue.ReceiptRefreshFailed, object: PaymentQueue.default)
     }
     
     override func viewDidLoad() {
@@ -126,6 +132,12 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         switch error {
         case let error as SKError where error.code == SKError.paymentCancelled:
             return
+        case let error as SubscriptionError where error.isOutdated:
+            let alertController = UIAlertController.Windmill.makeSubscription(error: error)
+            alertController.addAction(UIAlertAction(title: "Refresh Receipt", style: .default) { action in
+                PaymentQueue.default.refreshReceipt()
+            })
+            self.present(alertController, animated: true, completion: nil)
         case let error as SubscriptionError:
             let alertController = UIAlertController.Windmill.makeSubscription(error: error)
             self.present(alertController, animated: true, completion: nil)
@@ -135,6 +147,24 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
         }
     }
     
+    @objc func receiptRefreshing(notification: NSNotification) {
+        self.purchaseButton?.isEnabled = false
+        self.activityIndicatorViewSubscribe.startAnimating()
+    }
+
+    @objc func receiptRefreshFailed(notification: NSNotification) {
+        self.purchaseButton?.isEnabled = true
+        self.activityIndicatorViewSubscribe?.stopAnimating()
+    }
+    
+    @objc func receiptRefreshed(notification: NSNotification) {
+        guard let receipt = notification.userInfo?["receipt"] as? String else {
+            return
+        }
+        
+        self.subscriptionManager?.restoreSubscription(receiptData: receipt)
+    }
+
     @IBAction func purchase(_ sender: Any) {
 
         guard let product = self.product else {
