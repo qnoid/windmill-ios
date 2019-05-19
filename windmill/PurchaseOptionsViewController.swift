@@ -21,6 +21,23 @@ class PurchaseOptionsViewController: UIViewController, SubscriptionManagerDelega
 
     @IBOutlet weak var subscriptionLabel: UILabel!
     @IBOutlet weak var youAreOnTrialLabel: UILabel!
+    @IBOutlet weak var termsView: UITextView! {
+        didSet{
+            guard let string = termsView.text else {
+                return
+            }
+            
+            let attributes: [NSAttributedString.Key : Any] = [.font: UIFont.preferredFont(forTextStyle: .caption2), .foregroundColor: UIColor.white]
+            let attributedString = NSMutableAttributedString(string: string, attributes: attributes)
+            
+            if let url = URL(string: "https://windmill.io/privacy/") {
+                attributedString.addAttribute(.link, value: url, range: (string as NSString).range(of: "Terms of Use and Privacy Policy"))
+            }
+
+            self.termsView.linkTextAttributes = [.foregroundColor: UIColor.Windmill.blueColor, .underlineColor : UIColor.Windmill.blueColor]
+            self.termsView.attributedText = attributedString
+        }
+    }
     @IBOutlet weak var purchaseButton: Button! {
         didSet {
             purchaseButton.setTitle("", for: .disabled)
